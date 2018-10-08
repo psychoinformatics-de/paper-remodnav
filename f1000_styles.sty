@@ -20,7 +20,7 @@
 % Define the versionDate and flogo commands
 \newcommand{\versionDate}{\footnotesize \textit{F1000Research} 2016 - DRAFT ARTICLE (PRE-SUBMISSION)}
 \newcommand{\flogo}{\includegraphics[height=12pt]{F1000header.png}}
-  
+           
 % Section heading styles
 \usepackage[compact]{titlesec} 
 
@@ -57,10 +57,28 @@
 \setlength{\columnsep}{0.25in}
 
 % Page margins, headers and footers
-\pagestyle{fancy}
-\setlength\parindent{0in}
-%\setlength\parskip{0.1in}
-\setlength\headheight{16.5pt}
+% 1 For the main body of the article
+\fancypagestyle{main}{
+\newgeometry{hmargin=3.3cm,vmargin=2.2cm}
+\fancyheadoffset{1.5cm} % Set header width to match front pages
+\fancyfootoffset{1.5cm} % Set footer width to match front pages
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{16.5pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{}
+\chead{}
+\rhead{\versionDate}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
+}
+
+% 2 For the front page(s)
+\fancypagestyle{front}{
+\newgeometry{hmargin=1.8cm,vmargin=2.2cm}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{16.5pt}
 \renewcommand{\footrulewidth}{1pt}
 \lhead{\textsc{\flogo}}
 \chead{}
@@ -68,10 +86,12 @@
 \lfoot{}
 \cfoot{}
 \rfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
+}
+
 %
 \renewenvironment{abstract}{%
 \usefont{OT1}{phv}{m}{n}
-\hfill\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.65\textwidth}
 \rule{\textwidth}{1pt}\\ \textcolor{Orange}{\textbf{\abstractname}}}
 {\par\noindent\rule{\textwidth}{1pt}\end{minipage}}
 %

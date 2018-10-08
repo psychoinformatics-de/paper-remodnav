@@ -10,35 +10,41 @@
 % For more detailed article preparation guidelines, please see:
 % http://f1000research.com/author-guidelines
 
-\documentclass[10pt,a4paper,twocolumn]{article}
+\documentclass[9pt,a4paper]{extarticle}
 \usepackage{f1000_styles}
 
 %% Default: numerical citations
 \usepackage[numbers]{natbib}
-\usepackage{tabularx}
+
+%\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{booktabs}
 
 
 %% Uncomment this lines for superscript citations instead
-% \usepackage[super]{natbib}
+%\usepackage[super]{natbib}
 
 %% Uncomment these lines for author-year citations instead
 % \usepackage[round]{natbib}
 % \let\cite\citep
 
 \begin{document}
+\pagestyle{front}
 
-\title{Robust something}
+\title{REMoDNaV: Robust Eye Movement Detection for Natural Viewing } %\\ (remodnav)
 %\titlenote{The title should be detailed enough for someone to know whether the article would be of interest to them, but also concise. Please ensure the broadness and claims within the title are appropriate to the content of the article itself.}
-\author[1]{Ulrike Schnaithmann}
-\author[2]{Michael Hanke}
-\author[3]{Isabel Dombrowe}
-\affil[1]{Address of author1}
-\affil[2]{Address of author2}
+\author[1]{Asim H. Dar}
+\author[1]{Adina Wagner}
+\author[2]{Ulrike Schnaithmann}
+\author[2]{Isabel Dombrowe} %TODO: Not sure about her. 
+\author[1,3]{Michael Hanke}
+\affil[1]{Psychoinformatics Lab, Institute of Psychology, Otto-von-Guericke University, Magdeburg, Germany}
+\affil[2]{Department of Cognitive Psychology: Judgment, Decision Making, Action, Fern Universität, Hagen,
+Germany} %TODO: Correct?
+\affil[3]{Center for Behavioral Brain Sciences, Magdeburg, Germany}
 
 \maketitle
-\thispagestyle{fancy}
+\thispagestyle{front}
 
 %Please list all authors that played a significant role in the research involved in the article. Please provide full affiliation information (including full institutional address, ZIP code and e-mail address) for all authors, and identify who is/are the corresponding author(s).
 
@@ -69,24 +75,60 @@ eye tracking, adaptive detection algorithm, saccade detection algorithm, statist
 
 %\todo[inline]{\textit{make connection to studyforrest. studyforrest has eyetracking data. why is it necessary to have that preprocessed?}}
 
-The data used for this thesis originates from the open science project 'studyforrest'. It centers around two large data acquisition phases employing the movie 'Forrest Gump' as stimulus. \cite{Hanke.2014,Hanke.2016} The project provides a large variety of collections of data to enable fellow researchers to build upon existing knowledge and further extend the dataset. Along other measures, the eye gaze coordinates were being recorded during the original sessions. Contrarily to the standard automatic detection process we applied an adaptive algorithm to the eye movement data to provide a more precise computation of saccades and fixations. 
+% The data used for this thesis originates from the open science project 'studyforrest'. It centers around two large data acquisition phases employing the movie 'Forrest Gump' as stimulus. \cite{Hanke.2014,Hanke.2016} The project provides a large variety of collections of data to enable fellow researchers to build upon existing knowledge and further extend the dataset. Along other measures, the eye gaze coordinates were being recorded during the original sessions. Contrarily to the standard automatic detection process we applied an adaptive algorithm to the eye movement data to provide a more precise computation of saccades and fixations. 
 
-\section*{Materials and Methods}
+%TODO : HOW DOES CITING WORK!?!
+A spreading theme in cognitive neuroscience is the usage of dynamic and natural stimuli as opposed to isolated and distinct imagery used in classical studies. Using such stimuli we are able to observe the nuances of cognition in a more natural environment. Some interesting applications include the determination of neural response to changes in facial expression \cite{Harris2014}, understanding complex social interactions by using videos \cite{Tikka2012} and more untouched themes such as the underlying processing of music \cite{Toiviainen2014}. In these studies, a physical measurement is needed to quantify the amount of correlation between response and stimuli. Our interest is the usage of eye gaze data from the studyforrest dataset--- a dataset containing a variety of outputs from subjects viewing natural and dynamic stimuli in the form of a full length movie \cite{Hanke2016}. \\
+
+Eye tracking is a flexible measurement which has proven its worth in a variety of studies ranging from the understanding of visual attention \cite{HantaoLiu2011}, memory \cite{Hannula2010} and language comprehension \cite{Gordon2006}. In order to effectively use the eye gaze data from the studyforrest dataset, we searched for an algorithm that would help us sort out different eye related events, namely, saccades, fixations, and post-saccadic oscillations. As advocates of open-source software and scientific reproducibility we focused on non-commercial algorithms that were both well documented (published works) and freely available. Assisting us in this, a recent study \cite{Andersson2017a} took on the task of evaluating eye gaze data algorithms on different sets of stimuli and compared them to human "coders" --- which were human participants who marked events in eye gaze data on a GUI. To our disappointment, the authors remarked that none of the algorithms performed remarkably well when it came to more dynamic stimuli.\\
+
+As our primary goal is to work with eye gaze data from dynamic stimuli, our aim was to produce an algorithm that would both proficient at detecting eye gaze events and be packaged in a freely available and accessible format. In addition, we want to make the algorithm robust and well documented so that other groups can use it with their specific set of parameters. 
+
+
+
+
+\section*{Methods}
+%Methods (3 sections; our algo, comparison to current algos, application on studyforrest dataset)
+
+\subsection*{Implementation}
+ 
+\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
+
+%\subsection*{Going beyond basic dynamic stimuli; the studyforrest dataset}
+%\todo[inline]{\textit{fix/update text below}}
 
 %\todo[inline]{this sections describes the method that produces the
 %data artifacts. what kind of filtering? What kind of saccade detection algorithm? It should contain an \textbf{ultra-brief} summary of the eyetracking details from \cite{HAK+16}, but otherwise just refer to this article for details.}
 
-In the original study, Hanke et. al \cite{Hanke.2016} split 30 participants into groups of 15 and placed one half in a fMRI scanner set-up and the other in a lab setting while recording eye movements during the two hour movie stimulus. For further technical details please refer to the original article. As part of an unpublished Bachelor project, we compared different filter and saccade detection algorithm combinations. To quantify the precision of the combination, the correlation between peak velocity and amplitude of all saccades, known as the main sequence, and the inherent $r^2$ values were computed. The higher the data fit to the assumed main sequence $MS$ curve $MS=mx^n$ the more precise the filter-algorithm option. The combination of Savitzky-Golay filter and an adaptive detection algorithm by Nyström and Holmqvist proved to be most precise and was used for further analysis. The respective algorithm employs a daten-driven threshold which automatically adjusts to local noise levels. It consists of five steps including filtering with Savitzgy-Golay, peak saccade detection, saccade on- and offset determination, as well as glissade and fixation identification. Parameters used for computation were kept exactly as suggested by the authors. According to the algorithm, after detecting saccades and follow-up glissades, the left over movements between saccades were considered fixations. Due to higher noise in dynamic stimuli and the longer recording period this assumption did not hold in the studyforrest dataset. Therefore, an additional velocity limit of 6.58 $\frac{\circ}{s}$ and amplitude of 2 $^\circ$ during a fixation was integrated as these values are commonly viewed as fixation thresholds.\cite{Holmqvist.2011,Henderson.1997}
+%In the original study, Hanke et. al \cite{Hanke.2016} split 30 participants into groups of 15 and placed one half in a fMRI scanner set-up and the other in a lab setting while recording eye movements during the two hour movie stimulus. For further technical details please refer to the original article. As part of an unpublished Bachelor project, we compared different filter and saccade detection algorithm combinations. To quantify the precision of the combination, the correlation between peak velocity and amplitude of all saccades, known as the main sequence, and the inherent $r^2$ values were computed. The higher the data fit to the assumed main sequence $MS$ curve $MS=mx^n$ the more precise the filter-algorithm option. The combination of Savitzky-Golay filter and an adaptive detection algorithm by Nyström and Holmqvist proved to be most precise and was used for further analysis. The respective algorithm employs a daten-driven threshold which automatically adjusts to local noise levels. It consists of five steps including filtering with Savitzgy-Golay, peak saccade detection, saccade on- and offset determination, as well as glissade and fixation identification. Parameters used for computation were kept exactly as suggested by the authors. According to the algorithm, after detecting saccades and follow-up glissades, the left over movements between saccades were considered fixations. Due to higher noise in dynamic stimuli and the longer recording period this assumption did not hold in the studyforrest dataset. Therefore, an additional velocity limit of 6.58 $\frac{\circ}{s}$ and amplitude of 2 $^\circ$ during a fixation was integrated as these values are commonly viewed as fixation thresholds.\cite{Holmqvist.2011,Henderson.1997}
 
 %Methods should include a brief discussion of allowances made (if any) for controlling bias or unwanted sources of variability, and the limitations of the datasets.
 
-\section*{Dataset content}
+
+
 %\todo[inline]{\textit{brief description of the nature and amount of data released, and in which format it is released in}}
-The data is divided into lab and scanner data and released as separate text files for each movie segment per participant. This results in a set of 240 .txt files. The first step of the detection process includes disregarding biologically implausible values and blinks followed up by  Savitzky-Golay filtering. The output files display the velocity, acceleration, point in time and pixel coordinates for each sample and are released separately to enable additional calculations. These files are then further processed to detect saccades, glissades and fixations. The final output includes the typical eye tracking information on each movement event: time and coordinates for on- and offset, amplitude, peak velocity and average velocity. (peak velocity was not calculated for fixations)  
+%The data is divided into lab and scanner data and released as separate text files for each movie segment per participant. This results in a set of 240 .txt files. The first step of the detection process includes disregarding biologically implausible values and blinks followed up by  Savitzky-Golay filtering. The output files display the velocity, acceleration, point in time and pixel coordinates for each sample and are released separately to enable additional calculations. These files are then further processed to detect saccades, glissades and fixations. The final output includes the typical eye tracking information on each movement event: time and coordinates for on- and offset, amplitude, peak velocity and average velocity. (peak velocity was not calculated for fixations)  
+
+\subsection*{Operation}
+\todo[inline]{\textit{This part of the methods should include the minimal system requirements needed to run the software and an overview of the workflow for the tool for users of the tool. Eg : Minimum system requirements for running TRGAted
+locally are modest and include an Intel-compatible CPU and
+1 gigabyte of RAM. Running TRGAted from the shiny server
+requires a modern browser and an internet connection}}
+
+\section*{Use Cases} % Optional - only if NO new datasets are included
+%This section is required if the paper does not include novel data or analyses. 
+%Examples of input and output files should be provided with some explanatory context.  Any novel or complex variable parameters should also be explained in sufficient detail to allow users to understand and use the tool's functionality.
+%THIS SECTION  WILL BASICALLY SHOW THE INPUTS AND THE OUTPUTS(RESULTS BASICALLY)
+\todo[inline]{\textit{Testing and comparison --- explaining rationale of the compared algorithms ie they were winners in the anderson paper}}
+
+\subsection*{Evaluation of the algorithm: comparing outputs against human coders and current algorithms}
+%\subsubsection*{Evaluation of events}
+\todo[inline]{\textit{Table (or a graphic?) showing duration mean, SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
 
 
-
-\section*{Dataset validation}
+\subsection*{Application of algorithm to dynamic stimuli: comparing the outputs from different levels of noise}
+%discuss inlab vs scanner data
+\todo[inline]{\textit{Need to determine exactly which plots and tables will go here}}
 %\todo[inline]{\textit{This section contains the analysis of the main sequences -- which I assume is the meat of the thesis. The goal is to have as much information as possible be contained in figures and/or tables (and their captions). We don't pay for those, but we do pay for the main text body.}}
 After applying the detection procedure to the entire lab data set, a detailed statistical analysis was performed to validate that the characteristics of the detected eye movements fall into biologically plausible ranges. The algorithm was then applied to the scanner data to verify the procedure on another set of data, see table \ref{groupcompare}. 
 
@@ -96,7 +138,7 @@ After applying the detection procedure to the entire lab data set, a detailed st
 %------------------figure------------------------------------------
 \begin{figure}
 \centering
-\includegraphics[scale=0.35]{figures/MainSeq.png}
+%\includegraphics[scale=0.35]{figures/MainSeq.png}
         \caption[Main sequence plot]{Plot of the main sequence, relationship between peak velocity and amplitude of participant ID 24, movie segment 4 (randomly chosen as an example); $r^2$=0.92.}
         \label{main}
 \end{figure}   
@@ -150,7 +192,7 @@ After applying the detection procedure to the entire lab data set, a detailed st
 %------------------figure------------------------------------------
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.2]{figures/duration.jpeg}
+%\includegraphics[scale=0.2]{figures/duration.jpeg}
         \caption{Histogram of saccade durations. Cut off at 100 $ms$ as for the following bars less than 0.01\% of all data are presented per bin, making it impossible to visualize. Normalized to 1. The largest amount of saccades is very close to minimum duration. The assumed shape of the distribution indicates a gradual decrease to the left, implying the possibility of a number of shorter, yet disregarded saccades. This loss of data can easily be fixed by choosing a less conservative duration threshold. There are many different subjective opinions on minimum saccadic duration, ranging from 10 ms \cite{Duchowski.2007} to 15 ms \cite{Smith.2013}. A more objective approach was provided by Carpenter in 1988 who found a mathematical relation between duration and amplitude of saccades \cite{Carpenter.1988}: $duration=2.2\cdot{}amplitude+21$. According to this equation there are no saccades of less than 21 $ms$. Therefore, a minimum duration of 21 $ms$ was chosen as threshold.}
 \label{dur}
 \end{figure}
@@ -158,7 +200,7 @@ After applying the detection procedure to the entire lab data set, a detailed st
 %------------------figure------------------------------------------
 \begin{figure}
 \centering
-\includegraphics[scale=0.2]{figures/amp.jpeg}
+%\includegraphics[scale=0.2]{figures/amp.jpeg}
         \caption[Histogram of saccade amplitude]{Histogram of all saccade amplitudes. Cut off at 12 $^\circ$. Normalized to 1. }
         \label{amp}
 \end{figure}    
@@ -166,7 +208,7 @@ After applying the detection procedure to the entire lab data set, a detailed st
 %------------------figure------------------------------------------
 \begin{figure}
 \centering
-\includegraphics[scale=0.2]{figures/pv.jpeg}
+%\includegraphics[scale=0.2]{figures/pv.jpeg}
         \caption[Histogram of peak velocity]{Histogram of all saccade peak velocities. Cut off at 400 $\frac{^\circ} {s}$. Normalized to 1. }
         \label{pv}
 \end{figure}
@@ -230,15 +272,46 @@ Movie segment & lab  & scanner & t-statistic & p-value \\
 \label{groupcompare}
 \end{table}
 \twocolumn
-\section*{Data and software availability}
+
+\todo[inline]{\textit{For the Comparison of output between Lab and in-scanner data: Need to determine exactly which plots and tables will go here}}
+
+
+
+
+\section*{Discussion}
+
+\subsection*{Comparison to human coders and current algorithms}
+
+
+\subsubsection*{Comparison of outputs from different levels of noise}
+
+
+\section*{Conclusion} % Optional - only if NO new datasets are included
+This section is required if the paper does not include novel data or analyses.  It allows authors to briefly summarize the key points from the article.
+
+\section*{Data availability} % Optional - only if novel data or analyses are included
+Please add details of where any datasets that are mentioned in the paper, and that have not have not previously been formally published, can be found.  If previously published datasets are mentioned, these should be cited in the references, as per usual scholarly conventions.
 \todo[inline]{This will be completed at the end with info on where readers can obtain data and code}
+
+
+\section*{Software availability}
+This section will be generated by the Editorial Office before publication. Authors are asked to provide some initial information to assist the Editorial Office, as detailed below.
+\begin{enumerate}
+\item URL link to where the software can be downloaded from or used by a non-coder (AUTHOR TO PROVIDE; optional)
+\item URL link to the author's version control system repository containing the source code (AUTHOR TO PROVIDE; required)
+\item Link to source code as at time of publication ({\textit{F1000Research}} TO GENERATE)
+\item Link to archived source code as at time of publication ({\textit{F1000Research}} TO GENERATE)
+\item Software license (AUTHOR TO PROVIDE; required)
+\end{enumerate}
 
 
 \subsection*{Author contributions}
 %In order to give appropriate credit to each author of an article, the individual
 %contributions of each author to the manuscript should be detailed in this section. We
 %recommend using author initials and then stating briefly how they contributed.
-US ...; ID ....; MH provided feedback on the procedure, and contributed to the manuscript.
+AD, US, MH conceived and implemented the algorithm.
+AD, AW, US, ID, MH validated algorithm performance.
+AD, AW, US, ID, MH contributed to the manuscript.
 
 \subsection*{Competing interests}
 %All financial, personal, or professional competing interests for any of the authors that
@@ -267,10 +340,11 @@ decision to publish, or preparation of the manuscript.}
 %they contributed; authors should obtain permission to acknowledge from all those
 %mentioned in the Acknowledgements section.
 %Please do not list grant funding in this section.
-
+We are grateful to Anderson et al. \cite{ALH+2017} for releasing the labeled
+eye tracking dataset used for validation under an open-source license.
 
 {\small\bibliographystyle{unsrtnat}
-\bibliography{literature}}
+\bibliography{EyeGaze}}
 
 % \bigskip
 % References can be listed in any standard referencing style that uses a numbering system
