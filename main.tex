@@ -19,6 +19,7 @@
 %\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{units}
 
 
 %% Uncomment this lines for superscript citations instead
@@ -28,6 +29,7 @@
 % \usepackage[round]{natbib}
 % \let\cite\citep
 
+\newcommand{\eg}{e.g., }
 \begin{document}
 \pagestyle{front}
 
@@ -94,6 +96,52 @@ As our primary goal is to work with eye gaze data from dynamic stimuli, our aim 
 \subsection*{Implementation}
  
 \todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
+
+% start with a plain list, later work into flow chart or table...
+\begin{enumerate}
+  \item Preprocessing
+    \begin{enumerate}
+      \item Apply spike filter (cite)
+      \item (opt) Mask data around signal loss
+      \item (opt) Apply Savitzy-Golay filter for noise reduction
+      \item Compute movement velocities
+      \item Impose configurable maximum velocity (replace exceeding values with previous estimate)
+      \item Compute movement accelaration from velocity estimates
+      \item (opt) Compute additional movement velocities after additional (heavy) median filtering
+
+    \end{enumerate}
+  \item Event detection
+    \begin{enumerate}
+      \item Time series chunking into interval between \textit{major} saccades, to be able to accommodate data without a (short) trial structure
+        % objective 1: chunk the timeseries into meaningful segments, data might not have
+        % a trial structure
+        \begin{enumerate}
+          \item Determine location of major saccades by thresholding the \textit{median-}filtered velocities with a critical velocity value determined from the entire input data following an algorithm by \citep{Nystrom2010AnData}
+          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \citep{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
+          \item Saccade detection is terminated early, if a configurable maximum saccade
+            frequency across the entire input data is reached (default: \unit[2]{Hz})
+        \end{enumerate}
+    % outcome: inter-saccade-intervals of >~500ms length (like trials)
+      \item Locally adaptive detection of eyemovement events with each intervall between
+        previously detected major saccades
+        \begin{enumerate}
+          \item Further subdivide the interval into windows without missing data
+          \item Within each window, perform saccade detection, if its duration exceeds
+            a minimum-length saccade with minimum distance to neighboring saccades
+            (default: \unit[130]{ms}), using velocity thresholds determined from the
+            specific time window only
+          \item For each remaining unlabeled time window that is longer than a
+            configured minimum duration (default: \unit[40]{ms}), re-compute velocities
+            after low-pass filtering (default cutoff: \unit[4]{Hz}), label segments
+            exceeding a maximum fixation velocity threshold
+            as smooth pursuit, and everything else as a fixation. Pursuit on/offset
+            detection employs the same algorithm from \citep{Nystrom2010AnData} used for
+            determining saccade on/offset, but with a configurable, fixed velocity threshold
+            (default: \unit[2]{deg/s})
+        \end{enumerate}
+
+    \end{enumerate}
+\end{enumerate}
 
 %\subsection*{Going beyond basic dynamic stimuli; the studyforrest dataset}
 %\todo[inline]{\textit{fix/update text below}}
