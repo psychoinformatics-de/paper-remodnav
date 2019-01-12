@@ -53,9 +53,8 @@ Germany} %TODO: Correct?
 \begin{abstract}
 
 %Abstracts should be up to 300 words and provide a succinct summary of the article. Although the abstract should explain why the article might be interesting, care should be taken not to inappropriately over-emphasize the importance of the work described in the article. Citations should not be used in the abstract, and the use of abbreviations should be minimized. If you are writing a Research or Systematic Review article, please structure your abstract into Background, Methods, Results, and Conclusions.
-As eye tracking data is being recorded the eye tracking software generally applies an online detection algorithm to automatically output detected eye movements. 
-With the advancing technological accuracy of eye trackers it is possible to employ smarter algorithms which take into account the features of the entire data set in the detection process. The algorithm chosen for this data note analyzes eye movements according to global characteristics and local noise levels rather than fixed velocity thresholds. This results in precisely analyzed data for further research to build on. The data is available for download on 
-\todo[inline]{add platform}
+Tracking of eye movements during cognitive tasks is an established metric for many types of experimental paradigms in both psychology and cognitive neuroscience. In such experiments, the usage of more complex and lengthier visual stimuli has made algorithmic approache --- in detecting eye movement events as saccades and fixations --- the most pragmatic option. A recent analysis has revealed that current algorithms for detecting eye movements are lackluster when it comes to processing eye tracking data from subjects viewing dynamic stimuli such as video sequences. We aimed to design an algorithm that has comparable performance to currently used software of the same purpose and one that is specially tuned to detect different events in data from dynamic stimuli. We compared the output of our algorithm to a data set which had manually annotated events to compare performance with human viewers --- which we consider as the gold standard when it comes to accuracy. In addition, we compared our algorithm to a currently developed one to see if the performance is up to par. After validating its functionality, we applied our algorithm to noisy eye tracking data to see how if the results were biologically feasible. We found that our algorithm performs relatively well and particularly stands out when it comes to the evaluation of data from dynamic stimuli. To establish broad distribution and applicability we provided the option to include individual parameters based on the paradigm and equipment used by the investigator and bundled it into an open-source and well documented repository. 
+
 
 
 \end{abstract}
@@ -386,6 +385,7 @@ No competing interests were disclosed.
 Michael Hanke was supported by funds from the German federal state of
 Saxony-Anhalt and the European Regional Development Fund (ERDF), 
 Project: Center for Behavioral Brain Sciences (CBBS).
+Adina Wagner was supported by the German Academic Foundation.
 
 \textit{The funders had no role in study design, data collection and analysis,
 decision to publish, or preparation of the manuscript.}
