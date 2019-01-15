@@ -92,9 +92,36 @@ As our primary goal is to work with eye gaze data from dynamic stimuli, our aim 
 \section*{Methods}
 %Methods (3 sections; our algo, comparison to current algos, application on studyforrest dataset)
 
+
 \subsection*{Implementation}
  
-\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
+%\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
+
+The algorithm functions in two major steps: firstly, eye tracking data is preprocessed by applying relevent filters, calculating velocity and acceleration of movements. In the second stage, events are detected with the final outputs being labeled as saccades, fixations, post-saccadic oscillations (PSOs) or smooth pursuit.
+\begin{enumerate}
+\item{Preprocessing}
+
+ To prevent extreme changes in eye tracking data, a spike filter is applied (TODO: Which one is this exactly? Cite) followed by the calculation of velocity of eye movements based on the co-ordinate data,  dimensions of the screen, distance of the participant from the screen and the sample rate of the eye tracker. A configurable maximum velocity is enforced, with calculated values above this level being replaced by this set value. Using these velocities, acceleration of the eye movements is computed. 
+ At this stage, a variety of optional functionality is also available. On demand, the algorithm can: 
+ \begin{enumerate}
+ 	\item Mask data around signal loss (such as eyeblinks)
+ 	\item Apply Savitzy-Golay filter (for noise reduction) 
+ 	\item Compute additional movement velocities after additional medial filtering
+ 	
+ \end{enumerate}
+
+\item{Event detection}
+\begin{enumerate}
+
+ \item The entire time series is chunked into intervals between major saccades to be able to acommodate data without a short trial structure. Major saccades are located by thresholding the \textit{median-}filtered velocities with a critical velocity value. This value is determined by the entire input data, following the same steps as the alogrithm designed by \citet{Nystrom2010AnData}. Continuing in the same vein, for each saccade window (sorted by the total magnitude of its velocity), saccade onset and offset is detected as well as PSOs --- using the by \citet{Nystrom2010AnData} --- but instead using on/offset thresholds that are determined in the temporal vicinity around a respective candidate window. By default, this  is from one second before to one second after the window boundaries.
+ 
+ Additionally, saccadic detection is terminated earlier if a maximum saccade frequency across the entire input data is reached--- this value is configurable and by default is set to \unit[2]{Hz}
+ 
+ \item In a locally adpative manner, events are then detected \textit{between} the major saccades detected earlier. This is carried out by firstly further subdividing these intervals into segments without any missing data. Using a velocity threshold --- determined from the specific time window only --- saccade detection follows if its duration exceeds the minimum saccade length and is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms}). 
+ The remaining unlabeled time window that is longer than a configured minimum duration (default: \unit[40]{ms}), velcities are recomputed after low-pass filtering (default cutoff: \unit[4]{Hz}) and segments exceeding a maximum fixation velocity threshold are labeled as smooth pursuits, while everything else as fixations. Pursuit on/offset employs the same algorithm as \citet{Nystrom2010AnData} used for determining saccade on/offset, but with a configurable, fixed velocity threshold (default: \unit[2]{deg/s}). 
+   
+\end{enumerate}
+\end{enumerate}
 
 % start with a plain list, later work into flow chart or table...
 \begin{enumerate}
@@ -397,7 +424,7 @@ decision to publish, or preparation of the manuscript.}
 %they contributed; authors should obtain permission to acknowledge from all those
 %mentioned in the Acknowledgements section.
 %Please do not list grant funding in this section.
-We are grateful to Anderson et al. \cite{ALH+2017} for releasing the labeled
+We are grateful to Anderson et al. \cite{Anderson2017} for releasing the labeled
 eye tracking dataset used for validation under an open-source license.
 
 {\small\bibliographystyle{unsrtnat}
