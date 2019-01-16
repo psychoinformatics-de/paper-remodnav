@@ -21,7 +21,7 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{units}
-
+\usepackage{hyperref}
 
 %% Uncomment this lines for superscript citations instead
 %\usepackage[super]{natbib}
@@ -31,6 +31,7 @@
 % \let\cite\citep
 
 \newcommand{\eg}{e.g., }
+\newcommand{\remodnav}{REMoDNaV}
 \begin{document}
 \pagestyle{front}
 
@@ -192,10 +193,22 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
 %The data is divided into lab and scanner data and released as separate text files for each movie segment per participant. This results in a set of 240 .txt files. The first step of the detection process includes disregarding biologically implausible values and blinks followed up by  Savitzky-Golay filtering. The output files display the velocity, acceleration, point in time and pixel coordinates for each sample and are released separately to enable additional calculations. These files are then further processed to detect saccades, glissades and fixations. The final output includes the typical eye tracking information on each movement event: time and coordinates for on- and offset, amplitude, peak velocity and average velocity. (peak velocity was not calculated for fixations)  
 
 \subsection*{Operation}
-\todo[inline]{\textit{This part of the methods should include the minimal system requirements needed to run the software and an overview of the workflow for the tool for users of the tool. Eg : Minimum system requirements for running TRGAted
-locally are modest and include an Intel-compatible CPU and
-1 gigabyte of RAM. Running TRGAted from the shiny server
-requires a modern browser and an internet connection}}
+
+\remodnav\ is free and open-source software, written in the Python language and
+released under the terms of the MIT license. In addition to the Python standard
+library it requires the Python packages
+NumPy \cite{oliphant2006guide},
+Matplotlib \cite{hunter2007matplotlib},
+statsmodels \cite{seabold2010statsmodels},
+and SciPy \cite{JOP+2001} as software dependencies.
+Furthermore, DataLad \cite{HH+2013},
+and Pandas \cite{mckinney2010data} have to be available for assessing
+correct operation via the \remodnav\ test battery. \remodnav\ itself,
+and all software dependencies are available on all major operating systems.
+There are no particular hardware requirements for running the software
+other than sufficient memory to load and process the data.
+
+
 
 \section*{Use Cases} % Optional - only if NO new datasets are included
 %This section is required if the paper does not include novel data or analyses. 
@@ -466,7 +479,7 @@ We are grateful to Anderson et al. \cite{Andersson2017} for releasing the labele
 eye tracking dataset used for validation under an open-source license.
 
 {\small\bibliographystyle{unsrtnat}
-\bibliography{EyeGaze}}
+\bibliography{EyeGaze,tools}}
 
 % \bigskip
 % References can be listed in any standard referencing style that uses a numbering system
