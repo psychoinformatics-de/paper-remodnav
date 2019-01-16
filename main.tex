@@ -175,6 +175,87 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
 
 \todo[inline]{make table with all parameters and their default values, label which parameters are key}
 
+
+\begin{table*}[]
+\caption{Algorithm parameters and their default values
+\todo[inline]{recall citation for choosing value of max\_initial\_saccade\_freq, pursuit\_velthresh}}
+\label{tab:parameters}
+\small
+\begin{tabular}{lp{85mm}l}
+\textbf{Name} & \textbf{Description} & \textbf{Value} \\
+ & & \\
+\multicolumn{3}{l}{\textit{Preprocessing (in order of application during processing)}} \\
+\texttt{px2deg} &
+size of a single (square) pixel in degrees of visual angle &
+no default [\unit{deg/s}]\\
+\texttt{sampling\_rate} &
+temporal data sampling rate/frequency &
+no default [\unit{Hz}]\\
+\texttt{min\_blink\_duration} &
+missing data windows shorter than this duration will not be considered for \texttt{dilate\_nan}&
+\unit[0.02]{s}\\
+\texttt{dilate\_nan} &
+duration for which to replace data by missing data markers on either side of a
+signal-loss window &
+\unit[0.01]{s}\\
+\texttt{median\_filter\_length} &
+smoothing median-filter size (for initial data chunking only) &
+\unit[0.05]{s}\\
+\texttt{savgol\_length} &
+size of Savitzky-Golay filter for noise reduction&
+\unit[0.019]{s}\\
+\texttt{savgol\_polyord} &
+polynomial order of Savitzky-Golay filter for noise reduction&
+2\\
+\texttt{max\_vel} &
+maximum velocity threshold, will issue warning if exceeded to inform about
+potentially inappropriate filter settings&
+\unit[1000]{deg/s}\\
+
+\\\multicolumn{3}{l}{\textit{Event detection}} \\
+\texttt{min\_saccade\_duration} &
+minimum duration of a saccade event candidate &
+\unit[0.01]{s}\\
+\texttt{max\_pso\_duration} &
+minimum duration of a post-saccadic oscillation (glissade) candidate &
+\unit[0.04]{s}\\
+\texttt{min\_fixation\_duration} &
+minimum duration of a fixation event candidate &
+\unit[0.04]{s}\\
+\texttt{min\_pursuit\_duration} &
+minimum duration of a pursuit event candidate &
+\unit[0.04]{s}\\
+\texttt{min\_intersaccade\_duration} &
+no saccade detection is performed in windows shorter than twice this value, plus minimum saccade and PSO duration&
+\unit[0.04]{s}\\
+\texttt{noise\_factor} &
+adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives (Nyström and Holmqvist \cite{Nystrom2010AnData} equivalent: 3.0)&
+5\\
+\texttt{velthresh\_startvelocity} &
+start value for adaptive velocity threshold algorithm \cite{Nystrom2010AnData}, should
+be larger than any conceivable minimum saccade velocity &
+\unit[300]{deg/s}\\
+\texttt{max\_initial\_saccade\_freq} &
+maximum saccade frequency for initial detection of major saccades, initial data
+chunking is stopped if this frequency is reached (should be smaller than an expected
+(natural) saccade frequency in a particular context)&
+\unit[2]{Hz}\\
+\texttt{saccade\_context\_window\_length} &
+size of a window centered on any velocity peak for adaptive determination of
+saccade velocity thresholds (for initial data chunking only) &
+\unit[1]{s}\\
+\texttt{lowpass\_cutoff\_freq} &
+cut-off frequency of a Butterworth low-pass filter applied to determine drift
+velocities in a pursuit event candidate &
+\unit[4]{Hz}\\
+\texttt{pursuit\_velthresh} &
+fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation &
+\unit[2]{deg/s}\\
+
+\end{tabular}
+\end{table*}
+
+
 \todo[inline]{did we enforce a minimum saccade duration?}
 
 %\subsection*{Going beyond basic dynamic stimuli; the studyforrest dataset}
