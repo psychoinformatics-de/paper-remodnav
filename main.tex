@@ -170,6 +170,8 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
     \end{enumerate}
 \end{enumerate}
 
+\todo[inline]{possibly have figure on the algorithm concept and general approach}
+
 \todo[inline]{make table with all parameters and their default values, label which parameters are key}
 
 \todo[inline]{did we enforce a minimum saccade duration?}
@@ -208,23 +210,6 @@ requires a modern browser and an internet connection}}
 \todo[inline]{how do we compare against the "best" LNS algorithm in Andersson2017?}
 
 \todo[inline]{compute RMSD for algo comparison}
-
-\todo[inline]{from andersson: How does the number of detected events and their durations vary with the choice of an algorithm?
-
-How similar are the events detected by algorithms compared to events manually identified by human experts?
-
-How similar are algorithms and humans in a simple sample-by-sample comparison, which is the most human-like?
-
-How similar are our two human coders? Are they interchangeable, or will the event detection process depend on the human experts we use?
-
-Does the algorithm – human or human – human similarity depend on the stimuli used for eliciting the eye movement data, i.e. will it differ between static and dynamic stimuli?
-
-What are the consequences of trying to detect events in the presence of smooth pursuit using improper, i.e. not designed to handle smooth pursuit, algorithms? Is this a serious violation, or will such a use provide acceptable approximations of the properties of the true (human-identified) events?
-
-How congruent are different evaluation techniques, such as similarity based on event durations, compared to similarity based on Cohen's Kappa?
-
-Given that algorithms do not classify identically with human experts, what types of deviating classifications do the algorithms do? Are the deviations random, or do they indicate a clear bias in some direction? What area should developers focus on improving, to gain the highest marginal improvement (i.e., similarity to humans) of the algorithm?
-}
 
 We applied our algorithm to two datasets, each to fulfill different objectives. First, we used the dataset made available by \citet{Andersson2017} to see how our algorithm compared against a current algorithm and manual human annotation of eye gaze events. Secondly, we used our algorithm on the studyforrest dataset \cite{Hanke2016} to see the results of dynamic stimuli under two different noise conditions.
 
@@ -405,6 +390,24 @@ The studyforrest dataset contains eye gaze data from two experimental environmen
 
 \section*{Conclusion} % Optional - only if NO new datasets are included
 This section is required if the paper does not include novel data or analyses.  It allows authors to briefly summarize the key points from the article.
+
+\todo[inline]{from andersson: How does the number of detected events and their durations vary with the choice of an algorithm?
+
+How similar are the events detected by algorithms compared to events manually identified by human experts?
+
+How similar are algorithms and humans in a simple sample-by-sample comparison, which is the most human-like?
+
+How similar are our two human coders? Are they interchangeable, or will the event detection process depend on the human experts we use?
+
+Does the algorithm – human or human – human similarity depend on the stimuli used for eliciting the eye movement data, i.e. will it differ between static and dynamic stimuli?
+
+What are the consequences of trying to detect events in the presence of smooth pursuit using improper, i.e. not designed to handle smooth pursuit, algorithms? Is this a serious violation, or will such a use provide acceptable approximations of the properties of the true (human-identified) events?
+
+How congruent are different evaluation techniques, such as similarity based on event durations, compared to similarity based on Cohen's Kappa?
+
+Given that algorithms do not classify identically with human experts, what types of deviating classifications do the algorithms do? Are the deviations random, or do they indicate a clear bias in some direction? What area should developers focus on improving, to gain the highest marginal improvement (i.e., similarity to humans) of the algorithm?
+}
+
 
 %% we introduce no new data
 %\section*{Data availability} % Optional - only if novel data or analyses are included
