@@ -1,19 +1,55 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Welcome to Overleaf --- just edit your article on the left,
-% and we'll compile it for you on the right. If you give 
-% someone the link to this page, they can edit at the same
-% time. See the help menu above for more info. Enjoy!
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
 %
-% For more detailed article preparation guidelines, please see:
-% http://f1000research.com/author-guidelines
-
-
-\documentclass[10pt,a4paper]{extarticle}
-\usepackage{f1000_styles}
-
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% First comes an example EPS file -- just ignore it and
+% proceed on the \documentclass line
+% your LaTeX will extract the file if required
+\begin{filecontents*}{example.eps}
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 19 19 221 221
+%%CreationDate: Mon Sep 29 1997
+%%Creator: programmed by hand (JK)
+%%EndComments
+gsave
+newpath
+  20 20 moveto
+  20 220 lineto
+  220 220 lineto
+  220 20 lineto
+closepath
+2 setlinewidth
+gsave
+  .4 setgray fill
+grestore
+stroke
+grestore
+\end{filecontents*}
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+\documentclass[smallextended,twocolumn]{svjour3}          % twocolumn
+%
+\journalname{Behavior Research Methods}
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+%
+%usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
 %% Default: numerical citations
 \usepackage[numbers]{natbib}
 
@@ -22,6 +58,8 @@
 \usepackage{booktabs}
 \usepackage{units}
 \usepackage{hyperref}
+
+\usepackage{todonotes}
 
 %% Uncomment this lines for superscript citations instead
 %\usepackage[super]{natbib}
@@ -33,22 +71,37 @@
 \newcommand{\eg}{e.g., }
 \newcommand{\remodnav}{REMoDNaV}
 \begin{document}
-\pagestyle{front}
 
+\onecolumn
 \title{REMoDNaV: Robust Eye Movement Detection for Natural Viewing } %\\ (remodnav)
 %\titlenote{The title should be detailed enough for someone to know whether the article would be of interest to them, but also concise. Please ensure the broadness and claims within the title are appropriate to the content of the article itself.}
-\author[1]{Asim~H.~Dar}
-\author[1]{Adina~Wagner}
-\author[2]{Ulrike~Schnaithmann}
-\author[2]{Isabel~Dombrowe} %TODO: Not sure about her. 
-\author[1,3]{Michael~Hanke}
-\affil[1]{Psychoinformatics Lab, Institute of Psychology, Otto-von-Guericke University, Magdeburg, Germany}
-\affil[2]{Department of Cognitive Psychology: Judgment, Decision Making, Action, Fern Universität, Hagen,
-Germany} %TODO: Correct?
-\affil[3]{Center for Behavioral Brain Sciences, Magdeburg, Germany}
+\author{%
+  Asim~H.~Dar \and
+  Adina~Wagner \and
+  Ulrike~Schnaithmann \and
+  Isabel~Dombrowe \and
+  Michael~Hanke}
+
+\institute{F. Author \at
+              first address \\
+              Tel.: +123-45-678910\\
+              Fax: +123-45-678910\\
+              \email{fauthor@example.com}           %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+           \and
+           S. Author \at
+              second address
+}
+
+
+%\affil[1]{Psychoinformatics Lab, Institute of Psychology, Otto-von-Guericke University, Magdeburg, Germany}
+%\affil[2]{Department of Cognitive Psychology: Judgment, Decision Making, Action, Fern Universität, Hagen,
+%Germany} %TODO: Correct?
+%\affil[3]{Center for Behavioral Brain Sciences, Magdeburg, Germany}
+
+\date{Received: date / Accepted: date}
 
 \maketitle
-\thispagestyle{front}
 
 %Please list all authors that played a significant role in the research involved in the article. Please provide full affiliation information (including full institutional address, ZIP code and e-mail address) for all authors, and identify who is/are the corresponding author(s).
 
@@ -59,21 +112,22 @@ Tracking of eye movements during cognitive tasks is an established metric for ma
 
 
 
+\keywords{%
+eye tracking \and
+adaptive detection algorithm \and
+saccade detection algorithm \and
+statistical saccade analysis \and
+glissade detection \and
+adaptive threshold algorithm \and
+data preprocessing
+}
 \end{abstract}
-
-\section*{Keywords}
-%\textit{Please list up to eight keywords to help readers interested in your article find it more easily.} \newline
-%\newline
-eye tracking, adaptive detection algorithm, saccade detection algorithm, statistical saccade analysis, glissade detection, adaptive threshold algorithm, data preprocessing
 
 %\todo[inline]{The scope of the article is a "Data Note" that describes new "derived" data generated from the raw eyetracking data released by the studyforrest project. I propose to produce two types of artifacts: 1. filtered/preprocessed eyetracking data, and 2. a list with detected saccades for each recording.}
 
 %\todo[inline]{It would be good to also release fully preprocessed data. Apart from applying the chosen filter, it would also make sense to me to temporally down-sample the data. What would be a practical sampling rate that reduces the data size (and some noise), but does not negatively impact most potential analyses? 100 Hz? 200 Hz? Even in the latter case it would still be a 5x reduction in size.}
 %\todo[inline, backgroundcolor = green]{250 Hz is the lower limit to detect most saccades (Kern 2000). However,the downsampled data did not reach the same accuracy level as the higher frequency data, probably because the algorithm was designed to work on higher frequencies (as stated by the authors). Therefore we left it at the 1000 Hz frequency}
 
-\listoftodos
-
-\clearpage
 \twocolumn
 \section*{Introduction}
 
@@ -552,7 +606,7 @@ Adina Wagner was supported by the German Academic Foundation.
 \textit{The funders had no role in study design, data collection and analysis,
 decision to publish, or preparation of the manuscript.}
 
-\subsection*{Acknowledgements}
+\begin{acknowledgements}
 %This section should acknowledge anyone who contributed to the research or the
 %article but who does not qualify as an author based on the criteria provided earlier
 %(e.g. someone or an organisation that provided writing assistance). Please state how
@@ -561,9 +615,10 @@ decision to publish, or preparation of the manuscript.}
 %Please do not list grant funding in this section.
 We are grateful to Anderson et al. \cite{Andersson2017} for releasing the labeled
 eye tracking dataset used for validation under an open-source license.
+\end{acknowledgements}
 
-{\small\bibliographystyle{unsrtnat}
-\bibliography{EyeGaze,tools}}
+\bibliographystyle{spbasic}      % basic style, author-year citations
+\bibliography{EyeGaze,tools}
 
 % \bigskip
 % References can be listed in any standard referencing style that uses a numbering system
@@ -589,5 +644,8 @@ eye tracking dataset used for validation under an open-source license.
 % We hope you find the F1000Research Overleaf template useful,
 % please let us know if you have any feedback using the help menu above.
 
+
+\clearpage
+\listoftodos
 
 \end{document}

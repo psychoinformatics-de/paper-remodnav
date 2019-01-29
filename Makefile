@@ -1,7 +1,7 @@
 all: main.pdf
 
 main.pdf: main.tex tools.bib EyeGaze.bib
-	latexrun $<
+	latexmk -pdf -g $<
 
 clean:
 	rm -f main.pdf
