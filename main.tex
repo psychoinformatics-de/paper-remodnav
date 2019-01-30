@@ -50,8 +50,7 @@ grestore
 %
 %usepackage{mathptmx}      % use Times fonts if available on your TeX system
 %
-%% Default: numerical citations
-\usepackage[numbers]{natbib}
+\usepackage[natbibapa]{apacite}
 
 %\usepackage{tabularx}
 \usepackage{amsmath}
@@ -60,13 +59,6 @@ grestore
 \usepackage{hyperref}
 
 \usepackage{todonotes}
-
-%% Uncomment this lines for superscript citations instead
-%\usepackage[super]{natbib}
-
-%% Uncomment these lines for author-year citations instead
-% \usepackage[round]{natbib}
-% \let\cite\citep
 
 \newcommand{\eg}{e.g., }
 \newcommand{\remodnav}{REMoDNaV}
@@ -135,9 +127,9 @@ data preprocessing
 
 % The data used for this thesis originates from the open science project 'studyforrest'. It centers around two large data acquisition phases employing the movie 'Forrest Gump' as stimulus. \cite{Hanke.2014,Hanke.2016} The project provides a large variety of collections of data to enable fellow researchers to build upon existing knowledge and further extend the dataset. Along other measures, the eye gaze coordinates were being recorded during the original sessions. Contrarily to the standard automatic detection process we applied an adaptive algorithm to the eye movement data to provide a more precise computation of saccades and fixations. 
 
-A spreading theme in cognitive neuroscience is the usage of dynamic and natural stimuli as opposed to isolated and distinct imagery used in classical studies. Using such stimuli we are able to observe the nuances of cognition in a more natural environment. Some interesting applications include the determination of neural response to changes in facial expression \cite{Harris2014}, understanding complex social interactions by using videos \cite{Tikka2012} and more untouched themes such as the underlying processing of music \cite{Toiviainen2014}. In these studies, a physical measurement is needed to quantify the amount of correlation between response and stimuli. Our interest is the usage of eye gaze data from the studyforrest dataset--- a dataset containing a variety of outputs from subjects viewing natural and dynamic stimuli in the form of a full length movie \cite{Hanke2016}. \\
+A spreading theme in cognitive neuroscience is the usage of dynamic and natural stimuli as opposed to isolated and distinct imagery used in classical studies. Using such stimuli we are able to observe the nuances of cognition in a more natural environment. Some interesting applications include the determination of neural response to changes in facial expression \citep{Harris2014}, understanding complex social interactions by using videos \citep{Tikka2012} and more untouched themes such as the underlying processing of music \citep{Toiviainen2014}. In these studies, a physical measurement is needed to quantify the amount of correlation between response and stimuli. Our interest is the usage of eye gaze data from the studyforrest dataset--- a dataset containing a variety of outputs from subjects viewing natural and dynamic stimuli in the form of a full length movie \citep{Hanke2016}. \\
 
-Eye tracking is a flexible measurement which has proven its worth in a variety of studies ranging from the understanding of visual attention \cite{HantaoLiu2011}, memory \cite{Hannula2010} and language comprehension \cite{Gordon2006}. In order to effectively use the eye gaze data from the studyforrest dataset, we searched for an algorithm that would help us sort out different eye related events, namely, saccades, fixations, and post-saccadic oscillations. As advocates of open-source software and scientific reproducibility we focused on non-commercial algorithms that were both well documented (published works) and freely available. Conveniently, a recent study \cite{Andersson2017} took on the task of evaluating eye gaze data algorithms on different sets of stimuli and compared them to human "coders" --- which were human participants who marked events in eye gaze data on a GUI. To our disappointment, the authors remarked that none of the algorithms performed remarkably well when it came to more dynamic stimuli.\\
+Eye tracking is a flexible measurement which has proven its worth in a variety of studies ranging from the understanding of visual attention \citep{HantaoLiu2011}, memory \citep{Hannula2010} and language comprehension \citep{Gordon2006}. In order to effectively use the eye gaze data from the studyforrest dataset, we searched for an algorithm that would help us sort out different eye related events, namely, saccades, fixations, and post-saccadic oscillations. As advocates of open-source software and scientific reproducibility we focused on non-commercial algorithms that were both well documented (published works) and freely available. Conveniently, a recent study \citep{Andersson2017} took on the task of evaluating eye gaze data algorithms on different sets of stimuli and compared them to human "coders" --- which were human participants who marked events in eye gaze data on a GUI. To our disappointment, the authors remarked that none of the algorithms performed remarkably well when it came to more dynamic stimuli.\\
 
 As our primary goal is to work with eye gaze data from dynamic stimuli, our aim was to produce an algorithm that would be both proficient at detecting eye gaze events and be packaged in a freely available and accessible format. In addition, we wanted to make the algorithm robust and well documented so that other groups could use it with their specific set of parameters.
 
@@ -200,7 +192,7 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
         % a trial structure
         \begin{enumerate}
           \item Determine location of major saccades by thresholding the \textit{median-}filtered velocities with a critical velocity value determined from the entire input data following an algorithm by \citep{Nystrom2010AnData}
-          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \citep{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
+          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \cite{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
           \item Saccade detection is terminated early, if a configurable maximum saccade
             frequency across the entire input data is reached (default: \unit[2]{Hz})
         \end{enumerate}
@@ -218,7 +210,7 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
             after low-pass filtering (default cutoff: \unit[4]{Hz}), label segments
             exceeding a maximum fixation velocity threshold
             as smooth pursuit, and everything else as a fixation. Pursuit on/offset
-            detection employs the same algorithm from \citep{Nystrom2010AnData} used for
+            detection employs the same algorithm from \cite{Nystrom2010AnData} used for
             determining saccade on/offset, but with a configurable, fixed velocity threshold
             (default: \unit[2]{deg/s})
         \end{enumerate}
@@ -282,10 +274,10 @@ minimum duration of a pursuit event candidate &
 no saccade detection is performed in windows shorter than twice this value, plus minimum saccade and PSO duration&
 \unit[0.04]{s}\\
 \texttt{noise\_factor} &
-adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives (Nyström and Holmqvist \cite{Nystrom2010AnData} equivalent: 3.0)&
+adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives \citep[equivalent: 3.0]{Nystrom2010AnData}&
 5\\
 \texttt{velthresh\_startvelocity} &
-start value for adaptive velocity threshold algorithm \cite{Nystrom2010AnData}, should
+start value for adaptive velocity threshold algorithm \citep{Nystrom2010AnData}, should
 be larger than any conceivable minimum saccade velocity &
 \unit[300]{deg/s}\\
 \texttt{max\_initial\_saccade\_freq} &
@@ -331,12 +323,12 @@ fixed drift velocity threshold to distinguish periods of pursuit from periods of
 \remodnav\ is free and open-source software, written in the Python language and
 released under the terms of the MIT license. In addition to the Python standard
 library it requires the Python packages
-NumPy \cite{oliphant2006guide},
-Matplotlib \cite{hunter2007matplotlib},
-statsmodels \cite{seabold2010statsmodels},
-and SciPy \cite{JOP+2001} as software dependencies.
-Furthermore, DataLad \cite{HH+2013},
-and Pandas \cite{mckinney2010data} have to be available for assessing
+NumPy \citep{oliphant2006guide},
+Matplotlib \citep{hunter2007matplotlib},
+statsmodels \citep{seabold2010statsmodels},
+and SciPy \citep{JOP+2001} as software dependencies.
+Furthermore, DataLad \citep{HH+2013},
+and Pandas \citep{mckinney2010data} have to be available for assessing
 correct operation via the \remodnav\ test battery. \remodnav\ itself,
 and all software dependencies are available on all major operating systems.
 There are no particular hardware requirements for running the software
@@ -358,11 +350,11 @@ other than sufficient memory to load and process the data.
 
 \todo[inline]{compute RMSD for algo comparison}
 
-We applied our algorithm to two datasets, each to fulfill different objectives. First, we used the dataset made available by \citet{Andersson2017} to see how our algorithm compared against a current algorithm and manual human annotation of eye gaze events. Secondly, we used our algorithm on the studyforrest dataset \cite{Hanke2016} to see the results of dynamic stimuli under two different noise conditions.
+We applied our algorithm to two datasets, each to fulfill different objectives. First, we used the dataset made available by \citet{Andersson2017} to see how our algorithm compared against a current algorithm and manual human annotation of eye gaze events. Secondly, we used our algorithm on the studyforrest dataset \citep{Hanke2016} to see the results of dynamic stimuli under two different noise conditions.
 
 \subsection*{Evaluation of the algorithm: comparing outputs against human coders and a current algorithm}
 
-The dataset provided from \citet{Andersson2017} consists of eye gaze data produced from viewing three distinct stimuli --- images, moving dots and videos. In addition to the the eye tracking metadata (eye tracker sampling rate, size of the screen raw eye gaze data, distance from screen) and eye gaze data (coordinates) each frame was also labeled by an human observer to assign the event they though it was--- with different files being annotated by one of two human "coders". A total of six different labels were used, namely, fixation, saccade, post-saccadic oscillation, smooth pursuit, blink and undefined (a sample that did not fit any other category). \\
+The dataset provided by \citet{Andersson2017} consists of eye gaze data produced from viewing three distinct stimuli --- images, moving dots and videos. In addition to the the eye tracking metadata (eye tracker sampling rate, size of the screen raw eye gaze data, distance from screen) and eye gaze data (coordinates) each frame was also labeled by an human observer to assign the event they though it was--- with different files being annotated by one of two human "coders". A total of six different labels were used, namely, fixation, saccade, post-saccadic oscillation, smooth pursuit, blink and undefined (a sample that did not fit any other category). \\
 
 In the same vein as the original study, we used our algorithm to detect different events of two of the stimuli (images and videos) and determined their counts, mean and standard deviation. We the reproduced the same data from the human "coders" and the NH algorithm \citep{Nystrom2010AnData} to get an idea if the level of performance was acceptable when compared to a well established eye tracking algorithm. [see table]  
 
@@ -613,7 +605,7 @@ decision to publish, or preparation of the manuscript.}
 %they contributed; authors should obtain permission to acknowledge from all those
 %mentioned in the Acknowledgements section.
 %Please do not list grant funding in this section.
-We are grateful to Anderson et al. \cite{Andersson2017} for releasing the labeled
+We are grateful to \cite{Andersson2017} for releasing the labeled
 eye tracking dataset used for validation under an open-source license.
 \end{acknowledgements}
 
