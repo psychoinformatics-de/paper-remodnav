@@ -57,6 +57,7 @@ grestore
 \usepackage{booktabs}
 \usepackage{units}
 \usepackage{hyperref}
+\usepackage{wrapfig}
 
 \usepackage{todonotes}
 
@@ -344,6 +345,15 @@ other than sufficient memory to load and process the data.
 
 \todo[inline]{three major types of comparison: with andersson human labeling, stats of forrest lab recording with andersson video data stats, forrest lab vs forrest mri stats. the goal is to show that we are similar to humans, as good (or better) as other algorithms (by comparison with scores in andersson2017), and proceduce "similar" results on a different movie dataset, and similar results across two different qualities of recordings with the same stimulus (lab vs MRI). No more, no less IMHO. This all translates to three use cases: trial-by-trial data (from anderson), good movie data without trial structure (forrest lab), bad movie data (forrest mri)}
 
+
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=1\textwidth]{newcolor-mainseqs_format3_tikz.pdf}
+\caption{\label{fig:Mainseqs}Overview of use cases to validate to anderson dataset. Three sets of stimuli, namely, images, dots, and videos which are processed by human observers and the algorithm. Sample A shows results that show a good match between the human and algorithmic results,sample B showing acceptable results, while sample C shows a poor match. In the case of the human observers the results of each observer --- represented by either blue or red --- are superimposed onto one another. (add line on extra events on algo results --- high speed etc)  }
+
+\todo[inline]{Legend?}
+
+\end{figure*}
 \subsection*{Trial-based data}
 
 \todo[inline]{how do we compare against the "best" LNS algorithm in Andersson2017?}
