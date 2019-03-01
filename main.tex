@@ -121,7 +121,7 @@ data preprocessing
 %\todo[inline, backgroundcolor = green]{250 Hz is the lower limit to detect most saccades (Kern 2000). However,the downsampled data did not reach the same accuracy level as the higher frequency data, probably because the algorithm was designed to work on higher frequencies (as stated by the authors). Therefore we left it at the 1000 Hz frequency}
 
 \twocolumn
-\section*{Introduction}
+\section*{Introduction}\label{intro}
 
 %\todo[inline]{\textit{make connection to studyforrest. studyforrest has eyetracking data. why is it necessary to have that preprocessed?}}
 
@@ -138,11 +138,11 @@ As our primary goal is to work with eye gaze data from dynamic stimuli, our aim 
 
 
 
-\section*{Methods}
+\section*{Methods}\label{methods}
 %Methods (3 sections; our algo, comparison to current algos, application on studyforrest dataset)
 
 
-\subsection*{Implementation}
+\subsection*{Implementation}\label{impl}
  
 %\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
 
@@ -318,7 +318,7 @@ fixed drift velocity threshold to distinguish periods of pursuit from periods of
 %\todo[inline]{\textit{brief description of the nature and amount of data released, and in which format it is released in}}
 %The data is divided into lab and scanner data and released as separate text files for each movie segment per participant. This results in a set of 240 .txt files. The first step of the detection process includes disregarding biologically implausible values and blinks followed up by  Savitzky-Golay filtering. The output files display the velocity, acceleration, point in time and pixel coordinates for each sample and are released separately to enable additional calculations. These files are then further processed to detect saccades, glissades and fixations. The final output includes the typical eye tracking information on each movement event: time and coordinates for on- and offset, amplitude, peak velocity and average velocity. (peak velocity was not calculated for fixations)  
 
-\subsection*{Operation}
+\subsection*{Operation}\label{op}
 
 \remodnav\ is free and open-source software, written in the Python language and
 released under the terms of the MIT license. In addition to the Python standard
@@ -336,14 +336,11 @@ other than sufficient memory to load and process the data.
 
 
 
-\section*{Use Cases} % Optional - only if NO new datasets are included
-%This section is required if the paper does not include novel data or analyses. 
-%Examples of input and output files should be provided with some explanatory context.  Any novel or complex variable parameters should also be explained in sufficient detail to allow users to understand and use the tool's functionality.
-%THIS SECTION  WILL BASICALLY SHOW THE INPUTS AND THE OUTPUTS(RESULTS BASICALLY)
-%\todo[inline]{\textit{Testing and comparison --- explaining rationale of the compared algorithms ie they were winners in the anderson paper}}
+\section*{Validation analyses}\label{ana}
 
 \todo[inline]{three major types of comparison: with andersson human labeling, stats of forrest lab recording with andersson video data stats, forrest lab vs forrest mri stats. the goal is to show that we are similar to humans, as good (or better) as other algorithms (by comparison with scores in andersson2017), and proceduce "similar" results on a different movie dataset, and similar results across two different qualities of recordings with the same stimulus (lab vs MRI). No more, no less IMHO. This all translates to three use cases: trial-by-trial data (from anderson), good movie data without trial structure (forrest lab), bad movie data (forrest mri)}
 
+\subsection*{Evaluation of the algorithm: comparing outputs against human coders and a current algorithm}\label{ana_1}
 
 \begin{figure*}[!ht]
 \centering
@@ -371,14 +368,14 @@ In the same vein as the original study, we used our algorithm to detect differen
 \todo[inline]{\textit{Table (or a graphic?) showing duration mean, SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
 
 
-\subsection*{Prolonged recordings of natural viewing}
+\subsection*{Prolonged recordings of natural viewing}\label{ana_2}
 
 %discuss inlab vs scanner data
 \todo[inline]{\textit{Need to determine exactly which plots and tables will go here}}
 %\todo[inline]{\textit{This section contains the analysis of the main sequences -- which I assume is the meat of the thesis. The goal is to have as much information as possible be contained in figures and/or tables (and their captions). We don't pay for those, but we do pay for the main text body.}}
 The studyforrest dataset contains eye gaze data from two experimental environments (but the same stimuli); one set taken with the subjects in a MRI machine and the other from subjects in a lab. Of the two, the data taken from the in-lab sessions was far less noisier. After applying the detection procedure to the entire lab data set, a detailed statistical analysis was performed to validate that the characteristics of the detected eye movements fell into biologically plausible ranges. We then applied the algorithm to the scanner data to see how they would compare to the in-lab results \ref{groupcompare}. 
 
-\subsection*{Low-quality data}
+\subsection*{Low-quality data}\label{ana_3}
 
 %
 %\onecolumn
@@ -532,6 +529,8 @@ The studyforrest dataset contains eye gaze data from two experimental environmen
 %
 %
 %\subsubsection*{Comparison of outputs from different levels of noise}
+\section*{Discussion}\label{dis}
+\section*{Conclusion}\label{con} % Optional - only if NO new datasets are included
 
 
 \section*{Conclusion} % Optional - only if NO new datasets are included
