@@ -352,6 +352,10 @@ other than sufficient memory to load and process the data.
 
 \todo[inline]{three major types of comparison: with andersson human labeling, stats of forrest lab recording with andersson video data stats, forrest lab vs forrest mri stats. the goal is to show that we are similar to humans, as good (or better) as other algorithms (by comparison with scores in andersson2017), and proceduce "similar" results on a different movie dataset, and similar results across two different qualities of recordings with the same stimulus (lab vs MRI). No more, no less IMHO. This all translates to three use cases: trial-by-trial data (from anderson), good movie data without trial structure (forrest lab), bad movie data (forrest mri)}
 
+%THIS SECTION  WILL BASICALLY SHOW THE INPUTS AND THE OUTPUTS(RESULTS BASICALLY)
+%\todo[inline]{\textit{Testing and comparison --- explaining rationale of the compared algorithms ie they were winners in the anderson paper}}
+We applied our algorithm to two datasets, each to fulfill different objectives. First, in order to validate REMoDNaV, we used the dataset made available by \citep{Andersson2017} to see how our algorithm compared against the algorithm it is based on and manual human annotation of eye gaze events. This was done to be sure to not impair the existing NH algorithms performance, and to evaluate whether REMoDNaV actually improves eye movement detection during dynamic stimulation. Secondly, we used our algorithm on the studyforrest dataset \citep{Hanke2016} to see the results of dynamic stimuli under two different noise conditions: A high-quality dataset from a laboratory setting, and low-quality data from a simultaneous fMRI and eye gaze acquisition. This analysis was used to provide a demonstration of how robust the algorithm performs.
+
 \subsection*{Evaluation of the algorithm: comparing outputs against human coders and a current algorithm}\label{ana_1}
 
 \begin{figure*}[!ht]
