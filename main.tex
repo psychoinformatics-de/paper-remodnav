@@ -173,61 +173,62 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
 \item{Event detection}
 \begin{enumerate}
 
- \item The entire time series is chunked into intervals between major saccades to be able to acommodate data without a short trial structure. Major saccades are located by thresholding the \textit{median-}filtered velocities with a critical velocity value. This value is determined by the entire input data, following the same steps as the alogrithm designed by \citet{Nystrom2010AnData}. Continuing in the same vein, for each saccade window (sorted by the total magnitude of its velocity), saccade onset and offset is detected as well as PSOs --- using the by \citet{Nystrom2010AnData} --- but instead using on/offset thresholds that are determined in the temporal vicinity around a respective candidate window. By default, this  is from one second before to one second after the window boundaries.
+ \item The entire time series is chunked into intervals between major saccades to be able to accommodate data without a short trial structure. Major saccades are located by thresholding the \textit{median-}filtered velocities with a critical velocity value. This value is determined by the entire input data, following the same steps as the algorithm designed by \citet{Nystrom2010AnData}. Continuing in the same vein, for each saccade window (sorted by the total magnitude of its velocity), saccade onset and offset is detected as well as PSOs --- using the by \citet{Nystrom2010AnData} --- but instead using on/offset thresholds that are determined in the temporal vicinity around a respective candidate window. By default, this  is from one second before to one second after the window boundaries.
  
  Additionally, saccadic detection is terminated earlier if a maximum saccade frequency across the entire input data is reached--- this value is configurable and by default is set to \unit[2]{Hz}
  
- \item In a locally adpative manner, events are then detected \textit{between} the major saccades detected earlier. This is carried out by firstly further subdividing these intervals into segments without any missing data. Using a velocity threshold --- determined from the specific time window only --- saccade detection follows if its duration exceeds the minimum saccade length and is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms}). 
- The remaining unlabeled time window that is longer than a configured minimum duration (default: \unit[40]{ms}), velcities are recomputed after low-pass filtering (default cutoff: \unit[4]{Hz}) and segments exceeding a maximum fixation velocity threshold are labeled as smooth pursuits, while everything else as fixations. Pursuit on/offset employs the same algorithm as \citet{Nystrom2010AnData} used for determining saccade on/offset, but with a configurable, fixed velocity threshold (default: \unit[2]{deg/s}). 
+ \item In a locally adaptive manner, events are then detected \textit{between} the major saccades detected earlier. This is carried out by firstly further subdividing these intervals into segments without any missing data. Using a velocity threshold --- determined from the specific time window only --- saccade detection follows if its duration exceeds the minimum saccade length and is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms}). 
+ The remaining unlabeled time window that is longer than a configured minimum duration (default: \unit[40]{ms}), velocities are recomputed after low-pass filtering (default cutoff: \unit[4]{Hz}) and segments exceeding a maximum fixation velocity threshold are labeled as smooth pursuits, while everything else as fixations. Pursuit on/offset employs the same algorithm as \citet{Nystrom2010AnData} used for determining saccade on/offset, but with a configurable, fixed velocity threshold (default: \unit[2]{deg/s}). 
    
 \end{enumerate}
 \end{enumerate}
 
-% start with a plain list, later work into flow chart or table...
-\begin{enumerate}
-  \item Preprocessing
-    \begin{enumerate}
-      \item Apply spike filter (cite)
-      \item (opt) Mask data around signal loss
-      \item (opt) Apply Savitzy-Golay filter for noise reduction
-      \item Compute movement velocities
-      \item Impose configurable maximum velocity (replace exceeding values with previous estimate)
-      \item Compute movement accelaration from velocity estimates
-      \item (opt) Compute additional movement velocities after additional (heavy) median filtering
-
-    \end{enumerate}
-  \item Event detection
-    \begin{enumerate}
-      \item Time series chunking into interval between \textit{major} saccades, to be able to accommodate data without a (short) trial structure
-        % objective 1: chunk the timeseries into meaningful segments, data might not have
-        % a trial structure
-        \begin{enumerate}
-          \item Determine location of major saccades by thresholding the \textit{median-}filtered velocities with a critical velocity value determined from the entire input data following an algorithm by \citep{Nystrom2010AnData}
-          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \cite{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
-          \item Saccade detection is terminated early, if a configurable maximum saccade
-            frequency across the entire input data is reached (default: \unit[2]{Hz})
-        \end{enumerate}
-    % outcome: inter-saccade-intervals of >~500ms length (like trials)
-      \item Locally adaptive detection of eyemovement events with each intervall between
-        previously detected major saccades
-        \begin{enumerate}
-          \item Further subdivide the interval into windows without missing data
-          \item Within each window, perform saccade detection, if its duration exceeds
-            a minimum-length saccade with minimum distance to neighboring saccades
-            (default: \unit[130]{ms}), using velocity thresholds determined from the
-            specific time window only
-          \item For each remaining unlabeled time window that is longer than a
-            configured minimum duration (default: \unit[40]{ms}), re-compute velocities
-            after low-pass filtering (default cutoff: \unit[4]{Hz}), label segments
-            exceeding a maximum fixation velocity threshold
-            as smooth pursuit, and everything else as a fixation. Pursuit on/offset
-            detection employs the same algorithm from \cite{Nystrom2010AnData} used for
-            determining saccade on/offset, but with a configurable, fixed velocity threshold
-            (default: \unit[2]{deg/s})
-        \end{enumerate}
-
-    \end{enumerate}
-\end{enumerate}
+%% start with a plain list, later work into flow chart or table...
+% Adina: commenting that out for now
+%\begin{enumerate}
+%  \item Preprocessing
+%    \begin{enumerate}
+%      \item Apply spike filter (cite)
+%      \item (opt) Mask data around signal loss
+%      \item (opt) Apply Savitzy-Golay filter for noise reduction
+%      \item Compute movement velocities
+%      \item Impose configurable maximum velocity (replace exceeding values with previous estimate)
+%      \item Compute movement accelaration from velocity estimates
+%      \item (opt) Compute additional movement velocities after additional (heavy) median filtering
+%
+%    \end{enumerate}
+%  \item Event detection
+%    \begin{enumerate}
+%      \item Time series chunking into interval between \textit{major} saccades, to be able to accommodate data without a (short) trial structure
+%        % objective 1: chunk the timeseries into meaningful segments, data might not have
+%        % a trial structure
+%        \begin{enumerate}
+%          \item Determine location of major saccades by thresholding the \textit{median-}filtered velocities with a critical velocity value determined from the entire input data following an algorithm by \citep{Nystrom2010AnData}
+%          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \cite{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
+%          \item Saccade detection is terminated early, if a configurable maximum saccade
+%            frequency across the entire input data is reached (default: \unit[2]{Hz})
+%        \end{enumerate}
+%    % outcome: inter-saccade-intervals of >~500ms length (like trials)
+%      \item Locally adaptive detection of eyemovement events with each intervall between
+%        previously detected major saccades
+%        \begin{enumerate}
+%          \item Further subdivide the interval into windows without missing data
+%          \item Within each window, perform saccade detection, if its duration exceeds
+%            a minimum-length saccade with minimum distance to neighboring saccades
+%            (default: \unit[130]{ms}), using velocity thresholds determined from the
+%            specific time window only
+%          \item For each remaining unlabeled time window that is longer than a
+%            configured minimum duration (default: \unit[40]{ms}), re-compute velocities
+%            after low-pass filtering (default cutoff: \unit[4]{Hz}), label segments
+%            exceeding a maximum fixation velocity threshold
+%            as smooth pursuit, and everything else as a fixation. Pursuit on/offset
+%            detection employs the same algorithm from \cite{Nystrom2010AnData} used for
+%            determining saccade on/offset, but with a configurable, fixed velocity threshold
+%            (default: \unit[2]{deg/s})
+%        \end{enumerate}
+%
+%    \end{enumerate}
+%\end{enumerate}
 
 \todo[inline]{possibly have figure on the algorithm concept and general approach}
 \todo{test}
