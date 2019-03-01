@@ -405,6 +405,15 @@ To compare the REMoDNaV results to the human coders and the performance of the o
 
 \todo[inline]{General note content: Proportion of samples in the image category classified in disagreement within the human coders (MN-RA) or between \remodnav algorithm (AL) and one human coder. The MC column indicates the proportion of samples where the human coders disagreed with each other, or where the algorithm disagreed with a human coder. The w/oP column is the same measure, but excludes all pursuit samples. The remaining columns display the percentage of labels used in misclassified samples. Within each row, percentages per Coder should add up tp 100\%, in rare cases rounding leads to 99 or 101\%, though.}
 
+% For two-column wide figures use
+\begin{figure*}
+	% Use the relevant command to insert your figure file.
+	% For example, with the graphicx package use
+	\includegraphics[width=1\textwidth]{img/conf_drawing.eps}
+	% figure caption is below the figure
+	\caption{Confusion matrices indicating similarity for classification decisions between human coders (top panel), human coder MN and \remodnav (middle panel), and human coder RA and \remodnav (bottom panel) for each of the three stimulus categories. Numbers denote Jaccard index (higher is more similar).}
+	\label{fig:conf}       % Give a unique label
+\end{figure*}
 
 \begin{figure*}[!ht]
 \centering
