@@ -360,6 +360,52 @@ We applied our algorithm to two datasets, each to fulfill different objectives. 
 
 The dataset provided by \citep{Andersson2017} consists of eye gaze data produced from viewing stimuli from three distinct categories --- images, moving dots and videos. In addition to the eye tracking metadata (eye tracker sampling rate, size of the screen raw eye gaze data, distance from screen) and eye gaze data (coordinates), each frame was also labeled by two human observers to assign the event they thought it was. A total of six different labels were used, namely, fixation, saccade, post-saccadic oscillation, smooth pursuit, blink and undefined (a sample that did not fit any other category). \\
 To compare the REMoDNaV results to the human coders and the performance of the original algorithm by \cite{Nystrom2010AnData}, we applied \remodnav to this dataset and followed the approach by \citet{Andersson2017}: For one, for each stimulus category, we computed the proportion of misclassification per event type compared to each of the human coders, and comparing human coders against each other. A time point classified by \remodnav counted as "misclassified" if the associated event did not correspond to the label the human coder assigned. We limited this analysis to all time points that have been labeled as fixation, saccade, PSO, or pursuit by any method, hence ignoring the rarely used NaN/blinks or "undefined" category. \todo{this needs more elaboration, the confusion tables are pretty confusing because the MC values can not be recomputed by hand} In order to provide a comparison to the algorithms in \cite{Andersson2017}, this misclassification analysis was repeated excluding samples labeled as pursuit (as none of the algorithms classed this category). The results of this analysis are displayed in table \ref{tab:mclf}. For the comparison performed by \citet{Andersson2017}, the NH algorithm disagreed with human coders in 32\% of samples for images, in 93\% of samples for moving dots, and in 70\% of samples for videos. By comparison, if not taking smooth pursuit movements into account, our algorithm disagreed far less with each of the human coders. The highest disagreement across all stimuli categories and coders is 11.7\%. If taking smooth pursuit movements into account, the misclassification ratio increases, but remains comparably low, thus exceeding the performance of all contemporary algorithms in \citet{Andersson2017} in the dots and video category. Figure \ref{fig:conf} displays the resulting confusion matrices with Jaccard indices quantifying the similarity between classification decisions. Secondly, we determined counts, mean and standard deviation of the extracted eye movements.\todo{Did we do this or am I misremembering? if so, refer to result output table or graphics.} \todo[inline]{The conclusion should be: The results of our algorithm are comparable to human manual coding. And: We did not 'break' NH algorithm, as our results are as good or even better than the original NH algorithms}  
+
+\begin{table}
+	% table caption is above the table
+	\caption{Confusion matrices for different stimulus categories}
+	\label{tab:mclf}       % Give a unique label
+	% For LaTeX tables use
+	\begin{tabular}{llllllll}
+		\textbf{Images}&&&&&&&\\
+		\hline\noalign{\smallskip}
+		Comp & MC & w/oP & Coder & Fix & Sac & PSO & SP \\
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+		MN-RA & 6.2 & 3.1 & MN & 68 & 11 & 21 & 0  \\
+		--- & --- & --- & RA & 15 & 14 & 20 & 52 \\
+		MN-AL & 33.3 & 11.2 & MN & 88 & 1 & 10 & 1 \\
+		--- & --- & --- & AL & 2 &  16 & 8 & 74 \\
+		RA-AL & 33.6 & 10.4 & RA & 81 & 2 & 9 & 8 \\
+		---& ---& ---& AL & 7 & 16 & 8 & 69 \\
+		\noalign{\smallskip}
+		\textbf{Dots}&&&&&&&\\
+		\hline\noalign{\smallskip}
+		Comp & MC & w/oP & Coder & Fix & Sac & PSO & SP \\
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+		MN-RA & 10.7 & 4.2 & MN & 11 & 10 & 9 & 71  \\
+		--- & --- & --- & RA & 64 & 7 & 6 & 23 \\
+		MN-AL & 24.2 & 9.8 & MN & 12 & 1 & 6 & 80 \\
+		--- & --- & --- & AL & 72 & 8 & 6 & 14\\
+		RA-AL & 26.8 & 10.5 & RA & 26 & 2 & 4 & 68 \\
+		---& ---& ---& AL & 59 & 10 & 5 & 26 \\
+		\noalign{\smallskip}
+		\textbf{Videos}&&&&&&&\\
+		\hline\noalign{\smallskip}
+		Comp & MC & w/oP & Coder & Fix & Sac & PSO & SP \\
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+		MN-RA & 18.5 & 4.0 & MN & 75 & 3 & 8 & 15 \\
+		--- & --- & --- & RA & 16 & 4 & 3 & 77 \\
+		MN-AL & 38.1 & 10.6 & MN & 37 & 1 & 5 & 58 \\
+		--- & --- & --- & AL & 54 & 9 & 6 & 31\\
+		RA-AL & 38.6 & 11.7 & RA & 22 & 1 & 4 & 73 \\
+		---& ---& ---& AL & 66 & 10 & 7 & 17 \\
+		\noalign{\smallskip}\hline
+	\end{tabular}
+\end{table}
+
+\todo[inline]{General note content: Proportion of samples in the image category classified in disagreement within the human coders (MN-RA) or between \remodnav algorithm (AL) and one human coder. The MC column indicates the proportion of samples where the human coders disagreed with each other, or where the algorithm disagreed with a human coder. The w/oP column is the same measure, but excludes all pursuit samples. The remaining columns display the percentage of labels used in misclassified samples. Within each row, percentages per Coder should add up tp 100\%, in rare cases rounding leads to 99 or 101\%, though.}
+
+
 \begin{figure*}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{Mainseqs_legends.pdf}
