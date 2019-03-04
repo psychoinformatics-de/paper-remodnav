@@ -439,7 +439,24 @@ The combined results of the analyses on the dataset used by \citet{Andersson2017
 %discuss inlab vs scanner data
 \todo[inline]{\textit{Need to determine exactly which plots and tables will go here}}
 %\todo[inline]{\textit{This section contains the analysis of the main sequences -- which I assume is the meat of the thesis. The goal is to have as much information as possible be contained in figures and/or tables (and their captions). We don't pay for those, but we do pay for the main text body.}}
-The studyforrest dataset contains eye gaze data from two experimental environments (but the same stimuli); one set taken with the subjects in a MRI machine and the other from subjects in a lab. Of the two, the data taken from the in-lab sessions was far less noisier. After applying the detection procedure to the entire lab data set, a detailed statistical analysis was performed to validate that the characteristics of the detected eye movements fell into biologically plausible ranges. We then applied the algorithm to the scanner data to see how they would compare to the in-lab results \ref{groupcompare}. 
+
+To determine whether \remodnav yields biologically plausible results, we applied it to the high quality eye tracking dataset obtained from 15 subjects watching the movie in a laboratory setting. Eye movements in this dataset were recorded with an Eyelink 1000 with a standard desktop mount (software version 4.51; SR Research Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie stimulus was presented on a $522$x$294$mm LCD monitor at a resolution of $1920$ x $1280$px at a viewing distance of 85cm \citep{Hanke2016}.\todo{discuss: have the acquisition data in a combined, separate paragraph?}
+
+The top panel in figure \ref{fig:remodnav} displays the performance of \remodnav for a high quality data sample. Individual main sequences for two lab subjects are displayed in the bottom panel in figure \ref{fig:mains}. We then computed the eye event characteristics per category to compare them to the results of \cite{Andersson2017}, known properties about these eye movements during movie watching, and their biological upper and lower limits. These results are summarized in table \todo[inline]{TODO (have a table for fixations, saccades, PSOs as Anderson, maybe also smooth pursuits)} \todo[inline]{Asim recalled Michael wanted to do those tables. I (Adina) could do them as well at one point, if necessary,someone just needs to tell me}
+
+
+
+\begin{figure*}[h!]
+	\includegraphics[width=1\textwidth]{img/remodnav.eps}
+	\caption{\todo[inline]{discuss (if we go with a figure like this: Which subjects? Which run? (maybe the same run?). How "zoomed in" (Anderson depicted about 10 samples in their fig. 1). To do this properly, we should plot the data we settled on as svg)}Exemplary classification performance of \remodnav in a high quality lab sample (top panel) and low quality MRI sample (bottom panel). Black lines depict x and y coordinates of eye gaze. Colors indicate labeled eye event. Beige: Fixation, light green: Saccade, brown: Smooth pursuit, dark blue: High velocity PSOs, light blue: Low velocity PSOs. White: no signal}
+	\label{fig:remodnav}
+\end{figure*}	
+
+\begin{figure*}[h!]
+	\includegraphics[width=1\textwidth]{img/main_sequences.eps}
+	\caption{\todo[inline]{if we go with figure like this, we should discuss which participants to show}Main sequences for four subjects, during one 15 minute sequence of the movie. Top panel: Lab subjects, bottom panel: MRI subjects.}
+	\label{fig:mains}
+\end{figure*}
 
 \subsection*{Low-quality data}\label{ana_3}
 
