@@ -143,23 +143,20 @@ In order to evaluate REMoDNaVs classification performance, we undertook a number
 
 %TODO:Elaborate to include different approaches that current algorithms took use?
 
-\todo[inline]{One outcome of Andersons algorithm comparison was that (I quote the abstract): " The main conclusion is that current detectors of only fixations and saccades work reasonably well for static stimuli, but barely better than chance for dynamic stimuli." This is a good starting point for us.}
-\todo[inline]{Our reasoning is that we want an algorithm to work with dynamic stimuli. We should elaborate on why this requires capabilities to include smooth pursuits, and then say that contemporary algorithms rarely have this capability}
-
 
 \section*{Methods}\label{methods}
 %Methods (3 sections; our algo, comparison to current algos, application on studyforrest dataset)
 
 
-\subsection*{Implementation}\label{impl}
+\subsection*{Implementation}\label{impl}\todo{Currently, we do not provide many explanations or reasoning for these different procedures. In general, I believe even some minor comments about \textit{why} things have been applied could improve the manuscript}
  
 %\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
 
-The algorithm functions in two major steps: firstly, eye tracking data is preprocessed by applying relevent filters, calculating velocity and acceleration of movements. In the second stage, events are detected with the final outputs being labeled as saccades, fixations, post-saccadic oscillations (PSOs) or smooth pursuit.
+The algorithm functions in two major steps: firstly, eye tracking data is preprocessed by applying relevant filters, calculating velocity and acceleration of movements. In the second stage, events are detected with the final outputs being labeled as saccades, fixations, post-saccadic oscillations (PSOs) or smooth pursuit.
 \begin{enumerate}
 \item{Preprocessing}
 
- To prevent extreme changes in eye tracking data, a spike filter is applied (TODO: Which one is this exactly? Cite) followed by the calculation of velocity of eye movements based on the co-ordinate data,  dimensions of the screen, distance of the participant from the screen and the sample rate of the eye tracker. A configurable maximum velocity is enforced, with calculated values above this level being replaced by this set value. Using these velocities, acceleration of the eye movements is computed. 
+ To prevent extreme changes in eye tracking data, a heuristic spike filter \citep{stampe1993} is applied, followed by the calculation of velocity of eye movements based on the co-ordinate data,  dimensions of the screen, distance of the participant from the screen and the sample rate of the eye tracker. A configurable maximum velocity is enforced, with calculated values above this level being replaced by this set value. Using these velocities, acceleration of the eye movements is computed.
  At this stage, a variety of optional functionality is also available. On demand, the algorithm can: 
  \begin{enumerate}
  	\item Mask data around signal loss (such as eyeblinks)
@@ -228,8 +225,9 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
 %    \end{enumerate}
 %\end{enumerate}
 
-\todo[inline]{possibly have figure on the algorithm concept and general approach}
-\todo{test}
+The algorithm concept is visualized in figure TODO. All available parameters (sorted by algorithm step) with their description and, if applicable, default value, are listed in table \ref{tab:parameters}.
+\todo[inline]{possibly have figure on the algorithm concept and general approach. Maybe note which of the employed steps are improvements/novelties}
+
 
 \begin{table*}[t]
 \caption{Algorithm parameters and their default values
