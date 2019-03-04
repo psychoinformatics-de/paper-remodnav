@@ -621,48 +621,43 @@ Figure \ref{fig:remodnav} displays the performance of \remodnav for a low qualit
 %
 %
 %\subsubsection*{Comparison of outputs from different levels of noise}
-\section*{Discussion}\label{dis}
+\section*{Conclusion}\label{con}
+Based on the adaptive, velocity-based algorithm for fixation, saccade, and
+glissade detection by \cite{Nystrom2010AnData}, we have developed a novel,
+robust algorithm for the classification of various eye movements in eye tracking
+data from dynamic stimulation.
+The combined results from all analyses are encouraging. Based on data from dynamic and static stimulation from the Andersson dataset, \remodnav performs well and even outperforms contemporary algorithms, and this is especially true for dynamic stimulation. A contributing factor to its good performance for dynamic stimuli is that \remodnav was created with the explicit objective to classify smooth pursuit eye movements. This is undoubtedly an advantage for event detection on data from dynamic stimulation, but also a capability that most contemporary algorithms lack, and thus a valuable extension to the currently established open-source detection algorithms. Therefore, we are confident that \remodnav is currently a good choice for event detection from eye gaze data obtained during dynamic stimulation. Furthermore, the algorithm yields similar, and thus robust, results for high and low quality data. We specifically developed \remodnav to yield robust results with dynamic stimulation, in particular noisy data such as the eye tracking data recorded simultaneously to fMRI acquisition. These results confirm that \remodnav is well able to detect eye movements from dynamic stimulation, even when the quality of data is low. Therefore, the algorithm is a promising tool for research paradigms with dynamic stimuli where lower data quality is an inherent property of the acquisition procedure, such as simultaneous fMRI and eye gaze recordings, or usage of remote eye trackers.
+
+Furthermore, the algorithm proofed to be well applicable to other types of stimulation. Its classification performance for
+as well. \todo[inline]{elaborate on results on Andersons datasets, and include how
+	the algorithm performs comparable to human coders and contemporary algorithms (or even
+	exceeds their performance)}.\\
+As such, REMoDNaV is a versatile tool that provides researchers with a robust
+method to classify eye movements obtained from different types of stimulation.
+\todo[inline]{note a few advantages that relate to usability of the algorithm:
+	freely available, platform independent, simple command-line execution, minimum
+	user input required, adaptivity to the noise level of the data, ..  (i need to
+	read into how the algorithm is executed again)}
+
+
+
+\textbf{TODO: Discuss Limitations:}
+\begin{itemize}
+	\item Just as \cite{Andersson2017}, we considered human annotations to be a gold standard in event detection when we compared different algorithms performances. The implications of the obtained results from this comparison are hence only valid if this assumption is warranted. \textbf{some citations/examples providing support for this assumption}
+	\item The \remodnav algorithm is - as all event detection algorithms - far from perfect. Despite superior performance during dynamic stimulation compared to other algorithms, the results do not mirror human annotations exactly. Therefore, as with any other algorithm, we recommend that every user should at least eye-ball their results for plausibility. One straightforward way to do this is to study the classification performance as shown in figure \ref{fig:remodnav}. The \remodnav module will provide such a plot automatically for every detection task, enabling researchers to detect implausible results early on.
+\end{itemize}
+
+
 \cite{munn2008fixation} found velocity-based algorithms to perform well in fixation detection during dynamic stimulation.
 
 Remark on the main sequence plots; they look like there are little deviating saccades (which could be PSOs or glissades)
 
 \cite{Komogortsev2013} also successfully employed a combined velocity and dispersion criterion for smooth pursuit identification.
 
-\section*{Conclusion}\label{con} % Optional - only if NO new datasets are included
+\section*{Notes} % Optional - only if NO new datasets are included
 %This section is required if the paper does not include novel data or analyses.  It allows authors %to briefly summarize the key points from the article. 
 
-Based on the adaptive, velocity-based algorithm for fixation, saccade, and
-glissade detection by \cite{Nystrom2010AnData}, we have developed a novel,
-robust algorithm for the classification of various eye movements in eye tracking
-data from dynamic stimulation. Our algorithm extends the existing software solutions
-for eye movement detection in important aspects:
-\begin{itemize}
-	\item Pursuit classification; add that we're good in that
-	\item TODO: What else?
-\end{itemize}
 
-Furthermore, our algorithm outperforms previous algorithms in
-\todo[inline]{list where exactly we excel and in what way, after results section is finished}
-We specifically developed \remodnav to yield robust results with dynamic stimulation,
-in particular noisy data such as the eye tracking data recorded simultaneously to fMRI acquisition.
-The results confirm that \remodnav is well able to classify eye movements for
-movie data, even when the quality of data is low. Therefore, the algorithm is a promising tool for research paradigms with dynamic stimuli where lower data quality is an inherent property of the acquisition procedure, such as simultaneous fMRI and eye gaze recordings, or usage of remote eye trackers.
-Furthermore, the algorithm proofed to be well applicable to other types of stimulation. Its classification performance for
-as well. \todo[inline]{elaborate on results on Andersons datasets, and include how
-the algorithm performs comparable to human coders and contemporary algorithms (or even
-exceeds their performance)}.\\
-The REMoDNaV algorithm was created with the explicit objective to classify smooth
-pursuit eye movements. This is a capability that most contemporary algorithms lack.
-
-As such, REMoDNaV is a versatile tool that provides researchers with a robust
-method to classify eye movements obtained from different types of stimulation.
-\todo[inline]{note a few advantages that relate to usability of the algorithm:
-freely available, platform independent, simple command-line execution, minimum
-user input required, adaptivity to the noise level of the data, ..  (i need to
-read into how the algorithm is executed again)}
-
-
-"Data quality is related to accuracy, precision, percentage of data loss, perhaps in addition to a subjective rating from the person responsible for the recording"
 
 "With both dispersion- and velocity-based algorithms, the effect of imprecision can to some extent be alleviated by raising the threshold setting. With a larger dispersion radius, or a higher velocity threshold, sample-to-sample motion can be quicer without enagering the consistency pf fixations. The remedy comes at a price, however. For instance, rasing a velocity threshold above peaks of imprecision will make it so high that some saccades will not be identified."
 
