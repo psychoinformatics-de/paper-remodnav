@@ -460,6 +460,15 @@ The top panel in figure \ref{fig:remodnav} displays the performance of \remodnav
 
 \subsection*{Low-quality data}\label{ana_3}
 
+In order to determine the robustness of \remodnav to noise, in a last step, we applied it to the low quality eye tracking dataset of the studyforrest publication. This data was recorded with a different Eyelink 1000 (software version 4.594) equipped with an MR-compatible telephoto lens and illumination kit (SR Research Ltd., Mississauga, Ontario, Canada) at $1000$Hz during simultaneous fMRI acquisition. The movie was presented at a viewing distance of $63$cm on a 26cm ($1280$ x $1024$px) LCD screen in 720p resolution at full width. The eye tracking camera was mounted outside the scanner bore and recorded the participants left eye at a distance of about 100cm \citep{Hanke2016}. \todo[inline]{maybe elaborate on how higher noise is visible in the data...N+H describe: "Data quality is related to accuracy, precision, percentage of data loss, perhaps in addition to a subjective rating from the person responsible for the recording"}
+
+Figure \ref{fig:remodnav} displays the performance of \remodnav for a low quality data sample in the bottom row. Individual main sequences for two MRI subjects are displayed in the bottom panel in figure \ref{fig:mains}. As the stimulus material was the same between the high and low quality data sample, \remodnav demonstrates robust performance if the characteristics of extracted events within the low dataset correspond to those obtained from the previous high quality data sample. The resulting characteristics are depicted in tables \todo[inline]{Same as above}
+
+\todo[inline]{Include mean and median fixation durations, split by dataset. Add script for that in studyforrest-eyemovementlabels github repo. Conclude: similar results despite differing noise levels, AND results are in physiologically plausible range and correspond to data reported elsewhere}
+
+
+
+
 %
 %\onecolumn
 %
