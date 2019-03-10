@@ -148,35 +148,36 @@ In order to evaluate REMoDNaVs classification performance, we undertook a number
 %Methods (3 sections; our algo, comparison to current algos, application on studyforrest dataset)
 
 
-\subsection*{Implementation}\label{impl}\todo{Currently, we do not provide many explanations or reasoning for these different procedures. In general, I believe even some minor comments about \textit{why} things have been applied could improve the manuscript}
+\subsection*{\remodnav Implementation}\label{impl}
  
 %\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
 
-The algorithm functions in two major steps: firstly, eye tracking data is preprocessed by applying relevant filters, calculating velocity and acceleration of movements. In the second stage, events are detected with the final outputs being labeled as saccades, fixations, post-saccadic oscillations (PSOs) or smooth pursuit.
+The algorithm consists of two major steps: Preprocessing and event detection. Figure \ref{fig:alg} displays a pseudo-code based overview of the procedures.
+
 \begin{enumerate}
 \item{Preprocessing}
 
- To prevent extreme changes in eye tracking data, a heuristic spike filter \citep{stampe1993} is applied, followed by the calculation of velocity of eye movements based on the co-ordinate data,  dimensions of the screen, distance of the participant from the screen and the sample rate of the eye tracker. A configurable maximum velocity is enforced, with calculated values above this level being replaced by this set value. Using these velocities, acceleration of the eye movements is computed.
+ To prevent extreme changes in the raw data, a heuristic spike filter \citep{stampe1993} is applied. Based on filtered coordinates, sampling rate of the eye tracker, viewing distance and screen dimensions (provided with \texttt{px2deg}), \remodnav calculates the velocity and acceleration of eye movements. We enforce a configurable maximum velocity (\texttt{max\_vel}), with samples exceeding the threshold being replaced by this set value, to disregard biologically implausible measurements.
  At this stage, a variety of optional functionality is also available. On demand, the algorithm can: 
  \begin{enumerate}
- 	\item Mask data around signal loss (such as eyeblinks)
- 	\item Apply Savitzy-Golay filter (for noise reduction) 
- 	\item Compute additional movement velocities after additional medial filtering
- 	
+ 	\item Mask data around signal loss (such as eye blinks)
+ 	\item Apply Savitzky-Golay filter (for noise reduction) 
+ 	\item Apply median filter (for noise reduction)
  \end{enumerate}
+ Following any optional filtering we recompute movement velocities. \\
 
 \item{Event detection}
-\begin{enumerate}
 
- \item The entire time series is chunked into intervals between major saccades to be able to accommodate data without a short trial structure. Major saccades are located by thresholding the \textit{median-}filtered velocities with a critical velocity value. This value is determined by the entire input data, following the same steps as the algorithm designed by \citet{Nystrom2010AnData}. Continuing in the same vein, for each saccade window (sorted by the total magnitude of its velocity), saccade onset and offset is detected as well as PSOs --- using the by \citet{Nystrom2010AnData} --- but instead using on/offset thresholds that are determined in the temporal vicinity around a respective candidate window. By default, this  is from one second before to one second after the window boundaries.
+ \textbf{A)} \remodnav classifies events based on velocities in a sequential procedure. The entire time series is chunked into intervals between major saccades (termed SACC) to be able to accommodate data without a short trial structure. Major saccades are located in a data-driven, iterative procedure based on thresholding velocities with a critical velocity value, adapted from the NH algorithm. The threshold is determined from the entire input data to take global noise levels into account: Starting from an initial velocity threshold (\texttt{velthres\_startvelocity}, termed $PT_1$ in NH), the \textit{median} (m) and \textit{median absolute deviation} (MAD) velocity of samples below this value is computed. Iteratively, $PT_i$ is updated following $PT_n = m + noisefactor * MAD$, where the noisefactor is user-configurable, until the difference between two updates is less than $|PT_n - PT_{n-1}| < 1^\circ/sec$. This formula is adapted from the NH algorithm, but, unlike NH, relies on robust statistic instead of mean and standard deviation, which are more appropriate given the skewness of velocity data (see \cite{Friedman2018}). For each resulting saccade peak (sorted by magnitude), \remodnav detects saccade onset, saccade offset and PSOs. Saccadic on- and offset detection is again adapted from NH and based on a velocity criterion, but determines on- and offset thresholds in the temporal vicinity around a respective candidate window. By default, this is from one second before to one second after the window boundaries. PSO detection is more detailed as in the NH algorithm. In their paper, \cite{Nystrom2010AnData} define two mutually exclusive types of "glissades": low-velocity and high-velocity PSOs. High-velocity PSOs display velocities above the peak saccade threshold at least once (i.e. display a velocity peak that would qualify it as a saccade), while low-velocity PSOs only rise above saccade offset thresholds at least once. Despite this distinction, the NH algorithm does not differentiate between the two event types. \remodnav distinguishes these, and labels the PSOs of major saccades as high-velocity (HPSO) or low-velocity (LPSO) depending on the criterion of the NH algorithm.
  
- Additionally, saccadic detection is terminated earlier if a maximum saccade frequency across the entire input data is reached--- this value is configurable and by default is set to \unit[2]{Hz}
+ Importantly, major saccade detection is terminated earlier if a maximum saccade frequency across the entire input data is reached --- this value is configurable (\texttt{max\_initial\_saccade\_freq}) and by default is set to \unit[2]{Hz} \\
  
- \item In a locally adaptive manner, events are then detected \textit{between} the major saccades detected earlier. This is carried out by firstly further subdividing these intervals into segments without any missing data. Using a velocity threshold --- determined from the specific time window only --- saccade detection follows if its duration exceeds the minimum saccade length and is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms}). 
- The remaining unlabeled time window that is longer than a configured minimum duration (default: \unit[40]{ms}), velocities are recomputed after low-pass filtering (default cutoff: \unit[4]{Hz}) and segments exceeding a maximum fixation velocity threshold are labeled as smooth pursuits, while everything else as fixations. Pursuit on/offset employs the same algorithm as \citet{Nystrom2010AnData} used for determining saccade on/offset, but with a configurable, fixed velocity threshold (default: \unit[2]{deg/s}). 
+ \textbf{B} In a locally adaptive manner, remaining data is classified into events \textit{between} the initial major saccades, so called \textit{intersaccade windows}. Additionally, intersaccade windows are further subdivided into segments without any missing data. Therefore, missing data can not disrupt event detection, and excluded segments are not labeled. A saccade in these intervals (termed ISAC) is detected using a local velocity threshold --- determined as in A) but from the specific time window only --- and if its duration exceeds the minimum saccade length and is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms}). Saccade on- and offsets, and low-velocity (ILPS) and high-velocity (IHPS) PSOs are computed as in A).\
+ After saccade detection, for all remaining unlabeled time windows longer than a configured minimum duration (default: \unit[40]{ms}), velocities are recomputed after low-pass filtering with a Butterworth filter (default cutoff: \unit[4]{Hz}). Any segments exceeding a maximum pursuit velocity threshold are labeled as smooth pursuits, while everything else is labeled as fixations. Pursuit on/offset detection employs the same algorithm as NHs saccade on/offset algorithm, but with a configurable, fixed velocity threshold (default: \unit[2]{deg/s}).
    
 \end{enumerate}
-\end{enumerate}
+
+
 
 %% start with a plain list, later work into flow chart or table...
 % Adina: commenting that out for now
@@ -225,13 +226,20 @@ The algorithm functions in two major steps: firstly, eye tracking data is prepro
 %    \end{enumerate}
 %\end{enumerate}
 
-The algorithm concept is visualized in figure TODO. All available parameters (sorted by algorithm step) with their description and, if applicable, default value, are listed in table \ref{tab:parameters}.
-\todo[inline]{possibly have figure on the algorithm concept and general approach. Maybe note which of the employed steps are improvements/novelties}
+\begin{figure*}
+	\includegraphics[width=1\textwidth]{img/remodnav_algorithm.eps}
+	\caption{\remodnav workflow. Optional and configurable parameters are bold.}
+	\label{fig:alg}
+\end{figure*}
+
+All available parameters (sorted by algorithm step) with their description and, if applicable, default value, are listed in table \ref{tab:parameters} and displayed in figure \ref{fig:alg}. While input required by the user is minimal (raw data, sampling rate, viewing distance and screensize), the amount of configurable parameters may seem large. However, this is implemented on purpose.
+The available literature on eye event detection algorithms suggests that there is no true "one-fits-all" solution for event detection. As evident from many evaluations and applications of algorithms (e.g. \cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}), different underlying stimulation, data characteristics, or use cases make certain algorithms more suitable than others, hard-coded thresholds and parameters either applicable or detrimental, or potentially require changes to the default values or parameters. We here report results obtained with the default parameter values, unless otherwise stated. But we cannot anticipate how the data from other groups or paradigms looks like. \remodnav therefore employs a broad range of interpretable, adjustable parameters with default values justified from physiological findings/biological limitations, and no hard-coded values. This gives users an option to adjust the algorithm to their data's characteristics, but offers a sensible starting point with defaults that proofed to work well with the different datasets we evaluated the algorithm on. Only velocity thresholds for saccade detection are estimated iteratively from the data. Apart from the advantage of taking noise levels into account, this also follows the reasoning of \cite{Nystrom2010AnData} that uninformed adjustments of this parameter can have vast consequences on saccade detection, and, subsequently, the labeling of all other eve events. However, while the NH algorithms implementation relied on threshold updates from \textit{mean} values of highly skewed data characteristics (as \cite{Friedman2018} pointed out), we compute it from robust median and median absolute deviation (mad) measures. This allows a robust velocity thresholding, adjustable to either global (for major saccade detection) or local (for event detection between major saccades) noise.
+
 
 
 \begin{table*}[t]
 \caption{Algorithm parameters and their default values
-\todo[inline]{recall citation for choosing value of max\_initial\_saccade\_freq, pursuit\_velthresh}}
+\todo[inline]{recall citation for choosing value of max\_initial\_saccade\_freq, pursuit\_velthresh, add min\_sac\_dur}}
 \label{tab:parameters}
 \small
 \begin{tabular}{lp{85mm}l}
@@ -309,7 +317,7 @@ fixed drift velocity threshold to distinguish periods of pursuit from periods of
 \end{table*}
 
 
-\todo[inline]{did we enforce a minimum saccade duration?}
+% \todo[inline]{did we enforce a minimum saccade duration?} Yes, looks like it (Adina)
 
 %\subsection*{Going beyond basic dynamic stimuli; the studyforrest dataset}
 %\todo[inline]{\textit{fix/update text below}}
