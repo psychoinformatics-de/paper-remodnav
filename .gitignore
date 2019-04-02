@@ -4,5 +4,11 @@
 *.blg
 *.log
 *.out
+*.fls
+*.tdo
+*.fdb_latexmk
 fglabels
 main.pdf
+example.eps
+img/*eps-converted-to.pdf
+
