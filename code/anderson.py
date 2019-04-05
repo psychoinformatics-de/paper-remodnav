@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import numpy as np
 import pylab as pl
 import seaborn as sns
@@ -97,7 +99,10 @@ def print_duration_stats():
                     len(purs_durations)))
 
 
-def confusion(refcoder, coder):
+def confusion(refcoder,
+              coder,
+              figures,
+              stats):
     conditions = ['FIX', 'SAC', 'PSO', 'PUR']
     #conditions = ['FIX', 'SAC', 'PSO']
     label_map = {
@@ -185,101 +190,107 @@ def confusion(refcoder, coder):
         nsamples_nopurs = np.sum(conf[:3, :3])
         # zero out diagonal for bandwidth
         conf *= ((np.eye(len(conditions)) - 1) * -1)
-        pl.subplot(1, 3, plotter)
-        sns.heatmap(
-            #(conf / nsamples) * 100,
-            jinter / junion,
-            square=True,
-            annot=True,
-            xticklabels=conditions,
-            yticklabels=conditions,
-            vmin=0.0,
-            vmax=1.0,
-        )
-        pl.xlabel('{} labeling'.format(refcoder))
-        pl.ylabel('{} labeling'.format(coder))
-        pl.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
-            stimtype,
-            (np.sum(conf) / nsamples) * 100,
-            (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-        plotter += 1
+        if figures:
+            pl.subplot(1, 3, plotter)
+            sns.heatmap(
+                #(conf / nsamples) * 100,
+                jinter / junion,
+                square=True,
+                annot=True,
+                xticklabels=conditions,
+                yticklabels=conditions,
+                vmin=0.0,
+                vmax=1.0,
+            )
+            pl.xlabel('{} labeling'.format(refcoder))
+            pl.ylabel('{} labeling'.format(coder))
+            pl.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
+                stimtype,
+                (np.sum(conf) / nsamples) * 100,
+                (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
+            plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
 
+        if stats:
         # print results as LaTeX commands
-        print('\\newcommand{\\%s%s%sMCLF}{%.1f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    (np.sum(conf) / nsamples) * 100))
-        print('\\newcommand{\\%s%s%sMclfWOP}{%.1f}' % (stimtype,
+            print('\\newcommand{\\%s%s%sMCLF}{%.1f}' % (stimtype,
                                                         refcoder,
                                                         coder,
-                                                        (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-        print('\\newcommand{\\%s%s%sFIXref}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_refcoder['FIX']))
-        print('\\newcommand{\\%s%s%sSACref}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_refcoder['SAC']))
-        print('\\newcommand{\\%s%s%sPSOref}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_refcoder['PSO']))
-        print('\\newcommand{\\%s%s%sSPref}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_refcoder['PUR']))
-        print('\\newcommand{\\%s%s%sFIXcod}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_coder['FIX']))
-        print('\\newcommand{\\%s%s%sSACcod}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_coder['SAC']))
-        print('\\newcommand{\\%s%s%sPSOcod}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_coder['PSO']))
-        print('\\newcommand{\\%s%s%sSPcod}{%.0f}' % (stimtype,
-                                                refcoder,
-                                                coder,
-                                                msclf_coder['PUR']))
+                                                        (np.sum(conf) / nsamples) * 100))
+            print('\\newcommand{\\%s%s%sMclfWOP}{%.1f}' % (stimtype,
+                                                            refcoder,
+                                                            coder,
+                                                            (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
+            print('\\newcommand{\\%s%s%sFIXref}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_refcoder['FIX']))
+            print('\\newcommand{\\%s%s%sSACref}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_refcoder['SAC']))
+            print('\\newcommand{\\%s%s%sPSOref}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_refcoder['PSO']))
+            print('\\newcommand{\\%s%s%sSPref}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_refcoder['PUR']))
+            print('\\newcommand{\\%s%s%sFIXcod}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_coder['FIX']))
+            print('\\newcommand{\\%s%s%sSACcod}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_coder['SAC']))
+            print('\\newcommand{\\%s%s%sPSOcod}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_coder['PSO']))
+            print('\\newcommand{\\%s%s%sSPcod}{%.0f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    msclf_coder['PUR']))
 
-        # print original outputs, but make them LaTeX-safe with '%'. This should make
-        # it easier to check correct placements of stats in the table
-        print('% ### {}'.format(stimtype))
-        print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
-        print('% --- | --- | --- | --- | --- | --- | --- | ---')
-        print('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
-            refcoder,
-            coder,
-            (np.sum(conf) / nsamples) * 100,
-            (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100,
-            refcoder,
-            msclf_refcoder['FIX'],
-            msclf_refcoder['SAC'],
-            msclf_refcoder['PSO'],
-            msclf_refcoder['PUR'],
-        ))
-        print('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
-            coder,
-            msclf_coder['FIX'],
-            msclf_coder['SAC'],
-            msclf_coder['PSO'],
-            msclf_coder['PUR'],
+            # print original outputs, but make them LaTeX-safe with '%'. This should make
+            # it easier to check correct placements of stats in the table
+            print('% ### {}'.format(stimtype))
+            print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
+            print('% --- | --- | --- | --- | --- | --- | --- | ---')
+            print('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+                refcoder,
+                coder,
+                (np.sum(conf) / nsamples) * 100,
+                (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100,
+                refcoder,
+                msclf_refcoder['FIX'],
+                msclf_refcoder['SAC'],
+                msclf_refcoder['PSO'],
+                msclf_refcoder['PUR'],
+            ))
+            print('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+                coder,
+                msclf_coder['FIX'],
+                msclf_coder['SAC'],
+                msclf_coder['PSO'],
+                msclf_coder['PUR'],
         ))
 
-def savefigs():
+def savefigs(fig,
+             stat):
     """
     small helper function to save all confusion matrices
     """
 
     coders = [('MN', 'RA'), ('MN', 'ALGO'), ('RA', 'ALGO')]
     for pair in coders:
-        confusion(pair[0], pair[1])
+        confusion(pair[0],
+                  pair[1],
+                  fig,
+                  stat)
         pl.savefig('img/confusion_{}_{}.svg'.format(pair[0], pair[1]))
         pl.close()
 
@@ -290,4 +301,18 @@ def savefigs():
 #pl.show()
 #confusion('RA', 'ALGO')
 #pl.show()
-print_duration_stats()
+#print_duration_stats()
+
+if __name__ == '__main__':
+
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--figure', help='if True, figures will be produced.',
+                        default=False)
+    parser.add_argument('-s', '--stats', help='if True, stats will be produced to stdout',
+                        default=False)
+
+    args = parser.parse_args()
+    # generate & save figures; export the misclassification stats
+    savefigs(args.figure, args.stats)
