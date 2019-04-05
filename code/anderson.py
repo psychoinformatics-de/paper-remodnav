@@ -156,10 +156,10 @@ def confusion(refcoder, coder):
             nlabels = [len(l) for l in labels]
             if len(np.unique(nlabels)) > 1:
                 print(
-                    "#\n# INCONSISTENCY Found label length mismatch between "
-                    "coders ({}, {}) for: {}\n#\n".format(
+                    "% #\n% # %INCONSISTENCY Found label length mismatch between "
+                    "coders ({}, {}) for: {}\n% #\n".format(
                         refcoder, coder, fname))
-                print('Truncate labels to shorter sample: {}'.format(
+                print('% Truncate labels to shorter sample: {}'.format(
                     nlabels))
                 order_idx = np.array(nlabels).argsort()
                 labels[order_idx[1]] = \
@@ -205,10 +205,55 @@ def confusion(refcoder, coder):
         plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
-        print('### {}'.format(stimtype))
-        print('Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
-        print('--- | --- | --- | --- | --- | --- | --- | ---')
-        print('{} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+
+        # print results as LaTeX commands
+        print('\\newcommand{\\%s%s%sMCLF}{%.1f}' % (stimtype,
+                                                    refcoder,
+                                                    coder,
+                                                    (np.sum(conf) / nsamples) * 100))
+        print('\\newcommand{\\%s%s%sMclfWOP}{%.1f}' % (stimtype,
+                                                        refcoder,
+                                                        coder,
+                                                        (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
+        print('\\newcommand{\\%s%s%sFIXref}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_refcoder['FIX']))
+        print('\\newcommand{\\%s%s%sSACref}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_refcoder['SAC']))
+        print('\\newcommand{\\%s%s%sPSOref}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_refcoder['PSO']))
+        print('\\newcommand{\\%s%s%sSPref}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_refcoder['PUR']))
+        print('\\newcommand{\\%s%s%sFIXcod}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_coder['FIX']))
+        print('\\newcommand{\\%s%s%sSACcod}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_coder['SAC']))
+        print('\\newcommand{\\%s%s%sPSOcod}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_coder['PSO']))
+        print('\\newcommand{\\%s%s%sSPcod}{%.0f}' % (stimtype,
+                                                refcoder,
+                                                coder,
+                                                msclf_coder['PUR']))
+
+        # print original outputs, but make them LaTeX-safe with '%'. This should make
+        # it easier to check correct placements of stats in the table
+        print('% ### {}'.format(stimtype))
+        print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
+        print('% --- | --- | --- | --- | --- | --- | --- | ---')
+        print('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
             refcoder,
             coder,
             (np.sum(conf) / nsamples) * 100,
@@ -219,7 +264,7 @@ def confusion(refcoder, coder):
             msclf_refcoder['PSO'],
             msclf_refcoder['PUR'],
         ))
-        print('-- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+        print('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
             coder,
             msclf_coder['FIX'],
             msclf_coder['SAC'],
