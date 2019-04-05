@@ -4,7 +4,69 @@ import numpy as np
 import pylab as pl
 import seaborn as sns
 from remodnav import EyegazeClassifier
-from remodnav.tests.test_labeled import load_data as load_anderson
+#from remodnav.tests.test_labeled import load_data as load_anderson
+
+
+def load_anderson(category, name):
+    from scipy.io import loadmat
+    from datalad.api import get
+    from remodnav import clf as CLF
+    import os.path as op
+
+    fname = op.join(
+        'remodnav', 'remodnav', 'tests', 'data', 'anderson_etal', 'annotated_data', 'data used in the article',
+        category, name + ('' if name.endswith('.mat') else '.mat'))
+    get(fname)
+    m = loadmat(fname)
+    # viewing distance
+    vdist = m['ETdata']['viewDist'][0][0][0][0]
+    screen_width = m['ETdata']['screenDim'][0][0][0][0]
+    screen_res = m['ETdata']['screenRes'][0][0][0][0]
+    px2deg = CLF.deg_per_pixel(screen_width, vdist, screen_res)
+    sr = float(m['ETdata']['sampFreq'][0][0][0][0])
+    data = np.rec.fromarrays([
+        m['ETdata']['pos'][0][0][:, 3],
+        m['ETdata']['pos'][0][0][:, 4]],
+        names=('x', 'y'))
+    data[np.logical_and(data['x'] == 0, data['y'] == 0)] = (np.nan, np.nan)
+
+    labels = m['ETdata']['pos'][0][0][:, 5]
+
+    label_remap = {
+        1: 'FIXA',
+        2: 'SACC',
+        3: 'PSO',
+        4: 'PURS',
+    }
+    events = []
+    ev_type = None
+    ev_start = None
+    for i in range(len(labels)):
+        s = labels[i]
+        if ev_type is None and s in label_remap.keys():
+            ev_type = s
+            ev_start = i
+        elif ev_type is not None and s != ev_type:
+            events.append(dict(
+                id=len(events),
+                label=label_remap.get(ev_type),
+                start_time=0.0 if ev_start is None else
+                float(ev_start) / sr,
+                end_time=float(i) / sr,
+            ))
+            ev_type = s if s in label_remap.keys() else None
+            ev_start = i
+    if ev_type is not None:
+        events.append(dict(
+            id=len(events),
+            label=label_remap.get(ev_type),
+            start_time=0.0 if ev_start is None else
+            float(ev_start) / sr,
+            end_time=float(i) / sr,
+        ))
+    return data, labels, events, px2deg, sr
+
+
 
 labeled_files = {
     'dots': [
