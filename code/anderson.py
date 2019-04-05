@@ -227,6 +227,16 @@ def confusion(refcoder, coder):
             msclf_coder['PUR'],
         ))
 
+def savefigs():
+    """
+    small helper function to save all confusion matrices
+    """
+
+    coders = [('MN', 'RA'), ('MN', 'ALGO'), ('RA', 'ALGO')]
+    for pair in coders:
+        confusion(pair[0], pair[1])
+        pl.savefig('img/confusion_{}_{}.svg'.format(pair[0], pair[1]))
+        pl.close()
 
 
 #confusion('MN', 'RA')
