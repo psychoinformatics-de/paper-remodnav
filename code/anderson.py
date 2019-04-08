@@ -356,6 +356,38 @@ def savefigs(fig,
         pl.savefig('img/confusion_{}_{}.svg'.format(pair[0], pair[1]))
         pl.close()
 
+def savegaze():
+    """
+    small function to generate and save remodnav classification figures
+    """
+    from remodnav.tests import utils as ut
+    import pylab as pl
+    import datalad.api as dl
+
+    # use two examplary files (lab + MRI) used during testing as well
+    # hardcoding those, as I see no reason for updating them
+    infile = ['data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-32/beh/sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz',
+              'data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-09/ses-movie/func/sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz']
+    dl.get(infile)
+    for f in infile:
+        # read data
+        data = np.recfromcsv(f,
+                             delimiter='\t',
+                             names=['x','y','pupil','frame'])
+
+        # adjust px2deg conversion factor according to datafile
+        pxdeg, ext = (0.0266711972026, 'lab') if '32' in f else (0.0185581232561, 'mri')
+        clf = EyegazeClassifier(
+            px2deg = pxdeg,
+            sampling_rate = 1000.0)
+        p = clf.preproc(data)
+        # lets go with 10 seconds to actually see details. This particular time window is within the
+        # originally plotted 50s and contains missing data for both data types (lab & mri)
+        events = clf(p[30000:40000])
+
+        ut.show_gaze(pp=p[30000:40000], events=events)
+        pl.savefig('img/remodnav_{}.svg'.format(ext))
+        pl.close()
 
 #confusion('MN', 'RA')
 #pl.show()
@@ -374,7 +406,12 @@ if __name__ == '__main__':
                         default=False)
     parser.add_argument('-s', '--stats', help='if True, stats will be produced to stdout',
                         default=False)
+    parser.add_argument('-r', '--remodnav', help='if True, remodnav classification figures are produced.',
+                        default=False)
 
     args = parser.parse_args()
     # generate & save figures; export the misclassification stats
-    savefigs(args.figure, args.stats)
+    if args.figure or args.stats:
+        savefigs(args.figure, args.stats)
+    if args.remodnav:
+        savegaze()
