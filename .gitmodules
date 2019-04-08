@@ -3,4 +3,4 @@
 	url = git@github.com:psychoinformatics-de/studyforrest-data-eyemovementlabels.git
 [submodule "remodnav"]
 	path = remodnav
-	url = git@github.com:AdinaWagner/remodnav.git
+	url = git@github.com:psychoinformatics-de/remodnav.git
