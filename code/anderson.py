@@ -403,12 +403,12 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--figure', help='if True, figures will be produced.',
-                        default=False)
-    parser.add_argument('-s', '--stats', help='if True, stats will be produced to stdout',
-                        default=False)
-    parser.add_argument('-r', '--remodnav', help='if True, remodnav classification figures are produced.',
-                        default=False)
+    parser.add_argument('-f', '--figure', help='if given, figures will be produced.',
+                        action='store_true', default=False)
+    parser.add_argument('-s', '--stats', help='if given, stats will be produced to stdout',
+                        action='store_true', default=False)
+    parser.add_argument('-r', '--remodnav', help='if given, remodnav classification figures are produced.',
+                        action='store_true', default=False)
 
     args = parser.parse_args()
     # generate & save figures; export the misclassification stats

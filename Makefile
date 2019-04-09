@@ -1,10 +1,10 @@
-all: main.pdf paper-data
+all: main.pdf
 
-main.pdf: main.tex tools.bib EyeGaze.bib
+main.pdf: main.tex tools.bib EyeGaze.bib results_def.tex
 	latexmk -pdf -g $<
 
-paper-data:
-	code/anderson.py -f True -r True -s True \
+results_def.tex: code/anderson.py
+	code/anderson.py -f -r -s \
         | tee results_def.tex
 
 clean:
