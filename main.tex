@@ -516,7 +516,7 @@
     library it requires the Python packages
     NumPy \citep{oliphant2006guide},
     Matplotlib \citep{hunter2007matplotlib},
-    statsmodels \citep{seabold2010statsmodels}, \todo[inline]{the - in the years here is wrong}
+    statsmodels \citep{seabold2010statsmodels},
     and SciPy \citep{JOP+2001} as software dependencies.
     Furthermore, DataLad \citep{HH+2013},
     and Pandas \citep{mckinney2010data} have to be available for assessing
@@ -713,10 +713,10 @@
         %\includegraphics[width=1\textwidth]{img/remodnav.eps}
         \includegraphics[trim=0 12mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
         \includegraphics[trim=0 0 0 3.5mm,clip,width=1\textwidth]{img/remodnav_mri.pdf}\\
-        \caption{\todo[inline]{discuss (if we go with a figure like this: Which subjects? Which run? (maybe the same run?).
-        How ``zoomed in" (Anderson depicted about 10 samples in their fig. 1).}Exemplary classification
-        performance of \remodnav in a high quality lab sample (top panel) and low quality MRI sample (bottom panel).
-        Black lines depict x and y coordinates of eye gaze. Colors indicate labeled eye event. Beige: Fixation,
+        \caption{Exemplary classification performance of \remodnav in a high quality lab sample (top panel) and low
+        quality MRI sample (bottom panel), each for the same 10 seconds of movie stimulus.
+        Black lines depict x and y coordinates of eye gaze, gray graph represents velocities. Colors indicate labeled
+        eye events. Beige: Fixation,
         light green: Saccade, brown: Smooth pursuit, dark blue: High velocity PSOs, light blue: Low velocity PSOs.
         White: no signal}
         \label{fig:remodnav}
@@ -724,9 +724,7 @@
 
     \begin{figure*}[h!]
         \includegraphics[width=1\textwidth]{img/main_sequences.eps}
-        \caption{\todo[inline]{if we go with figure like this, we should discuss which participants to show (I randomly
-        chose). Personally, I like Asims figure with the general main sequence (once it gets some beautifying adjustments),
-        but NH have individual main sequences as above}Main sequences for four subjects, during one 15 minute sequence of
+        \caption{Main sequences for four subjects, during one 15 minute sequence of
         the movie. Top panel: Lab subjects, bottom panel: MRI subjects.}
         \label{fig:mains}
     \end{figure*}
@@ -739,34 +737,31 @@
     Ontario, Canada) at $1000$Hz during simultaneous fMRI acquisition. The movie was presented at a viewing distance
     of $63$cm on a 26cm ($1280$ x $1024$px) LCD screen in 720p resolution at full width. The eye tracking camera was
     mounted outside the scanner bore and recorded the participants left eye at a distance of about 100cm \citep{Hanke2016}.
-    \todo[inline]{maybe elaborate on how higher noise is visible in the data...N+H describe: "Data quality is related to
-    accuracy, precision, percentage of data loss, perhaps in addition to a subjective rating from the person responsible
-    for the recording"}
+    The lower data quality in this dataset is evident from a generally higher amount of data loss and a larger spatial
+    uncertainty (see \citet{Hanke2016} for details on data quality). As the stimulus material was the same between
+    the high and low quality data sample, \remodnav demonstrates robust performance if the characteristics of
+    extracted events within the low dataset correspond to those obtained from the previous high quality data sample.
+    % N+H describe: "Data quality is related to accuracy, precision, percentage of data loss, perhaps in addition to a subjective rating from the person responsible for the recording"
 
     Figure \ref{fig:remodnav} displays the performance of \remodnav for a low quality data sample in the bottom row.
-    Individual main sequences for two MRI subjects are displayed in the bottom panel in figure \ref{fig:mains}. As the
-    stimulus material was the same between the high and low quality data sample, \remodnav demonstrates robust
-    performance if the characteristics of extracted events within the low dataset correspond to those obtained from the
-    previous high quality data sample. The resulting characteristics are depicted in tables \todo[inline]{Same as above}
-    \todo[inline]{elaborate on an example within the figure about how data loss within e.g. fixation periods do not
-    interfere much}
-
-    Figure \ref{fig:overallComp} shows all events produced from both datasets.
+    As evident in both panels, periods with data loss do not interfere with the detection of eye movement events in
+    their vicinity beyond the border region of data loss that is masked during preprocessing. The detection of
+    saccades corresponds to the velocity peaks in the time series. Individual main sequences for two MRI subjects are
+    displayed in the bottom panel in figure \ref{fig:mains}. Lastly, figure \ref{fig:overallComp} shows all events
+    produced from both datasets. All together, figures \ref{fig:remodnav}, \ref{fig:mains}, and \ref{fig:overallComp}
+    illustrate a high similiarity between performance in high and low quality datasets. In both cases, the main
+    sequences follow the known peak-velocity -- amplitude relationship of saccades. It is noteable that the MRI
+    sample displays fewer saccades of the shortest range. Given the higher spatial uncertainty in this dataset, this
+    is unsurprising: the eye tracker likely was not able to capture these small eye movements under the low-light
+    conditions. Apart from this aspect, both main sequences are comparable. Given that \remodnav classifies data from
+    dynamic stimulation well, and that results on low and high quality data yield similar biologically plausible
+    results, the performance seems to be robust even under high noise conditions.
 
     \begin{figure*}[h!]
         \includegraphics[width=1\textwidth]{img/overallCompar.pdf}
-        \caption{\todo[inline]{Low transparency makes a nice looking main sequence, with more transparency the images
-        don't give off much --- just datapoints everywhere} \todo[inline]{Adina suggests: Maybe plot just one run (i.e.
-        15min instead of 2 hours). 15 min should be sufficient, and might result in less overcrowding}Main sequences of
-        all events in low quality data (MRI), high quality data (In-Lab) and of both sets}
+        \caption{Main sequences of all events in low quality data (MRI) abd high quality data (Lab)}
         \label{fig:overallComp}
     \end{figure*}
-
-    \todo[inline]{Include mean and median fixation durations, split by dataset. Add script for that in
-    studyforrest-eyemovementlabels github repo. Conclude: similar results despite differing noise levels, AND results are
-    in physiologically plausible range and correspond to data reported elsewhere}
-
-
 
 
     %
@@ -939,22 +934,13 @@
     eye movements from dynamic stimulation, even when the quality of data is low. Therefore, the algorithm is a promising
     tool for research paradigms with dynamic stimuli where lower data quality is an inherent property of the acquisition
     procedure, such as simultaneous fMRI and eye gaze recordings, or usage of remote eye trackers.
-
     Furthermore, the algorithm proved to be well applicable to other types of stimulation. Its classification
-    performance
-    for... \todo[inline]{elaborate on results on Andersons datasets, and include how the algorithm performs comparable
-    to human coders and contemporary algorithms (or even
-    exceeds their performance)}
-    As such, REMoDNaV is a versatile tool that provides researchers with a robust
-    method to classify eye movements obtained from different types of stimulation.
-    \todo[inline]{note a few advantages that relate to usability of the algorithm:
-    freely available, platform independent, simple command-line execution, minimum
-    user input required, adaptivity to the noise level of the data, no manual labeling or other form of training data required}
-
-
-
-    \textbf{TODO: Discuss Limitations:}
-
+    performance on static images was good. This demonstrates that our changes to the original NH algorithm did not
+    interfere with its performance on its strong points. Lastly, \remodnav is a user-friendly tool with options for
+    to customize it to individual use cases. It is OS independent, uses only freely available software, is easy
+    installable, provides simple command-line execution, and is ready-to-use without manual labeling or other forms
+    of training data being required. As such, REMoDNaV is a versatile tool that provides researchers with a robust
+    method to classify eye movements obtained from different types of stimulation. \\
     Just as \cite{Andersson2017}, we considered human annotations to be a gold standard in event detection when we
     compared different algorithms performances. The implications of the obtained results from this comparison are hence
     only valid if this assumption is warranted. Some authors voice concern about human annotation, e.g. \cite{5523936},
@@ -965,15 +951,17 @@
     algorithms, the results do not mirror human annotations exactly. Therefore, as with any other algorithm, we recommend
     that every user should at least eye-ball their results for plausibility. One straightforward way to do this is to
     study the classification performance as shown in figure \ref{fig:remodnav}. The \remodnav module will provide such a
-    plot automatically for every detection task, enabling researchers to detect implausible results early on. \\
-    \todo[inline]{There are a number of (some very recent) ML approaches (Startsev,2018; Komogortsev,2010) that perform
-    well. We should acknowledge that but also find arguments to justify our approach. One advantage of \remodnav is how
-    accessible and readily usable it is. To underline this, I propose we update the README.md on Github similarly to
-    https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a use case/tutorial: what is the input/how
-    should it look like, what is the command line call, how does the output look like. I think it is a great advantage of
-    \remodnav that we work with more "typical" file formats. Also, \remodnav does not need training, and hence no
-    extensive labeled data as training sets (that could be tedious to create, or not fitting to exact use case if taken
-    from e.g. open datasets)}
+    plot automatically for every detection task, enabling researchers to detect implausible results early on.\\
+
+
+%    \todo[inline]{There are a number of (some very recent) ML approaches (Startsev,2018; Komogortsev,2010) that perform
+%    well. We should acknowledge that but also find arguments to justify our approach. One advantage of \remodnav is how
+%    accessible and readily usable it is. To underline this, I propose we update the README.md on Github similarly to
+%    https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a use case/tutorial: what is the input/how
+%    should it look like, what is the command line call, how does the output look like. I think it is a great advantage of
+%    \remodnav that we work with more "typical" file formats. Also, \remodnav does not need training, and hence no
+%    extensive labeled data as training sets (that could be tedious to create, or not fitting to exact use case if taken
+%    from e.g. open datasets)}
 
 
     %\section*{Notes} % Optional - only if NO new datasets are included
@@ -1014,14 +1002,14 @@
     \texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow but dedicated to neuroinformatics.
     \remodnav is released under MIT license.
 
-    \todo[inline]{Apart from the TODOs in the document, Adina also adds these general ones below}
-    \begin{itemize}
-        \item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
-        \item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
-        \item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
-        \item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
-        \item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
-    \end{itemize}
+%    \todo[inline]{Apart from the TODOs in the document, Adina also adds these general ones below}
+%    \begin{itemize}
+%        \item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
+%        \item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
+%        \item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
+%        \item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
+%        \item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
+%    \end{itemize}
 
 
 
@@ -1063,7 +1051,7 @@
 
     \textit{The funders had no role in study design, data collection and analysis,
     decision to publish, or preparation of the manuscript.}
-    \todo[inline]{the journals template.tex says to use bibitem to create references. we should do that once finished here}
+    %\todo[inline]{the journals template.tex says to use bibitem to create references. we should do that once finished here}
     \begin{acknowledgements}
         %This section should acknowledge anyone who contributed to the research or the
         %article but who does not qualify as an author based on the criteria provided earlier
