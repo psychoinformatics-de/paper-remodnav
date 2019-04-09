@@ -281,56 +281,21 @@ def confusion(refcoder,
 
         if stats:
         # print results as LaTeX commands
-            print('\\newcommand{\\%s%s%sMCLF}{%.1f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     (np.sum(conf) / nsamples) * 100))
-            print('\\newcommand{\\%s%s%sMclfWOP}{%.1f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-            print('\\newcommand{\\%s%s%sFIXref}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_refcoder['FIX']))
-            print('\\newcommand{\\%s%s%sSACref}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_refcoder['SAC']))
-            print('\\newcommand{\\%s%s%sPSOref}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_refcoder['PSO']))
-            print('\\newcommand{\\%s%s%sSPref}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_refcoder['PUR']))
-            print('\\newcommand{\\%s%s%sFIXcod}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_coder['FIX']))
-            print('\\newcommand{\\%s%s%sSACcod}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_coder['SAC']))
-            print('\\newcommand{\\%s%s%sPSOcod}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_coder['PSO']))
-            print('\\newcommand{\\%s%s%sSPcod}{%.0f}'
-                  % (stimtype,
-                     refcoder,
-                     coder,
-                     msclf_coder['PUR']))
+            label_prefix = '{}{}{}'.format(stimtype, refcoder, coder)
+            for key, format, value in (
+                    ('MCLF', '%.1f', (np.sum(conf) / nsamples) * 100),
+                    ('MclfWOP', '%.1f',
+                        (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100),
+                    ('FIXref', '%.0f', msclf_refcoder['FIX']),
+                    ('SACref', '%.0f', msclf_refcoder['SAC']),
+                    ('PSOref', '%.0f', msclf_refcoder['PSO']),
+                    ('SPref', '%.0f', msclf_refcoder['PUR']),
+                    ('FIXcod', '%.0f', msclf_coder['FIX']),
+                    ('SACcod', '%.0f', msclf_coder['SAC']),
+                    ('PSOcod', '%.0f', msclf_coder['PSO']),
+                    ('SPcod', '%.0f', msclf_coder['PUR'])):
+                print('\\newcommand{\\%s%s}{%s}'
+                      % (label_prefix, key, format % value))
 
             # print original outputs, but make them LaTeX-safe with '%'. This
             # should make it easier to check correct placements of stats in the
