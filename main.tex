@@ -159,8 +159,8 @@
     One measure that is both useful and well established for such use cases is data obtained from tracking
     participants gaze patterns by means of eye tracking. It is a flexible measurement which has proven its worth in a
     variety of studies ranging from the understanding of visual attention \citep{HantaoLiu2011}, memory
-    \citep{Hannula2010} and language comprehension \citep{Gordon2006}. Our interest is the usage of eye gaze data from
-    the studyforrest dataset -- a dataset containing a variety of outputs from subjects viewing natural and
+    \citep{Hannula2010} and language comprehension \citep{Gordon2006}. Our own interest is the usage of eye gaze data
+    from the studyforrest dataset -- a dataset containing a variety of outputs from subjects viewing natural and
     dynamic stimuli in the form of a full length movie \citep{Hanke2016}.
     Regardless of use case, the raw eye tracking data provided by eye tracking devices is rarely used ``as
     is". Instead, in order to disentangle different cognitive, oculomotor, or perceptive states associated with
@@ -185,50 +185,52 @@
     The algorithm, henceforth referred to as \textit{NH}, detects fixations, saccades, and post-saccadic
     oscillations (termed ``glissades"), and determines the velocity thresholds used during classification based on the
     data's noise level. Even though the NH algorithm performed poorly on dynamic stimuli in \citet{Andersson2017}, its
-    classification performance was good for static stimulation. But when we initially analyzed the studyforrest eye gaze
-    data, we applied the NH algorithm with no modifications and obtained implausible results as well. For example, the
-    average and median durations of eye movements  classed as fixations exceeded durations  reported in the
-    literature \citep{holmqvist2011eye,dorr2010variability} by up to factor 2. Additionally, especially for noisy
-    data, the NH algorithm classified too few fixations, as  remarked by \citet{Friedman2018}, because it discarded
-    potential fixation events that contained artifacts such as blinks. Consequently, the NH algorithm was
+    classification performance was good for static stimulation. As expected, when we initially analyzed the
+    studyforrest eye gaze data and applied the NH algorithm with no modifications, we obtained implausible results.
+    For example, the average and median durations of eye movements  classed as fixations exceeded durations  reported in
+    the literature \citep{holmqvist2011eye,dorr2010variability} by up to factor 2. Additionally, especially for noisy
+    data, the NH algorithm classified too few fixations, as remarked by \citet{Friedman2018}, because it discarded
+    potential fixation events that contained artifacts such as blinks. Consequently, the original NH algorithm was
     unsuitable for our noisy, but precious data from dynamic stimulation.
     However, the ability to process eye gaze data from dynamic stimuli with suitable event detection algorithms can
     lead to a deeper understanding of behavioral and/or cognitive processes. Apart from our own use case, it is
     relevant for many fields from  cognitive neuroscience to cinematography, industrial engineering, human-computer
-    interactions, and marketing \citep{Duchowski2002}. Thus, algorithms capable of event detection for eye gaze data
-    from dynamic stimuli seem desirable and would be broadly applicable. Therefore, based on our use case in the
+    interactions, and marketing \citep{Duchowski2002}. Algorithms capable of event detection for eye gaze data
+    from dynamic stimuli thus seem desirable and would be broadly applicable. Therefore, based on our use case in the
     studyforrest dataset, we set out to develop an improved event detection algorithm for use with -- potentially noisy
-    -- data from dynamic stimulation. To do this, we started with the already established NH algorithm.
+    -- data from dynamic stimulation. As for its good performance on data from static stimulation, we used the already
+    established NH algorithm as a starting point. \\
     The aim of this article is to describe the resulting data-driven algorithm for robust results from dynamic
     stimulation. The main novelties of the algorithm stem from areas within the NH algorithm we identified to be
-    worthy of improvement. \\
-    For one, the improved algorithm is capable of detecting \textit{smooth pursuits}. These slow motions of the eye
-    during tracking of a moving target are routinely evoked by moving visual objects during dynamic stimulation
+    worthy of improvement. The resulting implementations of and improvements in these identified targets for algorithm
+    performance and evaluation make the resulting algorithm -- named \textit{REMoDNav} (robust eye movement detection for natural
+    viewing) -- a novel tool for eye event classification in dynamic stimulation.\\
+    For one, as our dataset consists of eye tracking recorded during a full length Hollywood movie, the algorithm
+    needs to be able to work with data without a trial structure.  Secondly, to work with noisy data, an improved
+    algorithm needs to derive biologically plausible events despite the presence of artifacts. The classification of
+    events despite short intermediate periods of data loss corresponds to strategies of human expert coders as
+    well \citep{Hooge2018}. Therefore, as an additional novel criterion in algorithm evaluation, the algorithm must
+    display good detection performance under differing noise conditions. Thirdly, the algorithm needs to take known
+    deficiencies and shortcomings of the NH algorithm into account. For this, we additionally factor the findings of
+    a recent publication by \cite{Friedman2018} in to our own algorithm.
+    Additionally, the improved algorithm must be capable of detecting \textit{smooth pursuits}. These slow motions of
+    the eye during tracking of a moving target are routinely evoked by moving visual objects during dynamic stimulation
     \citep{carl1987pursuits}. If this type of eye movement is not properly detected and labeled, erroneous fixation and
-    saccade events (which smooth pursuits would be classified into instead)  are introduced. \cite{Andersson2017}
+    saccade events (which smooth pursuits would be classified into instead) are introduced. \cite{Andersson2017}
     conclude that fixation and saccade detectors achieve acceptable overall accuracy rates, but that great improvements
     could be provided by implementing support for smooth pursuit movements. Up to now, contemporary algorithms rarely
     provide this functionality (but see e.g. \cite{LARSSON2015145}; \cite{Komogortsev2013} as existing algorithms with
-    smooth pursuit detection). Secondly, to work with noisy data, an improved algorithm needs to derive biologically
-    plausible events despite the presence of artifacts. The classification of events despite short intermediate periods
-    of data loss corresponds to strategies of human expert coders as well \citep{Hooge2018}. Therefore, as an additional
-    novel criterion in algorithm evaluation, the algorithm must display good detection performance under differing noise
-    conditions. Thirdly, the algorithm needs to take known deficiencies and shortcomings of the NH algorithm into
-    account. For this, we additionally factor the findings of a recent publication by \cite{Friedman2018} in to our own
-    algorithm. \\
-    The resulting implementations of and improvements in these identified targets for algorithm performance and
-    evaluation make the resulting algorithm -- named \textit{REMoDNav} (robust eye movement detection for natural
-    viewing) -- a novel tool for eye event classification in dynamic stimulation.\\
-    Lastly, in order to facilitate its usage and to remove barriers in software retrieval, the \remodnav algorithm is
-    documented and packaged in an accessible and open-source Python module REMoDNaV. \\
+    smooth pursuit detection).  Lastly, in order to facilitate its usage and to remove barriers in software
+    retrieval, the \remodnav algorithm is documented and packaged in an accessible and open-source Python module REMoDNaV. \\
 
-    To evaluate REMoDNaVs classification performance, we undertook a number of analyses. To investigate whether
-    \remodnav maintains the NHs accuracy with static images, and shows improved performance with dynamic stimuli, we
-    compare its output to that of the NH algorithm and manual human annotation of eye movements for manually labeled
-    data used by \cite{Andersson2017}. Furthermore, as our primary use case stems from noisy data obtained from natural
-    viewing, we demonstrate the algorithms ability to compute robust results for even low-quality data. We investigate
-    this by comparing performance between the high quality eye tracking data and the low quality data in the studyforrest
-    dataset.
+    After implementation, we undertook a number of analyses to evaluate REMoDNaVs classification performance. To
+    investigate whether \remodnav maintains the NHs accuracy with static images, and shows improved performance with
+    dynamic stimuli, we compared its output to that of the NH algorithm and manual human annotation of eye movements
+    in the dataset used by \cite{Andersson2017}. This analysis also enables us to compare \remodnav to the other
+    algorithms evaluated in \citet{Andersson2017}. Furthermore, as our primary use case stems from noisy data obtained
+    from natural viewing, we demonstrate the algorithms ability to compute robust results for even low-quality data.
+    We investigate this by comparing performance between the high quality eye tracking data and the low quality data
+    in the studyforrest dataset.
 
 
     %TODO:Elaborate to include different approaches that current algorithms took use?
@@ -243,8 +245,8 @@
     %\todo[inline]{\textit{Elaborate on how the algorithm works;For software tool papers, this section should address how the tool works and any relevant technical details required for implementation of the tool by other developers.}}
 
     The algorithm consists of two major steps: Preprocessing and event detection. Figure \ref{fig:alg} displays a
-    pseudo-code based illustration of the procedures that the text refers to. \remodnav is,as an adaptation of the
-    NH algorithm, also a \textit{velocity-based} event detection algorithm. Compared to \textit{dispersion-based}
+    pseudo-code based illustration of the procedures that the text refers to. In general, \remodnav is (as the
+    NH algorithm) a \textit{velocity-based} event detection algorithm. Compared to \textit{dispersion-based}
     algorithms, these types of algorithms are less susceptible to noise and spatio-temporal precision, and thus
     applicable to a large range of sampling frequencies. Furthermore, any influence of biologically implausible
     velocities and accelerations can be prevented with the use of appropriate filters and thresholds
@@ -376,18 +378,7 @@
 
     \begin{figure*}
         \includegraphics[width=1\textwidth]{img/remodnav_algorithm_v2.eps}
-        \caption{\remodnav workflow. Optional steps and configurable parameters are bold.\todo[inline]{This is a draft
-        of an algorithm illustration I was motivated to create while learning a bit of inkscape. I'm somewhat satisfied
-        with it, however it needs discussion. It currently is a full inkscape graphic, and text is typeset in inkscape
-        instead of Latex. We could probably get a nicer text typesetting if we do this graphic as a LaTeX table and just
-        embed the figures on the right. The advantages of this condensed illustration (as opposed to spread across
-        multiple pages) I see are: algorithm can be conceptualized with minimal text and $>$ 50\% figures on a single
-        page (reader isn't required to switch pages). It provides figures exactly where needed, and has a way more useful
-        pseudocode than NH. Also includes parameters and shows conditional checks. Disadvantages are that this
-        illustration type has not been used in other event detection algorithms in Beh Res M, and is more ``poster-like".
-        Plus it adds to our current lack of small figures/disproportional use of large figures. Also: I'm not entirely
-        familiar with the algorithm details. I based the figures on my understanding after a quick skim over the code,
-        but please check \textbf{thouroughly} whether I misunderstood something or need to add stuff.}}
+        \caption{\remodnav workflow. Optional steps and configurable parameters are bold.}
         \label{fig:alg}
     \end{figure*}
 
@@ -396,9 +387,9 @@
     minimal (raw data, sampling rate, viewing distance and screen size), the amount of configurable parameters may seem
     large. However, this is implemented purposefully.
     The available literature on eye event detection algorithms suggests that there is no true ``one-fits-all" solution
-    for event detection (apart from remarkably successful approaches using deep neural networks \citep{Startsev2018},
-    which however need appropriately large amounts of suitable training data, that may not be easily available). As
-    evident from many evaluations and applications of algorithms (e.g. \cite{Andersson2017}, \cite{Larsson2013},
+    for event detection. There are some successful approaches using deep neural networks \citep{Startsev2018}, but
+    those need appropriately large amounts of suitable training data, that may not be easily available. As evident
+    from many evaluations and applications of algorithms (e.g. \cite{Andersson2017}, \cite{Larsson2013},
     \cite{Zemblys2018}, \cite{5523936}), different underlying stimulation, data characteristics, or use cases make
     certain algorithms more suitable than others, hard-coded thresholds and parameters either applicable or detrimental,
     or potentially require changes to the default values or parameters. For our own analyses, the default parameter
@@ -406,10 +397,11 @@
     \remodnav therefore contains a broad range of transparent, interpretable and adjustable parameters with default
     values justified from physiological findings or biological limitations, and no hard-coded values. This gives users
     an option to adjust the algorithm to their data's characteristics, but offers a sensible starting point with
-    defaults that proofed to work well with the different datasets we evaluated the algorithm on. Only velocity
+    defaults that proved to work well with the different datasets we evaluated the algorithm on. Only velocity
     thresholds for saccade detection are estimated iteratively from the data. Apart from the advantage of taking noise
     levels into account, this also follows the reasoning of \cite{Nystrom2010AnData} that uninformed adjustments of this
-    parameter can have vast consequences on saccade detection, and, subsequently, the labeling of all other eve events.
+    parameter can have vast consequences on saccade detection, and, subsequently, the labeling of all other eye events.
+
 
     \begin{table*}[t]
         \caption{Algorithm parameters and their default values
@@ -519,7 +511,7 @@
     and SciPy \citep{JOP+2001} as software dependencies.
     Furthermore, DataLad \citep{HH+2013},
     and Pandas \citep{mckinney2010data} have to be available for assessing
-    correct operation via the \remodnav\ test battery. \remodnav\ itself,
+    correct operation via the \remodnav test battery. \remodnav itself,
     and all software dependencies are available on all major operating systems.
     There are no particular hardware requirements for running the software
     other than sufficient memory to load and process the data.
@@ -937,7 +929,8 @@
     tool for research paradigms with dynamic stimuli where lower data quality is an inherent property of the acquisition
     procedure, such as simultaneous fMRI and eye gaze recordings, or usage of remote eye trackers.
 
-    Furthermore, the algorithm proofed to be well applicable to other types of stimulation. Its classification performance
+    Furthermore, the algorithm proved to be well applicable to other types of stimulation. Its classification
+    performance
     for... \todo[inline]{elaborate on results on Andersons datasets, and include how the algorithm performs comparable
     to human coders and contemporary algorithms (or even
     exceeds their performance)}
