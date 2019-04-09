@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os.path as op
 import itertools
 import numpy as np
 import pylab as pl
@@ -340,10 +341,11 @@ def savefigs(fig,
                   fig,
                   stat)
         pl.savefig(
-            'img/confusion_{}_{}.svg'.format(*pair),
+            op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
             transparent=True,
             bbox_inches="tight")
         pl.close()
+
 
 def savegaze():
     """
@@ -356,8 +358,15 @@ def savegaze():
     # use two examplary files (lab + MRI) used during testing as well
     # hardcoding those, as I see no reason for updating them
     infiles = [
-        'data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-32/beh/sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz',
-        'data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-09/ses-movie/func/sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz'
+        op.join(
+            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'raw_eyegaze', 'sub-32', 'beh',
+            'sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz'),
+        op.join(
+            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'raw_eyegaze', 'sub-09', 'ses-movie',  'func',
+            'sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz'
+        ),
     ]
     dl.get(infiles)
     for f in infiles:
@@ -379,7 +388,10 @@ def savegaze():
         events = clf(p[30000:40000])
 
         ut.show_gaze(pp=p[30000:40000], events=events)
-        pl.savefig('img/remodnav_{}.svg'.format(ext))
+        pl.savefig(
+            op.join('img', 'remodnav_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
         pl.close()
 
 
