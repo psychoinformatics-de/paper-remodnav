@@ -203,7 +203,8 @@
     The aim of this article is to describe the resulting data-driven algorithm for robust results from dynamic
     stimulation. The main novelties of the algorithm stem from areas within the NH algorithm we identified to be
     worthy of improvement. The resulting implementations of and improvements in these identified targets for algorithm
-    performance and evaluation make the resulting algorithm -- named \textit{REMoDNav} (robust eye movement detection for natural
+    performance and evaluation make the resulting algorithm -- named \remodnav (robust eye movement detection for
+    natural
     viewing) -- a novel tool for eye event classification in dynamic stimulation.\\
     For one, as our dataset consists of eye tracking recorded during a full length Hollywood movie, the algorithm
     needs to be able to work with data without a trial structure.  Secondly, to work with noisy data, an improved
@@ -221,7 +222,8 @@
     could be provided by implementing support for smooth pursuit movements. Up to now, contemporary algorithms rarely
     provide this functionality (but see e.g. \cite{LARSSON2015145}; \cite{Komogortsev2013} as existing algorithms with
     smooth pursuit detection).  Lastly, in order to facilitate its usage and to remove barriers in software
-    retrieval, the \remodnav algorithm is documented and packaged in an accessible and open-source Python module REMoDNaV. \\
+    retrieval, the \remodnav algorithm is documented and packaged in an accessible and open-source Python module
+    \texttt{remodnav}. \\
 
     After implementation, we undertook a number of analyses to evaluate REMoDNaVs classification performance. To
     investigate whether \remodnav maintains the NHs accuracy with static images, and shows improved performance with
