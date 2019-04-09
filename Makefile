@@ -4,7 +4,7 @@ main.pdf: main.tex tools.bib EyeGaze.bib results_def.tex
 	latexmk -pdf -g $<
 
 results_def.tex: code/anderson.py
-	code/anderson.py -f True -r True -s True \
+	code/anderson.py -f -r -s \
         | tee results_def.tex
 
 clean:
