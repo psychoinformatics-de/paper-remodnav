@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import itertools
 import numpy as np
 import pylab as pl
 import seaborn as sns
@@ -351,8 +352,7 @@ def savefigs(fig,
     small helper function to save all confusion matrices
     """
 
-    coders = [('MN', 'RA'), ('MN', 'ALGO'), ('RA', 'ALGO')]
-    for pair in coders:
+    for pair in itertools.combinations(['MN', 'RA', 'ALGO'], 2):
         pl.figure(
             # fake size to get the font size down in relation
             figsize=(14, 3),
