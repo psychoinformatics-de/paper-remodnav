@@ -11,4 +11,8 @@ figures: results_def.tex
 	$(MAKE) -C img
 
 clean:
-	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo main.fls main.fdb_latexmk example.eps img/*eps-converted-to.pdf texput.log
+	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo main.fls main.fdb_latexmk example.eps img/*eps-converted-to.pdf texput.log results_def.tex
+	$(MAKE) -C img clean
+
+
+.PHONY: figures
