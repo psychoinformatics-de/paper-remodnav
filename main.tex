@@ -566,21 +566,23 @@
     misclassification analysis was repeated excluding samples labeled as pursuit (as none of the algorithms classed this
     category). The results of this analysis are displayed in table \ref{tab:mclf}. For the comparison performed by
     \citet{Andersson2017}, the NH algorithm disagreed with human coders in 32\% of samples for images, in 93\% of samples
-    for moving dots, and in 70\% of samples for videos. By comparison, if smooth pursuit movements are not taken into
-    account, our algorithm disagreed far less with each of the human coders. The highest disagreement across all stimuli
-    categories and coders is 11.7\%. If taking smooth pursuit movements into account, the misclassification ratio increases,
-    but remains comparably low, thus exceeding the performance of all contemporary algorithms in \citet{Andersson2017}
-    in the dots and video category. Figure \ref{fig:conf} displays the resulting confusion matrices with Jaccard indices
-    quantifying the similarity between classification decisions. \todo[inline]{cite JI appropriately, @all: PLEASE check
-    explanation of the JI ;-)} The Jaccard index (JI) is bound in range [0, 1] with higher values indication higher
-    similarity. A value of 0.93 in the upper left cell of the very first matrix in figure \ref{fig:conf} for example
-    indicates that 93\% of frames that are labeled as a fixation by human coders RA and MN are the same. This index allows
-    to quantify the similarity of classifications independent from values in other cells. While the highest similarity in
-    labeling (evident from high values along the diagonal) exists between human coders, the algorithm still performs well.
-    Especially in the moving dot category, smooth pursuit detection is very consistent to human labels (JI of .73 and .7,
-    respectively), and still good in the video category (JI of .43 and .47, respectively). \\
-
-    % I'm sure there must be a way to include the computation results in the LaTeX document in an automated fashion.
+    for moving dots, and in 70\% of samples for videos. In a direct comparison, i.e. if smooth pursuit movements are
+    not taken into account, our algorithm had a lower misclassification rate. The highest disagreement across all stimuli
+    categories and coders is 11.7\%. Compared to all ten algorithms used in \citet{Andersson2017}, \remodnav displays
+    the lowest misclassification rates in all categories.\\
+    When taking smooth pursuit movements into account, the misclassification ratio increases, as would be expected
+    with the introduction of a fourth eye movement category. Importantly, despite an increase, the misclassification
+    rate remains comparably low, thus still exceeding the performance of all contemporary algorithms in
+    \citet{Andersson2017} in the dynamic categories dots and videos. For a comparison between algorithm and human
+    coders classification, figure \ref{fig:conf} displays the resulting
+    confusion matrices with Jaccard indices (JI) quantifying the similarity between classification decisions. The
+    JI is bound in range [0, 1] with higher values indication higher similarity. A value of 0.93 in the upper
+    left cell of the very first matrix in figure \ref{fig:conf} for example indicates that 93\% of frames that are
+    labeled as a fixation by human coders RA and MN are the same. This index allows to quantify the similarity of
+    classifications independent from values in other cells. While the highest similarity in labeling (evident from
+    high values along the diagonal) exists between human coders, the algorithm still performs well. For the new event
+    type smooth pursuit, detection is very consistent to human labels especially in the moving dot category (JI of
+    .73 and .7, respectively), and still good in the video category (JI of .43 and .47, respectively).\\
 
     \begin{table}[h!]
         % table caption is above the table
@@ -654,32 +656,35 @@
     %\caption{\label{fig:Mainseqs}Overview of use cases to validate to anderson dataset. Three sets of stimuli, namely, images, dots, and videos which are processed by human observers and the algorithm. Sample A shows results that show a good match between the human and algorithmic results,sample B showing acceptable results, while sample C shows a poor match. In the case of the human observers the results of each observer --- represented by either blue or red --- are superimposed onto one another. Event detection done by the algorithm additionally split saccadic events into Segment defining saccades (SD-S) and PSOs to regular and High velocity PSOs (HV-PSO)  }
 
     %\end{figure*}
-
-    Additionally, we determined counts, mean and standard deviation of the extracted eye movements, and computed the root
-    mean squared deviations (RMSD) for \remodnav against the human coders per stimulus category. The RMSD is proposed by
-    \cite{Andersson2017} as a single similarity measure of event parameters to rank algorithms according to their
-    similarity to human coders. The RMSD measure has a lower bound of 0 and higher values denote higher deviations,
-    but for a thorough explanation of the measure and the procedures necessary for its computation, please refer to the
-    original publication by \cite{Andersson2017}. By computing the RMSD of \remodnav on the same data, we are able to
-    compare the similarity of \remodnav to human labeling with those reported in \cite{Andersson2017}, and thus rank
-    \remodnav within the original set of algorithms. \todo[inline]{\textit{Table (or a graphic?) showing duration mean,
-    SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
-    The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the ``LNS" algorithm by
-    \cite{Larsson2013}, achieved RMSDs between 0.2 and 0.3 for saccades, and RMDS between 1.0 and 1.2 for PSOs. Different
-    algorithms performed ``best" for fixation detection given the category. The NH algorithm achieved RMSD = 0.4 for
-    images and RMSD = 0.8 for videos, but RMSD = 2.1 for dots. TODO: now how do we do?
-    \todo[inline]{compute RMSD for algo comparison}\todo[inline]{how do we compare against the ``best" LNS algorithm in
-    Andersson2017?}
-
-    IF we go for Cohens Kappa: The ``best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the
-    ``LNS" algorithm by \cite{Larsson2013}, achieved Cohens Kappas between .75 and .81 for saccades, and between .59 and
-    .64 for PSOs. The ``best" algorithms with regard fixations had Kappas between .5 and .7 for the image category, but
-    at maximum .13 for any of the dynamic categories. TODO: now how do we do? \\
+%
+%    Additionally, we determined counts, mean and standard deviation of the extracted eye movements, and computed the root
+%    mean squared deviations (RMSD) for \remodnav against the human coders per stimulus category. The RMSD is proposed by
+%    \cite{Andersson2017} as a single similarity measure of event parameters to rank algorithms according to their
+%    similarity to human coders. The RMSD measure has a lower bound of 0 and higher values denote higher deviations,
+%    but for a thorough explanation of the measure and the procedures necessary for its computation, please refer to the
+%    original publication by \cite{Andersson2017}. By computing the RMSD of \remodnav on the same data, we are able to
+%    compare the similarity of \remodnav to human labeling with those reported in \cite{Andersson2017}, and thus rank
+%    \remodnav within the original set of algorithms. \todo[inline]{\textit{Table (or a graphic?) showing duration mean,
+%    SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
+%    The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the ``LNS" algorithm by
+%    \cite{Larsson2013}, achieved RMSDs between 0.2 and 0.3 for saccades, and RMDS between 1.0 and 1.2 for PSOs. Different
+%    algorithms performed ``best" for fixation detection given the category. The NH algorithm achieved RMSD = 0.4 for
+%    images and RMSD = 0.8 for videos, but RMSD = 2.1 for dots. TODO: now how do we do?
+%    \todo[inline]{compute RMSD for algo comparison}\todo[inline]{how do we compare against the ``best" LNS algorithm in
+%    Andersson2017?}
+%
+%    IF we go for Cohens Kappa: The ``best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the
+%    ``LNS" algorithm by \cite{Larsson2013}, achieved Cohens Kappas between .75 and .81 for saccades, and between .59 and
+%    .64 for PSOs. The ``best" algorithms with regard fixations had Kappas between .5 and .7 for the image category, but
+%    at maximum .13 for any of the dynamic categories. TODO: now how do we do? \\
 
     The combined results of the analyses on the dataset used by \citet{Andersson2017} demonstrate that \remodnav yields
-    the highest congruency to manual human annotation during dynamic stimulation compared to ten contemporary algorithms.
-    The results further reveal that REMoDNaVs performance equals or exceeds those of the original NH or other algorithms,
-    even within categories that were those other algorithms singular strong points.
+    the highest congruency to manual human annotation during dynamic stimulation compared to ten contemporary
+    algorithms when detecting fixations, saccades, and post-saccadic oscillation in any category. Its performance
+    stays good, and exceeds all other algorithms performance in the dots and video category, when including smooth
+    pursuits detection as well. Furthermore, the results reveal that REMoDNaVs performance equals or exceeds those of
+    the original NH. Thus, \remodnav does improve the NH algorithm in aspects that were suboptimal, but does not
+    diminish performance in NHs strong points.
 
 
     %\subsubsection*{Evaluation of events}
@@ -692,19 +697,16 @@
     %\todo[inline]{\textit{Need to determine exactly which plots and tables will go here}}
     %\todo[inline]{\textit{This section contains the analysis of the main sequences -- which I assume is the meat of the thesis. The goal is to have as much information as possible be contained in figures and/or tables (and their captions). We don't pay for those, but we do pay for the main text body.}}
 
-    To determine whether \remodnav yields biologically plausible results for dynamic stimulation, we applied it to the
-    high quality eye tracking dataset obtained from 15 subjects watching the movie in a laboratory setting. Eye movements
-    in this dataset were recorded with an Eyelink 1000 with a standard desktop mount (software version 4.51; SR Research
-    Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie stimulus was presented on a $522$x$294$mm
-    LCD monitor at a resolution of $1920$ x $1280$px at a viewing distance of 85cm \citep{Hanke2016}.
-    \todo[inline]{discuss: have the acquisition data in a combined, separate paragraph?} The top panel in figure
-    \ref{fig:remodnav} displays the performance of \remodnav for a high quality data sample. Individual main sequences
-    for two lab subjects are displayed in the bottom panel in figure \ref{fig:mains}. We then computed the eye event
-    characteristics per category to compare them to the results of \cite{Andersson2017}, known properties about these
-    eye movements during movie watching, and their biological upper and lower limits. These results are summarized in
-    table \todo[inline]{TODO (have a table for fixations, saccades, PSOs as Anderson, maybe also smooth pursuits)}
-    \todo[inline]{Asim recalled Michael wanted to do those tables. I (Adina) could do them as well at one point, if
-    necessary,someone just needs to tell me}
+    Given that \remodnav yields biologically plausible results for dynamic stimulation as indicated by the previous
+    results, we determined whether it is capable of analyzing data from dynamic stimulation without a trial structure.
+    For this, we applied it to the high quality eye tracking dataset obtained from 15 subjects watching the movie in a
+    laboratory setting. This analysis further serves as a base line to compare results obtained from a lower quality
+    recording to. Eye movements in this high-quality dataset were recorded with an Eyelink 1000 with a standard desktop
+    mount (software version 4.51; SR Research Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The
+    movie stimulus was presented on a $522$x$294$mm LCD monitor at a resolution of $1920$ x $1280$px at a viewing
+    distance of 85cm \citep{Hanke2016}.
+    The top panel in figure \ref{fig:remodnav} displays the performance of \remodnav for a high quality data sample.
+    Individual main sequences for two lab subjects are displayed in the bottom panel in figure \ref{fig:mains}.\\
 
 
 
