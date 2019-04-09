@@ -258,25 +258,29 @@
     (figure \ref{fig:alg}, 1a). This filter is a standard in many eye tracking toolboxes and often used for preprocessing
     (e.g. for the data used in the original NH algorithm \citep{Friedman2018}). Based on filtered coordinates, sampling
     rate of the eye tracker, viewing distance and screen dimensions (the latter two provided with the \texttt{px2deg}
-    parameter), \remodnav calculates the velocity and acceleration of eye movements (1b-c). To disregard biologically
-    implausible measurements, a configurable maximum velocity (\texttt{max\_vel}) is enforced --- samples exceeding this
+    parameter), \remodnav calculates the velocity and acceleration of eye movements (1d-e). To disregard biologically
+    implausible measurements, a configurable maximum velocity (\texttt{max\_vel}) is enforced -- samples exceeding this
     threshold are replaced by this set value. The default value is 1000 $^\circ/sec$ and based on the empirical upper
     limit of saccade velocities reported in \cite{holmqvist2011eye}.
-    At this stage, a variety of optional functionality is available. On demand, the algorithm can:
+    At the preprocessing stage, a variety of optional functionality is available. On demand, the algorithm can:
     \begin{enumerate}
         \item Mask data around signal loss (such as eye blinks)
         \item Apply Savitzky-Golay filter (for noise reduction)
-        \item Apply median filter (for noise reduction)(1d-e)
+        \item Apply median filter (for noise reduction)
     \end{enumerate}
-    Following any optional filtering, movement velocities are recomputed.\\
+    Following any optional filtering, movement velocities are recomputed. An illustration is given in figure
+    \ref{fig:alg}, A).\\
 
     \subsubsection*{Event detection}
-    \remodnav classifies events based on velocities in a sequential procedure: \\
-    \textbf{Major saccade detection} The entire time series is chunked into intervals between major saccades (termed
-    SACC) to be able to accommodate data without a short trial structure. Major saccades are located in a data-driven,
+
+    \textbf{Major saccade detection}\\
+    \remodnav classifies events in a sequential procedure: The entire time series is chunked into intervals between
+    major saccades (termed SACC) to be able to accommodate
+    data without a short trial structure. Major saccades are located in a data-driven,
     iterative procedure that is adapted from the NH algorithm and based on thresholding velocities with a critical
     velocity value (figure \ref{fig:alg}, 2a). This threshold is determined from the entire input data to take global
-    noise levels into account: Starting from an initial velocity threshold (\texttt{velthres\_startvelocity}, termed
+    noise levels into account: Starting from an initial velocity threshold
+    (\texttt{velthres\_\linebreak[0]startvelocity}, termed
     $PT_1$ in NH), the \textit{median} (m) and \textit{median absolute deviation} ($MAD$) velocity of samples below this
     value is computed. Iteratively, $PT_i$ is updated as
 
@@ -284,43 +288,48 @@
 
     where the noisefactor is user-configurable, until the difference between two updates fulfills
 
-    $$|PT_n - PT_{n-1}| < 1^\circ/sec$$
+    $$|PT_n - PT_{n-1}| < 1^\circ/sec$$.
 
-    An illustration of this procedure is shown in figure \ref{fig:alg}, part 2. Though the underlying forumula is
-    adapated, unlike the NH algorithm --- which uses the average and standard deviations of the velocities to compute
-    the threshold --- \remodnav instead uses the median and MAD values. The use of robust statistics in \remodnav is
+    An illustration of this procedure is shown in figure \ref{fig:alg}, B). Though the underlying formula is
+    adapated, unlike the NH algorithm -- which uses the average and standard deviations of the velocities to compute
+    the threshold -- \remodnav instead uses the median and MAD values. The use of robust statistics in \remodnav is
     more appropriate given the skewness of velocity data (see \cite{Friedman2018}). For each resulting saccade peak
     (sorted by magnitude), \remodnav detects saccade onset, saccade offset and PSOs (2c). Saccadic on- and offset
     detection is adapted from NH as well. In contrast to NH, \remodnav again relies on robust statistics, and on a local
     velocity threshold computation in the temporal vicinity around a respective candidate window. By default, this is
-    from one second before to one second after the window boundaries. The NH algorithm, in comparison, used local
-    thresholds only for saccade offset. An additional local saccade onset threshold however makes saccade onset detection
-    more robust under differing noise levels. \todo[inline]{I at least think so - correct me if you think thats wrong}
-    PSO detection is more detailed than in the NH algorithm. In their paper, \cite{Nystrom2010AnData} define two
-    mutually exclusive types of ``glissades": low-velocity and high-velocity PSOs. High-velocity PSOs display velocities
-    above the peak saccade threshold at least once (i.e. display a velocity peak that would qualify it as a saccade),
-    while low-velocity PSOs only rise above saccade offset thresholds at least once. Despite this distinction, the NH
-    algorithm does not differentiate between the two event types. \remodnav distinguishes these, and labels the PSOs of
-    major saccades as high-velocity (HPSO) or low-velocity (LPSO) depending on the criterion of the NH algorithm.
+    from one second before to one second after the window boundaries.
+    PSO detection in \remodnav is more detailed than in the NH algorithm. In their paper, \cite{Nystrom2010AnData}
+    define two mutually exclusive types of ``glissades": low-velocity and high-velocity PSOs. High-velocity PSOs
+    display velocities above the peak saccade threshold at least once (i.e. display a velocity peak that would
+    qualify it as a saccade), while low-velocity PSOs only rise above saccade offset thresholds at least once.
+    Despite this distinction, the NH algorithm does not differentiate between the two event types. \remodnav
+    distinguishes these, and labels the PSOs of major saccades as high-velocity (HPSO) or low-velocity (LPSO)
+    depending on the criterion of the NH algorithm.
 
     Importantly, major saccade detection is terminated earlier if a maximum saccade frequency across the entire input
     data is reached (2d) -- this value is configurable (\texttt{max\_initial\_saccade\_freq}) and by default is set to
     \unit[2]{Hz}.\todo[inline]{once we recall citation for this default, include a reason}
 
-    \textbf{Between major saccades} In a locally adaptive manner, remaining data is classified into events in segments
+    \textbf{Between major saccades}\\
+    In a locally adaptive manner, remaining data is classified into events in segments
     \textit{between} the initial major saccades, so called \textit{intersaccade windows}. Additionally, intersaccade
     windows are further subdivided into segments without any missing data. Therefore, missing data can not disrupt event
-    detection, and excluded segments are not labeled. A saccade in these intervals (termed ISAC) is detected using a
-    local velocity threshold -- determined as in A) but from the specific time window only -- and if its duration exceeds
-    the minimum saccade length and is within a certain minimum distance from neighboring saccades (default:
-    \unit[130]{ms})(figure \ref{fig:alg}, 3b). Saccade on- and offsets, and low-velocity PSOs (within intersaccade
-    windows termed ILPS) and high-velocity PSOs (termed IHPS) are computed as in A) as well (3c).\
-    After saccade and PSO detection, for all remaining unlabeled time windows longer than a configured minimum duration
-    (default: \unit[40]{ms}), velocities are recomputed after low-pass filtering with a Butterworth filter (default
-    cutoff: \unit[4]{Hz}). Any segments exceeding a maximum pursuit velocity threshold are labeled as smooth pursuits
-    (termed PURS) (3e), while everything else is labeled as fixations (termed FIXA)(3g). Pursuit on/offset detection
-    employs the same algorithm as NHs saccade on/offset algorithm, but with a configurable, fixed velocity threshold
-    (default: \unit[2]{deg/s})(3f). \remodnav outputs a BIDS-compliant \citep{gorgolewski2016brain} .tsv file and
+    detection, and excluded segments are not labeled. An illustration is given in figure \ref{fig:alg}, C). A saccade
+    in these intervals (termed ISAC) is detected using a local velocity threshold -- determined as during major
+    saccade detection but from the specific time window only -- and if
+    \begin{itemize}
+        \item its duration exceeds the minimum saccade length
+        \item it is within a certain minimum distance from neighboring saccades (default: \unit[130]{ms})
+    \end{itemize}
+    (figure \ref{fig:alg}, 2f). Saccade on- and offsets, and low-velocity PSOs (within intersaccade
+    windows termed ILPS) and high-velocity PSOs (termed IHPS) are computed as during major saccade detection as well
+    (2g). After saccade and PSO detection, for all remaining unlabeled time windows longer than a configured minimum
+    duration (default: \unit[40]{ms}), we recompute velocities after low-pass filtering with a Butterworth filter
+    (default  cutoff: \unit[4]{Hz}). Any segments exceeding a maximum pursuit velocity threshold are labeled as
+    smooth pursuits  (termed PURS) (gi), while everything else is labeled as fixations (termed FIXA)(gk). Pursuit
+    on/offset detection  employs the same algorithm as NHs saccade on/offset algorithm, but with a configurable,
+    fixed velocity threshold (default: \unit[2]{deg/s})(gj). \\
+    \remodnav outputs a BIDS-compliant \citep{gorgolewski2016brain} .tsv file and
     reports detected events with onset and offset time, onset and offset coordinates, amplitude, peak velocity, median
     velocity and average velocity. Additionally, it plots a time course of horizontal and vertical gaze position in
     conjunction with classed labels (shown in figure \ref{fig:remodnav}).
