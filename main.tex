@@ -156,48 +156,49 @@
     to changes in facial expression \citep{Harris2014}, understanding complex social interactions by using videos
     \citep{Tikka2012} and more untouched themes such as the underlying processing of music \citep{Toiviainen2014}.
     In these studies, a physical measurement is required to quantify the relationship between response and stimuli.
-    One measure that is both useful and well established for such use cases is data obtained from eye tracking. Eye
-    tracking is a flexible measurement which has proven its worth in a variety of studies ranging from the understanding
-    of visual attention \citep{HantaoLiu2011}, memory \citep{Hannula2010} and language comprehension \citep{Gordon2006}.
-    The raw eye tracking data provided by eye tracking devices, however, is rarely used ``as is". Instead, in order to
-    disentangle different cognitive, oculomotor, or perceptive states associated with different types of eye movements,
-    most research relies on the classification of eye gaze data into distinct eye movements categories \citep{Schutz2011}. \\
-
-    Our interest is the usage of eye gaze data from the studyforrest dataset -- a dataset containing a variety of outputs
-    from subjects viewing natural and dynamic stimuli in the form of a full length movie \citep{Hanke2016}. The available
-    eye gaze data in this dataset stems from a high-quality laboratory recording, but also from simultaneous eye-tracking
-    and functional magnetic resonance imaging (fMRI) acquisition in the bore of an MRI scanner with higher spatial
-    uncertainty and noise levels. We considered the latter gaze data to be especially precious, as the joint analysis
-    of fMRI and eye tracking data opens up a number of additional insights and research questions. \todo[inline]{maybe
-    list examples of what we did. maybe crossreference to bookchapter in progress} To effectively use this eye gaze data,
-    we searched for a robust algorithm that would classify different eye related events, namely, saccades, fixations,
-    post-saccadic oscillations, and smooth pursuit, in gaze data obtained during movie watching, even with high noise
-    levels. As advocates of open-source software and scientific reproducibility, we focused on non-commercial algorithms
-    that were both well documented (published works) and freely available. Conveniently, a recent study
-    \citep{Andersson2017} took on the task of evaluating ten contemporary eye gaze event detection algorithms on
-    different sets of stimuli and compared them to human ``coders" -- which were experienced eye tracking experts who
-    marked events in eye gaze data using a graphical user interface (GUI). While the algorithms worked sufficiently for
-    static stimuli, to our disappointment, the authors concluded that none of the algorithms performed remarkably well
-    on eye-tracking data from dynamic stimuli. Processing eye gaze data from dynamic stimuli can lead to a deeper understanding
-    of behavioral and/or cognitive processes and is relevant for many fields from cognitive neuroscience to cinematography,
-    industrial engineering, human-computer interactions, and marketing \citep{Duchowski2002}. Thus, algorithms capable of
-    event detection for eye gaze data from dynamic stimuli are desirable and would be broadly applicable. \\
-
-
-
-    To develop an improved event detection algorithm for dynamic stimulation, we started by looking at an already
-    established algorithm. One of the most successful algorithms capable of classifying several different eye events, as
-    evaluated by \citet{Andersson2017}, was an adaptive, velocity-based algorithm proposed by \citet{Nystrom2010AnData}.
-    Even though the algorithm performed poorly on dynamic stimuli, its classification performance was good for static
-    stimulation. The algorithm, henceforth referred to as \textit{NH}, detects fixations, saccades, and post-saccadic
+    One measure that is both useful and well established for such use cases is data obtained from tracking
+    participants gaze patterns by means of eye tracking. It is a flexible measurement which has proven its worth in a
+    variety of studies ranging from the understanding of visual attention \citep{HantaoLiu2011}, memory
+    \citep{Hannula2010} and language comprehension \citep{Gordon2006}. Our interest is the usage of eye gaze data from
+    the studyforrest dataset -- a dataset containing a variety of outputs from subjects viewing natural and
+    dynamic stimuli in the form of a full length movie \citep{Hanke2016}.
+    Regardless of use case, the raw eye tracking data provided by eye tracking devices is rarely used ``as
+    is". Instead, in order to disentangle different cognitive, oculomotor, or perceptive states associated with
+    different types of eye movements, most research relies on the classification of eye gaze data into distinct eye
+    movements categories \citep{Schutz2011}. The most feasible approach for doing this lies in the application of
+    appropriate event detection algorithms. \\
+    The available eye gaze data in the studyforrest dataset stems from a high-quality laboratory recording, but also
+    from simultaneous eye-tracking and functional magnetic resonance imaging (fMRI) acquisition in the bore of an MRI
+    scanner with higher spatial uncertainty and noise levels. We considered the latter gaze data to be especially precious,
+    as the joint analysis of fMRI and eye tracking data opens up a number of additional insights and research
+    questions. To effectively use this eye gaze data, we searched for a robust algorithm that would classify
+    different eye related events, namely, saccades, fixations, post-saccadic oscillations, and smooth pursuit, in gaze
+    data obtained during movie watching, even with high noise levels. As advocates of open-source software and
+    scientific reproducibility, we focused on non-commercial algorithms that were both well documented (published
+    works) and freely available. Conveniently, a recent study \citep{Andersson2017} took on the task of evaluating
+    ten contemporary eye gaze event detection algorithms on  different sets of stimuli and compared them to human
+    ``coders" -- which were experienced eye tracking experts who marked events in eye gaze data using a graphical
+    user interface (GUI). While the algorithms worked sufficiently for static stimuli, to our disappointment, the
+    authors concluded that none of the algorithms performed remarkably well on eye-tracking data from dynamic stimuli.
+    One of the most successful algorithms tested that was capable of classifying several different eye
+    events was an adaptive, velocity-based algorithm proposed by \citet{Nystrom2010AnData}.
+    The algorithm, henceforth referred to as \textit{NH}, detects fixations, saccades, and post-saccadic
     oscillations (termed ``glissades"), and determines the velocity thresholds used during classification based on the
-    data's noise level. We applied the NH algorithm with no modifications to our eye gaze data; yielding implausible
-    results. For example, the average and median durations of eye movements classed as fixations exceeded durations
-    reported in the literature \citep{holmqvist2011eye,dorr2010variability} by up to factor 2. Additionally, especially
-    for noisy data, the NH algorithm classified too few fixations, as remarked by \citet{Friedman2018}, because it
-    discarded potential fixation events that contained artifacts such as blinks. Consequently, the NH algorithm was
-    unsuitable for our noisy, but precious data. Therefore, based on our use case in the studyforrest dataset, we set
-    out to extend and enhance the algorithm for use with -- potentially noisy -- data from dynamic stimulation. \\
+    data's noise level. Even though the NH algorithm performed poorly on dynamic stimuli in \citet{Andersson2017}, its
+    classification performance was good for static stimulation. But when we initially analyzed the studyforrest eye gaze
+    data, we applied the NH algorithm with no modifications and obtained implausible results as well. For example, the
+    average and median durations of eye movements  classed as fixations exceeded durations  reported in the
+    literature \citep{holmqvist2011eye,dorr2010variability} by up to factor 2. Additionally, especially for noisy
+    data, the NH algorithm classified too few fixations, as  remarked by \citet{Friedman2018}, because it discarded
+    potential fixation events that contained artifacts such as blinks. Consequently, the NH algorithm was
+    unsuitable for our noisy, but precious data from dynamic stimulation.
+    However, the ability to process eye gaze data from dynamic stimuli with suitable event detection algorithms can
+    lead to a deeper understanding of behavioral and/or cognitive processes. Apart from our own use case, it is
+    relevant for many fields from  cognitive neuroscience to cinematography, industrial engineering, human-computer
+    interactions, and marketing \citep{Duchowski2002}. Thus, algorithms capable of event detection for eye gaze data
+    from dynamic stimuli seem desirable and would be broadly applicable. Therefore, based on our use case in the
+    studyforrest dataset, we set out to develop an improved event detection algorithm for use with -- potentially noisy
+    -- data from dynamic stimulation. To do this, we started with the already established NH algorithm.
     The aim of this article is to describe the resulting data-driven algorithm for robust results from dynamic
     stimulation. The main novelties of the algorithm stem from areas within the NH algorithm we identified to be
     worthy of improvement. \\
