@@ -185,8 +185,9 @@ def confusion(refcoder,
         'PUR': 4,
     }
     plotter = 1
-    pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
-        refcoder, coder))
+    # coders are in axis labels too
+    #pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
+    #    refcoder, coder))
     for stimtype in ('img', 'dots', 'video'):
         conf = np.zeros((len(conditions), len(conditions)), dtype=float)
         jinter = np.zeros((len(conditions), len(conditions)), dtype=float)
@@ -267,10 +268,12 @@ def confusion(refcoder,
             )
             pl.xlabel('{} labeling'.format(refcoder))
             pl.ylabel('{} labeling'.format(coder))
-            pl.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
-                stimtype,
-                (np.sum(conf) / nsamples) * 100,
-                (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
+            # stats are given proper below
+            #pl.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
+            #    stimtype,
+            #    (np.sum(conf) / nsamples) * 100,
+            #    (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
+            pl.title(stimtype)
             plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
@@ -350,11 +353,19 @@ def savefigs(fig,
 
     coders = [('MN', 'RA'), ('MN', 'ALGO'), ('RA', 'ALGO')]
     for pair in coders:
+        pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 3),
+            dpi=120,
+            frameon=False)
         confusion(pair[0],
                   pair[1],
                   fig,
                   stat)
-        pl.savefig('img/confusion_{}_{}.svg'.format(pair[0], pair[1]))
+        pl.savefig(
+            'img/confusion_{}_{}.svg'.format(*pair),
+            transparent=True,
+            bbox_inches="tight")
         pl.close()
 
 def savegaze():
