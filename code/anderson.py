@@ -387,7 +387,17 @@ def savegaze():
         # for both data types (lab & mri)
         events = clf(p[30000:40000])
 
-        ut.show_gaze(pp=p[30000:40000], events=events)
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 2),
+            dpi=120,
+            frameon=False)
+        ut.show_gaze(
+            #data[30000:40000],
+            pp=p[30000:40000],
+            events=events,
+            sampling_rate=1000.0,
+            show_vels=True)
         pl.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
