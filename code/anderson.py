@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os.path as op
 import itertools
 import numpy as np
 import pylab as pl
@@ -15,7 +16,8 @@ def load_anderson(category, name):
     import os.path as op
 
     fname = op.join(
-        'remodnav', 'remodnav', 'tests', 'data', 'anderson_etal', 'annotated_data', 'data used in the article',
+        'remodnav', 'remodnav', 'tests', 'data', 'anderson_etal',
+        'annotated_data', 'data used in the article',
         category, name + ('' if name.endswith('.mat') else '.mat'))
     get(fname)
     m = loadmat(fname)
@@ -66,7 +68,6 @@ def load_anderson(category, name):
             end_time=float(i) / sr,
         ))
     return data, labels, events, px2deg, sr
-
 
 
 labeled_files = {
@@ -200,8 +201,8 @@ def confusion(refcoder,
             sr = None
             for src in (refcoder, coder):
                 if src in ('RA', 'MN'):
-                    data, target_labels, target_events, px2deg, sr = load_anderson(
-                        stimtype, fname.format(src))
+                    data, target_labels, target_events, px2deg, sr = \
+                        load_anderson(stimtype, fname.format(src))
                     labels.append(target_labels.astype(int))
                 else:
                     clf = EyegazeClassifier(
@@ -218,15 +219,15 @@ def confusion(refcoder,
                     # convert event list into anderson-style label array
                     l = np.zeros(labels[0].shape, labels[0].dtype)
                     for ev in events:
-                        l[int(ev['start_time'] * sr):int((ev['end_time'])* sr)] = \
+                        l[int(ev['start_time'] * sr):int((ev['end_time']) * sr)] = \
                             anderson_remap[label_map[ev['label']]]
                     labels.append(l)
 
             nlabels = [len(l) for l in labels]
             if len(np.unique(nlabels)) > 1:
                 print(
-                    "% #\n% # %INCONSISTENCY Found label length mismatch between "
-                    "coders ({}, {}) for: {}\n% #\n".format(
+                    "% #\n% # %INCONSISTENCY Found label length mismatch "
+                    "between coders ({}, {}) for: {}\n% #\n".format(
                         refcoder, coder, fname))
                 print('% Truncate labels to shorter sample: {}'.format(
                     nlabels))
@@ -281,49 +282,25 @@ def confusion(refcoder,
 
         if stats:
         # print results as LaTeX commands
-            print('\\newcommand{\\%s%s%sMCLF}{%.1f}' % (stimtype,
-                                                        refcoder,
-                                                        coder,
-                                                        (np.sum(conf) / nsamples) * 100))
-            print('\\newcommand{\\%s%s%sMclfWOP}{%.1f}' % (stimtype,
-                                                            refcoder,
-                                                            coder,
-                                                            (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-            print('\\newcommand{\\%s%s%sFIXref}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_refcoder['FIX']))
-            print('\\newcommand{\\%s%s%sSACref}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_refcoder['SAC']))
-            print('\\newcommand{\\%s%s%sPSOref}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_refcoder['PSO']))
-            print('\\newcommand{\\%s%s%sSPref}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_refcoder['PUR']))
-            print('\\newcommand{\\%s%s%sFIXcod}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_coder['FIX']))
-            print('\\newcommand{\\%s%s%sSACcod}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_coder['SAC']))
-            print('\\newcommand{\\%s%s%sPSOcod}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_coder['PSO']))
-            print('\\newcommand{\\%s%s%sSPcod}{%.0f}' % (stimtype,
-                                                    refcoder,
-                                                    coder,
-                                                    msclf_coder['PUR']))
+            label_prefix = '{}{}{}'.format(stimtype, refcoder, coder)
+            for key, format, value in (
+                    ('MCLF', '%.1f', (np.sum(conf) / nsamples) * 100),
+                    ('MclfWOP', '%.1f',
+                        (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100),
+                    ('FIXref', '%.0f', msclf_refcoder['FIX']),
+                    ('SACref', '%.0f', msclf_refcoder['SAC']),
+                    ('PSOref', '%.0f', msclf_refcoder['PSO']),
+                    ('SPref', '%.0f', msclf_refcoder['PUR']),
+                    ('FIXcod', '%.0f', msclf_coder['FIX']),
+                    ('SACcod', '%.0f', msclf_coder['SAC']),
+                    ('PSOcod', '%.0f', msclf_coder['PSO']),
+                    ('SPcod', '%.0f', msclf_coder['PUR'])):
+                print('\\newcommand{\\%s%s}{%s}'
+                      % (label_prefix, key, format % value))
 
-            # print original outputs, but make them LaTeX-safe with '%'. This should make
-            # it easier to check correct placements of stats in the table
+            # print original outputs, but make them LaTeX-safe with '%'. This
+            # should make it easier to check correct placements of stats in the
+            # table
             print('% ### {}'.format(stimtype))
             print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
             print('% --- | --- | --- | --- | --- | --- | --- | ---')
@@ -346,6 +323,7 @@ def confusion(refcoder,
                 msclf_coder['PUR'],
         ))
 
+
 def savefigs(fig,
              stat):
     """
@@ -363,10 +341,11 @@ def savefigs(fig,
                   fig,
                   stat)
         pl.savefig(
-            'img/confusion_{}_{}.svg'.format(*pair),
+            op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
             transparent=True,
             bbox_inches="tight")
         pl.close()
+
 
 def savegaze():
     """
@@ -378,48 +357,69 @@ def savegaze():
 
     # use two examplary files (lab + MRI) used during testing as well
     # hardcoding those, as I see no reason for updating them
-    infile = ['data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-32/beh/sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz',
-              'data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze/sub-09/ses-movie/func/sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz']
-    dl.get(infile)
-    for f in infile:
+    infiles = [
+        op.join(
+            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'raw_eyegaze', 'sub-32', 'beh',
+            'sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz'),
+        op.join(
+            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'raw_eyegaze', 'sub-09', 'ses-movie',  'func',
+            'sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz'
+        ),
+    ]
+    dl.get(infiles)
+    for f in infiles:
         # read data
         data = np.recfromcsv(f,
                              delimiter='\t',
-                             names=['x','y','pupil','frame'])
+                             names=['x', 'y', 'pupil', 'frame'])
 
         # adjust px2deg conversion factor according to datafile
-        pxdeg, ext = (0.0266711972026, 'lab') if '32' in f else (0.0185581232561, 'mri')
+        pxdeg, ext = (0.0266711972026, 'lab') if '32' in f \
+            else (0.0185581232561, 'mri')
         clf = EyegazeClassifier(
-            px2deg = pxdeg,
-            sampling_rate = 1000.0)
+            px2deg=pxdeg,
+            sampling_rate=1000.0)
         p = clf.preproc(data)
-        # lets go with 10 seconds to actually see details. This particular time window is within the
-        # originally plotted 50s and contains missing data for both data types (lab & mri)
+        # lets go with 10 seconds to actually see details. This particular time
+        # window is within the originally plotted 50s and contains missing data
+        # for both data types (lab & mri)
         events = clf(p[30000:40000])
 
-        ut.show_gaze(pp=p[30000:40000], events=events)
-        pl.savefig('img/remodnav_{}.svg'.format(ext))
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 2),
+            dpi=120,
+            frameon=False)
+        ut.show_gaze(
+            #data[30000:40000],
+            pp=p[30000:40000],
+            events=events,
+            sampling_rate=1000.0,
+            show_vels=True)
+        pl.savefig(
+            op.join('img', 'remodnav_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
         pl.close()
 
-#confusion('MN', 'RA')
-#pl.show()
-#confusion('MN', 'ALGO')
-#pl.show()
-#confusion('RA', 'ALGO')
-#pl.show()
-#print_duration_stats()
 
 if __name__ == '__main__':
 
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--figure', help='if given, figures will be produced.',
-                        action='store_true', default=False)
-    parser.add_argument('-s', '--stats', help='if given, stats will be produced to stdout',
-                        action='store_true', default=False)
-    parser.add_argument('-r', '--remodnav', help='if given, remodnav classification figures are produced.',
-                        action='store_true', default=False)
+    parser.add_argument(
+        '-f', '--figure', help='if given, figures will be produced.',
+        action='store_true', default=False)
+    parser.add_argument(
+        '-s', '--stats', help='if given, stats will be produced to stdout',
+        action='store_true', default=False)
+    parser.add_argument(
+        '-r', '--remodnav',
+        help='if given, remodnav classification figures are produced.',
+        action='store_true', default=False)
 
     args = parser.parse_args()
     # generate & save figures; export the misclassification stats

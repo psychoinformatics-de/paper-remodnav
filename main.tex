@@ -709,10 +709,12 @@
 
 
     \begin{figure*}[h!]
-        \includegraphics[width=1\textwidth]{img/remodnav.eps}
+        % TODO make final figure and switch
+        %\includegraphics[width=1\textwidth]{img/remodnav.eps}
+        \includegraphics[trim=0 12mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
+        \includegraphics[trim=0 0 0 3.5mm,clip,width=1\textwidth]{img/remodnav_mri.pdf}\\
         \caption{\todo[inline]{discuss (if we go with a figure like this: Which subjects? Which run? (maybe the same run?).
-        How ``zoomed in" (Anderson depicted about 10 samples in their fig. 1). To do this properly, we should plot the data
-        we settled on as svg, and also include a velocity curve (as at one point during testing)}Exemplary classification
+        How ``zoomed in" (Anderson depicted about 10 samples in their fig. 1).}Exemplary classification
         performance of \remodnav in a high quality lab sample (top panel) and low quality MRI sample (bottom panel).
         Black lines depict x and y coordinates of eye gaze. Colors indicate labeled eye event. Beige: Fixation,
         light green: Saccade, brown: Smooth pursuit, dark blue: High velocity PSOs, light blue: Low velocity PSOs.
