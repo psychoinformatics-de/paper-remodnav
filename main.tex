@@ -103,39 +103,39 @@ second address
 
 \begin{abstract}
 
-    %Abstracts should be up to 300 words and provide a succinct summary of the article. Although the abstract should explain why the article might be interesting, care should be taken not to inappropriately over-emphasize the importance of the work described in the article. Citations should not be used in the abstract, and the use of abbreviations should be minimized. If you are writing a Research or Systematic Review article, please structure your abstract into Background, Methods, Results, and Conclusions.
-    Tracking of eye movements during cognitive tasks is an established metric for many types of experimental paradigms.
-    In such experiments, the usage of more complex and lengthier visual stimuli has made algorithmic approaches to detect
-    eye movement events such as saccades and fixations the most pragmatic option. A recent analysis has revealed that
-    current algorithms for detecting eye movements are lackluster when it comes to processing eye tracking data from
-    subjects viewing dynamic stimuli such as video sequences. Based on an existing velocity-based algorithm proposed
-    by \cite{Nystrom2010AnData}, we aimed to design an improved event detector with comparable performance for static
-    stimulation, but that is also specially tuned to detect events in data from dynamic stimuli. We compared the
-    results from our algorithm to a publicly shared, manually annotated data set and results from ten established
-    event detection algorithms to examine its performance in contrast to experienced human coders and current
-    software standards. To investigate the robustness of the algorithm, we applied it to high and low quality eye
-    gaze recordings obtained from the same dynamic stimulation with a full length Hollywood movie. For the
-    high-quality dataset, we determined whether obtained events displayed biologically plausible characteristics.
-    Subsequently, for the low-quality dataset, we investigated whether the properties of detected events are
-    comparable to those from the high-quality dataset. For static stimuli, our algorithm performed comparable to or
-    better than other software solutions, but its performance particularly stood out for data from dynamic stimuli.
-    The comparison between datasets with different data qualities provided evidence that the algorithm classifies
-    gaze data from dynamic stimuli robustly, even under high noise conditions. To establish broad distribution and
-    applicability of the software, we provided transparent, configurable parameters that can be adjusted to the
-    paradigm and equipment used in different eye tracking experiments, and bundled it into an open-source and well
-    documented python module.
+%Abstracts should be up to 300 words and provide a succinct summary of the article. Although the abstract should explain why the article might be interesting, care should be taken not to inappropriately over-emphasize the importance of the work described in the article. Citations should not be used in the abstract, and the use of abbreviations should be minimized. If you are writing a Research or Systematic Review article, please structure your abstract into Background, Methods, Results, and Conclusions.
+Tracking of eye movements during cognitive tasks is an established metric for many types of experimental paradigms.
+In such experiments, the usage of more complex and lengthier visual stimuli has made algorithmic approaches to detect
+eye movement events such as saccades and fixations the most pragmatic option. A recent analysis has revealed that
+current algorithms for detecting eye movements are lackluster when it comes to processing eye tracking data from
+subjects viewing dynamic stimuli such as video sequences. Based on an existing velocity-based algorithm proposed
+by \cite{Nystrom2010AnData}, we aimed to design an improved event detector with comparable performance for static
+stimulation, but that is also specially tuned to detect events in data from dynamic stimuli. We compared the
+results from our algorithm to a publicly shared, manually annotated data set and results from ten established
+event detection algorithms to examine its performance in contrast to experienced human coders and current
+software standards. To investigate the robustness of the algorithm, we applied it to high and low quality eye
+gaze recordings obtained from the same dynamic stimulation with a full length Hollywood movie. For the
+high-quality dataset, we determined whether obtained events displayed biologically plausible characteristics.
+Subsequently, for the low-quality dataset, we investigated whether the properties of detected events are
+comparable to those from the high-quality dataset. For static stimuli, our algorithm performed comparable to or
+better than other software solutions, but its performance particularly stood out for data from dynamic stimuli.
+The comparison between datasets with different data qualities provided evidence that the algorithm classifies
+gaze data from dynamic stimuli robustly, even under high noise conditions. To establish broad distribution and
+applicability of the software, we provided transparent, configurable parameters that can be adjusted to the
+paradigm and equipment used in different eye tracking experiments, and bundled it into an open-source and well
+documented python module.
 
 
 
-    \keywords{%
-    eye tracking \and
-    adaptive detection algorithm \and
-    saccade detection algorithm \and
-    statistical saccade analysis \and
-    glissade detection \and
-    adaptive threshold algorithm \and
-    data preprocessing
-    }
+\keywords{%
+eye tracking \and
+adaptive detection algorithm \and
+saccade detection algorithm \and
+statistical saccade analysis \and
+glissade detection \and
+adaptive threshold algorithm \and
+data preprocessing
+}
 \end{abstract}
 
 %\todo[inline]{The scope of the article is a "Data Note" that describes new "derived" data generated from the raw eyetracking data released by the studyforrest project. I propose to produce two types of artifacts: 1. filtered/preprocessed eyetracking data, and 2. a list with detected saccades for each recording.}
@@ -659,26 +659,26 @@ type smooth pursuit, detection is very consistent to human labels especially in 
 
 %\end{figure*}
 
- Additionally, we determined counts, mean and standard deviation of the extracted eye movements, and computed the root
- mean squared deviations (RMSD) for \remodnav against the human coders per stimulus category. The RMSD is proposed by
- \cite{Andersson2017} as a single similarity measure of event parameters to rank algorithms according to their
- similarity to human coders. The RMSD measure has a lower bound of 0 and higher values denote higher deviations,
- but for a thorough explanation of the measure and the procedures necessary for its computation, please refer to the
- original publication by \cite{Andersson2017}. By computing the RMSD of \remodnav on the same data, we are able to
- compare the similarity of \remodnav to human labeling with those reported in \cite{Andersson2017}, and thus rank
- \remodnav within the original set of algorithms. \todo[inline]{\textit{Table (or a graphic?) showing duration mean,
- SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
- The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the ``LNS" algorithm by
- \cite{Larsson2013}, achieved RMSDs between 0.2 and 0.3 for saccades, and RMDS between 1.0 and 1.2 for PSOs. Different
- algorithms performed ``best" for fixation detection given the category. The NH algorithm achieved RMSD = 0.4 for
- images and RMSD = 0.8 for videos, but RMSD = 2.1 for dots. TODO: now how do we do?
- \todo[inline]{compute RMSD for algo comparison}\todo[inline]{how do we compare against the ``best" LNS algorithm in
- Andersson2017?}
+Additionally, we determined counts, mean and standard deviation of the extracted eye movements, and computed the root
+mean squared deviations (RMSD) for \remodnav against the human coders per stimulus category. The RMSD is proposed by
+\cite{Andersson2017} as a single similarity measure of event parameters to rank algorithms according to their
+similarity to human coders. The RMSD measure has a lower bound of 0 and higher values denote higher deviations,
+but for a thorough explanation of the measure and the procedures necessary for its computation, please refer to the
+original publication by \cite{Andersson2017}. By computing the RMSD of \remodnav on the same data, we are able to
+compare the similarity of \remodnav to human labeling with those reported in \cite{Andersson2017}, and thus rank
+\remodnav within the original set of algorithms. \todo[inline]{\textit{Table (or a graphic?) showing duration mean,
+SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
+The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the ``LNS" algorithm by
+\cite{Larsson2013}, achieved RMSDs between 0.2 and 0.3 for saccades, and RMDS between 1.0 and 1.2 for PSOs. Different
+algorithms performed ``best" for fixation detection given the category. The NH algorithm achieved RMSD = 0.4 for
+images and RMSD = 0.8 for videos, but RMSD = 2.1 for dots. TODO: now how do we do?
+\todo[inline]{compute RMSD for algo comparison}\todo[inline]{how do we compare against the ``best" LNS algorithm in
+Andersson2017?}
 
- IF we go for Cohens Kappa: The ``best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the
- ``LNS" algorithm by \cite{Larsson2013}, achieved Cohens Kappas between .75 and .81 for saccades, and between .59 and
- .64 for PSOs. The ``best" algorithms with regard fixations had Kappas between .5 and .7 for the image category, but
- at maximum .13 for any of the dynamic categories. TODO: now how do we do? \\
+IF we go for Cohens Kappa: The ``best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}, the
+``LNS" algorithm by \cite{Larsson2013}, achieved Cohens Kappas between .75 and .81 for saccades, and between .59 and
+.64 for PSOs. The ``best" algorithms with regard fixations had Kappas between .5 and .7 for the image category, but
+at maximum .13 for any of the dynamic categories. TODO: now how do we do? \\
 
 The combined results of the analyses on the dataset used by \citet{Andersson2017} demonstrate that \remodnav yields
 the highest congruency to manual human annotation during dynamic stimulation compared to ten contemporary
@@ -955,14 +955,14 @@ study the classification performance as shown in figure \ref{fig:remodnav}. The 
 plot automatically for every detection task, enabling researchers to detect implausible results early on.\\
 
 
- \todo[inline]{There are a number of (some very recent) ML approaches (Startsev,2018; Komogortsev,2010) that perform
- well. We should acknowledge that but also find arguments to justify our approach. One advantage of \remodnav is how
- accessible and readily usable it is. To underline this, I propose we update the README.md on Github similarly to
- https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a use case/tutorial: what is the input/how
- should it look like, what is the command line call, how does the output look like. I think it is a great advantage of
- \remodnav that we work with more "typical" file formats. Also, \remodnav does not need training, and hence no
- extensive labeled data as training sets (that could be tedious to create, or not fitting to exact use case if taken
- from e.g. open datasets)}
+\todo[inline]{There are a number of (some very recent) ML approaches (Startsev,2018; Komogortsev,2010) that perform
+well. We should acknowledge that but also find arguments to justify our approach. One advantage of \remodnav is how
+accessible and readily usable it is. To underline this, I propose we update the README.md on Github similarly to
+https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a use case/tutorial: what is the input/how
+should it look like, what is the command line call, how does the output look like. I think it is a great advantage of
+\remodnav that we work with more "typical" file formats. Also, \remodnav does not need training, and hence no
+extensive labeled data as training sets (that could be tedious to create, or not fitting to exact use case if taken
+from e.g. open datasets)}
 
 
 %\section*{Notes} % Optional - only if NO new datasets are included
@@ -1005,11 +1005,11 @@ should be submitted via Github. Questions with regard to REMoDNaV can be submitt
 
  \todo[inline]{Apart from the TODOs in the document, Adina also adds these general ones below}
  \begin{itemize}
-     \item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
-     \item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
-     \item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
-     \item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
-     \item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
+ \item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
+ \item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
+ \item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
+ \item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
+ \item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
  \end{itemize}
 
 
@@ -1054,14 +1054,14 @@ Adina Wagner was supported by the German Academic Foundation.
 decision to publish, or preparation of the manuscript.}
 %\todo[inline]{the journals template.tex says to use bibitem to create references. we should do that once finished here}
 \begin{acknowledgements}
-    %This section should acknowledge anyone who contributed to the research or the
-    %article but who does not qualify as an author based on the criteria provided earlier
-    %(e.g. someone or an organisation that provided writing assistance). Please state how
-    %they contributed; authors should obtain permission to acknowledge from all those
-    %mentioned in the Acknowledgements section.
-    %Please do not list grant funding in this section.
-    We are grateful to \cite{Andersson2017} for releasing the labeled
-    eye tracking dataset used for validation under an open-source license.
+%This section should acknowledge anyone who contributed to the research or the
+%article but who does not qualify as an author based on the criteria provided earlier
+%(e.g. someone or an organisation that provided writing assistance). Please state how
+%they contributed; authors should obtain permission to acknowledge from all those
+%mentioned in the Acknowledgements section.
+%Please do not list grant funding in this section.
+We are grateful to \cite{Andersson2017} for releasing the labeled
+eye tracking dataset used for validation under an open-source license.
 \end{acknowledgements}
 
 \bibliographystyle{spbasic}      % basic style, author-year citations
