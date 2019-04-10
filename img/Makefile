@@ -2,7 +2,7 @@ all: pics
 
 # Optionally some PICS could be ignored. By default XXX ones.
 # PICS_IGNORE must contain a rule for grep
-PICS_IGNORE ?= "remodnav_algorithm"
+PICS_IGNORE ?= " XXX "
 
 # For every .svg we must have a pdf
 PICS=$(shell find . -iname \*svg \
