@@ -7,7 +7,8 @@ PICS_IGNORE ?= "remodnav_algorithm"
 # For every .svg we must have a pdf
 PICS=$(shell find . -iname \*svg \
 	| sed -e 's/svg/pdf/g' -e 's/\([^\]\)\([ \t:]\)/\1\\\\\2/g' \
-	| grep -v -e $(PICS_IGNORE) )
+	| grep -v -e $(PICS_IGNORE) ) \
+	remodnav_algorithm-v4.pdf
 
 pics: $(PICS)
 	echo $(PICS)
