@@ -6,6 +6,7 @@ import numpy as np
 import pylab as pl
 import seaborn as sns
 from remodnav import EyegazeClassifier
+from glob import glob
 #from remodnav.tests.test_labeled import load_data as load_anderson
 
 
@@ -400,6 +401,119 @@ def savegaze():
             show_vels=True)
         pl.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
+        pl.close()
+
+
+def mainseq(s_mri = 'sub-19',
+            s_lab = 'sub-29'):
+    """
+    plot main sequences from movie data for lab and mri subjects.
+    """
+    import pandas as pd
+    from matplotlib.lines import Line2D
+
+    mris = ['01', '02', '03', '04', '05', '06', '09', '10', '14', '15', '16', '17', '18', '19', '20']
+    labs = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36']
+
+    datapath = op.join('data',
+                       'studyforrest-data-eyemovementlabels',
+                       'sub*',
+                       '*.tsv')
+    data = sorted(glob(datapath))
+
+    # create dataframes for mri and lab subjects to plot in seperate plots
+    mri_dfs = []
+    lab_dfs = []
+
+    for f in data[:120]:
+        assert [mri in f for mri in mris]
+        mri_dfs.append(pd.read_csv(f, header=0, delim_whitespace=True))
+    mri_df = pd.concat(mri_dfs)
+
+    for f in data[120:]:
+        assert [lab in f for lab in labs]
+        lab_dfs.append(pd.read_csv(f, header=0, delim_whitespace=True))
+    lab_df = pd.concat(lab_dfs)
+
+    # also create a dataframe for an individual subjects run
+    sub_mri = op.join('data',
+                      'studyforrest-data-eyemovementlabels',
+                      s_mri,
+                      '{}_task-movie_run-5_events.tsv'.format(s_mri))
+    sub_mri_df = pd.read_csv(sub_mri, header=0, delim_whitespace=True)
+
+    sub_lab = op.join('data',
+                      'studyforrest-data-eyemovementlabels',
+                      s_lab,
+                      '{}_task-movie_run-5_events.tsv'.format(s_lab))
+    sub_lab_df = pd.read_csv(sub_lab, header=0, delim_whitespace=True)
+
+    for (df, ext) in [(mri_df, 'mri'),
+                      (lab_df, 'lab'),
+                      (sub_mri_df, 'sub_mri'),
+                      (sub_lab_df, 'sub_lab')]:
+
+        # extract relevant event types
+        SACCs = df[df.label == 'SACC']
+        ISACs = df[df.label == 'ISAC']
+        HPSOs = df[(df.label == 'HPSO') | (df.label == 'IHPS')]
+        LPSOs = df[(df.label == 'LPSO') | (df.label == 'ILPS')]
+
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 5),
+            dpi=120,
+            frameon=False)
+
+        for ev, sym, color in (
+                (ISACs, '.', 'darkred'),
+                (SACCs, '.', 'red'),
+                (HPSOs, '+', 'dodgerblue'),
+                (LPSOs, '+', 'darkblue'))[::-1]:
+            pl.loglog(
+                ev['amp'],
+                ev['peak_vel'],
+                sym,
+                alpha=0.20,
+                color=color,
+                lw = 1
+            )
+
+        # cheat: custom legend to not propagate alpha into legend markers
+        custom_legend = [Line2D([0], [0],
+                                marker='.',
+                                color='w',
+                                markerfacecolor='darkred',
+                                label='Saccade (ISAC)',
+                                markersize=10),
+                         Line2D([0], [0],
+                                marker='.',
+                                color='w',
+                                markerfacecolor='red',
+                                label='Major saccade (SACC)',
+                                markersize=10),
+                         Line2D([0], [0],
+                                marker='P',
+                                color='w',
+                                markerfacecolor='dodgerblue',
+                                label='High velocity PSOs',
+                                markersize=10),
+                         Line2D([0], [0],
+                                marker='P',
+                                color='w',
+                                markerfacecolor='darkblue',
+                                label='Low velocity PSOs',
+                                markersize=10)]
+
+        pl.ylim((10.0, 1000))
+        pl.xlim((0.01, 40.0))
+        pl.legend(handles=custom_legend, loc=4)
+        pl.ylabel('peak velocities (deg/s)')
+        pl.xlabel('amplitude (deg)')
+        pl.savefig(
+            op.join('img', 'mainseq_{}.svg'.format(ext)),
             transparent=True,
             bbox_inches="tight")
         pl.close()
