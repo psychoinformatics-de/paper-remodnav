@@ -534,10 +534,25 @@ if __name__ == '__main__':
         '-r', '--remodnav',
         help='if given, remodnav classification figures are produced.',
         action='store_true', default=False)
+    parser.add_argument(
+        '-m', '--mainseq',
+        help='if given, mainsequence plots are produced.',
+        action='store_true', default=False)
+    parser.add_argument(
+        '--sublab',
+        help='individual lab-subject for single main sequence',
+        default='sub-29')
+    parser.add_argument(
+        '--submri',
+        help='individual mri-subject for single main sequence',
+        default='sub-19')
+
 
     args = parser.parse_args()
     # generate & save figures; export the misclassification stats
     if args.figure or args.stats:
         savefigs(args.figure, args.stats)
+    if args.mainseq:
+        mainseq(args.submri, args.sublab)
     if args.remodnav:
         savegaze()
