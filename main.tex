@@ -1115,58 +1115,79 @@ performance seems to be robust even under high noise conditions.
 %\section*{Discussion}
 %
 %\subsection*{Comparison to human coders and current algorithms}
-%
-%
+
+
 %\subsubsection*{Comparison of outputs from different levels of noise}
+
+
 \section*{Conclusion}\label{con}
+
 Based on the adaptive, velocity-based algorithm for fixation, saccade, and
 glissade detection by \cite{Nystrom2010AnData}, we have developed a novel,
-robust algorithm for the classification of various eye movements in eye tracking
-data from dynamic stimulation.
-The combined results from all analyses are encouraging. Based on data from dynamic and static stimulation from the
-Andersson dataset, \remodnav performs well and even outperforms contemporary algorithms, and this is especially true
-for dynamic stimulation. Therefore, we are confident
-that \remodnav is currently a good choice for event detection from eye gaze data obtained during dynamic stimulation.
-Furthermore, the algorithm yields similar, and thus robust, results for high and low quality data. We specifically
-developed \remodnav to yield robust results with dynamic stimulation, in particular noisy data such as the eye
-tracking data recorded simultaneously to fMRI acquisition. These results confirm that \remodnav is well able to detect
-eye movements from dynamic stimulation, even when the quality of data is low. Therefore, the algorithm is a promising
-tool for research paradigms with dynamic stimuli where lower data quality is an inherent property of the acquisition
-procedure, such as simultaneous fMRI and eye gaze recordings, or usage of remote eye trackers.
-Furthermore, the algorithm proved to be well applicable to other types of stimulation. Its classification
-performance on static images was good. This demonstrates that our changes to the original NH algorithm did not
-interfere with its performance on its strong points. Lastly, \remodnav is a user-friendly tool with options for
-to customize it to individual use cases. It is OS independent, uses only freely available software, is easy
-installable, provides simple command-line execution, and is ready-to-use without manual labeling or other forms
-of training data being required. As such, REMoDNaV is a versatile tool that provides researchers with a robust
-method to classify eye movements obtained from different types of stimulation.
+robust algorithm for the classification of various eye movements in eye
+tracking data from dynamic stimulation.  The combined results from all analyses
+are encouraging. Based on data from dynamic and static stimulation from the
+Andersson dataset, \remodnav performs well and even outperforms contemporary
+algorithms, and this is especially true for dynamic stimulation. Therefore, we
+are confident that \remodnav is currently a good choice for event detection
+from eye gaze data obtained during dynamic stimulation.  Furthermore, the
+algorithm yields similar, and thus robust, results for high and low quality
+data. We specifically developed \remodnav to yield robust results with dynamic
+stimulation, in particular noisy data such as the eye tracking data recorded
+simultaneously to fMRI acquisition. These results confirm that \remodnav is
+well able to detect eye movements from dynamic stimulation, even when the
+quality of data is low. Therefore, the algorithm is a promising tool for
+research paradigms with dynamic stimuli where lower data quality is an inherent
+property of the acquisition procedure, such as simultaneous fMRI and eye gaze
+recordings, or usage of remote eye trackers.  Furthermore, the algorithm proved
+to be well applicable to other types of stimulation. Its classification
+performance on static images was good. This demonstrates that our changes to
+the original NH algorithm did not interfere with its performance on its strong
+points. Lastly, \remodnav is a user-friendly tool with options for to customize
+it to individual use cases. It is OS independent, uses only freely available
+software, is easy installable, provides simple command-line execution, and is
+ready-to-use without manual labeling or other forms of training data being
+required. As such, REMoDNaV is a versatile tool that provides researchers with
+a robust method to classify eye movements obtained from different types of
+stimulation.
 
-Just as \cite{Andersson2017}, we considered human annotations to be a gold standard in event detection when we
-compared different algorithms performances. The implications of the obtained results from this comparison are hence
-only valid if this assumption is warranted. Some authors voice concern about human annotation, e.g. \cite{5523936},
-as for the potential of biases that limit generalizability. However, \cite{Hooge2018} concluded that - despite
-obvious variability between human annotations - manual labeling is certainly important at least in algorithm
-validation as we undertook it in our study. Continuing in the same vein, the \remodnav algorithm is - as all event
-detection algorithms - far from perfect. Despite superior performance during dynamic stimulation compared to other
-algorithms, the results do not mirror human annotations exactly. Therefore, as with any other algorithm, we recommend
-that every user should at least eye-ball their results for plausibility. One straightforward way to do this is to
-study the classification performance as shown in figure \ref{fig:remodnav}. The \remodnav module will provide such a
-plot automatically for every detection task, enabling researchers to detect implausible results early on
+Just as \cite{Andersson2017}, we considered human annotations to be a gold
+standard in event detection when we compared different algorithms performances.
+The implications of the obtained results from this comparison are hence only
+valid if this assumption is warranted. Some authors voice concern about human
+annotation, e.g. \cite{5523936}, as for the potential of biases that limit
+generalizability. However, \cite{Hooge2018} concluded that - despite obvious
+variability between human annotations - manual labeling is certainly important
+at least in algorithm validation as we undertook it in our study. Continuing in
+the same vein, the \remodnav algorithm is - as all event detection algorithms -
+far from perfect. Despite superior performance during dynamic stimulation
+compared to other algorithms, the results do not mirror human annotations
+exactly. Therefore, as with any other algorithm, we recommend that every user
+should at least eye-ball their results for plausibility. One straightforward
+way to do this is to study the classification performance as shown in figure
+\ref{fig:remodnav}. The \remodnav module will provide such a plot automatically
+for every detection task, enabling researchers to detect implausible results
+early on
+
+\todo[inline]{There are a number of (some very recent) ML approaches
+  (Startsev,2018; Komogortsev,2010) that perform well. We should acknowledge
+  that but also find arguments to justify our approach. One advantage of
+  \remodnav is how accessible and readily usable it is. To underline this, I
+  propose we update the README.md on Github similarly to
+  https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a
+  use case/tutorial: what is the input/how should it look like, what is the
+  command line call, how does the output look like. I think it is a great
+  advantage of \remodnav that we work with more "typical" file formats. Also,
+  \remodnav does not need training, and hence no extensive labeled data as
+  training sets (that could be tedious to create, or not fitting to exact use
+  case if taken from e.g. open datasets)}
 
 
+% \section*{Notes} % Optional - only if NO new datasets are included
 
-\todo[inline]{There are a number of (some very recent) ML approaches (Startsev,2018; Komogortsev,2010) that perform
-well. We should acknowledge that but also find arguments to justify our approach. One advantage of \remodnav is how
-accessible and readily usable it is. To underline this, I propose we update the README.md on Github similarly to
-https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a use case/tutorial: what is the input/how
-should it look like, what is the command line call, how does the output look like. I think it is a great advantage of
-\remodnav that we work with more "typical" file formats. Also, \remodnav does not need training, and hence no
-extensive labeled data as training sets (that could be tedious to create, or not fitting to exact use case if taken
-from e.g. open datasets)}
-
-
-%\section*{Notes} % Optional - only if NO new datasets are included
-%This section is required if the paper does not include novel data or analyses.  It allows authors %to briefly summarize the key points from the article.
+% This section is required if the paper does not include novel data or
+% analyses.  It allows authors %to briefly summarize the key points from the
+% article.
 
 %\todo[inline]{from andersson: How does the number of detected events and their
 %  durations vary with the choice of an algorithm? How similar are the events
@@ -1191,30 +1212,46 @@ from e.g. open datasets)}
 
 
 %% we introduce no new data
-%\section*{Data availability} % Optional - only if novel data or analyses are included
-%Please add details of where any datasets that are mentioned in the paper, and that have not have not previously been formally published, can be found.  If previously published datasets are mentioned, these should be cited in the references, as per usual scholarly conventions.
-%\todo[inline]{This will be completed at the end with info on where readers can obtain data and code}
+
+% \section*{Data availability} % Optional - only if novel data or analyses are
+% included
+
+% Please add details of where any datasets that are mentioned in the paper, and
+% that have not have not previously been formally published, can be found.  If
+% previously published datasets are mentioned, these should be cited in the
+% references, as per usual scholarly conventions.
+
+% \todo[inline]{This will be completed at the end with info on where readers
+% can obtain data and code}
+
 
 \section*{Software availability}
-The latest version of \remodnav can be installed from PyPi via \texttt{pip install remodnav}. It is recommended to
-use a dedicated virtualenv. The source code of the software can be found on Github \\
-(https://github.com/psychoinformatics-de/remodnav). All bugs, concerns and enhancement requests for this software
-should be submitted via Github. Questions with regard to REMoDNaV can be submitted to NeuroStars.org with a
-\texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow but dedicated to neuroinformatics.
-\remodnav is released under MIT license.
 
- \todo[inline]{Apart from the TODOs in the document, Adina also adds these general ones below}
- \begin{itemize}
- \item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
- \item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
- \item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
- \item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
- \item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
- \end{itemize}
+The latest version of \remodnav can be installed from PyPi via \texttt{pip
+install remodnav}. It is recommended to use a dedicated virtualenv. The source
+code of the software can be found on Github \\
+(https://github.com/psychoinformatics-de/remodnav). All bugs, concerns and
+enhancement requests for this software should be submitted via Github.
+Questions with regard to REMoDNaV can be submitted to NeuroStars.org with a
+\texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow
+but dedicated to neuroinformatics.  \remodnav is released under MIT license.
+
+\todo[inline]{Apart from the TODOs in the document, Adina also adds these
+general ones below}
+
+\begin{itemize}
+\item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
+\item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
+\item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
+\item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
+\item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
+\end{itemize}
 
 
+% This section will be generated by the Editorial Office before publication.
+% Authors are asked to provide some initial information to assist the Editorial
+% Office, as detailed below.
 
-%This section will be generated by the Editorial Office before publication. Authors are asked to provide some initial information to assist the Editorial Office, as detailed below.
 %\begin{enumerate}
 %\item URL link to where the software can be downloaded from or used by a non-coder (AUTHOR TO PROVIDE; optional)
 %\item URL link to the author's version control system repository containing the source code (AUTHOR TO PROVIDE; required)
@@ -1225,26 +1262,32 @@ should be submitted via Github. Questions with regard to REMoDNaV can be submitt
 
 
 \subsection*{Author contributions}
-%In order to give appropriate credit to each author of an article, the individual
-%contributions of each author to the manuscript should be detailed in this section. We
-%recommend using author initials and then stating briefly how they contributed.
+
+% In order to give appropriate credit to each author of an article, the individual
+% contributions of each author to the manuscript should be detailed in this section. We
+% recommend using author initials and then stating briefly how they contributed.
+
 AD, US, MH conceived and implemented the algorithm.
 AD, AW, US, ID, MH validated algorithm performance.
 AD, AW, US, ID, MH contributed to the manuscript.
 
 \subsection*{Competing interests}
-%All financial, personal, or professional competing interests for any of the authors that
-%could be construed to unduly influence the content of the article must be disclosed and
-%will be displayed alongside the article.
+
+% All financial, personal, or professional competing interests for any of the authors that
+% could be construed to unduly influence the content of the article must be disclosed and
+% will be displayed alongside the article.
+
 No competing interests were disclosed.
 
 \subsection*{Grant information}
-%Please state who funded the work discussed in this article, whether it is your employer,
-%a grant funder etc. Please do not list funding that you have that is not relevant to this
-%specific piece of research. For each funder, please state the funder’s name, the grant
-%number where applicable, and the individual to whom the grant was assigned.
-%If your work was not funded by any grants, please include the line: ‘The author(s)
-%declared that no grants were involved in supporting this work.’
+
+% Please state who funded the work discussed in this article, whether it is your employer,
+% a grant funder etc. Please do not list funding that you have that is not relevant to this
+% specific piece of research. For each funder, please state the funder’s name, the grant
+% number where applicable, and the individual to whom the grant was assigned.
+% If your work was not funded by any grants, please include the line: ‘The author(s)
+% declared that no grants were involved in supporting this work.’
+
 Michael Hanke was supported by funds from the German federal state of
 Saxony-Anhalt and the European Regional Development Fund (ERDF),
 Project: Center for Behavioral Brain Sciences (CBBS).
@@ -1252,16 +1295,22 @@ Adina Wagner was supported by the German Academic Foundation.
 
 \textit{The funders had no role in study design, data collection and analysis,
 decision to publish, or preparation of the manuscript.}
-%\todo[inline]{the journals template.tex says to use bibitem to create references. we should do that once finished here}
+
+% \todo[inline]{the journals template.tex says to use bibitem to create
+% references. we should do that once finished here}
+
 \begin{acknowledgements}
-%This section should acknowledge anyone who contributed to the research or the
-%article but who does not qualify as an author based on the criteria provided earlier
-%(e.g. someone or an organisation that provided writing assistance). Please state how
-%they contributed; authors should obtain permission to acknowledge from all those
-%mentioned in the Acknowledgements section.
-%Please do not list grant funding in this section.
-We are grateful to \cite{Andersson2017} for releasing the labeled
-eye tracking dataset used for validation under an open-source license.
+
+% This section should acknowledge anyone who contributed to the research or the
+% article but who does not qualify as an author based on the criteria provided earlier
+% (e.g. someone or an organisation that provided writing assistance). Please state how
+% they contributed; authors should obtain permission to acknowledge from all those
+% mentioned in the Acknowledgements section.
+% Please do not list grant funding in this section.
+
+We are grateful to \cite{Andersson2017} for releasing the labeled eye tracking
+dataset used for validation under an open-source license.
+
 \end{acknowledgements}
 
 \bibliographystyle{spbasic}      % basic style, author-year citations
@@ -1272,7 +1321,13 @@ eye tracking dataset used for validation under an open-source license.
 % (i.e. not Harvard referencing style), and should be consistent between references within
 % a given article.
 
-% Reference management systems such as Zotero provide options for exporting bibliographies as Bib\TeX{} files. Bib\TeX{} is a bibliographic tool that is used with \LaTeX{} to help organize the user's references and create a bibliography. This template contains an example of such a file, \texttt{sample.bib}, which can be replaced with your own. Use the \verb|\cite| command  to create in-text citations, like this \cite{Smith:2012qr} and this \cite{Smith:2013jd}.
+% Reference management systems such as Zotero provide options for exporting
+% bibliographies as Bib\TeX{} files. Bib\TeX{} is a bibliographic tool that is
+% used with \LaTeX{} to help organize the user's references and create a
+% bibliography. This template contains an example of such a file,
+% \texttt{sample.bib}, which can be replaced with your own. Use the
+% \verb|\cite| command  to create in-text citations, like this
+% \cite{Smith:2012qr} and this \cite{Smith:2013jd}.
 
 
 % See this guide for more information on BibTeX:
