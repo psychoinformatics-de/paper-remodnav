@@ -414,8 +414,10 @@ def mainseq(s_mri = 'sub-19',
     import pandas as pd
     from matplotlib.lines import Line2D
 
-    mris = ['01', '02', '03', '04', '05', '06', '09', '10', '14', '15', '16', '17', '18', '19', '20']
-    labs = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36']
+    mri_ids = ['01', '02', '03', '04', '05', '06', '09', '10', '14', '15',
+              '16', '17', '18', '19', '20']
+    lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
+               '32', '33', '34', '35', '36']
 
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
@@ -425,37 +427,25 @@ def mainseq(s_mri = 'sub-19',
     from datalad.api import get
     get(dataset='.', path=data)
 
-    # create dataframes for mri and lab subjects to plot in seperate plots
-    mri_dfs = []
-    lab_dfs = []
+    # create dataframes for mri and lab subjects to plot in separate plots
+    for (ids, select_sub, ext) in [
+            (mri_ids, s_mri, 'mri'),
+            (lab_ids, s_lab, 'lab')]:
 
-    for f in data[:120]:
-        assert [mri in f for mri in mris]
-        mri_dfs.append(pd.read_csv(f, header=0, delim_whitespace=True))
-    mri_df = pd.concat(mri_dfs)
+        # load data from any file matching any of the subject IDs
+        dfs = [
+            pd.read_csv(f, header=0, delim_whitespace=True)
+            for f in data
+            if any('sub-{}'.format(i) in f for i in ids)
+        ]
+        df = pd.concat(dfs)
 
-    for f in data[120:]:
-        assert [lab in f for lab in labs]
-        lab_dfs.append(pd.read_csv(f, header=0, delim_whitespace=True))
-    lab_df = pd.concat(lab_dfs)
-
-    # also create a dataframe for an individual subjects run
-    sub_mri = op.join('data',
+        # also create a dataframe for an individual subjects run
+        sub = op.join('data',
                       'studyforrest-data-eyemovementlabels',
-                      s_mri,
-                      '{}_task-movie_run-5_events.tsv'.format(s_mri))
-    sub_mri_df = pd.read_csv(sub_mri, header=0, delim_whitespace=True)
-
-    sub_lab = op.join('data',
-                      'studyforrest-data-eyemovementlabels',
-                      s_lab,
-                      '{}_task-movie_run-5_events.tsv'.format(s_lab))
-    sub_lab_df = pd.read_csv(sub_lab, header=0, delim_whitespace=True)
-
-    for (df, ext) in [(mri_df, 'mri'),
-                      (lab_df, 'lab'),
-                      (sub_mri_df, 'sub_mri'),
-                      (sub_lab_df, 'sub_lab')]:
+                      select_sub,
+                      '{}_task-movie_run-5_events.tsv'.format(select_sub))
+        sub_df = pd.read_csv(sub, header=0, delim_whitespace=True)
 
         # extract relevant event types
         SACCs = df[df.label == 'SACC']
