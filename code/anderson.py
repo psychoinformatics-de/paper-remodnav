@@ -444,71 +444,78 @@ def mainseq(s_mri = 'sub-19',
         sub = op.join('data',
                       'studyforrest-data-eyemovementlabels',
                       select_sub,
-                      '{}_task-movie_run-5_events.tsv'.format(select_sub))
+                      '{}_task-movie_run-2_events.tsv'.format(select_sub))
         sub_df = pd.read_csv(sub, header=0, delim_whitespace=True)
 
-        # extract relevant event types
-        SACCs = df[df.label == 'SACC']
-        ISACs = df[df.label == 'ISAC']
-        HPSOs = df[(df.label == 'HPSO') | (df.label == 'IHPS')]
-        LPSOs = df[(df.label == 'LPSO') | (df.label == 'ILPS')]
+        for d, label in (
+                (df, ''),
+                (sub_df, '_sub')):
+            # extract relevant event types
+            SACCs = d[d.label == 'SACC']
+            ISACs = d[d.label == 'ISAC']
+            HPSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS')]
+            LPSOs = d[(d.label == 'LPSO') | (d.label == 'ILPS')]
 
-        fig = pl.figure(
-            # fake size to get the font size down in relation
-            figsize=(14, 5),
-            dpi=120,
-            frameon=False)
+            fig = pl.figure(
+                # fake size to get the font size down in relation
+                figsize=(8, 5),
+                dpi=120,
+                frameon=False)
 
-        for ev, sym, color in (
-                (ISACs, '.', 'darkred'),
-                (SACCs, '.', 'red'),
-                (HPSOs, '+', 'dodgerblue'),
-                (LPSOs, '+', 'darkblue'))[::-1]:
-            pl.loglog(
-                ev['amp'],
-                ev['peak_vel'],
-                sym,
-                alpha=0.20,
-                color=color,
-                lw = 1
-            )
+            for ev, sym, color in (
+                    (ISACs, '.', 'darkred'),
+                    (SACCs, '.', 'red'),
+                    (HPSOs, '+', 'dodgerblue'),
+                    (LPSOs, '+', 'darkblue'))[::-1]:
+                pl.loglog(
+                    ev['amp'],
+                    ev['peak_vel'],
+                    sym,
+                    alpha=0.20,
+                    color=color,
+                    lw = 1
+                )
 
-        # cheat: custom legend to not propagate alpha into legend markers
-        custom_legend = [Line2D([0], [0],
-                                marker='.',
-                                color='w',
-                                markerfacecolor='darkred',
-                                label='Saccade (ISAC)',
-                                markersize=10),
-                         Line2D([0], [0],
-                                marker='.',
-                                color='w',
-                                markerfacecolor='red',
-                                label='Major saccade (SACC)',
-                                markersize=10),
-                         Line2D([0], [0],
-                                marker='P',
-                                color='w',
-                                markerfacecolor='dodgerblue',
-                                label='High velocity PSOs',
-                                markersize=10),
-                         Line2D([0], [0],
-                                marker='P',
-                                color='w',
-                                markerfacecolor='darkblue',
-                                label='Low velocity PSOs',
-                                markersize=10)]
+            # cheat: custom legend to not propagate alpha into legend markers
+            custom_legend = [Line2D([0], [0],
+                                    marker='.',
+                                    color='w',
+                                    markerfacecolor='darkred',
+                                    label='Saccade (ISAC)',
+                                    markersize=10),
+                             Line2D([0], [0],
+                                    marker='.',
+                                    color='w',
+                                    markerfacecolor='red',
+                                    label='Major saccade (SACC)',
+                                    markersize=10),
+                             Line2D([0], [0],
+                                    marker='P',
+                                    color='w',
+                                    markerfacecolor='dodgerblue',
+                                    label='High velocity PSOs',
+                                    markersize=10),
+                             Line2D([0], [0],
+                                    marker='P',
+                                    color='w',
+                                    markerfacecolor='darkblue',
+                                    label='Low velocity PSOs',
+                                    markersize=10)]
 
-        pl.ylim((10.0, 1000))
-        pl.xlim((0.01, 40.0))
-        pl.legend(handles=custom_legend, loc=4)
-        pl.ylabel('peak velocities (deg/s)')
-        pl.xlabel('amplitude (deg)')
-        pl.savefig(
-            op.join('img', 'mainseq_{}.svg'.format(ext)),
-            transparent=True,
-            bbox_inches="tight")
-        pl.close()
+            pl.ylim((10.0, 1000))
+            pl.xlim((0.01, 40.0))
+            pl.legend(handles=custom_legend, loc=4)
+            pl.ylabel('peak velocities (deg/s)')
+            pl.xlabel('amplitude (deg)')
+            pl.savefig(
+                op.join(
+                    'img',
+                    'mainseq{}_{}.svg'.format(
+                        label,
+                        ext)),
+                transparent=True,
+                bbox_inches="tight")
+            pl.close()
 
 
 if __name__ == '__main__':
