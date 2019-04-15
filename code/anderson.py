@@ -422,7 +422,11 @@ def mainseq(s_mri = 'sub-19',
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
                        'sub*',
-                       '*.tsv')
+                       # limit to a single run, otherwise the resulting
+                       # figure becomes so complex that it needs >16GB
+                       # RAM to turn into an image for the manuscript,
+                       # while the visible content hardly changes
+                       '*run-2*.tsv')
     data = sorted(glob(datapath))
     from datalad.api import get
     get(dataset='.', path=data)
