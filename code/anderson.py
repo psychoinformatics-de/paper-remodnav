@@ -422,6 +422,8 @@ def mainseq(s_mri = 'sub-19',
                        'sub*',
                        '*.tsv')
     data = sorted(glob(datapath))
+    from datalad.api import get
+    get(dataset='.', path=data)
 
     # create dataframes for mri and lab subjects to plot in seperate plots
     mri_dfs = []
