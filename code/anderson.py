@@ -523,24 +523,34 @@ def mainseq(s_mri = 'sub-19',
 
 
 def RMSD():
-    """trying to figure out how RMSD is computed"""
+    """trying to figure out how RMSD is computed
+
+    Returns
+    -------
+    1d-array
+      RMSD score per "algorithm". The first two values represent the
+      human coders."""
     # just for image category and fixations (tab 3, "Images"):
     # copy reported params (first two from humans)
-    mean = np.array([248, 242, 397, 399, 174, 304, 133, 114, 258, 209])
+    mn = np.array([248, 242, 397, 399, 174, 304, 133, 114, 258, 209])
     sd = np.array([271, 273, 559, 328, 239, 293, 216, 204, 299, 136])
     no = np.array([380, 369, 251, 242, 513, 333, 701, 827, 292, 423])
     per_param = []
     # compute the root mean square difference between algorithm and mean
     # of coders per parameter and algorithm
-    for l in [mean, sd, no]:
-        l_scaled = l/np.max(l)
-        l_alg = np.sqrt((l_scaled[2:] - np.mean(l_scaled[:2]))**2)
+    for l in [mn, sd, no]:
+        l_scaled = l / float(np.max(l))
+        l_alg = np.sqrt((
+            # all scores
+            # minus the average of the humans
+            l_scaled - np.mean(l_scaled[:2])) ** 2
+        )
         per_param.append(l_alg)
     # sum the root mean square differences per algorithm across parameters
     # the result /should/ look like the first RMSD column in tab 3:
     # (i.e. 2.3, 1.4, 0.9, 0.5, 1.6, 2.1, 0.4, 0.8)
-    for i in range(0, 8):
-        print(per_param[0][i] + per_param[1][i] + per_param[2][i])
+    # also give the human rater performance as the first two values
+    return np.array(per_param).sum(axis=0)
 
 
 if __name__ == '__main__':
