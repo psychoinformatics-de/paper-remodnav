@@ -795,6 +795,7 @@ if __name__ == '__main__':
     # generate & save figures; export the misclassification stats
     if args.figure or args.stats:
         savefigs(args.figure, args.stats)
+        print_RMSD()
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:
