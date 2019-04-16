@@ -128,6 +128,94 @@ label_map = {
     'PURS': 'PUR',
 }
 
+
+# we need the distribution parameters of all algorithms and human coders
+# in tables 3, 4, 5, 6 from Andersson et al., 2017. Well worth double-checking,
+# I needed to hand-copy-paste from the paper.
+# The first two entries within each value-list belong to human coders
+
+image_params = {
+    "FIX": {
+        'alg': ['MN', 'RA', 'CDT', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'BIT'],
+        'mn': [248, 242, 397, 399, 174, 304, 133, 114, 258, 209],
+        'sd': [271, 273, 559, 328, 239, 293, 216, 204, 299, 136],
+        'no': [380, 369, 251, 242, 513, 333, 701, 827, 292, 423]
+    },
+    "SAC": {
+        'alg': ['MN', 'RA', 'EM', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'LNS'],
+        'mn': [30, 31, 25, 35, 62, 17, 48, 41, 50, 29],
+        'sd': [17, 15, 22, 15, 37, 10, 26, 22, 20, 12],
+        'no': [376, 372, 787, 258, 353, 335, 368, 373, 344, 390]
+    },
+    "PSO" : {
+        'alg': ['MN', 'RA', 'NH', 'LNS'],
+        'mn': [21, 21, 28, 25],
+        'sd': [11, 9, 13, 9],
+        'no': [312, 309, 237, 319]
+    },
+    "PUR": {
+        'alg': ['MN', 'RA'],
+        'mn': [363, 305],
+        'sd': [187, 184],
+        'no': [3, 16]
+    }
+}
+
+dots_params = {
+    "FIX": {
+        'alg': ['MN', 'RA', 'CDT', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'BIT'],
+        'mn': [161, 131, 60, 323, 217, 268, 214, 203, 380, 189],
+        'sd': [30, 99, 127, 146, 184, 140, 286, 282, 333, 113],
+        'no': [2, 13, 165, 8, 72, 12, 67, 71, 30, 67]
+    },
+    "SAC": {
+        'alg': ['MN', 'RA', 'EM', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'LNS'],
+        'mn': [23, 22, 17, 32, 60, 13, 41, 36, 43, 26],
+        'sd': [10, 11, 14, 14, 26, 5, 17, 14, 16, 11],
+        'no': [47, 47, 93, 10, 29, 18, 27, 28, 42, 53]
+    },
+    "PSO" : {
+        'alg': ['MN', 'RA', 'NH', 'LNS'],
+        'mn': [15, 15, 24, 20],
+        'sd': [5, 8, 12, 9],
+        'no': [33, 28, 17, 31]
+    },
+    "PUR": {
+        'alg': ['MN', 'RA'],
+        'mn': [375, 378],
+        'sd': [256, 364],
+        'no': [37, 33]
+    }
+}
+
+video_params = {
+    "FIX": {
+        'alg': ['MN', 'RA', 'CDT', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'BIT'],
+        'mn': [318, 240, 213, 554, 228, 526, 234, 202, 429, 248],
+        'sd': [289, 189, 297, 454, 296, 825, 319, 306, 336, 215],
+        'no': [67, 67, 211, 48, 169, 71, 194, 227, 83, 170]
+    },
+    "SAC": {
+        'alg': ['MN', 'RA', 'EM', 'IDT', 'IKF', 'IMST', 'IHMM', 'IVT', 'NH', 'LNS'],
+        'mn': [26, 25, 20, 24, 55, 18, 42, 36, 44, 28],
+        'sd': [13, 12, 16, 53, 20, 10, 18, 16, 18, 12],
+        'no': [116, 126, 252, 41, 107, 76, 109, 112, 1104, 122]
+    },
+    "PSO" : {
+        'alg': ['MN', 'RA', 'NH', 'LNS'],
+        'mn': [20, 17, 28, 24],
+        'sd': [11, 8, 13, 10],
+        'no': [97, 89, 78, 87]
+    },
+    "PUR": {
+        'alg': ['MN', 'RA'],
+        'mn': [521, 472],
+        'sd': [347, 319],
+        'no': [50, 68]
+    }
+}
+
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
