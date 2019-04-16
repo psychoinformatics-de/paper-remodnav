@@ -650,6 +650,59 @@ def RMSD(mn,
     return np.array(per_param).sum(axis=0).argsort()
 
 
+def get_remodnav_params(stim_type):
+    """
+    Function to generate distribution parameters for event types.
+    Used for the RMSD computation.
+
+    Parameters
+    ----------
+    stim_type = one str of 'img', 'dots', 'video'
+
+    Returns
+    -------
+      a dictionary with distribution parameters for all events for the given
+      stim_type
+    """
+    # iterate through stim_types
+    events = []
+    # the data files exist twice (one per coder). The raw eye gaze data in corresponding
+    # files should be the same, so I assume its safe to just take one coders files.
+    src = 'MN'
+    for fname in labeled_files[stim_type]:
+        data, target_labels, target_events, px2deg, sr = \
+            load_anderson(stim_type, fname.format(src))
+
+        clf = EyegazeClassifier(
+            px2deg=px2deg,
+            sampling_rate=sr,
+            pursuit_velthresh=5.,
+            noise_factor=3.0,
+            lowpass_cutoff_freq=10.0,
+            min_fixation_duration=0.055,
+        )
+        p = clf.preproc(data)
+        events.extend(clf(p))
+    for ev in events:
+        ev['label'] = label_map[ev['label']]
+
+    from collections import OrderedDict
+    durs = OrderedDict()
+    durs['event']=[]
+    durs['alg']=[]
+    durs['mn']=[]
+    durs['sd']=[]
+    durs['no']=[]
+    # iterate through relabeled event types
+    for ev_type in ['FIX', 'SAC', 'PUR', 'PSO']:
+        durations = get_durations(events, ev_type)
+        durs['event'].append(ev_type)
+        durs['mn'].append(int(np.nanmean(durations) * 1000))
+        durs['sd'].append(int(np.nanstd(durations) * 1000))
+        durs['no'].append(len(durations))
+        durs['alg'].append('RE')
+
+    return durs
 if __name__ == '__main__':
 
     import argparse
