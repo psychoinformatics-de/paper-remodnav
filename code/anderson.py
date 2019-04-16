@@ -703,6 +703,65 @@ def get_remodnav_params(stim_type):
         durs['alg'].append('RE')
 
     return durs
+
+
+
+def print_RMSD():
+    """
+    Function to generate tables 3, 4, 5, partial 6 from Andersson et al., 2017
+    for use in main.tex.
+    """
+    # I don't want to overwrite the original dicts
+    from copy import deepcopy
+    img = deepcopy(image_params)
+    dots = deepcopy(dots_params)
+    video = deepcopy(video_params)
+    event_types = ['FIX', 'SAC', 'PSO', 'PUR']
+
+    for stim in ['img', 'dots', 'video']:
+        # import pdb; pdb.set_trace()
+        durs = get_remodnav_params(stim)
+        dic = [img if stim == 'img' else dots if stim == 'dots' else video]
+        # append the parameters produced by remodnav to the other algorithms'
+        for ev in event_types:
+            for p in ['mn', 'sd', 'no', 'alg']:
+                # unfortunately, dic is a list now...
+                # this does not work! we need to work with indeces again
+                dic[0][ev][p].append(durs[p][durs['event'].index(ev)])
+                # dic[0][ev][p].append(durs[p][durs['event']==ev])
+            # print results as LaTeX commands
+            # this is pretty ugly, but I have a knot in my brain.
+            # we have one stim_file category dict and iterate over keys (events)
+            #for ev in event_types:
+            # and we iterate over keys (params) in the nested dicts
+            for par in ['mn', 'sd', 'no']:
+                # and now we index the values of the distribution parameters in
+                # the nested dicts with the index
+                # a specific algorithm has in the list of values -- which should
+                # be the same. (the [0] bc were still a list..)
+                for alg in dic[0][ev]['alg']:
+                    label_prefix = '{}{}{}{}'.format(ev, stim, par, alg)
+                    # this is barely readable: we take the value of the eventtype,
+                    # and parameter type by indexing the dict with the position of
+                    # the current algorithm
+                    print('\\newcommand{\\%s}{%s}'
+                          %(label_prefix, dic[0][ev][par][dic[0][ev]['alg'].index(alg)]))
+                    # until here its all good
+        # compute RMSDs for every stimulus category
+        for ev in event_types:
+            rmsd = RMSD(dic[0][ev]['mn'],
+                        dic[0][ev]['sd'],
+                        dic[0][ev]['no'])
+            #if stats:
+            # print results as LaTeX commands
+            algo = dic[0][ev]['alg']
+            for i in range(len(rmsd)):
+                label = 'rank{}{}{}'.format(ev, stim, algo[i])
+                print('\\newcommand{\\%s}{%s}'
+                      %(label, rmsd[i]))
+
+
+
 if __name__ == '__main__':
 
     import argparse
