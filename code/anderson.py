@@ -115,6 +115,19 @@ labeled_files = {
 }
 
 
+#make label_map global - we need it twice
+label_map = {
+    'FIXA': 'FIX',
+    'FIX': 'FIX',
+    'SACC': 'SAC',
+    'ISAC': 'SAC',
+    'HPSO': 'PSO',
+    'IHPS': 'PSO',
+    'LPSO': 'PSO',
+    'ILPS': 'PSO',
+    'PURS': 'PUR',
+}
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
@@ -170,17 +183,6 @@ def confusion(refcoder,
               stats):
     conditions = ['FIX', 'SAC', 'PSO', 'PUR']
     #conditions = ['FIX', 'SAC', 'PSO']
-    label_map = {
-        'FIXA': 'FIX',
-        'FIX': 'FIX',
-        'SACC': 'SAC',
-        'ISAC': 'SAC',
-        'HPSO': 'PSO',
-        'IHPS': 'PSO',
-        'LPSO': 'PSO',
-        'ILPS': 'PSO',
-        'PURS': 'PUR',
-    }
     anderson_remap = {
         'FIX': 1,
         'SAC': 2,
