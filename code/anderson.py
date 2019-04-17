@@ -281,7 +281,10 @@ def confusion(refcoder,
     # coders are in axis labels too
     #pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
     #    refcoder, coder))
-    for stimtype in ('img', 'dots', 'video'):
+    for stimtype, stimlabel in (
+            ('img', 'Images'),
+            ('dots', 'Dots'),
+            ('video', 'Videos')):
         conf = np.zeros((len(conditions), len(conditions)), dtype=float)
         jinter = np.zeros((len(conditions), len(conditions)), dtype=float)
         junion = np.zeros((len(conditions), len(conditions)), dtype=float)
@@ -362,7 +365,7 @@ def confusion(refcoder,
             #    stimtype,
             #    (np.sum(conf) / nsamples) * 100,
             #    (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-            pl.title(stimtype)
+            pl.title(stimlabel)
             plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
