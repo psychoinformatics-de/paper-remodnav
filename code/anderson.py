@@ -637,7 +637,6 @@ def RMSD(mn,
     # compute the root mean square difference between algorithm and mean
     # of coders per parameter and algorithm
     for l in [mn, sd, no]:
-        #import pdb; pdb.set_trace()
         l_scaled = l / float(np.max(l))
         l_alg = np.sqrt((
             # all scores
@@ -706,7 +705,6 @@ def get_remodnav_params(stim_type):
     return durs
 
 
-
 def print_RMSD():
     """
     Function to generate tables 3, 4, 5, partial 6 from Andersson et al., 2017
@@ -720,47 +718,36 @@ def print_RMSD():
     event_types = ['FIX', 'SAC', 'PSO', 'PUR']
 
     for stim in ['img', 'dots', 'video']:
-        # import pdb; pdb.set_trace()
         durs = get_remodnav_params(stim)
         dic = [img if stim == 'img' else dots if stim == 'dots' else video]
         # append the parameters produced by remodnav to the other algorithms'
         for ev in event_types:
             for p in ['mn', 'sd', 'no', 'alg']:
-                # unfortunately, dic is a list now...
-                # this does not work! we need to work with indeces again
+                # unfortunately, dic is a list now...thats why [0] is there.
+                # index the dicts with the position of the respective event type
                 dic[0][ev][p].append(durs[p][durs['event'].index(ev)])
-                # dic[0][ev][p].append(durs[p][durs['event']==ev])
             # print results as LaTeX commands
-            # this is pretty ugly, but I have a knot in my brain.
-            # we have one stim_file category dict and iterate over keys (events)
-            #for ev in event_types:
-            # and we iterate over keys (params) in the nested dicts
+            # within a stim_type, we iterate over keys (events and params) in the nested dicts
             for par in ['mn', 'sd', 'no']:
-                # and now we index the values of the distribution parameters in
-                # the nested dicts with the index
-                # a specific algorithm has in the list of values -- which should
-                # be the same. (the [0] bc were still a list..)
+                # index the values of the dist params in the nested dicts with the position
+                # of the respective algorithm.
                 for alg in dic[0][ev]['alg']:
                     label_prefix = '{}{}{}{}'.format(ev, stim, par, alg)
-                    # this is barely readable: we take the value of the eventtype,
-                    # and parameter type by indexing the dict with the position of
+                    # take the value of the event and param type by indexing the dict with the position of
                     # the current algorithm
                     print('\\newcommand{\\%s}{%s}'
                           %(label_prefix, dic[0][ev][par][dic[0][ev]['alg'].index(alg)]))
-                    # until here its all good
         # compute RMSDs for every stimulus category
         for ev in event_types:
             rmsd = RMSD(dic[0][ev]['mn'],
                         dic[0][ev]['sd'],
                         dic[0][ev]['no'])
-            #if stats:
             # print results as LaTeX commands
             algo = dic[0][ev]['alg']
             for i in range(len(rmsd)):
                 label = 'rank{}{}{}'.format(ev, stim, algo[i])
                 print('\\newcommand{\\%s}{%s}'
                       %(label, rmsd[i]))
-
 
 
 if __name__ == '__main__':
@@ -793,7 +780,7 @@ if __name__ == '__main__':
 
 
     args = parser.parse_args()
-    # generate & save figures; export the misclassification stats
+    # generate & save figures; export the stats
     if args.figure or args.stats:
         savefigs(args.figure, args.stats)
         print_RMSD()
