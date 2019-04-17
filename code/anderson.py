@@ -299,10 +299,6 @@ def confusion(refcoder,
                     clf = EyegazeClassifier(
                         px2deg=px2deg,
                         sampling_rate=sr,
-                        pursuit_velthresh=5.,
-                        noise_factor=3.0,
-                        lowpass_cutoff_freq=10.0,
-                        min_fixation_duration=0.055,
                     )
                     p = clf.preproc(data)
                     events = clf(p)
@@ -676,10 +672,6 @@ def get_remodnav_params(stim_type):
         clf = EyegazeClassifier(
             px2deg=px2deg,
             sampling_rate=sr,
-            pursuit_velthresh=5.,
-            noise_factor=3.0,
-            lowpass_cutoff_freq=10.0,
-            min_fixation_duration=0.055,
         )
         p = clf.preproc(data)
         events.extend(clf(p))
