@@ -451,11 +451,11 @@ def savegaze():
         op.join(
             'data', 'studyforrest-data-eyemovementlabels', 'inputs',
             'raw_eyegaze', 'sub-32', 'beh',
-            'sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz'),
+            'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'),
         op.join(
             'data', 'studyforrest-data-eyemovementlabels', 'inputs',
-            'raw_eyegaze', 'sub-09', 'ses-movie',  'func',
-            'sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz'
+            'raw_eyegaze', 'sub-02', 'ses-movie',  'func',
+            'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
         ),
     ]
     dl.get(infiles)
@@ -475,7 +475,7 @@ def savegaze():
         # lets go with 10 seconds to actually see details. This particular time
         # window is within the originally plotted 50s and contains missing data
         # for both data types (lab & mri)
-        events = clf(p[30000:40000])
+        events = clf(p[15000:25000])
 
         fig = pl.figure(
             # fake size to get the font size down in relation
@@ -483,8 +483,7 @@ def savegaze():
             dpi=120,
             frameon=False)
         ut.show_gaze(
-            #data[30000:40000],
-            pp=p[30000:40000],
+            pp=p[15000:25000],
             events=events,
             sampling_rate=1000.0,
             show_vels=True)
