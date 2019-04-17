@@ -745,7 +745,7 @@ the new event type smooth pursuit, detection is very consistent to human labels
 especially in the moving dot category (JI of .73 and .7, respectively), and
 still good in the video category (JI of .43 and .47, respectively).
 
-\begin{table}[h!]
+\begin{table}[tbp]
   % table caption is above the table
   \caption{Confusion matrices for different stimulus categories}
   \label{tab:mclf}       % Give a unique label
@@ -757,10 +757,10 @@ still good in the video category (JI of .43 and .47, respectively).
     \noalign{\smallskip}\hline\noalign{\smallskip}
     MN-RA & \imgMNRAMCLF & \imgMNRAMclfWOP & MN & \imgMNRAFIXref & \imgMNRASACref & \imgMNRAPSOref & \imgMNRASPref  \\
     --- & --- & --- & RA & \imgMNRAFIXcod & \imgMNRASACcod & \imgMNRAPSOcod & \imgMNRASPcod \\
-    MN-AL & \imgMNALGOMCLF & \imgMNALGOMclfWOP & MN & \imgMNALGOFIXref & \imgMNALGOSACref & \imgMNALGOPSOref & \imgMNALGOSPref \\
-    --- & --- & --- & AL & \imgMNALGOFIXcod & \imgMNALGOSACcod & \imgMNALGOPSOcod & \imgMNALGOSPcod \\
-    RA-AL & \imgRAALGOMCLF & \imgRAALGOMclfWOP & RA & \imgRAALGOFIXref & \imgRAALGOSACref & \imgRAALGOPSOref & \imgRAALGOSPref \\
-    ---& ---& ---& AL & \imgRAALGOFIXcod & \imgRAALGOSACcod & \imgRAALGOPSOcod & \imgRAALGOSPcod \\
+    MN-AL & \imgMNALMCLF & \imgMNALMclfWOP & MN & \imgMNALFIXref & \imgMNALSACref & \imgMNALPSOref & \imgMNALSPref \\
+    --- & --- & --- & AL & \imgMNALFIXcod & \imgMNALSACcod & \imgMNALPSOcod & \imgMNALSPcod \\
+    RA-AL & \imgRAALMCLF & \imgRAALMclfWOP & RA & \imgRAALFIXref & \imgRAALSACref & \imgRAALPSOref & \imgRAALSPref \\
+    ---& ---& ---& AL & \imgRAALFIXcod & \imgRAALSACcod & \imgRAALPSOcod & \imgRAALSPcod \\
     \noalign{\smallskip}
     \textbf{Dots}&&&&&&&\\
     \hline\noalign{\smallskip}
@@ -768,10 +768,10 @@ still good in the video category (JI of .43 and .47, respectively).
     \noalign{\smallskip}\hline\noalign{\smallskip}
     MN-RA & \dotsMNRAMCLF & \dotsMNRAMclfWOP & MN & \dotsMNRAFIXref & \dotsMNRASACref & \dotsMNRAPSOref & \dotsMNRASPref  \\
     --- & --- & --- & RA & \dotsMNRAFIXcod & \dotsMNRASACcod & \dotsMNRAPSOcod & \dotsMNRASPcod \\
-    MN-AL & \dotsMNALGOMCLF & \dotsMNALGOMclfWOP & MN & \dotsMNALGOFIXref & \dotsMNALGOSACref & \dotsMNALGOPSOref & \dotsMNALGOSPref \\
-    --- & --- & --- & AL & \dotsMNALGOFIXcod & \dotsMNALGOSACcod & \dotsMNALGOPSOcod & \dotsMNALGOSPcod\\
-    RA-AL & \dotsRAALGOMCLF & \dotsRAALGOMclfWOP & RA & \dotsRAALGOFIXref & \dotsRAALGOSACref & \dotsRAALGOPSOref & \dotsRAALGOSPref \\
-    ---& ---& ---& AL & \dotsRAALGOFIXcod & \dotsRAALGOSACcod & \dotsRAALGOPSOcod & \dotsRAALGOSPcod \\
+    MN-AL & \dotsMNALMCLF & \dotsMNALMclfWOP & MN & \dotsMNALFIXref & \dotsMNALSACref & \dotsMNALPSOref & \dotsMNALSPref \\
+    --- & --- & --- & AL & \dotsMNALFIXcod & \dotsMNALSACcod & \dotsMNALPSOcod & \dotsMNALSPcod\\
+    RA-AL & \dotsRAALMCLF & \dotsRAALMclfWOP & RA & \dotsRAALFIXref & \dotsRAALSACref & \dotsRAALPSOref & \dotsRAALSPref \\
+    ---& ---& ---& AL & \dotsRAALFIXcod & \dotsRAALSACcod & \dotsRAALPSOcod & \dotsRAALSPcod \\
     \noalign{\smallskip}
     \textbf{Videos}&&&&&&&\\
     \hline\noalign{\smallskip}
@@ -779,10 +779,10 @@ still good in the video category (JI of .43 and .47, respectively).
     \noalign{\smallskip}\hline\noalign{\smallskip}
     MN-RA & \videoMNRAMCLF & \videoMNRAMclfWOP & MN & \videoMNRAFIXref & \videoMNRASACref & \videoMNRAPSOref & \videoMNRASPref \\
     --- & --- & --- & RA & \videoMNRAFIXcod & \videoMNRASACcod & \videoMNRAPSOcod & \videoMNRASPcod \\
-    MN-AL & \videoMNALGOMCLF & \videoMNALGOMclfWOP & MN & \videoMNALGOFIXref & \videoMNALGOSACref & \videoMNALGOPSOref & \videoMNALGOSPref \\
-    --- & --- & --- & AL & \videoMNALGOFIXcod & \videoMNALGOSACcod & \videoMNALGOPSOcod & \videoMNALGOSPcod\\
-    RA-AL & \videoRAALGOMCLF & \videoRAALGOMclfWOP & RA & \videoRAALGOFIXref & \videoRAALGOSACref & \videoRAALGOPSOref & \videoRAALGOSPref \\
-    ---& ---& ---& AL & \videoRAALGOFIXcod & \videoRAALGOSACcod & \videoRAALGOPSOcod & \videoRAALGOSPcod \\
+    MN-AL & \videoMNALMCLF & \videoMNALMclfWOP & MN & \videoMNALFIXref & \videoMNALSACref & \videoMNALPSOref & \videoMNALSPref \\
+    --- & --- & --- & AL & \videoMNALFIXcod & \videoMNALSACcod & \videoMNALPSOcod & \videoMNALSPcod\\
+    RA-AL & \videoRAALMCLF & \videoRAALMclfWOP & RA & \videoRAALFIXref & \videoRAALSACref & \videoRAALPSOref & \videoRAALSPref \\
+    ---& ---& ---& AL & \videoRAALFIXcod & \videoRAALSACcod & \videoRAALPSOcod & \videoRAALSPcod \\
     \noalign{\smallskip}\hline
   \end{tabular}
 
@@ -807,8 +807,8 @@ still good in the video category (JI of .43 and .47, respectively).
   % TODO make final figure and switch
   %\includegraphics[width=1\textwidth]{img/conf_drawing.eps}
   \includegraphics[width=1\textwidth]{img/confusion_MN_RA.pdf} \\
-  \includegraphics[width=1\textwidth]{img/confusion_MN_ALGO.pdf} \\
-  \includegraphics[width=1\textwidth]{img/confusion_RA_ALGO.pdf}
+  \includegraphics[width=1\textwidth]{img/confusion_MN_AL.pdf} \\
+  \includegraphics[width=1\textwidth]{img/confusion_RA_AL.pdf}
   % figure caption is below the figure
   \caption{Confusion matrices indicating similarity for classification decisions between human coders (top panel),
   human coder MN and \remodnav (middle panel), and human coder RA and \remodnav (bottom panel) for each of the
@@ -865,7 +865,7 @@ of events and their duration distribution consistently similar to human coders,
 especially so for saccades and PSOs, and fixations in the dots category.
 
 
-\begin{table*}[h!]
+\begin{table*}[tbp]
   % table caption is above the table
   \caption{RMSD ranks of fixation parameters for various stimulation types}
   \label{tab:rmsd_fix}       % Give a unique label
@@ -897,7 +897,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
 
 \end{table*}
 
-\begin{table*}[h!]
+\begin{table*}[tbp]
   % table caption is above the table
   \caption{RMSD ranks of saccade parameters for various stimulation types}
   \label{tab:rmsd_sac}       % Give a unique label
@@ -929,7 +929,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
 
 \end{table*}
 
-\begin{table*}[h!]
+\begin{table*}[tbp]
   % table caption is above the table
   \caption{RMSD ranks of PSO parameters for various stimulation types}
   \label{tab:rmsd_pso}       % Give a unique label
@@ -953,7 +953,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
 
 \end{table*}
 
-\begin{table*}[h!]
+\begin{table*}[tbp]
   % table caption is above the table
   \caption{RMSD ranks of pursuit parameters for various stimulation types}
   \label{tab:rmsd_pur}       % Give a unique label
@@ -1024,7 +1024,7 @@ the event distribution parameters per event type and movie run. Figure
 \ref{yettodo} displays these parameters for the high quality dataset.
 \todo[inline]{make histograms}
 
-\begin{figure*}[h!]
+\begin{figure*}[tbp]
   % TODO make final figure and switch
   %\includegraphics[width=1\textwidth]{img/remodnav.eps}
   \includegraphics[trim=0 8.5mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
@@ -1034,11 +1034,14 @@ the event distribution parameters per event type and movie run. Figure
   Black lines depict x and y coordinates of eye gaze, gray graph represents velocities. Colors indicate labeled
   eye events. Beige: Fixation,
   light green: Saccade, brown: Smooth pursuit, dark blue: High velocity PSOs, light blue: Low velocity PSOs.
-  White: no signal}
+  White: no signal
+  \todo[inline]{adjust y-label to say 'gaze coordinate (px)'}
+  }
+
   \label{fig:remodnav}
 \end{figure*}
 
-%\begin{figure*}[h!]
+%\begin{figure*}[tbp]
 %  \includegraphics[width=1\textwidth]{img/main_sequences.eps}
 %  \caption{Main sequences for four subjects, during one 15 minute sequence of
 %  the movie. Top panel: Lab subjects, bottom panel: MRI subjects.}
@@ -1090,7 +1093,7 @@ that \remodnav classifies data from dynamic stimulation well, and that results
 on low and high quality data yield similar biologically plausible results, the
 performance seems to be robust even under high noise conditions.
 
-\begin{figure*}[h!]
+\begin{figure*}[tbp]
   \includegraphics[width=.5\textwidth]{img/mainseq_mri_300dpi.png}
   \includegraphics[width=.5\textwidth]{img/mainseq_sub_mri_300dpi.png} \\
   \includegraphics[width=.5\textwidth]{img/mainseq_lab_300dpi.png}

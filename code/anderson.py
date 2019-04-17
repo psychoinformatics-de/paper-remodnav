@@ -287,7 +287,10 @@ def confusion(refcoder,
     # coders are in axis labels too
     #pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
     #    refcoder, coder))
-    for stimtype in ('img', 'dots', 'video'):
+    for stimtype, stimlabel in (
+            ('img', 'Images'),
+            ('dots', 'Dots'),
+            ('video', 'Videos')):
         conf = np.zeros((len(conditions), len(conditions)), dtype=float)
         jinter = np.zeros((len(conditions), len(conditions)), dtype=float)
         junion = np.zeros((len(conditions), len(conditions)), dtype=float)
@@ -368,7 +371,7 @@ def confusion(refcoder,
             #    stimtype,
             #    (np.sum(conf) / nsamples) * 100,
             #    (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-            pl.title(stimtype)
+            pl.title(stimlabel)
             plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
@@ -423,7 +426,7 @@ def savefigs(fig,
     small helper function to save all confusion matrices
     """
 
-    for pair in itertools.combinations(['MN', 'RA', 'ALGO'], 2):
+    for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
         pl.figure(
             # fake size to get the font size down in relation
             figsize=(14, 3),
@@ -454,11 +457,11 @@ def savegaze():
         op.join(
             'data', 'studyforrest-data-eyemovementlabels', 'inputs',
             'raw_eyegaze', 'sub-32', 'beh',
-            'sub-32_task-movie_run-2_recording-eyegaze_physio.tsv.gz'),
+            'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'),
         op.join(
             'data', 'studyforrest-data-eyemovementlabels', 'inputs',
-            'raw_eyegaze', 'sub-09', 'ses-movie',  'func',
-            'sub-09_ses-movie_task-movie_run-2_recording-eyegaze_physio.tsv.gz'
+            'raw_eyegaze', 'sub-02', 'ses-movie',  'func',
+            'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
         ),
     ]
     dl.get(infiles)
@@ -478,7 +481,7 @@ def savegaze():
         # lets go with 10 seconds to actually see details. This particular time
         # window is within the originally plotted 50s and contains missing data
         # for both data types (lab & mri)
-        events = clf(p[30000:40000])
+        events = clf(p[15000:25000])
 
         fig = pl.figure(
             # fake size to get the font size down in relation
@@ -486,8 +489,7 @@ def savegaze():
             dpi=120,
             frameon=False)
         ut.show_gaze(
-            #data[30000:40000],
-            pp=p[30000:40000],
+            pp=p[15000:25000],
             events=events,
             sampling_rate=1000.0,
             show_vels=True)
@@ -549,7 +551,7 @@ def mainseq(s_mri = 'sub-19',
 
             fig = pl.figure(
                 # fake size to get the font size down in relation
-                figsize=(8, 5),
+                figsize=(6, 4),
                 dpi=120,
                 frameon=False)
 
