@@ -420,7 +420,7 @@ def savefigs(fig,
     small helper function to save all confusion matrices
     """
 
-    for pair in itertools.combinations(['MN', 'RA', 'ALGO'], 2):
+    for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
         pl.figure(
             # fake size to get the font size down in relation
             figsize=(14, 3),
