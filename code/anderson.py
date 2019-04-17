@@ -745,10 +745,13 @@ def print_RMSD():
                       %(label, rmsd[i]))
 
 
-def plot_dist():
+def plot_dist(figures):
     """
     Plot the events duration distribution per movie run, per data set.
     """
+    if not figures:
+        # do nothing if we don't want to plot
+        return
     import pandas as pd
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
@@ -783,22 +786,13 @@ def plot_dist():
             x_lim = [(0, 1) if label == 'fixation' else
                      (0, 0.160) if label == 'saccade' else
                      (0, np.percentile(ev_df['duration'].values, 99.5))]
-            bins = 1000
-            if label == 'PSO':
-                # the duration range of PSOs is shorter
-                bins = 50
-            fig = pl.figure(
-                # fake size to get the font size down in relation
-                figsize=(8, 5),
-                dpi=120,
-                frameon=False)
-
+            bins = int(x_lim[0][1] * 1000)
+            fig = pl.figure()
             pl.hist(ev_df['duration'].values,
                     bins=bins,
                     color='gray')
             pl.xlabel('{} duration in s'.format(label))
             pl.xlim(x_lim[0])
-            print(label, bins, x_lim)
             pl.savefig(
                 op.join(
                     'img',
@@ -808,7 +802,6 @@ def plot_dist():
                 transparent=True,
                 bbox_inches="tight")
             pl.close()
-
 
 
 if __name__ == '__main__':
@@ -845,6 +838,7 @@ if __name__ == '__main__':
     if args.figure or args.stats:
         savefigs(args.figure, args.stats)
         print_RMSD()
+        plot_dist(args.figure)
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:
