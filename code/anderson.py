@@ -216,6 +216,12 @@ video_params = {
 }
 
 
+mri_ids = ['01', '02', '03', '04', '05', '06', '09', '10', '14', '15',
+           '16', '17', '18', '19', '20']
+lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
+           '32', '33', '34', '35', '36']
+
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
@@ -499,11 +505,6 @@ def mainseq(s_mri = 'sub-19',
     """
     import pandas as pd
     from matplotlib.lines import Line2D
-
-    mri_ids = ['01', '02', '03', '04', '05', '06', '09', '10', '14', '15',
-              '16', '17', '18', '19', '20']
-    lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
-               '32', '33', '34', '35', '36']
 
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
