@@ -119,35 +119,40 @@ second address
 % writing a Research or Systematic Review article, please structure your
 % abstract into Background, Methods, Results, and Conclusions.
 
-Tracking of eye movements during cognitive tasks is an established metric for
-many types of experimental paradigms.  In such experiments, the usage of more
-complex and lengthier visual stimuli has made algorithmic approaches to detect
-eye movement events such as saccades and fixations the most pragmatic option. A
-recent analysis has revealed that current algorithms for detecting eye
-movements are lackluster when it comes to processing eye tracking data from
-subjects viewing dynamic stimuli such as video sequences. Based on an existing
-velocity-based algorithm proposed by \cite{Nystrom2010AnData}, we aimed to
-design an improved event detector with comparable performance for static
-stimulation, but that is also specially tuned to detect events in data from
-dynamic stimuli. We compared the results from our algorithm to a publicly
-shared, manually annotated data set and results from ten established event
-detection algorithms to examine its performance in contrast to experienced
-human coders and current software standards. To investigate the robustness of
-the algorithm, we applied it to high and low quality eye gaze recordings
-obtained from the same dynamic stimulation with a full length Hollywood movie.
-For the high-quality dataset, we determined whether obtained events displayed
-biologically plausible characteristics.  Subsequently, for the low-quality
-dataset, we investigated whether the properties of detected events are
-comparable to those from the high-quality dataset. For static stimuli, our
-algorithm performed comparable to or better than other software solutions, but
-its performance particularly stood out for data from dynamic stimuli.  The
-comparison between datasets with different data qualities provided evidence
-that the algorithm classifies gaze data from dynamic stimuli robustly, even
-under high noise conditions. To establish broad distribution and applicability
-of the software, we provided transparent, configurable parameters that can be
-adjusted to the paradigm and equipment used in different eye tracking
-experiments, and bundled it into an open-source and well documented python
-module.
+% general intro
+Tracking of eye movements is an established measurement for many types of
+experimental paradigms.
+% targeted intro
+More complex and lengthier visual stimuli have made algorithmic approaches to
+eye movement event detection the most pragmatic option.
+% problem statement
+A recent analysis revealed that many current algorithms are lackluster when it
+comes to data from viewing dynamic stimuli such as video sequences.
+% out contribution
+Here we present an event detection algorithm---built on an existing
+velocity-based approach---that is suitable for both static and dynamic
+stimulation, and is capable of detecting saccades, post-saccadic
+oscillations, fixations, and smooth pursuit events.
+% results
+We validated detection performance and robustness on three public datasets:
+1)~manually annotated, trial-based gaze trajectories for viewing static images,
+moving dots, and short video sequences, 2)~lab-quality gaze recordings for a
+feature length movie, and 3)~gaze recordings acquired under suboptimal lighting
+conditions inside the bore of a magnetic resonance imaging (MRI) scanner for
+the same full-length movie.
+%
+We found that the proposed algorithm performs on par or better compared
+to state-of-the-art alternatives for static stimulation. Moreover, it yields
+eye movement events with biologically plausible characteristics on prolonged
+recordings without a trial-structure. Lastly, algorithm performance is robust
+on data acquired under suboptimal conditions that are exhibiting a temporally
+varying noise level.
+% general context
+These result indicate that the proposed algorithm is a robust tool with
+improved detection accuracy across a range of use cases.
+% broader perspective
+A cross-platform compatible implementation in the Python programming language
+is available as free and open source software.
 
 \keywords{%
 eye tracking \and
