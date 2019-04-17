@@ -824,14 +824,46 @@ still good in the video category (JI of .43 and .47, respectively)
 
 %\end{figure*}
 
-Additionally, we determined counts, mean and standard deviation of the
-extracted eye movements, and computed the root mean squared deviations (RMSD)
-for \remodnav against the human coders per stimulus category. The RMSD is
-proposed by \cite{Andersson2017} as a single similarity measure of event
-parameters to rank algorithms according to their similarity to human coders.
-The RMSD measure has a lower bound of 0 and higher values denote higher
-deviations, but for a thorough explanation of the measure and the procedures
+Additionally, for each stimulus category (images, dots, videos), we determined
+the mean and standard deviation of the event durations per event category (fixations,
+saccades, PSOs, pursuits) and the number of detected events per event category.
+Based on these results, following equation 2 in \citet{Andersson2017}, we computed
+the root mean squared deviations (RMSD) for the full set of algorithms, human coders,
+and REMoDNav. The RMSD is proposed by \cite{Andersson2017} as a single similarity
+measure of distribution parameters to rank algorithms according to their similarity
+to human coders in three dimensions. As \citet{Andersson2017} point out, this measure
+ensures that we do not only evaluate performance on a sample-by-sample classification
+similarity, but also evaluate whether an algorithm detects similar event counts and
+duration distributions.
+The RMSD measure has a lower bound of 0 and higher values denote
+higher deviations, but for a thorough explanation of the measure and the procedures
 necessary for its computation, please refer to the original publication by
+\cite{Andersson2017}. By computing the RMSD of \remodnav within the original set
+of data from \citet{Andersson2017}, we are able to compare the similarity of the
+three distribution parameters produced by \remodnav to human labeling and those of
+the other algorithms, and thus rank \remodnav within the set of algorithms used in
+\citet{Andersson2017}.
+For a more straightforward interpretation of the RMSD measure, we converted
+RMSDs per event and stimulus category into ranks (where 0 is the best).
+The results of the RMSD computations are summarized in tables \ref{tab:rmsd_fix},
+\ref{tab:rmsd_sac}, \ref{tab:rmsd_pso} and \ref{tab:rmsd_pur}.
+The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}
+was the ``LNS" algorithm by \cite{Larsson2013}. \remodnav performs comparable to
+``LNS" for saccades: Across stimulus categories, ``LNS" achieves a mean rank of $2.0$,
+while \remodnav achieves a mean rank of $3.3$. For PSOs, across
+stimulus categories, ``LNS" has a mean rank of $2.3$, while \remodnav achieves a
+mean rank of $2.0$.
+In the original set, different algorithms performed best for fixation detection
+given the category. NH performed best for images  and videos, but worst for dots.
+In our evaluation, \remodnav outperforms all other
+algorithms in the dots category, and achieves rank 5 and 6 for videos and images,
+respectively. That is, for fixation detection in videos and images, \remodnav
+performs in the middle range. Across all stimulus and event categories,
+\remodnav achieves a median ranking of $3.0$ (both with and without inclusion of
+its ranks for smooth pursuit detection). Thus, \remodnav detects the number
+of events and their duration distribution consistently similar to human coders,
+especially so for saccades and PSOs, and fixations in the dots category.
+
 
 \begin{table*}[h!]
   % table caption is above the table
@@ -946,14 +978,18 @@ necessary for its computation, please refer to the original publication by
 
 The combined results of the analyses on the dataset used by
 \citet{Andersson2017} demonstrate that \remodnav yields the highest congruency
-to manual human annotation during dynamic stimulation compared to ten
-contemporary algorithms when detecting fixations, saccades, and post-saccadic
-oscillation in any category. Its performance stays good, and exceeds all other
+to manual human annotation in any stimulus category on a sample-by-sample basis
+compared to ten contemporary algorithms when detecting fixations, saccades,
+and post-saccadic oscillations. Its performance stays good, and exceeds all other
 algorithms performance in the dots and video category, when including smooth
-pursuits detection as well. Furthermore, the results reveal that REMoDNaVs
-performance equals or exceeds those of the original NH. Thus, \remodnav does
-improve the NH algorithm in aspects that were suboptimal, but does not diminish
-performance in NHs strong points.
+pursuit detection as well. In this regard, the results reveal that REMoDNaVs
+performance equals or exceeds those of the original NH. Taking the number of events
+and their duration distribution into account, REMoDNaVs performance stays good.
+Importantly \remodnav performs similar to human coders in almost all event
+categories and stimulus types. NH outperforms it only for fixation detection
+in the image and video category, however, in these categories \remodnav still
+classifies comparatively well. Thus, \remodnav does improve the NH algorithm
+in aspects that were  suboptimal, but does not diminish performance in NHs strong points.
 
 %\subsubsection*{Evaluation of events}
 
