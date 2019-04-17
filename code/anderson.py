@@ -743,6 +743,72 @@ def print_RMSD():
                       %(label, rmsd[i]))
 
 
+def plot_dist():
+    """
+    Plot the events duration distribution per movie run, per data set.
+    """
+    import pandas as pd
+    datapath = op.join('data',
+                       'studyforrest-data-eyemovementlabels',
+                       'sub*',
+                       '*.tsv')
+
+    data = sorted(glob(datapath))
+    from datalad.api import get
+    get(dataset='.', path=data)
+
+    runs = [1, 2, 3, 4, 5, 6, 7, 8]
+    for ds, ds_name in [(mri_ids, 'mri'), (lab_ids, 'lab')]:
+        # for run in runs:
+        dfs = [
+            pd.read_csv(f, header=0, delim_whitespace=True)
+            for f in data
+            if any('sub-{}'.format(i) in f for i in ds) # and ('run-{}'.format(run) in f)
+        ]
+        df = pd.concat(dfs)
+        # thats a concatinated dataframe with all files from one run and one dataset (lab or mri)
+        # extract relevant event types
+        SACs = df[(df.label == 'SACC') | (df.label == 'ISACS')]
+        FIX = df[df.label == 'FIXA']
+        PSOs = df[(df.label == 'HPSO') | (df.label == 'IHPS') | (df.label == 'LPSO') | (df.label == 'ILPS')]
+        PURs = df[df.label == 'PURS']
+        for (ev_df, label) in [(SACs, 'saccade'),
+                               (FIX, 'fixation'),
+                               (PSOs, 'PSO'),
+                               (PURs, 'pursuit')]:
+        # plot a histogram. Set the same x-axis limits as NH for fixations and saccades,
+        # and exclude outlying 0.5% for other events
+            x_lim = [(0, 1) if label == 'fixation' else
+                     (0, 0.160) if label == 'saccade' else
+                     (0, np.percentile(ev_df['duration'].values, 99.5))]
+            bins = 1000
+            if label == 'PSO':
+                # the duration range of PSOs is shorter
+                bins = 50
+            fig = pl.figure(
+                # fake size to get the font size down in relation
+                figsize=(8, 5),
+                dpi=120,
+                frameon=False)
+
+            pl.hist(ev_df['duration'].values,
+                    bins=bins,
+                    color='gray')
+            pl.xlabel('{} duration in s'.format(label))
+            pl.xlim(x_lim[0])
+            print(label, bins, x_lim)
+            pl.savefig(
+                op.join(
+                    'img',
+                    'hist_{}_{}.svg'.format(
+                        label,
+                        ds_name)),
+                transparent=True,
+                bbox_inches="tight")
+            pl.close()
+
+
+
 if __name__ == '__main__':
 
     import argparse
