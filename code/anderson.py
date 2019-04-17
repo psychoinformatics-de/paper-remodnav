@@ -647,7 +647,8 @@ def RMSD(mn,
         per_param.append(l_alg)
     # sum the root mean square differences per algorithm across parameters
     # also give the human rater performance as the first two values
-    return np.array(per_param).sum(axis=0).argsort()
+    # argsorting twice gets us the ranks
+    return np.array(per_param).sum(axis=0).argsort().argsort()
 
 
 def get_remodnav_params(stim_type):
