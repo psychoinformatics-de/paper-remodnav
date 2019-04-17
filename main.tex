@@ -1021,8 +1021,7 @@ quality data sample. An individual main sequence for a lab subject is
 displayed in the bottom right panel in figure \ref{fig:overallComp}. In order
 to compare event detection between high and low quality sample, we computed
 the event distribution parameters per event type and movie run. Figure
-\ref{yettodo} displays these parameters for the high quality dataset.
-\todo[inline]{make histograms}
+\ref{fig:dist} displays these parameters for the high quality dataset.
 
 \begin{figure*}[tbp]
   % TODO make final figure and switch
@@ -1039,6 +1038,23 @@ the event distribution parameters per event type and movie run. Figure
   }
 
   \label{fig:remodnav}
+\end{figure*}
+
+\begin{figure*}
+  % Use the relevant command to insert your figure file.
+  \includegraphics[width=0.24\textwidth]{img/hist_fixation_lab.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_saccade_lab.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_PSO_lab.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_pursuit_lab.pdf} \\
+  \includegraphics[width=0.24\textwidth]{img/hist_fixation_mri.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_saccade_mri.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_PSO_mri.pdf}
+  \includegraphics[width=0.24\textwidth]{img/hist_pursuit_mri.pdf} \\
+  % figure caption is below the figure
+  \caption{Duration distributions per event for the high-quality lab sample (top panel),
+  and the low quality mri sample (bottom).}
+  \label{fig:dist}
+  % Give a unique label
 \end{figure*}
 
 %\begin{figure*}[tbp]
@@ -1078,9 +1094,9 @@ vicinity beyond the border region of data loss that is masked during
 preprocessing. The detection of saccades corresponds to the velocity peaks in
 the time series. An individual main sequence for an MRI subject is displayed
 in the top right panel in figure \ref{fig:overallComp}. Lastly, the left column in figure
-\ref{fig:overallComp} shows all events produced from both datasets. Figure \ref{yettodo}
+\ref{fig:overallComp} shows all events produced from both datasets. Figure \ref{fig:dist}
 displays the distribution parameters per event type and movie run for the low
-quality dataset. \todo[inline]{make histograms}
+quality dataset.
 All together, figures \ref{fig:remodnav} and
 \ref{fig:overallComp} illustrate a high similiarity between performance in high
 and low quality datasets. In both cases, the main sequences follow the known
