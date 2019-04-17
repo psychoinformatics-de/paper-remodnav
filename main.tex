@@ -832,26 +832,117 @@ parameters to rank algorithms according to their similarity to human coders.
 The RMSD measure has a lower bound of 0 and higher values denote higher
 deviations, but for a thorough explanation of the measure and the procedures
 necessary for its computation, please refer to the original publication by
-\cite{Andersson2017}. By computing the RMSD of \remodnav on the same data, we
-are able to compare the similarity of \remodnav to human labeling with those
-reported in \cite{Andersson2017}, and thus rank \remodnav within the original
-set of algorithms. \todo[inline]{\textit{Table (or a graphic?) showing duration
-mean, SD, count and RMSD (tables 3-4, Anderson) for images, dots and videos }}
-The "best" algorithm with regard to saccade and PSO detection in
-\cite{Andersson2017}, the ``LNS" algorithm by \cite{Larsson2013}, achieved
-RMSDs between 0.2 and 0.3 for saccades, and RMDS between 1.0 and 1.2 for PSOs.
-Different algorithms performed ``best" for fixation detection given the
-category. The NH algorithm achieved RMSD = 0.4 for images and RMSD = 0.8 for
-videos, but RMSD = 2.1 for dots. TODO: now how do we do?  \todo[inline]{compute
-RMSD for algo comparison}\todo[inline]{how do we compare against the ``best"
-  LNS algorithm in Andersson2017?}
 
-IF we go for Cohens Kappa: The ``best" algorithm with regard to saccade and PSO
-detection in \cite{Andersson2017}, the ``LNS" algorithm by \cite{Larsson2013},
-achieved Cohens Kappas between .75 and .81 for saccades, and between .59 and
-.64 for PSOs. The ``best" algorithms with regard fixations had Kappas between
-.5 and .7 for the image category, but at maximum .13 for any of the dynamic
-categories. TODO: now how do we do?
+\begin{table*}[h!]
+  % table caption is above the table
+  \caption{RMSD ranks of fixation parameters for various stimulation types}
+  \label{tab:rmsd_fix}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
+    \hline\noalign{\smallskip}
+    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
+    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN        & \FIXimgmnMN   & \FIXimgsdMN   & \FIXimgnoMN   & \rankFIXimgMN   &  \FIXdotsmnMN   & \FIXdotssdMN   & \FIXdotsnoMN   & \rankFIXdotsMN    & \FIXvideomnMN   & \FIXvideosdMN   & \FIXvideonoMN   & \rankFIXvideoMN    \\
+    RA        & \FIXimgmnRA   & \FIXimgsdRA   & \FIXimgnoRA   & \rankFIXimgRA   &  \FIXdotsmnRA   & \FIXdotssdRA   & \FIXdotsnoRA   & \rankFIXdotsRA    & \FIXvideomnRA   & \FIXvideosdRA   & \FIXvideonoRA   & \rankFIXvideoRA    \\
+    CDT       & \FIXimgmnCDT  & \FIXimgsdCDT  & \FIXimgnoCDT  & \rankFIXimgCDT  &  \FIXdotsmnCDT  & \FIXdotssdCDT  & \FIXdotsnoCDT  & \rankFIXdotsCDT   & \FIXvideomnCDT  & \FIXvideosdCDT  & \FIXvideonoCDT  & \rankFIXvideoCDT   \\
+    EM        & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
+    IDT       & \FIXimgmnIDT  & \FIXimgsdIDT  & \FIXimgnoIDT  & \rankFIXimgIDT  &  \FIXdotsmnIDT  & \FIXdotssdIDT  & \FIXdotsnoIDT  & \rankFIXdotsIDT   & \FIXvideomnIDT  & \FIXvideosdIDT  & \FIXvideonoIDT  & \rankFIXvideoIDT   \\
+    IKF       & \FIXimgmnIKF  & \FIXimgsdIKF  & \FIXimgnoIKF  & \rankFIXimgIKF  &  \FIXdotsmnIKF  & \FIXdotssdIKF  & \FIXdotsnoIKF  & \rankFIXdotsIKF   & \FIXvideomnIKF  & \FIXvideosdIKF  & \FIXvideonoIKF  & \rankFIXvideoIKF   \\
+    IMST      & \FIXimgmnIMST & \FIXimgsdIMST & \FIXimgnoIMST & \rankFIXimgIMST &  \FIXdotsmnIMST & \FIXdotssdIMST & \FIXdotsnoIMST & \rankFIXdotsIMST  & \FIXvideomnIMST & \FIXvideosdIMST & \FIXvideonoIMST & \rankFIXvideoIMST  \\
+    IHMM      & \FIXimgmnIHMM & \FIXimgsdIHMM & \FIXimgnoIHMM & \rankFIXimgIHMM &  \FIXdotsmnIHMM & \FIXdotssdIHMM & \FIXdotsnoIHMM & \rankFIXdotsIHMM  & \FIXvideomnIHMM & \FIXvideosdIHMM & \FIXvideonoIHMM & \rankFIXvideoIHMM  \\
+    IVT       & \FIXimgmnIVT  & \FIXimgsdIVT  & \FIXimgnoIVT  & \rankFIXimgIVT  &  \FIXdotsmnIVT  & \FIXdotssdIVT  & \FIXdotsnoIVT  & \rankFIXdotsIVT   & \FIXvideomnIVT  & \FIXvideosdIVT  & \FIXvideonoIVT  & \rankFIXvideoIVT   \\
+    NH        & \FIXimgmnNH   & \FIXimgsdNH   & \FIXimgnoNH   & \rankFIXimgNH   &  \FIXdotsmnNH   & \FIXdotssdNH   & \FIXdotsnoNH   & \rankFIXdotsNH    & \FIXvideomnNH   & \FIXvideosdNH   & \FIXvideonoNH   & \rankFIXvideoNH    \\
+    BIT       & \FIXimgmnBIT  & \FIXimgsdBIT  & \FIXimgnoBIT  & \rankFIXimgBIT  &  \FIXdotsmnBIT  & \FIXdotssdBIT  & \FIXdotsnoBIT  & \rankFIXdotsBIT   & \FIXvideomnBIT  & \FIXvideosdBIT  & \FIXvideonoBIT  & \rankFIXvideoBIT   \\
+    LNS       & -             & -             & -             &  -              &  -              & -              & -              &  -                & -               & -               & -               &  -                 \\
+    \remodnav & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+
+  \textit{Note}: Fixation distribution parameters for the algorithms
+  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  were converted into ranks (lower is better).
+
+\end{table*}
+
+\begin{table*}[h!]
+  % table caption is above the table
+  \caption{RMSD ranks of saccade parameters for various stimulation types}
+  \label{tab:rmsd_sac}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
+    \hline\noalign{\smallskip}
+    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
+    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN        & \SACimgmnMN   & \SACimgsdMN   & \SACimgnoMN   & \rankSACimgMN   &  \SACdotsmnMN   & \SACdotssdMN   & \SACdotsnoMN   & \rankSACdotsMN    & \SACvideomnMN   & \SACvideosdMN   & \SACvideonoMN   & \rankSACvideoMN    \\
+    RA        & \SACimgmnRA   & \SACimgsdRA   & \SACimgnoRA   & \rankSACimgRA   &  \SACdotsmnRA   & \SACdotssdRA   & \SACdotsnoRA   & \rankSACdotsRA    & \SACvideomnRA   & \SACvideosdRA   & \SACvideonoRA   & \rankSACvideoRA    \\
+    CDT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
+    EM        & \SACimgmnEM   & \SACimgsdEM   & \SACimgnoEM   & \rankSACimgEM    &  \SACdotsmnEM   & \SACdotssdEM   & \SACdotsnoEM   & \rankSACdotsEM    & \SACvideomnEM   & \SACvideosdEM   & \SACvideonoEM   & \rankSACvideoEM    \\
+    IDT       & \SACimgmnIDT  & \SACimgsdIDT  & \SACimgnoIDT  & \rankSACimgIDT  &  \SACdotsmnIDT  & \SACdotssdIDT  & \SACdotsnoIDT  & \rankSACdotsIDT   & \SACvideomnIDT  & \SACvideosdIDT  & \SACvideonoIDT  & \rankSACvideoIDT   \\
+    IKF       & \SACimgmnIKF  & \SACimgsdIKF  & \SACimgnoIKF  & \rankSACimgIKF  &  \SACdotsmnIKF  & \SACdotssdIKF  & \SACdotsnoIKF  & \rankSACdotsIKF   & \SACvideomnIKF  & \SACvideosdIKF  & \SACvideonoIKF  & \rankSACvideoIKF   \\
+    IMST      & \SACimgmnIMST & \SACimgsdIMST & \SACimgnoIMST & \rankSACimgIMST &  \SACdotsmnIMST & \SACdotssdIMST & \SACdotsnoIMST & \rankSACdotsIMST  & \SACvideomnIMST & \SACvideosdIMST & \SACvideonoIMST & \rankSACvideoIMST  \\
+    IHMM      & \SACimgmnIHMM & \SACimgsdIHMM & \SACimgnoIHMM & \rankSACimgIHMM &  \SACdotsmnIHMM & \SACdotssdIHMM & \SACdotsnoIHMM & \rankSACdotsIHMM  & \SACvideomnIHMM & \SACvideosdIHMM & \SACvideonoIHMM & \rankSACvideoIHMM  \\
+    IVT       & \SACimgmnIVT  & \SACimgsdIVT  & \SACimgnoIVT  & \rankSACimgIVT  &  \SACdotsmnIVT  & \SACdotssdIVT  & \SACdotsnoIVT  & \rankSACdotsIVT   & \SACvideomnIVT  & \SACvideosdIVT  & \SACvideonoIVT  & \rankSACvideoIVT   \\
+    NH        & \SACimgmnNH   & \SACimgsdNH   & \SACimgnoNH   & \rankSACimgNH   &  \SACdotsmnNH   & \SACdotssdNH   & \SACdotsnoNH   & \rankSACdotsNH    & \SACvideomnNH   & \SACvideosdNH   & \SACvideonoNH   & \rankSACvideoNH    \\
+    BIT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
+    LNS       & \SACimgmnLNS  & \SACimgsdLNS  & \SACimgnoLNS  & \rankSACimgLNS  &  \SACdotsmnLNS  & \SACdotssdLNS  & \SACdotsnoLNS  & \rankSACdotsLNS   & \SACvideomnLNS  & \SACvideosdLNS  & \SACvideonoLNS  & \rankSACvideoLNS   \\
+    \remodnav & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+
+  \textit{Note}: Saccade distribution parameters for the algorithms
+  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  were converted into ranks (lower is better).
+
+\end{table*}
+
+\begin{table*}[h!]
+  % table caption is above the table
+  \caption{RMSD ranks of PSO parameters for various stimulation types}
+  \label{tab:rmsd_pso}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
+    \hline\noalign{\smallskip}
+    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
+    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN        & \PSOimgmnMN   & \PSOimgsdMN   & \PSOimgnoMN   & \rankPSOimgMN   &  \PSOdotsmnMN   & \PSOdotssdMN   & \PSOdotsnoMN   & \rankPSOdotsMN    & \PSOvideomnMN   & \PSOvideosdMN   & \PSOvideonoMN   & \rankPSOvideoMN    \\
+    RA        & \PSOimgmnRA   & \PSOimgsdRA   & \PSOimgnoRA   & \rankPSOimgRA   &  \PSOdotsmnRA   & \PSOdotssdRA   & \PSOdotsnoRA   & \rankPSOdotsRA    & \PSOvideomnRA   & \PSOvideosdRA   & \PSOvideonoRA   & \rankPSOvideoRA    \\
+    NH        & \PSOimgmnNH   & \PSOimgsdNH   & \PSOimgnoNH   & \rankPSOimgNH   &  \PSOdotsmnNH   & \PSOdotssdNH   & \PSOdotsnoNH   & \rankPSOdotsNH    & \PSOvideomnNH   & \PSOvideosdNH   & \PSOvideonoNH   & \rankPSOvideoNH    \\
+    LNS       & \PSOimgmnLNS  & \PSOimgsdLNS  & \PSOimgnoLNS  & \rankPSOimgLNS  &  \PSOdotsmnLNS  & \PSOdotssdLNS  & \PSOdotsnoLNS  & \rankPSOdotsLNS   & \PSOvideomnLNS  & \PSOvideosdLNS  & \PSOvideonoLNS  & \rankPSOvideoLNS   \\
+    \remodnav & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+
+  \textit{Note}: PSO distribution parameters for the algorithms
+  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  were converted into ranks (lower is better).
+
+\end{table*}
+
+\begin{table*}[h!]
+  % table caption is above the table
+  \caption{RMSD ranks of pursuit parameters for various stimulation types}
+  \label{tab:rmsd_pur}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
+    \hline\noalign{\smallskip}
+    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
+    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN        & \PURimgmnMN   & \PURimgsdMN   & \PURimgnoMN   & \rankPURimgMN   &  \PURdotsmnMN   & \PURdotssdMN   & \PURdotsnoMN   & \rankPURdotsMN    & \PURvideomnMN   & \PURvideosdMN   & \PURvideonoMN   & \rankPURvideoMN    \\
+    RA        & \PURimgmnRA   & \PURimgsdRA   & \PURimgnoRA   & \rankPURimgRA   &  \PURdotsmnRA   & \PURdotssdRA   & \PURdotsnoRA   & \rankPURdotsRA    & \PURvideomnRA   & \PURvideosdRA   & \PURvideonoRA   & \rankPURvideoRA    \\
+    \remodnav & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+
+  \textit{Note}: Smooth pursuit distribution parameters for the algorithms
+  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  were converted into ranks (lower is better).
+
+\end{table*}
+
 
 The combined results of the analyses on the dataset used by
 \citet{Andersson2017} demonstrate that \remodnav yields the highest congruency
@@ -970,109 +1061,6 @@ performance seems to be robust even under high noise conditions.
 
   \label{fig:overallComp}
 \end{figure*}
-
-
-\begin{table*}[h!]
-  % table caption is above the table
-  \caption{RMSD ranks of fixation parameters for various stimulation types}
-  \label{tab:rmsd_fix}       % Give a unique label
-  % For LaTeX tables use
-  \begin{tabular}{lllllllllllll}
-    \hline\noalign{\smallskip}
-    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
-    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN        & \FIXimgmnMN   & \FIXimgsdMN   & \FIXimgnoMN   & \rankFIXimgMN   &  \FIXdotsmnMN   & \FIXdotssdMN   & \FIXdotsnoMN   & \rankFIXdotsMN    & \FIXvideomnMN   & \FIXvideosdMN   & \FIXvideonoMN   & \rankFIXvideoMN    \\
-    RA        & \FIXimgmnRA   & \FIXimgsdRA   & \FIXimgnoRA   & \rankFIXimgRA   &  \FIXdotsmnRA   & \FIXdotssdRA   & \FIXdotsnoRA   & \rankFIXdotsRA    & \FIXvideomnRA   & \FIXvideosdRA   & \FIXvideonoRA   & \rankFIXvideoRA    \\
-    CDT       & \FIXimgmnCDT  & \FIXimgsdCDT  & \FIXimgnoCDT  & \rankFIXimgCDT  &  \FIXdotsmnCDT  & \FIXdotssdCDT  & \FIXdotsnoCDT  & \rankFIXdotsCDT   & \FIXvideomnCDT  & \FIXvideosdCDT  & \FIXvideonoCDT  & \rankFIXvideoCDT   \\
-    EM        & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
-    IDT       & \FIXimgmnIDT  & \FIXimgsdIDT  & \FIXimgnoIDT  & \rankFIXimgIDT  &  \FIXdotsmnIDT  & \FIXdotssdIDT  & \FIXdotsnoIDT  & \rankFIXdotsIDT   & \FIXvideomnIDT  & \FIXvideosdIDT  & \FIXvideonoIDT  & \rankFIXvideoIDT   \\
-    IKF       & \FIXimgmnIKF  & \FIXimgsdIKF  & \FIXimgnoIKF  & \rankFIXimgIKF  &  \FIXdotsmnIKF  & \FIXdotssdIKF  & \FIXdotsnoIKF  & \rankFIXdotsIKF   & \FIXvideomnIKF  & \FIXvideosdIKF  & \FIXvideonoIKF  & \rankFIXvideoIKF   \\
-    IMST      & \FIXimgmnIMST & \FIXimgsdIMST & \FIXimgnoIMST & \rankFIXimgIMST &  \FIXdotsmnIMST & \FIXdotssdIMST & \FIXdotsnoIMST & \rankFIXdotsIMST  & \FIXvideomnIMST & \FIXvideosdIMST & \FIXvideonoIMST & \rankFIXvideoIMST  \\
-    IHMM      & \FIXimgmnIHMM & \FIXimgsdIHMM & \FIXimgnoIHMM & \rankFIXimgIHMM &  \FIXdotsmnIHMM & \FIXdotssdIHMM & \FIXdotsnoIHMM & \rankFIXdotsIHMM  & \FIXvideomnIHMM & \FIXvideosdIHMM & \FIXvideonoIHMM & \rankFIXvideoIHMM  \\
-    IVT       & \FIXimgmnIVT  & \FIXimgsdIVT  & \FIXimgnoIVT  & \rankFIXimgIVT  &  \FIXdotsmnIVT  & \FIXdotssdIVT  & \FIXdotsnoIVT  & \rankFIXdotsIVT   & \FIXvideomnIVT  & \FIXvideosdIVT  & \FIXvideonoIVT  & \rankFIXvideoIVT   \\
-    NH        & \FIXimgmnNH   & \FIXimgsdNH   & \FIXimgnoNH   & \rankFIXimgNH   &  \FIXdotsmnNH   & \FIXdotssdNH   & \FIXdotsnoNH   & \rankFIXdotsNH    & \FIXvideomnNH   & \FIXvideosdNH   & \FIXvideonoNH   & \rankFIXvideoNH    \\
-    BIT       & \FIXimgmnBIT  & \FIXimgsdBIT  & \FIXimgnoBIT  & \rankFIXimgBIT  &  \FIXdotsmnBIT  & \FIXdotssdBIT  & \FIXdotsnoBIT  & \rankFIXdotsBIT   & \FIXvideomnBIT  & \FIXvideosdBIT  & \FIXvideonoBIT  & \rankFIXvideoBIT   \\
-    LNS       & -             & -             & -             &  -              &  -              & -              & -              &  -                & -               & -               & -               &  -                 \\
-    \remodnav & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular}
-
-  \textit{Note}: Test.
-
-\end{table*}
-
-\begin{table*}[h!]
-  % table caption is above the table
-  \caption{RMSD ranks of saccade parameters for various stimulation types}
-  \label{tab:rmsd_sac}       % Give a unique label
-  % For LaTeX tables use
-  \begin{tabular}{lllllllllllll}
-    \hline\noalign{\smallskip}
-    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
-    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN        & \SACimgmnMN   & \SACimgsdMN   & \SACimgnoMN   & \rankSACimgMN   &  \SACdotsmnMN   & \SACdotssdMN   & \SACdotsnoMN   & \rankSACdotsMN    & \SACvideomnMN   & \SACvideosdMN   & \SACvideonoMN   & \rankSACvideoMN    \\
-    RA        & \SACimgmnRA   & \SACimgsdRA   & \SACimgnoRA   & \rankSACimgRA   &  \SACdotsmnRA   & \SACdotssdRA   & \SACdotsnoRA   & \rankSACdotsRA    & \SACvideomnRA   & \SACvideosdRA   & \SACvideonoRA   & \rankSACvideoRA    \\
-    CDT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
-    EM        & \SACimgmnEM   & \SACimgsdEM   & \SACimgnoEM   & \rankSACimgEM    &  \SACdotsmnEM   & \SACdotssdEM   & \SACdotsnoEM   & \rankSACdotsEM    & \SACvideomnEM   & \SACvideosdEM   & \SACvideonoEM   & \rankSACvideoEM    \\
-    IDT       & \SACimgmnIDT  & \SACimgsdIDT  & \SACimgnoIDT  & \rankSACimgIDT  &  \SACdotsmnIDT  & \SACdotssdIDT  & \SACdotsnoIDT  & \rankSACdotsIDT   & \SACvideomnIDT  & \SACvideosdIDT  & \SACvideonoIDT  & \rankSACvideoIDT   \\
-    IKF       & \SACimgmnIKF  & \SACimgsdIKF  & \SACimgnoIKF  & \rankSACimgIKF  &  \SACdotsmnIKF  & \SACdotssdIKF  & \SACdotsnoIKF  & \rankSACdotsIKF   & \SACvideomnIKF  & \SACvideosdIKF  & \SACvideonoIKF  & \rankSACvideoIKF   \\
-    IMST      & \SACimgmnIMST & \SACimgsdIMST & \SACimgnoIMST & \rankSACimgIMST &  \SACdotsmnIMST & \SACdotssdIMST & \SACdotsnoIMST & \rankSACdotsIMST  & \SACvideomnIMST & \SACvideosdIMST & \SACvideonoIMST & \rankSACvideoIMST  \\
-    IHMM      & \SACimgmnIHMM & \SACimgsdIHMM & \SACimgnoIHMM & \rankSACimgIHMM &  \SACdotsmnIHMM & \SACdotssdIHMM & \SACdotsnoIHMM & \rankSACdotsIHMM  & \SACvideomnIHMM & \SACvideosdIHMM & \SACvideonoIHMM & \rankSACvideoIHMM  \\
-    IVT       & \SACimgmnIVT  & \SACimgsdIVT  & \SACimgnoIVT  & \rankSACimgIVT  &  \SACdotsmnIVT  & \SACdotssdIVT  & \SACdotsnoIVT  & \rankSACdotsIVT   & \SACvideomnIVT  & \SACvideosdIVT  & \SACvideonoIVT  & \rankSACvideoIVT   \\
-    NH        & \SACimgmnNH   & \SACimgsdNH   & \SACimgnoNH   & \rankSACimgNH   &  \SACdotsmnNH   & \SACdotssdNH   & \SACdotsnoNH   & \rankSACdotsNH    & \SACvideomnNH   & \SACvideosdNH   & \SACvideonoNH   & \rankSACvideoNH    \\
-    BIT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
-    LNS       & \SACimgmnLNS  & \SACimgsdLNS  & \SACimgnoLNS  & \rankSACimgLNS  &  \SACdotsmnLNS  & \SACdotssdLNS  & \SACdotsnoLNS  & \rankSACdotsLNS   & \SACvideomnLNS  & \SACvideosdLNS  & \SACvideonoLNS  & \rankSACvideoLNS   \\
-    \remodnav & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular}
-
-  \textit{Note}: Test.
-
-\end{table*}
-
-\begin{table*}[h!]
-  % table caption is above the table
-  \caption{RMSD ranks of PSO parameters for various stimulation types}
-  \label{tab:rmsd_pso}       % Give a unique label
-  % For LaTeX tables use
-  \begin{tabular}{lllllllllllll}
-    \hline\noalign{\smallskip}
-    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
-    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN        & \PSOimgmnMN   & \PSOimgsdMN   & \PSOimgnoMN   & \rankPSOimgMN   &  \PSOdotsmnMN   & \PSOdotssdMN   & \PSOdotsnoMN   & \rankPSOdotsMN    & \PSOvideomnMN   & \PSOvideosdMN   & \PSOvideonoMN   & \rankPSOvideoMN    \\
-    RA        & \PSOimgmnRA   & \PSOimgsdRA   & \PSOimgnoRA   & \rankPSOimgRA   &  \PSOdotsmnRA   & \PSOdotssdRA   & \PSOdotsnoRA   & \rankPSOdotsRA    & \PSOvideomnRA   & \PSOvideosdRA   & \PSOvideonoRA   & \rankPSOvideoRA    \\
-    NH        & \PSOimgmnNH   & \PSOimgsdNH   & \PSOimgnoNH   & \rankPSOimgNH   &  \PSOdotsmnNH   & \PSOdotssdNH   & \PSOdotsnoNH   & \rankPSOdotsNH    & \PSOvideomnNH   & \PSOvideosdNH   & \PSOvideonoNH   & \rankPSOvideoNH    \\
-    LNS       & \PSOimgmnLNS  & \PSOimgsdLNS  & \PSOimgnoLNS  & \rankPSOimgLNS  &  \PSOdotsmnLNS  & \PSOdotssdLNS  & \PSOdotsnoLNS  & \rankPSOdotsLNS   & \PSOvideomnLNS  & \PSOvideosdLNS  & \PSOvideonoLNS  & \rankPSOvideoLNS   \\
-    \remodnav & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular}
-
-  \textit{Note}: Test.
-
-\end{table*}
-
-\begin{table*}[h!]
-  % table caption is above the table
-  \caption{RMSD ranks of pursuit parameters for various stimulation types}
-  \label{tab:rmsd_pur}       % Give a unique label
-  % For LaTeX tables use
-  \begin{tabular}{lllllllllllll}
-    \hline\noalign{\smallskip}
-    & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
-    Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN        & \PURimgmnMN   & \PURimgsdMN   & \PURimgnoMN   & \rankPURimgMN   &  \PURdotsmnMN   & \PURdotssdMN   & \PURdotsnoMN   & \rankPURdotsMN    & \PURvideomnMN   & \PURvideosdMN   & \PURvideonoMN   & \rankPURvideoMN    \\
-    RA        & \PURimgmnRA   & \PURimgsdRA   & \PURimgnoRA   & \rankPURimgRA   &  \PURdotsmnRA   & \PURdotssdRA   & \PURdotsnoRA   & \rankPURdotsRA    & \PURvideomnRA   & \PURvideosdRA   & \PURvideonoRA   & \rankPURvideoRA    \\
-    \remodnav & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular}
-
-  \textit{Note}: Test.
-
-\end{table*}
 
 
 %
