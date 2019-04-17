@@ -551,7 +551,7 @@ def mainseq(s_mri = 'sub-19',
 
             fig = pl.figure(
                 # fake size to get the font size down in relation
-                figsize=(8, 5),
+                figsize=(6, 4),
                 dpi=120,
                 frameon=False)
 
