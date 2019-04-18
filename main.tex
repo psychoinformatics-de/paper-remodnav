@@ -926,8 +926,8 @@ x $1280$px at a viewing distance of 85cm \citep{Hanke2016}.  The top panel in
 sample. An individual main sequence for a lab subject is displayed in the
 bottom right panel in \fig{overallComp}. In order to compare event detection
 between high and low quality sample, we computed the event distribution
-parameters per event type and movie run. \fig{dist} displays these parameters
-for the high quality dataset.
+parameters per event type and movie run. The top panel in \fig{dist}
+displays the resulting distributions for the high quality dataset.
 
 \begin{figure*}[tbp]
   % TODO make final figure and switch
@@ -956,7 +956,7 @@ for the high quality dataset.
   \includegraphics[width=0.24\textwidth]{img/hist_pursuit_mri.pdf} \\
   % figure caption is below the figure
   \caption{Duration distributions per event for the high-quality lab sample (top panel),
-  and the low quality mri sample (bottom).}
+  and the low quality MRI sample (bottom).}
   \label{fig:dist}
   % Give a unique label
 \end{figure*}
@@ -997,18 +997,20 @@ data loss do not interfere with the detection of eye movement events in their
 vicinity beyond the border region of data loss that is masked during
 preprocessing. The detection of saccades corresponds to the velocity peaks in
 the time series. An individual main sequence for an MRI subject is displayed
-in the top right panel in \fig{overallComp}. Lastly, the left column in
-\fig{overallComp} shows all events produced from both datasets. \fig{dist}
-displays the distribution parameters per event type and movie run for the low
-quality dataset.
-All together, \fig{remodnav} and
+in the top right panel in \fig{overallComp}, and the left column in
+\fig{overallComp} shows all events produced from both datasets. Lastly,
+\fig{dist} displays the distribution parameters per event type for the low
+quality dataset in the bottom panel.
+All together, \fig{remodnav}, \fig{dist} and
 \fig{overallComp} illustrate a high similiarity between performance in high
 and low quality datasets. In both cases, the main sequences follow the known
 peak-velocity -- amplitude relationship of saccades. It is noteable that the
 MRI sample displays fewer saccades of the shortest range. Given the higher
 spatial uncertainty in this dataset, this is unsurprising: the eye tracker
 likely was not able to capture these small eye movements under the low-light
-conditions. Apart from this aspect, both main sequences are comparable. Given
+conditions. Apart from this aspect, both main sequences are comparable. The
+resulting duration distributions between both datasets are similar, despite the
+generally lower amount of events in the low quality dataset. Given
 that \remodnav\ classifies data from dynamic stimulation well, and that results
 on low and high quality data yield similar biologically plausible results, the
 performance seems to be robust even under high noise conditions.
@@ -1021,8 +1023,8 @@ performance seems to be robust even under high noise conditions.
 
   \caption{Main sequence of eye movement events during one 15 minute sequence of
   the movie (segment 2) for MRI (top), and lab participants (bottom). Data
-  across all participants is shown in the right, and data for a single
-  exemplary participant on the left.}
+  across all participants per dataset is shown on the left, and data for a single
+  exemplary participant on the right.}
 
   \label{fig:overallComp}
 \end{figure*}
