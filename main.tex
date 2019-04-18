@@ -219,10 +219,10 @@ from the understanding of visual attention \citep{HantaoLiu2011}, memory
 \citep{Hannula2010} and language comprehension \citep{Gordon2006}.
 %
 Regardless of use case, the raw eye tracking data (position coordinates)
-provided by an eye tracking devices are rarely used ``as is". Instead, in order
+provided by eye tracking devices are rarely used ``as is". Instead, in order
 to disentangle different cognitive, occulomotor, or perceptive states
 associated with different types of eye movements, most research relies on the
-classification of eye gaze data into distinct eye movements event categories
+classification of eye gaze data into distinct eye movement event categories
 \citep{Schutz2011}. The most feasible approach for doing this lies in the
 application of appropriate event detection algorithms.
 
@@ -271,7 +271,7 @@ smooth pursuit detection).
 Here we introduce \remodnav\ (robust eye movement detection for natural
 viewing), a novel tool that aims to meet these objectives. It is built on the
 aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
-that employs an adaptive approach to eye movement velocity based event
+that employs an adaptive approach to velocity based eye movement event
 detection and classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
 more homogeneous segments with more uniform noise levels. Furthermore, it adds
@@ -317,7 +317,7 @@ The goal of data preprocessing is to compute a time series of eye movement
 velocities on which the event detection algorithm can be executed, while
 reducing non-movement-related noise in the data as much as possible. 
 
-First implausible spikes in the coordinate time series are removed with a
+First, implausible spikes in the coordinate time series are removed with a
 heuristic spike filter \citep{stampe1993} (\fig{alg}A, 1). This filter is
 standard in many eye tracking toolboxes and often used for preprocessing
 \citep[\eg][]{Nystrom2010AnData}.
@@ -333,7 +333,7 @@ This type of filtered data is later used for a coarse segmentation of a time
 series into shorter intervals between major saccades.
 %
 Separately, data are also smoothed with a Savitzky-Golay filter
-(\param{savgol\_\{length,polyord\}}. All event detection beyond the
+(\param{savgol\_\{length,polyord\}}). All event detection beyond the
 localization of major saccades for time series chunking is performed on this
 type of filtered data.
 
@@ -480,9 +480,9 @@ maximum average frequency across the whole time series is reached
 intervals between saccades of maximum magnitude in the respective data.
 
 
-\subsection*{Detection of saccades and post-saccadic oscilations}
+\subsection*{Detection of saccades and post-saccadic oscillations}
 
-Detection of these event types as identical to the NH algorithm, only the data
+Detection of these event types is identical to the NH algorithm, only the data
 context and metrics for determining the velocity thresholds differ.  For
 saccades that also represent time series chunk boundaries (event label
 \texttt{SACC}), a context of \unit[1]{s}
@@ -540,7 +540,7 @@ major operating systems.  There are no particular hardware requirements for
 running the software other than sufficient memory to load and process the data.
 
 Program outputs are BIDS-compliant \citep{gorgolewski2016brain}
-tab-separated-value (TSV) text files. The contain a report on one detected
+tab-separated-value (TSV) text files. They contain a report on one detected
 event per line, with onset and offset time, onset and offset coordinates,
 amplitude, peak velocity, median velocity and average velocity.  Additionally,
 a visualization of the detection results, together with a time course of
