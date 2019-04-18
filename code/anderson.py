@@ -777,22 +777,22 @@ def plot_dist(figures):
         FIX = df[df.label == 'FIXA']
         PSOs = df[(df.label == 'HPSO') | (df.label == 'IHPS') | (df.label == 'LPSO') | (df.label == 'ILPS')]
         PURs = df[df.label == 'PURS']
-        for (ev_df, label) in [(SACs, 'saccade'),
-                               (FIX, 'fixation'),
-                               (PSOs, 'PSO'),
-                               (PURs, 'pursuit')]:
         # plot a histogram. Set the same x-axis limits as NH for fixations and saccades,
         # and exclude outlying 0.5% for other events
-            x_lim = [(0, 1) if label == 'fixation' else
-                     (0, 0.160) if label == 'saccade' else
-                     (0, np.percentile(ev_df['duration'].values, 99.5))]
-            bins = int(x_lim[0][1] * 1000) - 1
-            fig = pl.figure()
+        for (ev_df, label, x_lim, y_lim) in [
+                (SACs, 'saccade', (0, 0.16), (1, 62000)),
+                (FIX, 'fixation', (0, 1.0), (1, 50000)),
+                (PSOs, 'PSO', (0, 0.04), (1, 26000)),
+                (PURs, 'pursuit', (0, .8), (1, 30000))]:
+            fig = pl.figure(figsize=(3,2))
             pl.hist(ev_df['duration'].values,
-                    bins=bins,
+                    bins='doane',
+                    range=x_lim,
                     color='gray')
+                    #log=True)
             pl.xlabel('{} duration in s'.format(label))
-            pl.xlim(x_lim[0])
+            pl.xlim(x_lim)
+            pl.ylim(y_lim)
             pl.savefig(
                 op.join(
                     'img',
