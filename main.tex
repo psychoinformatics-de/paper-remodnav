@@ -290,13 +290,24 @@ quality), and relate its performance to the algorithm comparison by
 %technical details required for implementation of the tool by other
 %developers.}}
 
-The algorithm comprises two major steps: preprocessing and event detection.
-A general overview and pseudo-code and shown in \fig{alg}.
-The following sections detail individual analysis steps. For each step
-relevant algorithm parameters are given in parenthesis. \tab{parameters}
-summarizes all parameters, and lists their default values.
+Like NH, \remodnav is a \textit{velocity-based} event detection algorithm.
+Compared to \textit{dispersion-based} algorithms, these types of algorithms are
+less susceptible to noise and spatio-temporal precision, and thus applicable to
+a large range of sampling frequencies. Furthermore, any influence of
+biologically implausible velocities and accelerations can be prevented with the
+use of appropriate filters and thresholds \citep{holmqvist2011eye}.
+
+The algorithm comprises two major steps: preprocessing and event detection.  A
+general overview and pseudo-code and shown in \fig{alg}.  The following
+sections detail individual analysis steps. For each step relevant algorithm
+parameters are given in parenthesis. \tab{parameters} summarizes all
+parameters, and lists their default values.
 
 \subsection*{Preprocessing}
+
+The goal of data preprocessing is to compute a time series of eye movement
+velocities on which the event detection algorithm can be executed, while
+reducing non-movement-related noise in the data as much as possible. 
 
 First implausible spikes in the coordinate time series are removed with a
 heuristic spike filter \citep{stampe1993} (\fig{alg}A, 1). This filter is
@@ -327,15 +338,7 @@ are replaced by this set value.
 
 \subsection*{Event detection}
 
-Like NH, \remodnav is a \textit{velocity-based} event detection
-algorithm. Compared to \textit{dispersion-based} algorithms, these types of
-algorithms are less susceptible to noise and spatio-temporal precision, and
-thus applicable to a large range of sampling frequencies. Furthermore, any
-influence of biologically implausible velocities and accelerations can be
-prevented with the use of appropriate filters and thresholds
-\citep{holmqvist2011eye}.
-
-\textbf{Major saccade detection}\\
+\subsubsection*{Major saccades}
 %
 \remodnav classifies events in a sequential procedure: The entire time series
 is chunked into intervals between major saccades (termed SACC) to be able to
@@ -348,7 +351,7 @@ threshold (\texttt{velthres\_\linebreak[0]startvelocity}, termed $PT_1$ in NH),
 the \textit{median} (m) and \textit{median absolute deviation} ($MAD$) velocity
 of samples below this value is computed. Iteratively, $PT_i$ is updated as
 
-$$PT_n = m + (noisefactor \times MAD)$$
+$$PT_n = m + (\mathtt{noise\_factor} \times MAD)$$
 
 where the noisefactor is user-configurable, until the difference between two
 updates fulfills
@@ -382,7 +385,7 @@ configurable (\texttt{max\_initial\_saccade\_freq}) and by default is set to
 \unit[2]{Hz}.\todo[inline]{once we recall citation for this default, include a
 reason}
 
-\textbf{Between major saccades}\\
+\subsubsection*{Between major saccades}
 %
 In a locally adaptive manner, remaining data is classified into events in
 segments \textit{between} the initial major saccades, so called
