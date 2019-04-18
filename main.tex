@@ -63,6 +63,9 @@
 \usepackage{todonotes}
 \newcommand{\eg}{e.g., }
 \newcommand{\remodnav}{REMoDNaV }
+\newcommand{\fig}[1]{{Figure~\ref{fig:#1}}}
+\newcommand{\tab}[1]{{Table~\ref{tab:#1}}}
+\newcommand{\param}[1]{{\texttt{#1}}}
 
 \begin{document}
 
@@ -282,51 +285,55 @@ quality), and relate its performance to the algorithm comparison by
 % Methods (3 sections; our algo, comparison to current algos, application on
 % studyforrest dataset)
 
-
-\subsection*{\remodnav Implementation}\label{impl}
-
 %\ todo[inline]{\textit{Elaborate on how the algorithm works;For software tool
 %papers, this section should address how the tool works and any relevant
 %technical details required for implementation of the tool by other
 %developers.}}
 
-The algorithm consists of two major steps: Preprocessing and event detection.
-Figure \ref{fig:alg} displays a pseudo-code based illustration of the
-procedures that the text refers to. In general, \remodnav is (as the NH
-algorithm) a \textit{velocity-based} event detection algorithm. Compared to
-\textit{dispersion-based} algorithms, these types of algorithms are less
-susceptible to noise and spatio-temporal precision, and thus applicable to a
-large range of sampling frequencies. Furthermore, any influence of biologically
-implausible velocities and accelerations can be prevented with the use of
-appropriate filters and thresholds \citep{holmqvist2011eye}.
+The algorithm comprises two major steps: preprocessing and event detection.
+A general overview and pseudo-code and shown in \fig{alg}.
+The following sections detail individual analysis steps. For each step
+relevant algorithm parameters are given in parenthesis. \tab{parameters}
+summarizes all parameters, and lists their default values.
 
-\subsubsection*{Preprocessing}
+\subsection*{Preprocessing}
 
-To filter out implausible spikes in the raw data, \remodnav applies a heuristic
-spike filter \citep{stampe1993} (figure \ref{fig:alg}, 1a). This filter is a
-standard in many eye tracking toolboxes and often used for preprocessing (e.g.
-for the data used in the original NH algorithm \citep{Friedman2018}). Based on
-filtered coordinates, sampling rate of the eye tracker, viewing distance and
-screen dimensions (the latter two provided with the \texttt{px2deg} parameter),
-\remodnav calculates the velocity and acceleration of eye movements (1d-e). To
+First implausible spikes in the coordinate time series are removed with a
+heuristic spike filter \citep{stampe1993} (\fig{alg}A, 1). This filter is
+standard in many eye tracking toolboxes and often used for preprocessing
+\citep[\eg][]{Nystrom2010AnData}.
+%
+Data samples around signal loss (\eg eye blinks) can be nulled in order to
+remove spurious movement signals (\param{dilate\_nan}, \param{min\_
+blink\_duration}; \fig{alg}A, 2).
+%
+Coordinate time series are temporally filtered in two different ways
+(\fig{alg}A, 3). A relatively large median filter
+(\param{median\_filter\_ length}) is used to emphasize long-distance saccades.
+This type of filtered data is later used for a coarse segmentation of a time
+series into shorter intervals between major saccades.
+%
+Separately, data are also smoothed with a Savitzky-Golay filter
+(\param{savgol\_\{length,polyord\}}. All event detection beyond the
+localization of major saccades for time series chunking is performed on this
+type of filtered data.
+
+After spike-removal and temporal filtering, movement velocities and
+accelerations are computed (\fig{alg}A, 4-5). To
 disregard biologically implausible measurements, a configurable maximum
-velocity (\texttt{max\_vel}) is enforced -- samples exceeding this threshold
-are replaced by this set value. The default value is 1000 $^\circ/sec$ and
-based on the empirical upper limit of saccade velocities reported in
-\cite{holmqvist2011eye}.  At the preprocessing stage, a variety of optional
-functionality is available. On demand, the algorithm can:
-%
-\begin{enumerate}
-\item Mask data around signal loss (such as eye blinks)
-\item Apply Savitzky-Golay filter (for noise reduction)
-\item Apply median filter (for noise reduction)
-\end{enumerate}
-%
-Following any optional filtering, movement velocities are recomputed. An
-illustration is given in figure \ref{fig:alg}, A)
+velocity (\param{max\_vel}) is enforced -- samples exceeding this threshold
+are replaced by this set value.
 
 
-\subsubsection*{Event detection}
+\subsection*{Event detection}
+
+Like NH, \remodnav is a \textit{velocity-based} event detection
+algorithm. Compared to \textit{dispersion-based} algorithms, these types of
+algorithms are less susceptible to noise and spatio-temporal precision, and
+thus applicable to a large range of sampling frequencies. Furthermore, any
+influence of biologically implausible velocities and accelerations can be
+prevented with the use of appropriate filters and thresholds
+\citep{holmqvist2011eye}.
 
 \textbf{Major saccade detection}\\
 %
@@ -525,8 +532,10 @@ and, subsequently, the labeling of all other eye events.
     polynomial order of Savitzky-Golay filter for noise reduction&
     2\\
     \texttt{max\_vel} &
-    maximum velocity threshold, will issue warning if exceeded to inform about
-    potentially inappropriate filter settings&
+    maximum velocity threshold, will replace value with maximum, and issue
+    warning if exceeded to inform about
+    potentially inappropriate filter settings
+    (default value based on \cite{holmqvist2011eye})&
     \unit[1000]{deg/s}\\
 
     \\\multicolumn{3}{l}{\textit{Event detection}} \\

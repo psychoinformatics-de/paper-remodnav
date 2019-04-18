@@ -11,13 +11,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="209.82928mm"
-   height="227.8428mm"
-   viewBox="0 0 209.82929 227.8428"
+   width="203.87704mm"
+   height="213.50592mm"
+   viewBox="0 0 203.87705 213.50592"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="remodnav_algorithm-v4.svg"
+   sodipodi:docname="remodnav_algorithm.svg"
    inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -50,7 +50,7 @@
       <path
          id="path12473"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-linecap:butt;stroke-linejoin:round"
+         style="fill-rule:evenodd;stroke:black;stroke-width:1.00000003pt;stroke-linecap:butt;stroke-linejoin:round"
          transform="matrix(0.8,0,0,0.8,10,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -76,7 +76,7 @@
 *{stroke-linecap:butt;stroke-linejoin:round;}
   </style>
     <path
-       style="stroke:#000000;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
+       style="stroke:black;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
        id="mcb1eae9970"
        d="M 0,0 V 3.5"
        inkscape:connector-curvature="0" />
@@ -156,7 +156,7 @@
        inkscape:connector-curvature="0"
        style="stroke-linecap:butt;stroke-linejoin:round" />
     <path
-       style="stroke:#000000;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
+       style="stroke:black;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
        id="m0e1c49aea1"
        d="M 0,0 H -3.5"
        inkscape:connector-curvature="0" />
@@ -232,7 +232,7 @@
 *{stroke-linecap:butt;stroke-linejoin:round;}
   </style>
     <path
-       style="stroke:#000000;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
+       style="stroke:black;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
        id="m975d33c142"
        d="M 0,0 V 3.5"
        inkscape:connector-curvature="0" />
@@ -312,7 +312,7 @@
        inkscape:connector-curvature="0"
        style="stroke-linecap:butt;stroke-linejoin:round" />
     <path
-       style="stroke:#000000;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
+       style="stroke:black;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:round"
        id="m828ada6410"
        d="M 0,0 H -3.5"
        inkscape:connector-curvature="0" />
@@ -1725,16 +1725,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4707821"
-     inkscape:cx="298.22219"
-     inkscape:cy="571.11522"
+     inkscape:zoom="2.08"
+     inkscape:cx="192.59701"
+     inkscape:cy="614.58707"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
-     inkscape:window-width="2560"
-     inkscape:window-height="1403"
+     inkscape:window-width="1920"
+     inkscape:window-height="1133"
      inkscape:window-x="0"
-     inkscape:window-y="147"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      inkscape:measure-start="0,0"
      inkscape:measure-end="0,0"
@@ -1748,8 +1748,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid15408"
-       originx="-0.24539421"
-       originy="-68.607978" />
+       originx="-2.4979638"
+       originy="-76.717482" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -1768,10 +1768,10 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline;stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(-0.24539419,-0.54922345)">
+     transform="translate(-2.4979637,-6.7766194)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="12.630294"
        y="33.296364"
        id="text6773-3"><tspan
@@ -1782,7 +1782,7 @@
          y="42.660133" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:11.48919582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2872299;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:11.48919582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.2872299;stroke-linecap:butt;stroke-linejoin:round"
        x="154.65712"
        y="28.110094"
        id="text6773-5"
@@ -1795,7 +1795,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot9319"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="scale(0.26458333)"><flowRegion
          id="flowRegion9321"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -1808,7 +1808,7 @@
          id="flowPara9325"
          style="stroke-linecap:butt;stroke-linejoin:round" /></flowRoot>    <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="17.220093"
        y="150.36835"
        id="text13753"
@@ -1822,7 +1822,7 @@
          y="150.36835">SACC 1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="77.361008"
        y="169.97357"
        id="text13753-8"
@@ -1836,7 +1836,7 @@
          y="169.97357">SACC 2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="83.169968"
        y="199.6254"
        id="text13753-8-4"
@@ -1850,7 +1850,7 @@
          y="199.6254">LPSO</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="23.071686"
        y="193.88039"
        id="text13753-8-4-3"
@@ -1865,7 +1865,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot18290"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="matrix(0.26458333,0,0,0.26458333,0.30464904,0.66591163)"><flowRegion
          id="flowRegion18292"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -1902,7 +1902,7 @@
      id="layer2"
      inkscape:label="Layer 2"
      style="display:inline;opacity:1;stroke-linecap:butt;stroke-linejoin:round"
-     transform="translate(-0.24539419,-0.54922345)">
+     transform="translate(-2.4979637,-6.7766194)">
     <g
        transform="matrix(0.27335545,0,0,0.2528018,90.315437,137.51152)"
        id="axes_1-4"
@@ -1936,7 +1936,7 @@
          style="stroke-linecap:butt;stroke-linejoin:round">
         <path
            id="path16791"
-           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:miter"
+           style="fill:none;stroke:black;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:miter"
            d="M 57.6,307.584 V 41.472"
            inkscape:connector-curvature="0" />
       </g>
@@ -1945,7 +1945,7 @@
          style="stroke-linecap:butt;stroke-linejoin:round">
         <path
            id="path16797"
-           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:miter"
+           style="fill:none;stroke:black;stroke-width:0.80000001;stroke-linecap:square;stroke-linejoin:miter"
            d="M 57.6,307.584 H 414.72"
            inkscape:connector-curvature="0" />
       </g>
@@ -1972,11 +1972,11 @@
       </g>
       <g
          id="patch_2-5-5"
-         style="display:inline;opacity:1;fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+         style="display:inline;opacity:1;fill:white;stroke-linecap:butt;stroke-linejoin:round"
          transform="matrix(1.0031995,0,0,0.74691417,-2.1154774,-538.79768)">
         <path
            id="path16544-3"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            d="M 57.6,307.584 H 414.72 V 41.472 H 57.6 Z"
            inkscape:connector-curvature="0" />
       </g>
@@ -2305,7 +2305,7 @@
              style="stroke-width:0.75095797;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none">
             <path
                id="path5678"
-               style="opacity:0.8;fill:#ffffff;stroke:#cccccc;stroke-width:0.75095797;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+               style="opacity:0.8;fill:white;stroke:#ccc;stroke-width:0.75095797;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
                d="M 242.72469,78.82825 H 407.72 q 2,0 2,-2 V 48.472 q 0,-2 -2,-2 H 242.72469 q -2,0 -2,2 v 28.35625 q 0,2 2,2 z"
                inkscape:connector-curvature="0" />
           </g>
@@ -2692,7 +2692,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot9022"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="scale(0.26458333)"><flowRegion
          id="flowRegion9024"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -2705,7 +2705,7 @@
          id="flowPara9028"
          style="stroke-linecap:butt;stroke-linejoin:round" /></flowRoot>    <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="6.6626916"
        y="71.743355"
        id="text9431"
@@ -2716,7 +2716,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777767px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
          y="71.743355"
-         id="tspan9558">2) Event detection </tspan><tspan
+         id="tspan9558">(B) Event detection </tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
@@ -2726,7 +2726,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
          y="78.069016"
-         id="tspan9642">a) Calculate peak velocity threshold from entire data itera-</tspan><tspan
+         id="tspan9642">1) Calculate peak velocity threshold from entire data itera-</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
@@ -2748,7 +2748,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
          y="92.017204"
-         id="tspan9580">b) Determine major saccades (SACC) from sorted velocity</tspan><tspan
+         id="tspan9580">2) Determine major saccades (SACC) from sorted velocity</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
@@ -2775,7 +2775,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
          y="108.61122"
-         id="tspan15560">c) Detect saccade onset/offset and LPSOs/HPSOs for all </tspan><tspan
+         id="tspan15560">3) Detect saccade onset/offset and LPSOs/HPSOs for all </tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
@@ -2807,7 +2807,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
          y="130.09431"
-         id="tspan15439">d) Segment data into saccade windows between ms.</tspan><tspan
+         id="tspan15439">4) Segment data into saccade windows between ms.</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.6626916"
@@ -2820,7 +2820,7 @@
          id="tspan9546" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="104.32004"
        y="78.022545"
        id="text9431-1"
@@ -2831,7 +2831,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="78.022545"
-         id="tspan13869">e) Compute local velocity thresholds within SACC windows</tspan><tspan
+         id="tspan13869">5) Compute local velocity thresholds within SACC windows</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
@@ -2841,7 +2841,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="84.435829"
-         id="tspan9607-3">f) Label saccade if</tspan><tspan
+         id="tspan9607-3">6) Label saccade if</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
@@ -2877,7 +2877,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="104.7973"
-         id="tspan13935">g) Detect saccade onset/offset and PSOs as before</tspan><tspan
+         id="tspan13935">7) Detect saccade onset/offset and PSOs as before</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
@@ -2887,7 +2887,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="111.21059"
-         id="tspan18567">h) If unlabeled window &gt; <tspan
+         id="tspan18567">8) If unlabeled window &gt; <tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan18639">min_pursuit_duration</tspan></tspan><tspan
          sodipodi:role="line"
@@ -2906,7 +2906,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="121.39132"
-         id="tspan18573">i) Detect smooth pursuit peaks similarly to SACC detection,</tspan><tspan
+         id="tspan18573">9) Detect smooth pursuit peaks similarly to SACC detection,</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
@@ -2922,8 +2922,8 @@
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="131.57207"
-         id="tspan18579">j) Compute pursuit onset/offset as saccade onset/offset</tspan><tspan
+         y="131.57205"
+         id="tspan18579">10) Compute pursuit onset/offset as saccade onset/offset</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
@@ -2934,19 +2934,19 @@
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="139.10696"
-         id="tspan18583" /><tspan
+         y="139.10695"
+         id="tspan18585" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
          y="141.75279"
-         id="tspan18585">k) Label fixation if velocity &lt; <tspan
+         id="tspan936">11) Label fixation if velocity &lt; <tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan18635">pursuit_velthresh</tspan></tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="145.52025"
+         y="145.52023"
          id="tspan18587" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
@@ -2956,12 +2956,12 @@
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="150.81192"
+         y="150.8119"
          id="tspan18591" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="153.45775"
+         y="153.45773"
          id="tspan18593" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
@@ -2971,12 +2971,12 @@
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="158.74942"
+         y="158.7494"
          id="tspan13903" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.32004"
-         y="161.39525"
+         y="161.39523"
          id="tspan9682-6" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
@@ -3034,7 +3034,7 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333206px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333206px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="131.95218"
        y="113.01825"
        id="text10812"><tspan
@@ -3044,7 +3044,7 @@
          y="115.76743"
          id="tspan10814" /></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2, 0.2;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:black;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2, 0.2;stroke-dashoffset:0;stroke-opacity:1"
        d="m 11.127474,200.63807 c 76.302628,0.29728 76.302628,0.29728 76.302628,0.29728 v 0 0 0"
        id="path10820"
        inkscape:connector-curvature="0"
@@ -3061,7 +3061,7 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333206px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333206px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="133.93407"
        y="134.42274"
        id="text11001"><tspan
@@ -3079,7 +3079,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g12983"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use12981"
            y="7.7660198"
@@ -3091,7 +3091,7 @@
       </g>
       <g
          id="g12987"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use12985"
            y="7.7660198"
@@ -3103,7 +3103,7 @@
       </g>
       <g
          id="g12991"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use12989"
            y="7.7660198"
@@ -3115,7 +3115,7 @@
       </g>
       <g
          id="g12995"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use12993"
            y="7.7660198"
@@ -3127,7 +3127,7 @@
       </g>
       <g
          id="g12999"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use12997"
            y="7.7660198"
@@ -3139,7 +3139,7 @@
       </g>
       <g
          id="g13003"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13001"
            y="7.7660198"
@@ -3151,7 +3151,7 @@
       </g>
       <g
          id="g13007"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13005"
            y="7.7660198"
@@ -3163,7 +3163,7 @@
       </g>
       <g
          id="g13011"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13009"
            y="7.7660198"
@@ -3175,7 +3175,7 @@
       </g>
       <g
          id="g13015"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13013"
            y="7.7660198"
@@ -3187,7 +3187,7 @@
       </g>
       <g
          id="g13019"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13017"
            y="7.7660198"
@@ -3199,7 +3199,7 @@
       </g>
       <g
          id="g13023"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13021"
            y="7.7660198"
@@ -3211,7 +3211,7 @@
       </g>
       <g
          id="g13027"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13025"
            y="7.7660198"
@@ -3223,7 +3223,7 @@
       </g>
       <g
          id="g13031"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13029"
            y="7.7660198"
@@ -3235,7 +3235,7 @@
       </g>
       <g
          id="g13035"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13033"
            y="7.7660198"
@@ -3247,7 +3247,7 @@
       </g>
       <g
          id="g13039"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13037"
            y="7.7660198"
@@ -3269,7 +3269,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13395"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13393"
            y="4.1480498"
@@ -3281,7 +3281,7 @@
       </g>
       <g
          id="g13399"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13397"
            y="7.7660198"
@@ -3293,7 +3293,7 @@
       </g>
       <g
          id="g13403"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13401"
            y="7.7660198"
@@ -3305,7 +3305,7 @@
       </g>
       <g
          id="g13407"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13405"
            y="7.7660198"
@@ -3317,7 +3317,7 @@
       </g>
       <g
          id="g13411"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13409"
            y="7.7660198"
@@ -3337,7 +3337,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13451"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13449"
            y="6.766016"
@@ -3350,7 +3350,7 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="4.8589439"
        y="218.5251"
        id="text6739-2-3-9-7"
@@ -3358,12 +3358,12 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="4.8589439"
          y="218.5251"
-         id="tspan15406">B)<tspan
-   style="font-style:italic;font-weight:normal;stroke-linecap:butt;stroke-linejoin:round"
-   id="tspan1092"> Iterative, global peak velocity estimation, adapted from NH</tspan></tspan></text>
+         id="tspan15406"><tspan
+           style="font-style:italic;font-weight:normal;stroke-linecap:butt;stroke-linejoin:round"
+           id="tspan1092">Iterative, global peak velocity estimation, adapted from NH</tspan></tspan></text>
     <g
        id="surface1-7"
        transform="matrix(0.3309932,0,0,0.3309932,22.583471,184.34042)"
@@ -3373,7 +3373,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13558"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13556"
            y="7.7660198"
@@ -3385,7 +3385,7 @@
       </g>
       <g
          id="g13562"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13560"
            y="7.7660198"
@@ -3397,7 +3397,7 @@
       </g>
       <g
          id="g13566"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13564"
            y="9.2601604"
@@ -3409,7 +3409,7 @@
       </g>
       <g
          id="g13570"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13568"
            y="7.7660198"
@@ -3421,7 +3421,7 @@
       </g>
       <g
          id="g13574"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13572"
            y="7.7660198"
@@ -3433,7 +3433,7 @@
       </g>
       <g
          id="g13578"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13576"
            y="7.7660198"
@@ -3445,7 +3445,7 @@
       </g>
       <g
          id="g13582"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13580"
            y="7.7660198"
@@ -3457,7 +3457,7 @@
       </g>
       <g
          id="g13586"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13584"
            y="7.7660198"
@@ -3469,7 +3469,7 @@
       </g>
       <g
          id="g13590"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13588"
            y="7.7660198"
@@ -3481,7 +3481,7 @@
       </g>
       <g
          id="g13594"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13592"
            y="7.7660198"
@@ -3493,7 +3493,7 @@
       </g>
       <g
          id="g13598"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13596"
            y="7.7660198"
@@ -3505,7 +3505,7 @@
       </g>
       <g
          id="g13602"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13600"
            y="7.7660198"
@@ -3517,7 +3517,7 @@
       </g>
       <g
          id="g13606"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13604"
            y="7.7660198"
@@ -3529,7 +3529,7 @@
       </g>
       <g
          id="g13610"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13608"
            y="7.7660198"
@@ -3541,7 +3541,7 @@
       </g>
       <g
          id="g13614"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13612"
            y="7.7660198"
@@ -3553,7 +3553,7 @@
       </g>
       <g
          id="g13618"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13616"
            y="7.7660198"
@@ -3565,7 +3565,7 @@
       </g>
       <g
          id="g13622"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13620"
            y="7.7660198"
@@ -3577,7 +3577,7 @@
       </g>
       <g
          id="g13626"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13624"
            y="7.7660198"
@@ -3589,7 +3589,7 @@
       </g>
       <g
          id="g13630"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13628"
            y="7.7660198"
@@ -3601,7 +3601,7 @@
       </g>
       <g
          id="g13634"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13632"
            y="7.7660198"
@@ -3613,7 +3613,7 @@
       </g>
       <g
          id="g13638"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13636"
            y="7.7660198"
@@ -3654,7 +3654,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g14006"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14004"
            y="7.7660198"
@@ -3666,7 +3666,7 @@
       </g>
       <g
          id="g14010"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14008"
            y="7.7660198"
@@ -3678,7 +3678,7 @@
       </g>
       <g
          id="g14014"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14012"
            y="9.2601604"
@@ -3690,7 +3690,7 @@
       </g>
       <g
          id="g14018"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14016"
            y="7.7660198"
@@ -3702,7 +3702,7 @@
       </g>
       <g
          id="g14022"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14020"
            y="7.7660198"
@@ -3714,7 +3714,7 @@
       </g>
       <g
          id="g14026"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14024"
            y="7.7660198"
@@ -3726,7 +3726,7 @@
       </g>
       <g
          id="g14030"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14028"
            y="7.7660198"
@@ -3738,7 +3738,7 @@
       </g>
       <g
          id="g14034"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14032"
            y="7.7660198"
@@ -3750,7 +3750,7 @@
       </g>
       <g
          id="g14038"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14036"
            y="7.7660198"
@@ -3762,7 +3762,7 @@
       </g>
       <g
          id="g14042"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14040"
            y="7.7660198"
@@ -3774,7 +3774,7 @@
       </g>
       <g
          id="g14046"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14044"
            y="7.7660198"
@@ -3786,7 +3786,7 @@
       </g>
       <g
          id="g14050"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14048"
            y="7.7660198"
@@ -3798,7 +3798,7 @@
       </g>
       <g
          id="g14054"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14052"
            y="7.7660198"
@@ -3812,11 +3812,11 @@
          id="path14056"
          transform="matrix(0.1,0,0,-0.1,0,10)"
          d="m 738.125,24.375 h 29.96094"
-         style="fill:none;stroke:#000000;stroke-width:4.05000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
+         style="fill:none;stroke:black;stroke-width:4.05000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
          inkscape:connector-curvature="0" />
       <g
          id="g14060"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14058"
            y="7.7660198"
@@ -3828,7 +3828,7 @@
       </g>
       <g
          id="g14064"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14062"
            y="7.7660198"
@@ -3840,7 +3840,7 @@
       </g>
       <g
          id="g14068"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14066"
            y="7.7660198"
@@ -3852,7 +3852,7 @@
       </g>
       <g
          id="g14072"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14070"
            y="7.7660198"
@@ -3864,7 +3864,7 @@
       </g>
       <g
          id="g14076"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14074"
            y="7.7660198"
@@ -3876,7 +3876,7 @@
       </g>
       <g
          id="g14080"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14078"
            y="7.7660198"
@@ -3888,7 +3888,7 @@
       </g>
       <g
          id="g14084"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14082"
            y="7.7660198"
@@ -3900,7 +3900,7 @@
       </g>
       <g
          id="g14088"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14086"
            y="7.7660198"
@@ -3912,7 +3912,7 @@
       </g>
       <g
          id="g14092"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14090"
            y="7.7660198"
@@ -3924,7 +3924,7 @@
       </g>
       <g
          id="g14096"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14094"
            y="7.7660198"
@@ -3936,7 +3936,7 @@
       </g>
       <g
          id="g14100"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14098"
            y="7.7660198"
@@ -3948,7 +3948,7 @@
       </g>
       <g
          id="g14104"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14102"
            y="7.7660198"
@@ -3960,7 +3960,7 @@
       </g>
       <g
          id="g14108"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use14106"
            y="7.7660198"
@@ -3974,7 +3974,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot15060"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="scale(0.26458333)"><flowRegion
          id="flowRegion15062"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -4029,7 +4029,7 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="152.54782"
        y="179.39214"
        id="text13753-8-4-4"
@@ -4043,7 +4043,7 @@
          y="179.39214">ISAC</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="194.66539"
        y="158.60287"
        id="text13753-6-8"
@@ -4052,12 +4052,12 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan13751-2-4"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#808080;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:gray;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="194.66539"
          y="158.60287">SACC</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="156.33409"
        y="202.41263"
        id="text13753-8-4-0"
@@ -4080,223 +4080,223 @@
     <g
        id="surface1"
        transform="matrix(0.32426667,0,0,0.32426667,118.89667,157.96428)"
-       style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+       style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
        inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <g
          id="g17281"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17279"
            y="7.766016"
            x="-0.28398401"
            xlink:href="#glyph0-0-0"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17285"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17283"
            y="7.766016"
            x="2.4790161"
            xlink:href="#glyph0-1-8"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17289"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17287"
            y="7.766016"
            x="7.735158"
            xlink:href="#glyph0-2-81"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17293"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17291"
            y="7.766016"
            x="11.605158"
            xlink:href="#glyph0-3-0"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17297"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17295"
            y="7.766016"
            x="16.033157"
            xlink:href="#glyph0-4-9"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17301"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17299"
            y="7.766016"
            x="19.939157"
            xlink:href="#glyph0-5-3"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17305"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17303"
            y="7.766016"
            x="23.872158"
            xlink:href="#glyph0-6-4"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17309"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17307"
            y="7.766016"
            x="28.849159"
            xlink:href="#glyph0-7-3"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17313"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17311"
            y="7.766016"
            x="33.277157"
            xlink:href="#glyph0-7-3"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17317"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17315"
            y="7.766016"
            x="37.705154"
            xlink:href="#glyph0-6-4"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17321"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17319"
            y="7.766016"
            x="42.682152"
            xlink:href="#glyph0-8-18"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17325"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17323"
            y="7.766016"
            x="48.217155"
            xlink:href="#glyph0-3-0"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17329"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17327"
            y="7.766016"
            x="55.975002"
            xlink:href="#glyph0-9-89"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17333"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17331"
            y="7.766016"
            x="63.166004"
            xlink:href="#glyph0-0-0"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17337"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17335"
            y="7.766016"
            x="65.929008"
            xlink:href="#glyph0-1-8"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17341"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17339"
            y="7.766016"
            x="71.464005"
            xlink:href="#glyph0-8-18"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17345"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17343"
            y="7.766016"
            x="76.999008"
            xlink:href="#glyph0-10-83"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17349"
-         style="fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:white;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17347"
            y="7.766016"
            x="81.696884"
            xlink:href="#glyph0-9-89"
-           style="fill:#ffffff;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:white;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
@@ -4310,7 +4310,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g17433"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17431"
            y="7.7660198"
@@ -4322,7 +4322,7 @@
       </g>
       <g
          id="g17437"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17435"
            y="7.7660198"
@@ -4334,7 +4334,7 @@
       </g>
       <g
          id="g17441"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17439"
            y="9.2601604"
@@ -4354,7 +4354,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g17491"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17489"
            y="7.7660198"
@@ -4366,7 +4366,7 @@
       </g>
       <g
          id="g17495"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17493"
            y="7.7660198"
@@ -4378,7 +4378,7 @@
       </g>
       <g
          id="g17499"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17497"
            y="7.7660198"
@@ -4390,7 +4390,7 @@
       </g>
       <g
          id="g17503"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17501"
            y="7.7660198"
@@ -4402,7 +4402,7 @@
       </g>
       <g
          id="g17507"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17505"
            y="7.7660198"
@@ -4414,7 +4414,7 @@
       </g>
       <g
          id="g17511"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17509"
            y="7.7660198"
@@ -4426,7 +4426,7 @@
       </g>
       <g
          id="g17515"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17513"
            y="7.7660198"
@@ -4438,7 +4438,7 @@
       </g>
       <g
          id="g17519"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17517"
            y="9.2601604"
@@ -4458,7 +4458,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g17596"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17594"
            y="7.7660198"
@@ -4470,7 +4470,7 @@
       </g>
       <g
          id="g17600"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17598"
            y="7.7660198"
@@ -4482,7 +4482,7 @@
       </g>
       <g
          id="g17604"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17602"
            y="7.7660198"
@@ -4494,7 +4494,7 @@
       </g>
       <g
          id="g17608"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17606"
            y="7.7660198"
@@ -4506,7 +4506,7 @@
       </g>
       <g
          id="g17612"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17610"
            y="7.7660198"
@@ -4518,7 +4518,7 @@
       </g>
       <g
          id="g17616"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17614"
            y="7.7660198"
@@ -4530,7 +4530,7 @@
       </g>
       <g
          id="g17620"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17618"
            y="7.7660198"
@@ -4544,11 +4544,11 @@
          id="path17622"
          transform="matrix(0.1,0,0,-0.1,0,10)"
          d="m 342.07031,24.375 h 29.96094"
-         style="fill:none;stroke:#000000;stroke-width:4.05000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
+         style="fill:none;stroke:black;stroke-width:4.05000019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
          inkscape:connector-curvature="0" />
       <g
          id="g17626"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17624"
            y="7.7660198"
@@ -4560,7 +4560,7 @@
       </g>
       <g
          id="g17630"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17628"
            y="7.7660198"
@@ -4572,7 +4572,7 @@
       </g>
       <g
          id="g17634"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17632"
            y="7.7660198"
@@ -4584,7 +4584,7 @@
       </g>
       <g
          id="g17638"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17636"
            y="7.7660198"
@@ -4596,7 +4596,7 @@
       </g>
       <g
          id="g17642"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17640"
            y="7.7660198"
@@ -4608,7 +4608,7 @@
       </g>
       <g
          id="g17646"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17644"
            y="7.7660198"
@@ -4620,7 +4620,7 @@
       </g>
       <g
          id="g17650"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17648"
            y="7.7660198"
@@ -4632,7 +4632,7 @@
       </g>
       <g
          id="g17654"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17652"
            y="7.7660198"
@@ -4644,7 +4644,7 @@
       </g>
       <g
          id="g17658"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17656"
            y="7.7660198"
@@ -4657,7 +4657,7 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="124.45274"
        y="204.52933"
        id="text13753-8-4-0-1"
@@ -4671,7 +4671,7 @@
          y="204.52933">PURS</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="175.96619"
        y="209.3136"
        id="text13753-8-4-0-0"
@@ -4694,7 +4694,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13395-5"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13393-5"
            y="4.1480498"
@@ -4706,7 +4706,7 @@
       </g>
       <g
          id="g13399-8"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13397-1"
            y="7.7660198"
@@ -4718,7 +4718,7 @@
       </g>
       <g
          id="g13403-3"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13401-8"
            y="7.7660198"
@@ -4730,7 +4730,7 @@
       </g>
       <g
          id="g13407-8"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13405-2"
            y="7.7660198"
@@ -4742,7 +4742,7 @@
       </g>
       <g
          id="g13411-9"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13409-5"
            y="7.7660198"
@@ -4762,7 +4762,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13451-6"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13449-2"
            y="6.766016"
@@ -4838,7 +4838,7 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="105.704"
        y="218.31178"
        id="text6739-2-3-9-7-1"
@@ -4846,234 +4846,234 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="105.704"
          y="218.31178"
-         id="tspan15406-4">C)<tspan
-   style="font-weight:normal"
-   id="tspan1094"> <tspan
-   style="font-style:italic"
-   id="tspan1098">Subsequent, iterative event detection between SACCs</tspan></tspan></tspan></text>
+         id="tspan15406-4"><tspan
+           style="font-weight:normal;stroke-linecap:butt;stroke-linejoin:round"
+           id="tspan1094"><tspan
+             style="font-style:italic;stroke-linecap:butt;stroke-linejoin:round"
+             id="tspan1098">Subsequent, iterative event detection between SACCs</tspan></tspan></tspan></text>
     <g
        id="surface1-94"
        transform="matrix(0.32426667,0,0,0.32426667,119.77768,158.93201)"
-       style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+       style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
        inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <g
          id="g17930"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17928"
            y="7.766016"
            x="-0.28398401"
            xlink:href="#glyph0-0-434"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17934"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17932"
            y="7.766016"
            x="2.4790161"
            xlink:href="#glyph0-1-1"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17938"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17936"
            y="7.766016"
            x="7.735158"
            xlink:href="#glyph0-2-6"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17942"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17940"
            y="7.766016"
            x="11.605158"
            xlink:href="#glyph0-3-5"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17946"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17944"
            y="7.766016"
            x="16.033157"
            xlink:href="#glyph0-4-0"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17950"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17948"
            y="7.766016"
            x="19.939157"
            xlink:href="#glyph0-5-0"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17954"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17952"
            y="7.766016"
            x="23.872158"
            xlink:href="#glyph0-6-3"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17958"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17956"
            y="7.766016"
            x="28.849159"
            xlink:href="#glyph0-7-8"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17962"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17960"
            y="7.766016"
            x="33.277157"
            xlink:href="#glyph0-7-8"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17966"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17964"
            y="7.766016"
            x="37.705154"
            xlink:href="#glyph0-6-3"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17970"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17968"
            y="7.766016"
            x="42.682152"
            xlink:href="#glyph0-8-9"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17974"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17972"
            y="7.766016"
            x="48.217155"
            xlink:href="#glyph0-3-5"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17978"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17976"
            y="7.766016"
            x="55.975002"
            xlink:href="#glyph0-9-4"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17982"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17980"
            y="7.766016"
            x="63.166004"
            xlink:href="#glyph0-0-434"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17986"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17984"
            y="7.766016"
            x="65.929008"
            xlink:href="#glyph0-1-1"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17990"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17988"
            y="7.766016"
            x="71.464005"
            xlink:href="#glyph0-8-9"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17994"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17992"
            y="7.766016"
            x="76.999008"
            xlink:href="#glyph0-10-5"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
       <g
          id="g17998"
-         style="fill:#ff0000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:red;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use17996"
            y="7.766016"
            x="81.696884"
            xlink:href="#glyph0-9-4"
-           style="fill:#ff0000;stroke-linecap:butt;stroke-linejoin:round"
+           style="fill:red;stroke-linecap:butt;stroke-linejoin:round"
            width="100%"
            height="100%" />
       </g>
@@ -5081,7 +5081,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot18095"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="scale(0.26458333)"><flowRegion
          id="flowRegion18097"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -5101,7 +5101,7 @@
        inkscape:export-ydpi="96">
       <g
          id="g13451-5"
-         style="fill:#000000;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
+         style="fill:black;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:round">
         <use
            id="use13449-8"
            y="6.766016"
@@ -5115,7 +5115,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot18623"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:black;fill-opacity:1;stroke:none;stroke-linecap:butt;stroke-linejoin:round"
        transform="matrix(0.26458333,0,0,0.26458333,0.30464904,0.66591163)"><flowRegion
          id="flowRegion18625"
          style="stroke-linecap:butt;stroke-linejoin:round"><rect
@@ -5128,7 +5128,7 @@
          id="flowPara18629"
          style="stroke-linecap:butt;stroke-linejoin:round" /></flowRoot>    <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="6.8999934"
        y="11.800565"
        id="text6739-2-3-1"
@@ -5136,116 +5136,110 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
          y="11.800565"
          id="tspan15458"><tspan
            style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
-           id="tspan18511">1) Preprocessing</tspan></tspan><tspan
+           id="tspan18511">(A) Preprocessing</tspan></tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
          y="15.480392"
          id="tspan18509" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="18.126226"
-         id="tspan18507">a) Apply heuristic spike filter (Stampe, 1993)</tspan><tspan
+         y="18.126225"
+         id="tspan18507">1) Apply heuristic spike filter (Stampe, 1993)</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
          y="21.893677"
          id="tspan5437" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="24.539511"
-         id="tspan5439">b) Mask signal loss (opt): <tspan
+         y="24.539509"
+         id="tspan5439">2) Mask signal loss (opt): <tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan5449">dilate_nan, min_blink_dir</tspan></tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="28.306961"
+         y="28.306959"
          id="tspan5443" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="30.952795"
-         id="tspan5447">c) Noise reduction (opt):</tspan><tspan
+         y="30.952793"
+         id="tspan5447">3) Noise reduction (opt):</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
          y="34.720245"
-         id="tspan5445">    Savitzky-Golay filter (<tspan
+         id="tspan5445">     - Median-filter (<tspan
+   style="-inkscape-font-specification:'TeX Gyre Pagella Bold';font-family:'TeX Gyre Pagella';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal"
+   id="tspan934">median_filter_length</tspan>) </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         x="6.8999934"
+         y="38.487694"
+         id="tspan931">     - Savitzky-Golay filter (<tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan5451">savgol_length, savgol_polyord</tspan>) </tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="38.487698"
+         y="42.255146"
          id="tspan18451" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="41.13353"
-         id="tspan18455">d) Calculate velocity</tspan><tspan
+         y="44.900978"
+         id="tspan18455">4) Calculate velocity</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="44.900982"
+         y="48.66843"
          id="tspan18607" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="47.546814"
+         y="51.314262"
          id="tspan18463">         - if velocity &gt; <tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan18643">max_vel</tspan>; trim sample to <tspan
    style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan18645">max_vel</tspan></tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="51.314266"
+         y="55.081715"
          id="tspan18465" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="53.960098"
-         id="tspan18617">e) Calculate acceleration</tspan><tspan
+         y="57.727547"
+         id="tspan18617">5) Calculate acceleration</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
-         y="57.727551"
+         y="61.494999"
          id="tspan18473" /><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
-         x="6.8999934"
-         y="60.373383"
-         id="tspan18479">f) Noise reduction (opt):  Median-filter (<tspan
-   style="font-weight:bold;stroke-linecap:butt;stroke-linejoin:round"
-   id="tspan18503">median_filter_length</tspan>)</tspan><tspan
-         sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="6.8999934"
          y="64.140831"
+         id="tspan18479" /><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         x="6.8999934"
+         y="66.786667"
          id="tspan15466" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
-       x="235.47916"
-       y="138.25"
-       id="text1006"><tspan
-         sodipodi:role="line"
-         id="tspan1004"
-         style="stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
-         x="235.47916"
-         y="138.25">          </tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="18.108818"
        y="151.53622"
        id="text13753-6-8-5"
@@ -5254,12 +5248,12 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan13751-2-4-6"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#000000;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:black;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="18.108818"
          y="151.53622">SACC 1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="78.342896"
        y="172.80054"
        id="text13753-6-8-5-2"
@@ -5268,12 +5262,12 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan13751-2-4-6-9"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#000000;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:black;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="78.342896"
          y="172.80054">SACC 2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="23.008862"
        y="193.79004"
        id="text13753-6-8-5-2-1"
@@ -5282,12 +5276,12 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan13751-2-4-6-9-2"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#000000;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:black;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="23.008862"
          y="193.79004">HPSO</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="83.941208"
        y="199.56764"
        id="text13753-6-8-5-2-7"
@@ -5296,12 +5290,12 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan13751-2-4-6-9-0"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:#000000;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold Italic';fill:black;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="83.941208"
          y="199.56764">LPSO</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:black;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
        x="104.9398"
        y="63.169788"
        id="text6739-2-3-9"
@@ -5309,13 +5303,11 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.25;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';fill:black;fill-opacity:1;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
          x="104.9398"
          y="63.169788"
-         id="tspan15416">A)<tspan
-   style="font-style:italic"
-   id="tspan1096"> </tspan><tspan
-   style="font-weight:normal;font-style:italic"
-   id="tspan1090">Default preprocessing on data sample from dynamic stimulation</tspan></tspan></text>
+         id="tspan15416"><tspan
+           style="font-style:italic;font-weight:normal;stroke-linecap:butt;stroke-linejoin:round"
+           id="tspan1090">Default preprocessing on data sample from dynamic stimulation</tspan></tspan></text>
   </g>
 </svg>
