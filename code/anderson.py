@@ -284,6 +284,8 @@ def confusion(refcoder,
         'PUR': 4,
     }
     plotter = 1
+    # initialize a maximum misclassification rate, to later automatically reference,
+    max_mclf = 0
     # coders are in axis labels too
     #pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
     #    refcoder, coder))
@@ -393,7 +395,9 @@ def confusion(refcoder,
                     ('SPcod', '%.0f', msclf_coder['PUR'])):
                 print('\\newcommand{\\%s%s}{%s}'
                       % (label_prefix, key, format % value))
-
+                # update classification performance only if there sth worse
+                if (np.sum(conf[:3, :3]) / nsamples_nopurs * 100) > max_mclf:
+                    max_mclf = (np.sum(conf[:3, :3]) / nsamples_nopurs * 100)
             # print original outputs, but make them LaTeX-safe with '%'. This
             # should make it easier to check correct placements of stats in the
             # table
@@ -418,6 +422,7 @@ def confusion(refcoder,
                 msclf_coder['PSO'],
                 msclf_coder['PUR'],
         ))
+    return max_mclf
 
 
 def savefigs(fig,
@@ -425,22 +430,27 @@ def savefigs(fig,
     """
     small helper function to save all confusion matrices
     """
-
+    max_mclf = 0
     for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
         pl.figure(
             # fake size to get the font size down in relation
             figsize=(14, 3),
             dpi=120,
             frameon=False)
-        confusion(pair[0],
-                  pair[1],
-                  fig,
-                  stat)
+        cur_max_mclf = confusion(pair[0],
+                                 pair[1],
+                                 fig,
+                                 stat)
         pl.savefig(
             op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
             transparent=True,
             bbox_inches="tight")
         pl.close()
+        if cur_max_mclf > max_mclf:
+            max_mclf = cur_max_mclf
+    if stat:
+        print('\\newcommand{\\maxmclf}{%s}'
+              % ('%.1f' % max_mclf))
 
 
 def savegaze():
