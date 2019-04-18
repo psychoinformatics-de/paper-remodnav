@@ -80,28 +80,29 @@
 % article itself.}
 
 \author{%
-Asim~H.~Dar \and
-Adina~Wagner \and
-Ulrike~Schnaithmann \and
-Isabel~Dombrowe \and
-Michael~Hanke}
+  Asim~H.~Dar\textsuperscript{*} \and
+Adina~Wagner\textsuperscript{*} \and
+Michael~Hanke\\
+{\small \textsuperscript{*} Both authors have contributed equally}}
 
-\institute{F. Author \at
-first address \\
-Tel.: +123-45-678910\\
-Fax: +123-45-678910\\
-\email{fauthor@example.com}           %  \\
+\institute{Asim~H.~Dar \at
+ADDME \\
+%Tel.: +123-45-678910\\
+%Fax: +123-45-678910\\
+%\email{fauthor@example.com}           %  \\
 %             \emph{Present address:} of F. Author  %  if needed
 \and
-S. Author \at
-second address
+Adina Wagner \at
+Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich, Germany
+\and
+Michael Hanke \at
+Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich and Institute of Systems Neuroscience
+Heinrich Heine University Düsseldorf, Germany
+\email{michael.hanke@gmail.com}
 }
 
 
 %\affil[1]{Psychoinformatics Lab, Institute of Psychology, Otto-von-Guericke University, Magdeburg, Germany}
-%\affil[2]{Department of Cognitive Psychology: Judgment, Decision Making, Action, Fern Universität, Hagen,
-%Germany} %TODO: Correct?
-%\affil[3]{Center for Behavioral Brain Sciences, Magdeburg, Germany}
 
 \date{Received: date / Accepted: date}
 
@@ -343,8 +344,7 @@ velocity (\param{max\_vel}) is enforced -- samples exceeding this threshold
 are replaced by this set value.
 
 \begin{table*}[tbp]
-  \caption{Algorithm parameters and their default values
-  \todo[inline]{recall citation for choosing value of max\_initial\_saccade\_freq, pursuit\_velthresh}}
+  \caption{Algorithm parameters and their default values}
   \label{tab:parameters}
   \small
   \begin{tabular}{lp{85mm}l}
@@ -406,7 +406,7 @@ are replaced by this set value.
     \texttt{max\_initial\_saccade\_freq} &
     maximum saccade frequency for initial detection of major saccades, initial data
     chunking is stopped if this frequency is reached (should be smaller than an expected
-    (natural) saccade frequency in a particular context)&
+    (natural) saccade frequency in a particular context), default based on literature reports of a natural, free-viewing saccade frequency of \unit[$>$2.5]{Hz} (Otero-Millan, 2008; Hancock et al., 2012)\todo[inline]{add proper references}&
     \unit[2]{Hz}\\
     \texttt{saccade\_context\_window\_length} &
     size of a window centered on any velocity peak for adaptive determination of
@@ -1055,160 +1055,6 @@ adjustments of this parameter can have vast consequences on saccade detection,
 and, subsequently, the labeling of all other eye events.
 
 
-%
-%\onecolumn
-%
-%%------------------figure------------------------------------------
-%\begin{figure}
-%\centering
-%%\includegraphics[scale=0.35]{figures/MainSeq.png}
-%        \caption[Main sequence plot]{Plot of the main sequence, relationship between peak velocity and amplitude of participant ID 24, movie segment 4 (randomly chosen as an example); $r^2$=0.92.}
-%        \label{main}
-%\end{figure}
-%\begin{table}[h]
-%\center
-%\begin{tabular}{lcccc}
-%\toprule
-%\# & duration in $ms$  & amplitude in $^\circ$ & peak velocity in $\frac{^\circ} {s}$ & number of saccades \\
-%\midrule
-%1	& 	34.99$\pm$0.88 	& 	1.84$\pm$0.15   & 	102.78$\pm$5.43 	& 	884.9$\pm$205.0  	\\
-%2 	& 	34.61$\pm$1.11 	&	2.22$\pm$0.16	&  	102.18$\pm$5.99		& 	897.3$\pm$72.1 		\\
-%3	&   35.79$\pm$1.19	&   2.26$\pm$0.14 	&  	106.39$\pm$4.72		& 	901.93$\pm$192.9 	\\
-%4 	& 	34.81$\pm$1.04 	&  	1.81$\pm$0.10 	& 	74.43$\pm$2.95		&	1148.7$\pm$191.2 	\\
-%5 	& 	36.08$\pm$1.19 	&	2.48$\pm$0.17 	& 	97.17$\pm$3.83 		& 	899.0$\pm$240.3 	\\
-%6	& 	35.09$\pm$0.78 	& 	1.82$\pm$0.09 	& 	111.79$\pm$3.86 	&	899.1$\pm$151.1 	\\
-%7	& 	35.86$\pm$0.63	& 	1.87$\pm$0.10 	&  	89.88$\pm$3.45		& 	959.5$\pm$244.7		\\
-%8	& 	34.22$\pm$0.64 	& 	2.55$\pm$0.37 	& 	128.48$\pm$11.09	& 	556.3$\pm$218.8		\\
-%
-%\bottomrule
-%
-%\end{tabular}
-%\caption {Mean and standard deviations for different metrics grouped by the movie segment.}
-%\label{rundetails1}
-%\end{table}
-%
-%\begin{table}[h]
-%
-%\centering
-%\scalebox{1}{
-%\begin{tabular}{lcccc}
-%\toprule
-%\# & lost signal $\frac{s}{min}$ &$r^2$ & samples removed & slope\\
-%
-%\midrule
-%1 & 4.7		& 	0.889 	&	7.9\%	&	0.510	\\
-%2 & 3.8		&   0.856	&	7.0\%	&	0.578	\\
-%3 & 5.4 	&   0.847	&	8.9\%	&	0.584	\\
-%4 & 4.6 	& 	0.898	&	7.4\%	&	0.573	\\
-%5 & 1.2 	& 	0.897	&	2.3\%	&	0.493	\\
-%6 & 2.5 	& 	0.880	&	4.6\%	&	0.598	\\
-%7 & 0.9 	& 	0.914	&	1.7\%	&	0.516	\\
-%8 & 5.3 	&  	0.771	&	8.9\%	&	0.530	\\
-%
-%
-%\bottomrule
-%\end{tabular}}
-%\caption{Movie segment analysis showing mean values for different metrics over every test subject in a run: Mean value of signal loss in seconds per minute , $r^2$ values for the correlation between peak velocity and amplitude, average percentage of samples removed, average slope of the main sequence. Due to blinks and noise, some samples were removed from the eye gaze data before calculations started. The average percentage of removed samples is illustrated. Across all participants 16\% was the maximum amount of samples neglected and in 93.3\% of the data less than 10\% were disregarded. Included in this removal was the actual pure signal loss during the recording session, meaning samples marked with a null value.}
-%\label{rundetails2}
-%\end{table}
-%
-%%------------------figure------------------------------------------
-%\begin{figure}[h]
-%\centering
-%%\includegraphics[scale=0.2]{figures/duration.jpeg}
-%        \caption{Histogram of saccade durations. Cut off at 100 $ms$ as for the following bars less than 0.01\% of all data are presented per bin, making it impossible to visualize. Normalized to 1. The largest amount of saccades is very close to minimum duration. The assumed shape of the distribution indicates a gradual decrease to the left, implying the possibility of a number of shorter, yet disregarded saccades. This loss of data can easily be fixed by choosing a less conservative duration threshold. There are many different subjective opinions on minimum saccadic duration, ranging from 10 ms \cite{Duchowski.2007} to 15 ms \cite{Smith.2013}. A more objective approach was provided by Carpenter in 1988 who found a mathematical relation between duration and amplitude of saccades \cite{Carpenter.1988}: $duration=2.2\cdot{}amplitude+21$. According to this equation there are no saccades of less than 21 $ms$. Therefore, a minimum duration of 21 $ms$ was chosen as threshold.}
-%\label{dur}
-%\end{figure}
-%
-%%------------------figure------------------------------------------
-%\begin{figure}
-%\centering
-%%\includegraphics[scale=0.2]{figures/amp.jpeg}
-%        \caption[Histogram of saccade amplitude]{Histogram of all saccade amplitudes. Cut off at 12 $^\circ$. Normalized to 1. }
-%        \label{amp}
-%\end{figure}
-%
-%%------------------figure------------------------------------------
-%\begin{figure}
-%\centering
-%%\includegraphics[scale=0.2]{figures/pv.jpeg}
-%        \caption[Histogram of peak velocity]{Histogram of all saccade peak velocities. Cut off at 400 $\frac{^\circ} {s}$. Normalized to 1. }
-%        \label{pv}
-%\end{figure}
-%
-%%------------------table------------------------------------------
-%\begin{table}[h]
-%
-%\centering
-%\scalebox{1}{
-%\begin{tabular}{lcccccc}
-%\toprule
-%    \# & \multicolumn{3}{c}{glissades} & \multicolumn{2}{c}{fixations}\\
-% & duration in $ms$ & amplitude in $^\circ$ & mean velocity in $\frac{^\circ} {s}$ & duration in $ms$ & number \\
-%\midrule
-%1	& 	39.68 	& 	0.13   	& 	6.60	& 	430.22	&	4965.1  \\
-%2 	& 	39.70 	&	0.22	&  	10.93	& 	432.67	&	4865.5 	\\
-%3	&   39.77	&   0.19 	&  	7.83	& 	429.49 	&	4975.5	\\
-%4 	& 	39.73 	&  	0.09 	& 	5.41	&	394.11 	&	5802.3	\\
-%5 	& 	39.73 	&	0.16 	& 	9.87 	& 	445.37 	&	4903.7	\\
-%6	& 	39.72 	& 	0.16 	& 	11.65	&	435.96 	&	4823.7	\\
-%7	& 	39.72	& 	0.09 	&  	4.92	& 	480.94	&	5403.7	\\
-%8	& 	39.81 	& 	0.33 	& 	14.06	& 	469.67	&	3456.3	\\
-%
-%
-%\bottomrule
-%\end{tabular}}
-%\caption[]{Movie segment analysis for glissades and fixations, showing mean values for different metrics over every test subject per segment, mean value of duration, amplitude, velocity, and number of fixations. Since glissade durations group around the cut off value of 40, it seems that most movements would have been longer than that. This indicates, that the threshold for glissade detection is too low, perceivably because the data used had a higher level of baseline noise than in the experiment by Nyström and Holmqvist.{\cite{Nystrom.2010}} Fixation durations range around a mean value of 420.42 $ms$. Typical values for fixations rarely exceed 400 $ms$. However, the significantly longer fixation durations align with the rest of the eye movements, as saccades were accordingly shorter than typical values suggest. Human gaze in general is preferably directed at the center of the stimulus {\cite{Buswell.1935,Parkhurst.2002}} and the pull towards the center was proven to be strongest in professionally cut Hollywood movie trailers when compared with natural scenes or static images. {\cite{Dorr.2010}} These findings supports the assumption, that participants mainly focused on the center of the screen, which is backed uo by the data. Fixations include small microsaccades, tremor and slow drifts, which allow the viewer to gradually explore the movie stimulus while staying within fixation parameter boundaries.}
-%\label{fixgliss}
-%\end{table}
-%
-%%------------------table-----------------------------------------
-%\begin{table}[h]
-%
-%\centering
-%\begin{tabular}{lcccccc}
-%\toprule
-%Movie segment & lab  & scanner & t-statistic & p-value \\
-%\midrule
-%\rowcolor{lightgray}
-%1 	&	0.892 	&	0.740	& 	4.220	& 	0.0039	\\
-%
-%2	&   0.836 	&   0.841 	& 	0.242	& 	0.8156	\\
-%
-%3 	&   0.869 	& 	0.793	& 	2.797 	& 	0.0266	\\
-%\rowcolor{lightgray}
-%4 	&   0.892 	& 	0.590 	& 	7.115 	& 	0.0002	\\
-%
-%5 	&   0.912 	& 	0.883 	& 	3.789 	& 	0.0068	\\
-%
-%6 	&   0.917 	& 	0.771 	& 	2.700	& 	0.0306	\\
-%
-%7 	&   0.921 	& 	0.808 	& 	2.365 	& 	0.0500	\\
-%
-%8 	&   0.800 	& 	0.821 	& 	0.545	& 	0.6029	\\
-%\bottomrule
-%
-%
-%
-%\end{tabular}
-%\caption[]{Group comparison of lab and scanner data in regard of average $r^2$-value of the main sequence and coefficient of variation per participant. Applying the detection procedure to the rest of data produced similar results. Before computing any t-test comparisons, participants with the IDs 2 and 5 were removed from the scanner data pool. As mentioned in the original study,\footnote{\cite{Hanke.2016}} a large amount of data was lost in their recording session due to signal loss, leaving too little information to detect enough saccades for valid correlation measures. Although there are slight differences in accuracy for the scanner data, the precision level prevails similarly high as for the lab. In direct comparison to the lab data, with a t-test criterion of 0.05, 3 movie segments do not show significant differences in detection accuracy. However, after applying the Bonferroni-Method \footnote{\cite{Abdi.2007}} the detection precision for merely two movie segments is substantially less accurate for scanner data in comparison to lab recordings (highlighted).}
-%\label{groupcompare}
-%\end{table}
-%\twocolumn
-%
-%\todo[inline]{\textit{For the Comparison of output between Lab and in-scanner data: Need to determine exactly which plots and tables will go here}}
-%
-%
-
-% no discussion in favor of brief conclusions
-%\section*{Discussion}
-%
-%\subsection*{Comparison to human coders and current algorithms}
-
-
-%\subsubsection*{Comparison of outputs from different levels of noise}
-
-
 \section*{Conclusion}\label{con}
 
 Based on the adaptive, velocity-based algorithm for fixation, saccade, and
@@ -1278,28 +1124,6 @@ early on
 % analyses.  It allows authors %to briefly summarize the key points from the
 % article.
 
-%\todo[inline]{from andersson: How does the number of detected events and their
-%  durations vary with the choice of an algorithm? How similar are the events
-%  detected by algorithms compared to events manually identified by human
-%  experts? How similar are algorithms and humans in a simple sample-by-sample
-%  comparison, which is the most human-like? How similar are our two human
-%  coders? Are they interchangeable, or will the event detection process depend
-%  on the human experts we use?  Does the algorithm – human or human – human
-%  similarity depend on the stimuli used for eliciting the eye movement data,
-%  i.e. will it differ between static and dynamic stimuli?  What are the
-%  consequences of trying to detect events in the presence of smooth pursuit
-%  using improper, i.e. not designed to handle smooth pursuit, algorithms? Is
-%  this a serious violation, or will such a use provide acceptable
-%  approximations of the properties of the true (human-identified) events?  How
-%  congruent are different evaluation techniques, such as similarity based on
-%  event durations, compared to similarity based on Cohen's Kappa?  Given that
-%  algorithms do not classify identically with human experts, what types of
-%  deviating classifications do the algorithms do? Are the deviations random, or
-%  do they indicate a clear bias in some direction? What area should developers
-%  focus on improving, to gain the highest marginal improvement (i.e.,
-%  similarity to humans) of the algorithm?  }
-
-
 %% we introduce no new data
 
 % \section*{Data availability} % Optional - only if novel data or analyses are
@@ -1325,17 +1149,6 @@ Questions with regard to REMoDNaV can be submitted to NeuroStars.org with a
 \texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow
 but dedicated to neuroinformatics.  \remodnav\ is released under MIT license.
 
-\todo[inline]{Apart from the TODOs in the document, Adina also adds these
-general ones below}
-
-\begin{itemize}
-\item Lets discuss which figures we want to include in the paper - I added drafts of figures that can serve as a placeholder and base for a discussion.
-\item I'm not up to date which analyses are yet missing - conversations with mih and Asim yielded conflicting information ;-) To spare me unnecessary work, I did not do anything that might need to be done (RMSD, Cohens Kappa, event characteristic tables) until we maybe get together and settle on necessary missing statistics.
-\item The tables and confusion matrices need to be potentially adjusted to the minor changes introduced in this PR: https://github.com/psychoinformatics-de/remodnav/pull/4
-\item I did not yet add any text/description about the various main sequence plots. Maybe we should decide which ones to use as a start.
-\item minor: standardize how we call things throughout the manuscript (e.g. $^\circ/sec$ or $deg/sec$)
-\end{itemize}
-
 
 % This section will be generated by the Editorial Office before publication.
 % Authors are asked to provide some initial information to assist the Editorial
@@ -1356,9 +1169,9 @@ general ones below}
 % contributions of each author to the manuscript should be detailed in this section. We
 % recommend using author initials and then stating briefly how they contributed.
 
-AD, US, MH conceived and implemented the algorithm.
-AD, AW, US, ID, MH validated algorithm performance.
-AD, AW, US, ID, MH contributed to the manuscript.
+AD, MH conceived and implemented the algorithm.
+AD, AW, MH validated algorithm performance.
+AD, AW, MH wrote the manuscript.
 
 \subsection*{Competing interests}
 
@@ -1397,8 +1210,10 @@ decision to publish, or preparation of the manuscript.}
 % mentioned in the Acknowledgements section.
 % Please do not list grant funding in this section.
 
-We are grateful to \cite{Andersson2017} for releasing the labeled eye tracking
-dataset used for validation under an open-source license.
+This work is based on an earlier Python implementation and evaluation of the
+original NH algorithm by Ulrike~Schnaithmann and Isabel~Dombrowe.  We are
+grateful to \cite{Andersson2017} for releasing the labeled eye tracking dataset
+used for validation under an open-source license.
 
 \end{acknowledgements}
 
