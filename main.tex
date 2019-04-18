@@ -298,7 +298,7 @@ biologically implausible velocities and accelerations can be prevented with the
 use of appropriate filters and thresholds \citep{holmqvist2011eye}.
 
 The algorithm comprises two major steps: preprocessing and event detection.  A
-general overview and pseudo-code and shown in \fig{alg}.  The following
+general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
 parameters are given in parenthesis. \tab{parameters} summarizes all
 parameters, and lists their default values.
@@ -344,12 +344,12 @@ are replaced by this set value.
 is chunked into intervals between major saccades (termed SACC) to be able to
 accommodate data without a short trial structure. Major saccades are located in
 a data-driven, iterative procedure that is adapted from the NH algorithm and
-based on thresholding velocities with a critical velocity value (figure
-\ref{fig:alg}, 2a). This threshold is determined from the entire input data to
-take global noise levels into account: Starting from an initial velocity
-threshold (\texttt{velthres\_\linebreak[0]startvelocity}, termed $PT_1$ in NH),
-the \textit{median} (m) and \textit{median absolute deviation} ($MAD$) velocity
-of samples below this value is computed. Iteratively, $PT_i$ is updated as
+based on thresholding velocities with a critical velocity value (\fig{alg}C,
+1). This threshold is determined from the entire input data to take global
+noise levels into account: Starting from an initial velocity threshold
+(\texttt{velthres\_\linebreak[0]startvelocity}, termed $PT_1$ in NH), the
+\textit{median} (m) and \textit{median absolute deviation} ($MAD$) velocity of
+samples below this value is computed. Iteratively, $PT_i$ is updated as
 
 $$PT_n = m + (\mathtt{noise\_factor} \times MAD)$$
 
@@ -358,8 +358,8 @@ updates fulfills
 
 $$|PT_n - PT_{n-1}| < 1^\circ/sec .$$
 
-An illustration of this procedure is shown in figure \ref{fig:alg}, B). Though
-the underlying formula is adapated, unlike the NH algorithm -- which uses the
+An illustration of this procedure is shown in \fig{alg}D). Though
+the underlying formula is adapted, unlike the NH algorithm -- which uses the
 average and standard deviations of the velocities to compute the threshold --
 \remodnav instead uses the median and MAD values. The use of robust statistics
 in \remodnav is more appropriate given the skewness of velocity data (see
@@ -392,7 +392,7 @@ segments \textit{between} the initial major saccades, so called
 \textit{intersaccade windows}. Additionally, intersaccade windows are further
 subdivided into segments without any missing data. Therefore, missing data can
 not disrupt event detection, and excluded segments are not labeled. An
-illustration is given in figure \ref{fig:alg}, C). A saccade in these intervals
+illustration is given in \fig{alg}E. A saccade in these intervals
 (termed ISAC) is detected using a local velocity threshold -- determined as
 during major saccade detection but from the specific time window only -- and if
 %
@@ -402,8 +402,8 @@ during major saccade detection but from the specific time window only -- and if
   (default: \unit[130]{ms})
 \end{itemize}
 %
-(figure \ref{fig:alg}, 2f). Saccade on- and offsets, and low-velocity PSOs
-(within intersaccade windows termed ILPS) and high-velocity PSOs (termed IHPS)
+(\fig{alg}C, 6). Saccade on- and offsets, and low-velocity PSOs
+(within inter-saccade windows termed ILPS) and high-velocity PSOs (termed IHPS)
 are computed as during major saccade detection as well (2g). After saccade and
 PSO detection, for all remaining unlabeled time windows longer than a
 configured minimum duration (default: \unit[40]{ms}), we recompute velocities
@@ -418,7 +418,7 @@ fixed velocity threshold (default: \unit[2]{deg/s})(gj).
 reports detected events with onset and offset time, onset and offset
 coordinates, amplitude, peak velocity, median velocity and average velocity.
 Additionally, it plots a time course of horizontal and vertical gaze position
-in conjunction with classed labels (shown in figure \ref{fig:remodnav}).
+in conjunction with classed labels (shown in \fig{remodnav}).
 
 
 %% start with a plain list, later work into flow chart or table...
@@ -476,7 +476,7 @@ in conjunction with classed labels (shown in figure \ref{fig:remodnav}).
 
 All available parameters (sorted by algorithm step) with their description and,
 if applicable, default value, are listed in table \ref{tab:parameters} and
-displayed in figure \ref{fig:alg}. While input required by the user is minimal
+displayed in \fig{alg}. While input required by the user is minimal
 (raw data, sampling rate, viewing distance and screen size), the amount of
 configurable parameters may seem large. However, this is implemented
 purposefully.  The available literature on eye event detection algorithms
@@ -699,19 +699,19 @@ increases, as would be expected with the introduction of a fourth eye movement
 category. Importantly, despite an increase, the misclassification rate remains
 comparably low, thus still exceeding the performance of all contemporary
 algorithms in \citet{Andersson2017} in the dynamic categories dots and videos.
-For a comparison between algorithm and human coders classification, figure
-\ref{fig:conf} displays the resulting confusion matrices with Jaccard indices
-(JI) quantifying the similarity between classification decisions. The JI is
-bound in range [0, 1] with higher values indicating higher similarity. A value
-of 0.93 in the upper left cell of the very first matrix in figure
-\ref{fig:conf} for example indicates that 93\% of frames that are labeled as a
-fixation by human coders RA and MN are the same. This index allows to quantify
-the similarity of classifications independent from values in other cells. While
-the highest similarity in labeling (evident from high values along the
-diagonal) exists between human coders, the algorithm still performs well. For
-the new event type smooth pursuit, detection is very consistent to human labels
-especially in the moving dot category (JI of .73 and .7, respectively), and
-still good in the video category (JI of .43 and .47, respectively).
+For a comparison between algorithm and human coders classification, \fig{conf}
+displays the resulting confusion matrices with Jaccard indices (JI) quantifying
+the similarity between classification decisions. The JI is bound in range [0,
+1] with higher values indicating higher similarity. A value of 0.93 in the
+upper left cell of the very first matrix in \fig{conf} for example indicates
+that 93\% of frames that are labeled as a fixation by human coders RA and MN
+are the same. This index allows to quantify the similarity of classifications
+independent from values in other cells. While the highest similarity in
+labeling (evident from high values along the diagonal) exists between human
+coders, the algorithm still performs well. For the new event type smooth
+pursuit, detection is very consistent to human labels especially in the moving
+dot category (JI of .73 and .7, respectively), and still good in the video
+category (JI of .43 and .47, respectively).
 
 \begin{table}[tbp]
   % table caption is above the table
@@ -984,12 +984,12 @@ Eyelink 1000 with a standard desktop mount (software version 4.51; SR Research
 Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie
 stimulus was presented on a $522$x$294$mm LCD monitor at a resolution of $1920$
 x $1280$px at a viewing distance of 85cm \citep{Hanke2016}.  The top panel in
-figure \ref{fig:remodnav} displays the performance of \remodnav for a high
-quality data sample. An individual main sequence for a lab subject is
-displayed in the bottom right panel in figure \ref{fig:overallComp}. In order
-to compare event detection between high and low quality sample, we computed
-the event distribution parameters per event type and movie run. Figure
-\ref{fig:dist} displays these parameters for the high quality dataset.
+\fig{remodnav} displays the performance of \remodnav for a high quality data
+sample. An individual main sequence for a lab subject is displayed in the
+bottom right panel in \fig{overallComp}. In order to compare event detection
+between high and low quality sample, we computed the event distribution
+parameters per event type and movie run. \fig{dist} displays these parameters
+for the high quality dataset.
 
 \begin{figure*}[tbp]
   % TODO make final figure and switch
@@ -1055,18 +1055,18 @@ sample.
 % data loss, perhaps in addition to a subjective rating from the person
 % responsible for the recording"
 
-Figure \ref{fig:remodnav} displays the performance of \remodnav for a low
+\fig{remodnav} displays the performance of \remodnav for a low
 quality data sample in the bottom row.  As evident in both panels, periods with
 data loss do not interfere with the detection of eye movement events in their
 vicinity beyond the border region of data loss that is masked during
 preprocessing. The detection of saccades corresponds to the velocity peaks in
 the time series. An individual main sequence for an MRI subject is displayed
-in the top right panel in figure \ref{fig:overallComp}. Lastly, the left column in figure
-\ref{fig:overallComp} shows all events produced from both datasets. Figure \ref{fig:dist}
+in the top right panel in \fig{overallComp}. Lastly, the left column in
+\fig{overallComp} shows all events produced from both datasets. \fig{dist}
 displays the distribution parameters per event type and movie run for the low
 quality dataset.
-All together, figures \ref{fig:remodnav} and
-\ref{fig:overallComp} illustrate a high similiarity between performance in high
+All together, \fig{remodnav} and
+\fig{overallComp} illustrate a high similiarity between performance in high
 and low quality datasets. In both cases, the main sequences follow the known
 peak-velocity -- amplitude relationship of saccades. It is noteable that the
 MRI sample displays fewer saccades of the shortest range. Given the higher
@@ -1290,8 +1290,8 @@ far from perfect. Despite superior performance during dynamic stimulation
 compared to other algorithms, the results do not mirror human annotations
 exactly. Therefore, as with any other algorithm, we recommend that every user
 should at least eye-ball their results for plausibility. One straightforward
-way to do this is to study the classification performance as shown in figure
-\ref{fig:remodnav}. The \remodnav module will provide such a plot automatically
+way to do this is to study the classification performance as shown in
+\fig{remodnav}. The \remodnav module will provide such a plot automatically
 for every detection task, enabling researchers to detect implausible results
 early on
 
