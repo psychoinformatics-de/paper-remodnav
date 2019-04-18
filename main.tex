@@ -62,7 +62,7 @@
 \usepackage{wrapfig}
 \usepackage{todonotes}
 \newcommand{\eg}{e.g., }
-\newcommand{\remodnav}{REMoDNaV }
+\newcommand{\remodnav}{REMoDNaV}
 \newcommand{\fig}[1]{{Figure~\ref{fig:#1}}}
 \newcommand{\tab}[1]{{Table~\ref{tab:#1}}}
 \newcommand{\param}[1]{{\texttt{#1}}}
@@ -267,14 +267,14 @@ Contemporary algorithms rarely provide this functionality (but see e.g.
 \cite{LARSSON2015145}; \cite{Komogortsev2013} as existing algorithms with
 smooth pursuit detection).
 
-Here we introduce \remodnav (robust eye movement detection for natural
+Here we introduce \remodnav\ (robust eye movement detection for natural
 viewing), a novel tool that aims to meet these objectives. It is built on the
 aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
 that employs an adaptive approach to eye movement velocity based event
-detection and classification. \remodnav enhances NH with the use of robust
+detection and classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
 more homogeneous segments with more uniform noise levels. Furthermore, it adds
-support for pursuit event detection. We evaluated \remodnav on three different
+support for pursuit event detection. We evaluated \remodnav\ on three different
 dataset from conventional paradigms, and natural stimulation (high and low
 quality), and relate its performance to the algorithm comparison by
 \cite{Andersson2017}.
@@ -290,7 +290,7 @@ quality), and relate its performance to the algorithm comparison by
 %technical details required for implementation of the tool by other
 %developers.}}
 
-Like NH, \remodnav is a \textit{velocity-based} event detection algorithm.
+Like NH, \remodnav\ is a \textit{velocity-based} event detection algorithm.
 Compared to \textit{dispersion-based} algorithms, these types of algorithms are
 less susceptible to noise and spatio-temporal precision, and thus applicable to
 a large range of sampling frequencies. Furthermore, any influence of
@@ -302,6 +302,13 @@ general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
 parameters are given in parenthesis. \tab{parameters} summarizes all
 parameters, and lists their default values.
+
+\begin{figure*}
+  \includegraphics[width=1\textwidth]{img/remodnav_algorithm.pdf}
+  \caption{\remodnav workflow. Optional steps and configurable parameters are bold.}
+  \label{fig:alg}
+\end{figure*}
+
 
 \subsection*{Preprocessing}
 
@@ -335,175 +342,7 @@ disregard biologically implausible measurements, a configurable maximum
 velocity (\param{max\_vel}) is enforced -- samples exceeding this threshold
 are replaced by this set value.
 
-
-\subsection*{Event detection}
-
-\subsubsection*{Major saccades}
-%
-\remodnav classifies events in a sequential procedure: The entire time series
-is chunked into intervals between major saccades (termed SACC) to be able to
-accommodate data without a short trial structure. Major saccades are located in
-a data-driven, iterative procedure that is adapted from the NH algorithm and
-based on thresholding velocities with a critical velocity value (\fig{alg}C,
-1). This threshold is determined from the entire input data to take global
-noise levels into account: Starting from an initial velocity threshold
-(\texttt{velthres\_\linebreak[0]startvelocity}, termed $PT_1$ in NH), the
-\textit{median} (m) and \textit{median absolute deviation} ($MAD$) velocity of
-samples below this value is computed. Iteratively, $PT_i$ is updated as
-
-$$PT_n = m + (\mathtt{noise\_factor} \times MAD)$$
-
-where the noisefactor is user-configurable, until the difference between two
-updates fulfills
-
-$$|PT_n - PT_{n-1}| < 1^\circ/sec .$$
-
-An illustration of this procedure is shown in \fig{alg}D). Though
-the underlying formula is adapted, unlike the NH algorithm -- which uses the
-average and standard deviations of the velocities to compute the threshold --
-\remodnav instead uses the median and MAD values. The use of robust statistics
-in \remodnav is more appropriate given the skewness of velocity data (see
-\cite{Friedman2018}). For each resulting saccade peak (sorted by magnitude),
-\remodnav detects saccade onset, saccade offset and PSOs (2c). Saccadic on- and
-offset detection is adapted from NH as well. In contrast to NH, \remodnav again
-relies on robust statistics, and on a local velocity threshold computation in
-the temporal vicinity around a respective candidate window. By default, this is
-from one second before to one second after the window boundaries.  PSO
-detection in \remodnav is more detailed than in the NH algorithm. In their
-paper, \cite{Nystrom2010AnData} define two mutually exclusive types of
-``glissades": low-velocity and high-velocity PSOs. High-velocity PSOs display
-velocities above the peak saccade threshold at least once (i.e. display a
-velocity peak that would qualify it as a saccade), while low-velocity PSOs only
-rise above saccade offset thresholds at least once.  Despite this distinction,
-the NH algorithm does not differentiate between the two event types. \remodnav
-distinguishes these, and labels the PSOs of major saccades as high-velocity
-(HPSO) or low-velocity (LPSO) depending on the criterion of the NH algorithm.
-
-Importantly, major saccade detection is terminated earlier if a maximum saccade
-frequency across the entire input data is reached (2d) -- this value is
-configurable (\texttt{max\_initial\_saccade\_freq}) and by default is set to
-\unit[2]{Hz}.\todo[inline]{once we recall citation for this default, include a
-reason}
-
-\subsubsection*{Between major saccades}
-%
-In a locally adaptive manner, remaining data is classified into events in
-segments \textit{between} the initial major saccades, so called
-\textit{intersaccade windows}. Additionally, intersaccade windows are further
-subdivided into segments without any missing data. Therefore, missing data can
-not disrupt event detection, and excluded segments are not labeled. An
-illustration is given in \fig{alg}E. A saccade in these intervals
-(termed ISAC) is detected using a local velocity threshold -- determined as
-during major saccade detection but from the specific time window only -- and if
-%
-\begin{itemize}
-\item its duration exceeds the minimum saccade length
-\item it is within a certain minimum distance from neighboring saccades
-  (default: \unit[130]{ms})
-\end{itemize}
-%
-(\fig{alg}C, 6). Saccade on- and offsets, and low-velocity PSOs
-(within inter-saccade windows termed ILPS) and high-velocity PSOs (termed IHPS)
-are computed as during major saccade detection as well (2g). After saccade and
-PSO detection, for all remaining unlabeled time windows longer than a
-configured minimum duration (default: \unit[40]{ms}), we recompute velocities
-after low-pass filtering with a Butterworth filter (default  cutoff:
-\unit[4]{Hz}). Any segments exceeding a maximum pursuit velocity threshold are
-labeled as smooth pursuits  (termed PURS) (gi), while everything else is
-labeled as fixations (termed FIXA)(gk). Pursuit on/offset detection  employs
-the same algorithm as NHs saccade on/offset algorithm, but with a configurable,
-fixed velocity threshold (default: \unit[2]{deg/s})(gj).
-
-\remodnav outputs a BIDS-compliant \citep{gorgolewski2016brain} .tsv file and
-reports detected events with onset and offset time, onset and offset
-coordinates, amplitude, peak velocity, median velocity and average velocity.
-Additionally, it plots a time course of horizontal and vertical gaze position
-in conjunction with classed labels (shown in \fig{remodnav}).
-
-
-%% start with a plain list, later work into flow chart or table...
-% Adina: commenting that out for now
-%\begin{enumerate}
-%  \item Preprocessing
-%    \begin{enumerate}
-%      \item Apply spike filter (cite)
-%      \item (opt) Mask data around signal loss
-%      \item (opt) Apply Savitzy-Golay filter for noise reduction
-%      \item Compute movement velocities
-%      \item Impose configurable maximum velocity (replace exceeding values with previous estimate)
-%      \item Compute movement accelaration from velocity estimates
-%      \item (opt) Compute additional movement velocities after additional (heavy) median filtering
-%
-%    \end{enumerate}
-%  \item Event detection
-%    \begin{enumerate}
-%      \item Time series chunking into interval between \textit{major} saccades, to be able to accommodate data without a (short) trial structure
-%        % objective 1: chunk the timeseries into meaningful segments, data might not have
-%        % a trial structure
-%        \begin{enumerate}
-%          \item Determine location of major saccades by thresholding the \textit{median-}filtered velocities with a critical velocity value determined from the entire input data following an algorithm by \citep{Nystrom2010AnData}
-%          \item For each saccade candidate window (sorted by total velocity magnitude, largest first), perform saccade onset and offset detection (incl. PSO detection) via the \cite{Nystrom2010AnData} algorithm, but using velocity on/offset thresholds that are determined in the temporal vicinity around a respective candidate window (by default from \unit[1]{s} before to \unit[1]{s} after the window boundaries).
-%          \item Saccade detection is terminated early, if a configurable maximum saccade
-%            frequency across the entire input data is reached (default: \unit[2]{Hz})
-%        \end{enumerate}
-%    % outcome: inter-saccade-intervals of >~500ms length (like trials)
-%      \item Locally adaptive detection of eyemovement events with each intervall between
-%        previously detected major saccades
-%        \begin{enumerate}
-%          \item Further subdivide the interval into windows without missing data
-%          \item Within each window, perform saccade detection, if its duration exceeds
-%            a minimum-length saccade with minimum distance to neighboring saccades
-%            (default: \unit[130]{ms}), using velocity thresholds determined from the
-%            specific time window only
-%          \item For each remaining unlabeled time window that is longer than a
-%            configured minimum duration (default: \unit[40]{ms}), re-compute velocities
-%            after low-pass filtering (default cutoff: \unit[4]{Hz}), label segments
-%            exceeding a maximum fixation velocity threshold
-%            as smooth pursuit, and everything else as a fixation. Pursuit on/offset
-%            detection employs the same algorithm from \cite{Nystrom2010AnData} used for
-%            determining saccade on/offset, but with a configurable, fixed velocity threshold
-%            (default: \unit[2]{deg/s})
-%        \end{enumerate}
-%
-%    \end{enumerate}
-%\end{enumerate}
-
-\begin{figure*}
-  \includegraphics[width=1\textwidth]{img/remodnav_algorithm.pdf}
-  \caption{\remodnav workflow. Optional steps and configurable parameters are bold.}
-  \label{fig:alg}
-\end{figure*}
-
-All available parameters (sorted by algorithm step) with their description and,
-if applicable, default value, are listed in table \ref{tab:parameters} and
-displayed in \fig{alg}. While input required by the user is minimal
-(raw data, sampling rate, viewing distance and screen size), the amount of
-configurable parameters may seem large. However, this is implemented
-purposefully.  The available literature on eye event detection algorithms
-suggests that there is no true ``one-fits-all" solution for event detection.
-There are some successful approaches using deep neural networks
-\citep{Startsev2018}, but those need appropriately large amounts of suitable
-training data, that may not be easily available. As evident from many
-evaluations and applications of algorithms (e.g. \cite{Andersson2017},
-\cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}), different underlying
-stimulation, data characteristics, or use cases make certain algorithms more
-suitable than others, hard-coded thresholds and parameters either applicable or
-detrimental, or potentially require changes to the default values or
-parameters. For our own analyses, the default parameter values were well
-applicable. But we cannot anticipate how the data from other groups or
-paradigms looks like.  \remodnav therefore contains a broad range of
-transparent, interpretable and adjustable parameters with default values
-justified from physiological findings or biological limitations, and no
-hard-coded values. This gives users an option to adjust the algorithm to their
-data's characteristics, but offers a sensible starting point with defaults that
-proved to work well with the different datasets we evaluated the algorithm on.
-Only velocity thresholds for saccade detection are estimated iteratively from
-the data. Apart from the advantage of taking noise levels into account, this
-also follows the reasoning of \cite{Nystrom2010AnData} that uninformed
-adjustments of this parameter can have vast consequences on saccade detection,
-and, subsequently, the labeling of all other eye events.
-
-\begin{table*}[t]
+\begin{table*}[tbp]
   \caption{Algorithm parameters and their default values
   \todo[inline]{recall citation for choosing value of max\_initial\_saccade\_freq, pursuit\_velthresh}}
   \label{tab:parameters}
@@ -584,22 +423,103 @@ and, subsequently, the labeling of all other eye events.
 \end{table*}
 
 
-% \todo[inline]{did we enforce a minimum saccade duration?} Yes, looks like it (Adina)
 
-%\subsection*{Going beyond basic dynamic stimuli; the studyforrest dataset}
-%\todo[inline]{\textit{fix/update text below}}
+\subsection*{Event detection}
 
-%\todo[inline]{this sections describes the method that produces the
-%data artifacts. what kind of filtering? What kind of saccade detection algorithm? It should contain an \textbf{ultra-brief} summary of the eyetracking details from \cite{HAK+16}, but otherwise just refer to this article for details.}
+\subsubsection*{Saccade velocity threshold}
 
-%In the original study, Hanke et. al \cite{Hanke.2016} split 30 participants into groups of 15 and placed one half in a fMRI scanner set-up and the other in a lab setting while recording eye movements during the two hour movie stimulus. For further technical details please refer to the original article. As part of an unpublished Bachelor project, we compared different filter and saccade detection algorithm combinations. To quantify the precision of the combination, the correlation between peak velocity and amplitude of all saccades, known as the main sequence, and the inherent $r^2$ values were computed. The higher the data fit to the assumed main sequence $MS$ curve $MS=mx^n$ the more precise the filter-algorithm option. The combination of Savitzky-Golay filter and an adaptive detection algorithm by Nyström and Holmqvist proved to be most precise and was used for further analysis. The respective algorithm employs a daten-driven threshold which automatically adjusts to local noise levels. It consists of five steps including filtering with Savitzgy-Golay, peak saccade detection, saccade on- and offset determination, as well as glissade and fixation identification. Parameters used for computation were kept exactly as suggested by the authors. According to the algorithm, after detecting saccades and follow-up glissades, the left over movements between saccades were considered fixations. Due to higher noise in dynamic stimuli and the longer recording period this assumption did not hold in the studyforrest dataset. Therefore, an additional velocity limit of 6.58 $\frac{\circ}{s}$ and amplitude of 2 $^\circ$ during a fixation was integrated as these values are commonly viewed as fixation thresholds.\cite{Holmqvist.2011,Henderson.1997}
+Except for a few modifications, \remodnav\ employs the adaptive saccade
+detection algorithm proposed by \cite{Nystrom2010AnData}, where saccades
+are initially located by thresholding the velocity time series by a critical
+value. Starting from an initial velocity threshold (\param{velthres\_
+startvelocity}, termed $PT_1$ in NH), the critical value is determined
+adaptively by computing the variance of sub-threshold velocities ($V$), and
+placing the new velocity threshold at:
+%
+\begin{equation}
+  PT_n = \overline{V}_{n-1} + F \times \sqrt{{\sum(V_{n-1} -
+\overline{V}_{n-1})^2} \over {N-1}}
+\end{equation}
+%
+where $F$ determines how many standard deviations above the average
+velocity the new threshold is located.  This procedure is repeated until it
+stabilizes on a threshold velocity.
+%
+\begin{equation}
+|PT_n - PT_{n-1}| < 1^\circ/sec
+\end{equation}
 
-%Methods should include a brief discussion of allowances made (if any) for controlling bias or unwanted sources of variability, and the limitations of the datasets.
+\remodnav\ alters this algorithm by using robust statistics that are more
+suitable for the non-normal distribution of velocities \citep{Friedman2018},
+such that the new threshold is computed by:
+%
+\begin{equation}\label{eq:threshold}
+PT_n = median({V}_{n-1}) + F \times MAD({V}_{n-1})
+\end{equation}
+%
+where $MAD$ is the median absolute deviation, and $F$ is a
+scalar parameter of the algorithm.
+
+\subsection*{Time series chunking}
+
+As the algorithm aims to be applicable to prolonged recordings without an
+inherent trial structure and inhomogeneous noise levels, the time series needs
+to be split into shorter chunks in order to prevent negative impact of sporadic
+noise flares on the aforementioned adaptive velocity thresholding procedure.
+
+\remodnav\ implements this chunking by determining a critical velocity on a
+median-filtered (\param{median\_ filter\_length}) time series comprising the
+full duration of a recording (\fig{alg}D). Due to potentially elevated noise
+levels the resulting threshold tends to overestimate an optimal threshold.
+Consequently, only periods of fastest eye movements will exceed this threshold.
+All such periods of consecutive above-threshold velocities are weighted by the
+sum of these velocities. Boundaries of time series chunks are determined by
+selecting such events sequentially (starting with the largest sums), until a
+maximum average frequency across the whole time series is reached
+(\param{max\_initial\_saccade\_ freq}). The resulting chunks represent data
+intervals between saccades of maximum magnitude in the respective data.
 
 
+\subsection*{Detection of saccades and post-saccadic oscilations}
 
-%\todo[inline]{\textit{brief description of the nature and amount of data released, and in which format it is released in}}
-%The data is divided into lab and scanner data and released as separate text files for each movie segment per participant. This results in a set of 240 .txt files. The first step of the detection process includes disregarding biologically implausible values and blinks followed up by  Savitzky-Golay filtering. The output files display the velocity, acceleration, point in time and pixel coordinates for each sample and are released separately to enable additional calculations. These files are then further processed to detect saccades, glissades and fixations. The final output includes the typical eye tracking information on each movement event: time and coordinates for on- and offset, amplitude, peak velocity and average velocity. (peak velocity was not calculated for fixations)
+Detection of these event types as identical to the NH algorithm, only the data
+context and metrics for determining the velocity thresholds differ.  For
+saccades that also represent time series chunk boundaries (event label
+\texttt{SACC}), a context of \unit[1]{s}
+(\param{saccade\_context\_window\_ length}) centered on the peak velocity is
+used by default, for any other saccade (event label \texttt{ISAC}) the entire
+time series chunk represents that context (\fig{alg}E).
+
+Peak velocity threshold and on/offset velocity threshold are then determined by
+equation \ref{eq:threshold} with $F$ set to $2\times\mathtt{noise\_factor}$ and
+\param{noise\_factor}, respectively. Starting from a velocity peak the
+immediately preceding and the following velocity minima that do not exceed the
+on/offset threshold are located and used as event boundaries. Qualifying events
+are rejected, if they do not exceed a configurable minimum duration, or violate
+the set saccade maximum proximity criterion (\param{min\_ saccade\_duration},
+\param{min\_intersaccade\_duration}).
+
+As in NH, post-saccadic oscillations are events that immediately follow a
+saccade, where the velocity exceeds saccade velocity threshold within a short
+time window (\param{max\_pso\_duration}). \remodnav\ distinguishes low-velocity
+(event label \texttt{LPSO} for chunk boundary event, \texttt{ILPS} otherwise)
+and high-velocity oscillations (event label \texttt{HPSO} or \texttt{IHPS}),
+where the velocity exceeds the saccade onset or peak velocity threshold,
+respectively.
+
+\subsection*{Pursuit and fixation detection}
+
+For all remaining, unlabeled time series segments that are longer than a
+minimum duration (\param{min\_fixation\_ duration}), velocities are low-pass
+filtered (Butterworth, \param{lowpass\_cutoff\_freq}). Any segments
+exceeding a minimum velocity threshold (\param{pursuit\_velthresh}) are
+classified as pursuit (event label \texttt{PURS}). Pursuit on/offset detection
+uses the same approach as that for saccades: search for local minima preceding
+and following the above threshold velocities.
+%
+Any remaining segment that does not qualify as a pursuit event is classified
+as a fixation (event label \texttt{FIXA}).
+
 
 \subsection*{Operation}\label{op}
 
@@ -614,10 +534,26 @@ and SciPy \citep{JOP+2001} as software dependencies.
 Furthermore, DataLad \citep{HH+2013},
 and Pandas \citep{mckinney2010data}
 %
-have to be available for assessing correct operation via the \remodnav test
-battery. \remodnav itself, and all software dependencies are available on all
+have to be available to run the test
+battery. \remodnav\ itself, and all software dependencies are available on all
 major operating systems.  There are no particular hardware requirements for
 running the software other than sufficient memory to load and process the data.
+
+Program outputs are BIDS-compliant \citep{gorgolewski2016brain}
+tab-separated-value (TSV) text files. The contain a report on one detected
+event per line, with onset and offset time, onset and offset coordinates,
+amplitude, peak velocity, median velocity and average velocity.  Additionally,
+a visualization of the detection results, together with a time course of
+horizontal and vertical gaze position, and velocities is provided for
+illustration and initial quality assessment (see \fig{remodnav} for an
+example).
+
+All available parameters (sorted by algorithm step) with their description and,
+if applicable, default value, are listed in table \ref{tab:parameters}.  While
+input required by a user is kept minimal (raw data, temporal sampling rate,
+viewing distance and screen size), the number of configurable parameters is
+purposefully large.
+%
 
 
 \section*{Validation analyses}\label{ana}
@@ -644,7 +580,7 @@ from the Humanities Lab, Lund University, used by
 \cite{Andersson2017}\footnote{github.com/richardandersson/EyeMovementDetector\linebreak[0]Evaluation},
 to see how our algorithm compared against the NH algorithm it is based on and
 manual human annotation of eye gaze events. This was done to verify that
-changes introduced in \remodnav do not decrease performance below that of the
+changes introduced in \remodnav\ do not decrease performance below that of the
 NH algorithm, and to evaluate whether REMoDNaV indeed improves eye movement
 detection during dynamic stimulation as intended, compared to ten contemporary
 event detection algorithms. Secondly, we used our algorithm on the studyforrest
@@ -654,7 +590,7 @@ and low-quality data from a simultaneous fMRI and eye gaze acquisition.  This
 analysis aims to provide an estimate of the robustness of the algorithm results
 and follows a simple reasoning: As the stimulus (the Hollywood movie: Forrest
 Gump) is the same in both noise conditions, it should evoke similar gaze
-characteristics regardless of the quality of its measurement. Should \remodnav
+characteristics regardless of the quality of its measurement. Should \remodnav\
 extract similar eye event properties, then this is a good indicator of robust
 performance even under high noise conditions.
 
@@ -673,11 +609,11 @@ other category). A minor labeling mistake reported in \cite{Zemblys2018} was
 fixed prior to the computations.
 
 To compare the REMoDNaV results to the human coders and the performance of the
-NH algorithm, we applied \remodnav to the Humanities lab dataset and followed
+NH algorithm, we applied \remodnav\ to the Humanities lab dataset and followed
 the approach by \citet{Andersson2017}: For one, for each stimulus category, we
 computed the proportion of misclassification per event type compared to each of
 the human coders, and compared human coders against each other. A time point
-classified by \remodnav counted as ``misclassified" if the associated event did
+classified by \remodnav\ counted as ``misclassified" if the associated event did
 not correspond to the label the human coder assigned. We limited this analysis
 to all time points that have been labeled as fixation, saccade, PSO, or pursuit
 by any method, hence ignoring the rarely used NaN/blinks or ``undefined"
@@ -691,7 +627,7 @@ and in 70\% of samples for videos. In a direct comparison, i.e. if smooth
 pursuit movements are not taken into account, our algorithm had a lower
 misclassification rate. The highest disagreement across all stimuli categories
 and coders is 11.7\%. Compared to all ten algorithms used in
-\citet{Andersson2017}, \remodnav displays the lowest misclassification rates in
+\citet{Andersson2017}, \remodnav\ displays the lowest misclassification rates in
 all categories.
 
 When taking smooth pursuit movements into account, the misclassification ratio
@@ -755,7 +691,7 @@ category (JI of .43 and .47, respectively).
   \end{tabular}
 
   \textit{Note}: Proportion of samples in in the image category classified in
-  disagreement within the human coders (MN-RA) or between \remodnav algorithm
+  disagreement within the human coders (MN-RA) or between \remodnav\ algorithm
   (AL) and one human coder. The MC (misclassification) column indicates the
   proportion of samples where the human coders disagreed with each other, or
   where the algorithm disagreed with a human coder. The w/oP (without pursuit)
@@ -779,7 +715,7 @@ category (JI of .43 and .47, respectively).
   \includegraphics[width=1\textwidth]{img/confusion_RA_AL.pdf}
   % figure caption is below the figure
   \caption{Confusion matrices indicating similarity for classification decisions between human coders (top panel),
-  human coder MN and \remodnav (middle panel), and human coder RA and \remodnav (bottom panel) for each of the
+  human coder MN and \remodnav\ (middle panel), and human coder RA and \remodnav\ (bottom panel) for each of the
   three stimulus categories. Numbers denote Jaccard indices (higher is more similar).}
   \label{fig:conf}
   % Give a unique label
@@ -806,29 +742,29 @@ duration distributions.
 The RMSD measure has a lower bound of 0 and higher values denote
 higher deviations, but for a thorough explanation of the measure and the procedures
 necessary for its computation, please refer to the original publication by
-\cite{Andersson2017}. By computing the RMSD of \remodnav within the original set
+\cite{Andersson2017}. By computing the RMSD of \remodnav\ within the original set
 of data from \citet{Andersson2017}, we are able to compare the similarity of the
-three distribution parameters produced by \remodnav to human labeling and those of
-the other algorithms, and thus rank \remodnav within the set of algorithms used in
+three distribution parameters produced by \remodnav\ to human labeling and those of
+the other algorithms, and thus rank \remodnav\ within the set of algorithms used in
 \citet{Andersson2017}.
 For a more straightforward interpretation of the RMSD measure, we converted
 RMSDs per event and stimulus category into ranks (where 0 is the best).
 The results of the RMSD computations are summarized in tables \ref{tab:rmsd_fix},
 \ref{tab:rmsd_sac}, \ref{tab:rmsd_pso} and \ref{tab:rmsd_pur}.
 The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}
-was the ``LNS" algorithm by \cite{Larsson2013}. \remodnav performs comparable to
+was the ``LNS" algorithm by \cite{Larsson2013}. \remodnav\ performs comparable to
 ``LNS" for saccades: Across stimulus categories, ``LNS" achieves a mean rank of $2.0$,
-while \remodnav achieves a mean rank of $3.3$. For PSOs, across
-stimulus categories, ``LNS" has a mean rank of $2.3$, while \remodnav achieves a
+while \remodnav\ achieves a mean rank of $3.3$. For PSOs, across
+stimulus categories, ``LNS" has a mean rank of $2.3$, while \remodnav\ achieves a
 mean rank of $2.0$.
 In the original set, different algorithms performed best for fixation detection
 given the category. NH performed best for images  and videos, but worst for dots.
-In our evaluation, \remodnav outperforms all other
+In our evaluation, \remodnav\ outperforms all other
 algorithms in the dots category, and achieves rank 5 and 6 for videos and images,
-respectively. That is, for fixation detection in videos and images, \remodnav
+respectively. That is, for fixation detection in videos and images, \remodnav\
 performs in the middle range. Across all stimulus and event categories,
-\remodnav achieves a median ranking of $3.0$ (both with and without inclusion of
-its ranks for smooth pursuit detection). Thus, \remodnav detects the number
+\remodnav\ achieves a median ranking of $3.0$ (both with and without inclusion of
+its ranks for smooth pursuit detection). Thus, \remodnav\ detects the number
 of events and their duration distribution consistently similar to human coders,
 especially so for saccades and PSOs, and fixations in the dots category.
 
@@ -855,12 +791,12 @@ especially so for saccades and PSOs, and fixations in the dots category.
     NH        & \FIXimgmnNH   & \FIXimgsdNH   & \FIXimgnoNH   & \rankFIXimgNH   &  \FIXdotsmnNH   & \FIXdotssdNH   & \FIXdotsnoNH   & \rankFIXdotsNH    & \FIXvideomnNH   & \FIXvideosdNH   & \FIXvideonoNH   & \rankFIXvideoNH    \\
     BIT       & \FIXimgmnBIT  & \FIXimgsdBIT  & \FIXimgnoBIT  & \rankFIXimgBIT  &  \FIXdotsmnBIT  & \FIXdotssdBIT  & \FIXdotsnoBIT  & \rankFIXdotsBIT   & \FIXvideomnBIT  & \FIXvideosdBIT  & \FIXvideonoBIT  & \rankFIXvideoBIT   \\
     LNS       & -             & -             & -             &  -              &  -              & -              & -              &  -                & -               & -               & -               &  -                 \\
-    \remodnav & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
+    \remodnav\ & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
 
   \textit{Note}: Fixation distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
   were converted into ranks (lower is better).
 
 \end{table*}
@@ -887,12 +823,12 @@ especially so for saccades and PSOs, and fixations in the dots category.
     NH        & \SACimgmnNH   & \SACimgsdNH   & \SACimgnoNH   & \rankSACimgNH   &  \SACdotsmnNH   & \SACdotssdNH   & \SACdotsnoNH   & \rankSACdotsNH    & \SACvideomnNH   & \SACvideosdNH   & \SACvideonoNH   & \rankSACvideoNH    \\
     BIT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
     LNS       & \SACimgmnLNS  & \SACimgsdLNS  & \SACimgnoLNS  & \rankSACimgLNS  &  \SACdotsmnLNS  & \SACdotssdLNS  & \SACdotsnoLNS  & \rankSACdotsLNS   & \SACvideomnLNS  & \SACvideosdLNS  & \SACvideonoLNS  & \rankSACvideoLNS   \\
-    \remodnav & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
+    \remodnav\ & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
 
   \textit{Note}: Saccade distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
   were converted into ranks (lower is better).
 
 \end{table*}
@@ -911,12 +847,12 @@ especially so for saccades and PSOs, and fixations in the dots category.
     RA        & \PSOimgmnRA   & \PSOimgsdRA   & \PSOimgnoRA   & \rankPSOimgRA   &  \PSOdotsmnRA   & \PSOdotssdRA   & \PSOdotsnoRA   & \rankPSOdotsRA    & \PSOvideomnRA   & \PSOvideosdRA   & \PSOvideonoRA   & \rankPSOvideoRA    \\
     NH        & \PSOimgmnNH   & \PSOimgsdNH   & \PSOimgnoNH   & \rankPSOimgNH   &  \PSOdotsmnNH   & \PSOdotssdNH   & \PSOdotsnoNH   & \rankPSOdotsNH    & \PSOvideomnNH   & \PSOvideosdNH   & \PSOvideonoNH   & \rankPSOvideoNH    \\
     LNS       & \PSOimgmnLNS  & \PSOimgsdLNS  & \PSOimgnoLNS  & \rankPSOimgLNS  &  \PSOdotsmnLNS  & \PSOdotssdLNS  & \PSOdotsnoLNS  & \rankPSOdotsLNS   & \PSOvideomnLNS  & \PSOvideosdLNS  & \PSOvideonoLNS  & \rankPSOvideoLNS   \\
-    \remodnav & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
+    \remodnav\ & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
 
   \textit{Note}: PSO distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
   were converted into ranks (lower is better).
 
 \end{table*}
@@ -933,19 +869,19 @@ especially so for saccades and PSOs, and fixations in the dots category.
     \noalign{\smallskip}\hline\noalign{\smallskip}
     MN        & \PURimgmnMN   & \PURimgsdMN   & \PURimgnoMN   & \rankPURimgMN   &  \PURdotsmnMN   & \PURdotssdMN   & \PURdotsnoMN   & \rankPURdotsMN    & \PURvideomnMN   & \PURvideosdMN   & \PURvideonoMN   & \rankPURvideoMN    \\
     RA        & \PURimgmnRA   & \PURimgsdRA   & \PURimgnoRA   & \rankPURimgRA   &  \PURdotsmnRA   & \PURdotssdRA   & \PURdotsnoRA   & \rankPURdotsRA    & \PURvideomnRA   & \PURvideosdRA   & \PURvideonoRA   & \rankPURvideoRA    \\
-    \remodnav & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
+    \remodnav\ & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
 
   \textit{Note}: Smooth pursuit distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav (bottom row). RMSDs
+  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
   were converted into ranks (lower is better).
 
 \end{table*}
 
 
 The combined results of the analyses on the dataset used by
-\citet{Andersson2017} demonstrate that \remodnav yields the highest congruency
+\citet{Andersson2017} demonstrate that \remodnav\ yields the highest congruency
 to manual human annotation in any stimulus category on a sample-by-sample basis
 compared to ten contemporary algorithms when detecting fixations, saccades,
 and post-saccadic oscillations. Its performance stays good, and exceeds all other
@@ -953,10 +889,10 @@ algorithms performance in the dots and video category, when including smooth
 pursuit detection as well. In this regard, the results reveal that REMoDNaVs
 performance equals or exceeds those of the original NH. Taking the number of events
 and their duration distribution into account, REMoDNaVs performance stays good.
-Importantly \remodnav performs similar to human coders in almost all event
+Importantly \remodnav\ performs similar to human coders in almost all event
 categories and stimulus types. NH outperforms it only for fixation detection
-in the image and video category, however, in these categories \remodnav still
-classifies comparatively well. Thus, \remodnav does improve the NH algorithm
+in the image and video category, however, in these categories \remodnav\ still
+classifies comparatively well. Thus, \remodnav\ does improve the NH algorithm
 in aspects that were  suboptimal, but does not diminish performance in NHs strong points.
 
 %\subsubsection*{Evaluation of events}
@@ -973,7 +909,7 @@ in aspects that were  suboptimal, but does not diminish performance in NHs stron
 % much information as possible be contained in figures and/or tables (and their
 % captions). We don't pay for those, but we do pay for the main text body.}}
 
-Given that \remodnav yields biologically plausible results for dynamic
+Given that \remodnav\ yields biologically plausible results for dynamic
 stimulation as indicated by the previous results, we determined whether it is
 capable of analyzing data from dynamic stimulation without a trial structure.
 For this, we applied it to the high quality eye tracking dataset obtained from
@@ -984,7 +920,7 @@ Eyelink 1000 with a standard desktop mount (software version 4.51; SR Research
 Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie
 stimulus was presented on a $522$x$294$mm LCD monitor at a resolution of $1920$
 x $1280$px at a viewing distance of 85cm \citep{Hanke2016}.  The top panel in
-\fig{remodnav} displays the performance of \remodnav for a high quality data
+\fig{remodnav} displays the performance of \remodnav\ for a high quality data
 sample. An individual main sequence for a lab subject is displayed in the
 bottom right panel in \fig{overallComp}. In order to compare event detection
 between high and low quality sample, we computed the event distribution
@@ -996,7 +932,7 @@ for the high quality dataset.
   %\includegraphics[width=1\textwidth]{img/remodnav.eps}
   \includegraphics[trim=0 8mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
   \includegraphics[trim=0 0 0 3.5mm,clip,width=1\textwidth]{img/remodnav_mri.pdf}\\
-  \caption{Exemplary classification performance of \remodnav in a high quality lab sample (top panel) and low
+  \caption{Exemplary classification performance of \remodnav\ in a high quality lab sample (top panel) and low
   quality MRI sample (bottom panel), each for the same 10 seconds of movie stimulus.
   Black lines depict x and y coordinates of eye gaze, gray graph represents velocities. Colors indicate labeled
   eye events. Beige: Fixation,
@@ -1034,7 +970,7 @@ for the high quality dataset.
 
 \subsection*{Low-quality data}\label{ana_3}
 
-In order to determine the robustness of \remodnav to noise, in a last step, we
+In order to determine the robustness of \remodnav\ to noise, in a last step, we
 applied it to the low quality eye tracking dataset of the studyforrest
 publication. This data was recorded with a different Eyelink 1000 (software
 version 4.594) equipped with an MR-compatible telephoto lens and illumination
@@ -1046,7 +982,7 @@ recorded the participants left eye at a distance of about 100cm
 \citep{Hanke2016}.  The lower data quality in this dataset is evident from a
 generally higher amount of data loss and a larger spatial uncertainty (see
 \citet{Hanke2016} for details on data quality). As the stimulus material was
-the same between the high and low quality data sample, \remodnav demonstrates
+the same between the high and low quality data sample, \remodnav\ demonstrates
 robust performance if the characteristics of extracted events within the low
 dataset correspond to those obtained from the previous high quality data
 sample.
@@ -1055,7 +991,7 @@ sample.
 % data loss, perhaps in addition to a subjective rating from the person
 % responsible for the recording"
 
-\fig{remodnav} displays the performance of \remodnav for a low
+\fig{remodnav} displays the performance of \remodnav\ for a low
 quality data sample in the bottom row.  As evident in both panels, periods with
 data loss do not interfere with the detection of eye movement events in their
 vicinity beyond the border region of data loss that is masked during
@@ -1073,7 +1009,7 @@ MRI sample displays fewer saccades of the shortest range. Given the higher
 spatial uncertainty in this dataset, this is unsurprising: the eye tracker
 likely was not able to capture these small eye movements under the low-light
 conditions. Apart from this aspect, both main sequences are comparable. Given
-that \remodnav classifies data from dynamic stimulation well, and that results
+that \remodnav\ classifies data from dynamic stimulation well, and that results
 on low and high quality data yield similar biologically plausible results, the
 performance seems to be robust even under high noise conditions.
 
@@ -1090,6 +1026,33 @@ performance seems to be robust even under high noise conditions.
 
   \label{fig:overallComp}
 \end{figure*}
+
+
+% move to discussion?
+The literature on eye event detection algorithms suggests that there is no true
+``one-fits-all" solution for event detection.  There are some successful
+approaches using deep neural networks \citep{Startsev2018}, but those need
+appropriately large amounts of suitable training data, that may not be easily
+available.
+% till here
+As evident from many evaluations and applications of algorithms (e.g.
+\cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}),
+different underlying stimulation, data characteristics, or use cases make
+certain algorithms more suitable than others, hard-coded thresholds and
+parameters either applicable or detrimental, or potentially require changes to
+the default values or parameters. For our own analyses, the default parameter
+values were well applicable. But we cannot anticipate how the data from other
+groups or paradigms looks like.  \remodnav\ therefore contains a broad range of
+transparent, interpretable and adjustable parameters with default values
+justified from physiological findings or biological limitations, and no
+hard-coded values. This gives users an option to adjust the algorithm to their
+data's characteristics, but offers a sensible starting point with defaults that
+proved to work well with the different datasets we evaluated the algorithm on.
+Only velocity thresholds for saccade detection are estimated iteratively from
+the data. Apart from the advantage of taking noise levels into account, this
+also follows the reasoning of \cite{Nystrom2010AnData} that uninformed
+adjustments of this parameter can have vast consequences on saccade detection,
+and, subsequently, the labeling of all other eye events.
 
 
 %
@@ -1253,14 +1216,14 @@ glissade detection by \cite{Nystrom2010AnData}, we have developed a novel,
 robust algorithm for the classification of various eye movements in eye
 tracking data from dynamic stimulation.  The combined results from all analyses
 are encouraging. Based on data from dynamic and static stimulation from the
-Andersson dataset, \remodnav performs well and even outperforms contemporary
+Andersson dataset, \remodnav\ performs well and even outperforms contemporary
 algorithms, and this is especially true for dynamic stimulation. Therefore, we
-are confident that \remodnav is currently a good choice for event detection
+are confident that \remodnav\ is currently a good choice for event detection
 from eye gaze data obtained during dynamic stimulation.  Furthermore, the
 algorithm yields similar, and thus robust, results for high and low quality
-data. We specifically developed \remodnav to yield robust results with dynamic
+data. We specifically developed \remodnav\ to yield robust results with dynamic
 stimulation, in particular noisy data such as the eye tracking data recorded
-simultaneously to fMRI acquisition. These results confirm that \remodnav is
+simultaneously to fMRI acquisition. These results confirm that \remodnav\ is
 well able to detect eye movements from dynamic stimulation, even when the
 quality of data is low. Therefore, the algorithm is a promising tool for
 research paradigms with dynamic stimuli where lower data quality is an inherent
@@ -1269,7 +1232,7 @@ recordings, or usage of remote eye trackers.  Furthermore, the algorithm proved
 to be well applicable to other types of stimulation. Its classification
 performance on static images was good. This demonstrates that our changes to
 the original NH algorithm did not interfere with its performance on its strong
-points. Lastly, \remodnav is a user-friendly tool with options for to customize
+points. Lastly, \remodnav\ is a user-friendly tool with options for to customize
 it to individual use cases. It is OS independent, uses only freely available
 software, is easy installable, provides simple command-line execution, and is
 ready-to-use without manual labeling or other forms of training data being
@@ -1285,26 +1248,26 @@ annotation, e.g. \cite{5523936}, as for the potential of biases that limit
 generalizability. However, \cite{Hooge2018} concluded that - despite obvious
 variability between human annotations - manual labeling is certainly important
 at least in algorithm validation as we undertook it in our study. Continuing in
-the same vein, the \remodnav algorithm is - as all event detection algorithms -
+the same vein, the \remodnav\ algorithm is - as all event detection algorithms -
 far from perfect. Despite superior performance during dynamic stimulation
 compared to other algorithms, the results do not mirror human annotations
 exactly. Therefore, as with any other algorithm, we recommend that every user
 should at least eye-ball their results for plausibility. One straightforward
 way to do this is to study the classification performance as shown in
-\fig{remodnav}. The \remodnav module will provide such a plot automatically
+\fig{remodnav}. The \remodnav\ module will provide such a plot automatically
 for every detection task, enabling researchers to detect implausible results
 early on
 
 \todo[inline]{There are a number of (some very recent) ML approaches
   (Startsev,2018; Komogortsev,2010) that perform well. We should acknowledge
   that but also find arguments to justify our approach. One advantage of
-  \remodnav is how accessible and readily usable it is. To underline this, I
+  \remodnav\ is how accessible and readily usable it is. To underline this, I
   propose we update the README.md on Github similarly to
   https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a
   use case/tutorial: what is the input/how should it look like, what is the
   command line call, how does the output look like. I think it is a great
-  advantage of \remodnav that we work with more "typical" file formats. Also,
-  \remodnav does not need training, and hence no extensive labeled data as
+  advantage of \remodnav\ that we work with more "typical" file formats. Also,
+  \remodnav\ does not need training, and hence no extensive labeled data as
   training sets (that could be tedious to create, or not fitting to exact use
   case if taken from e.g. open datasets)}
 
@@ -1353,14 +1316,14 @@ early on
 
 \section*{Software availability}
 
-The latest version of \remodnav can be installed from PyPi via \texttt{pip
+The latest version of \remodnav\ can be installed from PyPi via \texttt{pip
 install remodnav}. It is recommended to use a dedicated virtualenv. The source
 code of the software can be found on Github \\
 (https://github.com/psychoinformatics-de/remodnav). All bugs, concerns and
 enhancement requests for this software should be submitted via Github.
 Questions with regard to REMoDNaV can be submitted to NeuroStars.org with a
 \texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow
-but dedicated to neuroinformatics.  \remodnav is released under MIT license.
+but dedicated to neuroinformatics.  \remodnav\ is released under MIT license.
 
 \todo[inline]{Apart from the TODOs in the document, Adina also adds these
 general ones below}
@@ -1442,7 +1405,6 @@ dataset used for validation under an open-source license.
 \bibliographystyle{spbasic}      % basic style, author-year citations
 \bibliography{EyeGaze,tools}
 
-% \bigskip
 % References can be listed in any standard referencing style that uses a numbering system
 % (i.e. not Harvard referencing style), and should be consistent between references within
 % a given article.
