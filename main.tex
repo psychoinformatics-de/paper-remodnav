@@ -549,7 +549,7 @@ illustration and initial quality assessment (see \fig{remodnav} for an
 example).
 
 All available parameters (sorted by algorithm step) with their description and,
-if applicable, default value, are listed in table \ref{tab:parameters}.  While
+if applicable, default value, are listed in \tab{parameters}.  While
 input required by a user is kept minimal (raw data, temporal sampling rate,
 viewing distance and screen size), the number of configurable parameters is
 purposefully large.
@@ -620,7 +620,7 @@ by any method, hence ignoring the rarely used NaN/blinks or ``undefined"
 category. In order to provide a comparison to NH and the other algorithms in
 \cite{Andersson2017}, this misclassification analysis was repeated excluding
 samples labeled as pursuit (as none of the algorithms classed this category).
-The results of this analysis are displayed in table \ref{tab:mclf}. For the
+The results of this analysis are displayed in \tab{mclf}. For the
 comparison performed by \citet{Andersson2017}, the NH algorithm disagreed with
 human coders in 32\% of samples for images, in 93\% of samples for moving dots,
 and in 70\% of samples for videos. In a direct comparison, i.e. if smooth
@@ -636,20 +636,20 @@ category. Importantly, despite an increase, the misclassification rate remains
 comparably low, thus still exceeding the performance of all contemporary
 algorithms in \citet{Andersson2017} in the dynamic categories dots and videos.
 For a comparison between algorithm and human coders classification, \fig{conf}
-displays the resulting confusion matrices with Jaccard indices (JI) quantifying
-the similarity between classification decisions. The JI is bound in range [0,
-1] with higher values indicating higher similarity. A value of 0.93 in the
-upper left cell of the very first matrix in \fig{conf} for example indicates
-that 93\% of frames that are labeled as a fixation by human coders RA and MN
-are the same. This index allows to quantify the similarity of classifications
-independent from values in other cells. While the highest similarity in
-labeling (evident from high values along the diagonal) exists between human
-coders, the algorithm still performs well. For the new event type smooth
-pursuit, detection is very consistent to human labels especially in the moving
-dot category (JI of .79 and .75, respectively), and still good in the video
-category (JI of .56 and .63, respectively).
-\todo[inline]{if we keep these values in here, we might want to make Latex
-commands for them as well? }
+displays the resulting confusion matrices with Jaccard indices
+\citep[JI; ][]{jaccard1901etude} quantifying the similarity between
+classification decisions. The JI is bound in range [0, 1] with higher values
+indicating higher similarity. A value of 0.93 in the upper left cell of the
+very first matrix in \fig{conf} for example indicates that 93\% of frames that
+are labeled as a fixation by human coders RA and MN are the same. This index
+allows to quantify the similarity of classifications independent from values in
+other cells. While the highest similarity in labeling (evident from high values
+along the diagonal) exists between human coders, the algorithm still performs
+well. For the new event type smooth pursuit, detection is very consistent to
+human labels especially in the moving dot category (JI of .79 and .75,
+respectively), and still good in the video category (JI of .56 and .63,
+respectively).  \todo[inline]{if we keep these values in here, we might want to
+make Latex commands for them as well? }
 
 \begin{table}[tbp]
   % table caption is above the table
@@ -716,11 +716,17 @@ commands for them as well? }
   \includegraphics[width=1\textwidth]{img/confusion_MN_AL.pdf} \\
   \includegraphics[width=1\textwidth]{img/confusion_RA_AL.pdf}
   % figure caption is below the figure
-  \caption{Confusion matrices indicating similarity for classification decisions between human coders (top panel),
-  human coder MN and \remodnav\ (middle panel), and human coder RA and \remodnav\ (bottom panel) for each of the
-  three stimulus categories. Numbers denote Jaccard indices (higher is more similar).}
-  \label{fig:conf}
+
+  \caption{Confusion patterns for pairwise eye movement classification
+    comparison of both human rater \citep[MN and RA; ][]{Andersson2017} and the
+    \remodnav\ algorithm (AL) for gaze recordings from stimulation with static
+    images (left column), moving dots (middle column), and video clips (right
+    column).  All matrices present gaze sample based Jaccard indices \citep[JI;
+    ][]{jaccard1901etude}. Consequently, the diagonals depict the fraction of
+    time points labeled congruently by both raters in relation to the number of
+    timepoints assigned to a particular event category by any rater.}
   % Give a unique label
+  \label{fig:conf}
 \end{figure*}
 
 %\begin{figure*}[!ht]
@@ -751,7 +757,7 @@ the other algorithms, and thus rank \remodnav\ within the set of algorithms used
 \citet{Andersson2017}.
 For a more straightforward interpretation of the RMSD measure, we converted
 RMSDs per event and stimulus category into ranks (where 0 is the best).
-The results of the RMSD computations are summarized in tables \ref{tab:rmsd_fix},
+The results of the RMSD computations are summarized in Tables \ref{tab:rmsd_fix},
 \ref{tab:rmsd_sac}, \ref{tab:rmsd_pso} and \ref{tab:rmsd_pur}.
 The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}
 was the ``LNS" algorithm by \cite{Larsson2013}. \remodnav\ performs comparable to
@@ -1220,7 +1226,7 @@ used for validation under an open-source license.
 \end{acknowledgements}
 
 \bibliographystyle{spbasic}      % basic style, author-year citations
-\bibliography{EyeGaze,tools}
+\bibliography{EyeGaze,tools,references}
 
 % References can be listed in any standard referencing style that uses a numbering system
 % (i.e. not Harvard referencing style), and should be consistent between references within
