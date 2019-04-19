@@ -502,7 +502,9 @@ def savegaze():
             pp=p[15000:25000],
             events=events,
             sampling_rate=1000.0,
-            show_vels=True)
+            show_vels=True,
+            coord_lim=(0, 1280),
+            vel_lim=(0, 1000))
         pl.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
