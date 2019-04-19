@@ -503,7 +503,6 @@ def savegaze():
             events=events,
             sampling_rate=1000.0,
             show_vels=True)
-        pl.ylabel('gaze coords. (px)')
         pl.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
