@@ -56,6 +56,7 @@
 
 %\usepackage{tabularx}
 \usepackage{amsmath}
+\usepackage{textcomp}
 \usepackage{booktabs}
 \usepackage{units}
 \usepackage[draft]{hyperref} %tmp added draft option for spilling refs
@@ -963,8 +964,15 @@ displays the resulting distributions for the high quality dataset.
   \includegraphics[width=0.24\textwidth]{img/hist_PSO_mri.pdf}
   \includegraphics[width=0.24\textwidth]{img/hist_pursuit_mri.pdf} \\
   % figure caption is below the figure
-  \caption{Duration distributions per event for the high-quality lab sample (top panel),
-  and the low quality MRI sample (bottom).}
+  \caption{Comparison of eye movement event duration distributions for the
+    high-quality lab sample (top row), and the low quality MRI sample
+    (bottom row) across all participants (each $N=15$), and the entire duration of
+    the same feature-length movie stimulus. All histograms depict absolute
+    number of events. Visible differences are limited to an overall lower number of
+    events, and fewer long saccades for the MRI sample. These are attributable
+    to a higher noise level and more signal loss \citep[compare][Fig.
+    4b]{Hanke2016} in the MRI sample, and to stimulus size differences
+    (\unit[23.75]{\textdegree} MRI vs. \unit[34]{\textdegree} lab).}
   \label{fig:dist}
   % Give a unique label
 \end{figure*}
