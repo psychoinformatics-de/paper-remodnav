@@ -943,12 +943,18 @@ displays the resulting distributions for the high quality dataset.
   %\includegraphics[width=1\textwidth]{img/remodnav.eps}
   \includegraphics[trim=0 8mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
   \includegraphics[trim=0 0 0 2mm,clip,width=1\textwidth-1mm]{img/remodnav_mri.pdf}\\
-  \caption{Exemplary classification performance of \remodnav\ in a high quality lab sample (top) and low
-  quality MRI sample (bottom), each for the same 10 seconds of movie stimulus.
-  Black lines depict x and y coordinates of eye gaze, gray graph represents velocities. Colors indicate labeled
-  eye events. Beige: Fixation,
-  light green: Saccade, brown: Smooth pursuit, dark blue: High velocity PSOs, light blue: Low velocity PSOs.
-  White: no signal.}
+  \caption{Exemplary eye movement detection results for the same \unit[10]{s} excerpt
+  of a movie stimulus for a single participant in the high quality lab sample (top),
+  and in the lower quality MRI sample (bottom). The plots show filtered gaze coordinates
+  (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
+  with periods of fixation (green), pursuit (beige), saccades (blue), and
+  high/low-velocity post-saccadic oscillations (dark/light purple. The variable noise
+  level, and prolonged signal loss (white) visible in the MRI sample represent
+  a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
+  saccade events first, and subsequently tunes the velocity threshold to short time
+  windows between these events. Figures like this accompany the program output to
+  facilitate quality control and discovery of inappropriate preprocessing and detection
+  parameterization.}
 
   \label{fig:remodnav}
 \end{figure*}
