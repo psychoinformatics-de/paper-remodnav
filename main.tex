@@ -151,7 +151,7 @@ We found that the proposed algorithm performs on par or better compared
 to state-of-the-art alternatives for static stimulation. Moreover, it yields
 eye movement events with biologically plausible characteristics on prolonged
 recordings without a trial-structure. Lastly, algorithm performance is robust
-on data acquired under suboptimal conditions that are exhibiting a temporally
+on data acquired under suboptimal conditions that exhibit a temporally
 varying noise level.
 % general context
 These result indicate that the proposed algorithm is a robust tool with
@@ -308,7 +308,7 @@ parameters, and lists their default values.
 
 \begin{figure*}
   \includegraphics[width=1\textwidth]{img/remodnav_algorithm.pdf}
-  \caption{\remodnav workflow. Optional steps and configurable parameters are bold.}
+  \caption{\remodnav workflow. Optional steps and configurable parameters are in bold.}
   \label{fig:alg}
 \end{figure*}
 
@@ -316,7 +316,7 @@ parameters, and lists their default values.
 \subsection*{Preprocessing}
 
 The goal of data preprocessing is to compute a time series of eye movement
-velocities on which the event detection algorithm can be executed, while
+velocities on which the event detection algorithm can be executed, while jointly
 reducing non-movement-related noise in the data as much as possible. 
 
 First, implausible spikes in the coordinate time series are removed with a
@@ -472,7 +472,7 @@ noise flares on the aforementioned adaptive velocity thresholding procedure.
 \remodnav\ implements this chunking by determining a critical velocity on a
 median-filtered (\param{median\_ filter\_length}) time series comprising the
 full duration of a recording (\fig{alg}D). Due to potentially elevated noise
-levels the resulting threshold tends to overestimate an optimal threshold.
+levels, the resulting threshold tends to overestimate an optimal threshold.
 Consequently, only periods of fastest eye movements will exceed this threshold.
 All such periods of consecutive above-threshold velocities are weighted by the
 sum of these velocities. Boundaries of time series chunks are determined by
@@ -494,10 +494,10 @@ time series chunk represents that context (\fig{alg}E).
 
 Peak velocity threshold and on/offset velocity threshold are then determined by
 equation \ref{eq:threshold} with $F$ set to $2\times\mathtt{noise\_factor}$ and
-\param{noise\_factor}, respectively. Starting from a velocity peak the
+\param{noise\_factor}, respectively. Starting from a velocity peak, the
 immediately preceding and the following velocity minima that do not exceed the
 on/offset threshold are located and used as event boundaries. Qualifying events
-are rejected, if they do not exceed a configurable minimum duration, or violate
+are rejected if they do not exceed a configurable minimum duration or violate
 the set saccade maximum proximity criterion (\param{min\_ saccade\_duration},
 \param{min\_intersaccade\_duration}).
 
@@ -599,7 +599,7 @@ no dataset-specific tuning other than the built-in adaptive procedures.
 \subsection*{Algorithm comparison}\label{ana_1}
 
 Presently, \cite{Andersson2017} represents the most comprehensive comparative
-study on eve movement detection algorithms. Moreover, the dataset employed
+study on eye movement detection algorithms. Moreover, the dataset employed
 in that study was made publicly available. Consequently, evaluating \remodnav\
 performance on these data and using their metrics offers a straightforward
 approach to relate this new development to alternative solutions.
@@ -626,7 +626,7 @@ were labeled as fixation, saccade, PSO, or pursuit by any method, hence
 ignoring the rarely used NaN/blinks or ``undefined" category. For a direct
 comparison with the results in \cite{Andersson2017}, the analysis was repeated
 while also excluding samples labeled as pursuit. \tab{mclf} shows the
-misclassification rates for all pairwise comparisons, and all stimulus types.
+misclassification rates for all pairwise comparisons, in all stimulus types.
 In comparison to the NH algorithm, after which the proposed work was modelled,
 \remodnav performed consistently better (32/93/70\% average misclassification
 vs. \imgMNALMclfWOP/\dotsRAALMclfWOP/ \videoRAALMclfWOP\% worst
@@ -691,10 +691,10 @@ performance of all algorithms tested in \citet{Andersson2017}.
 
 \fig{conf} shows confusion patterns for a comparison of algorithm
 classifications with human labeling. While \remodnav\ does not achieve a
-labeling similarity that reaches the human inter-rater aggreement, it still
+labeling similarity that reaches the human inter-rater agreement, it still
 performs well. In particular, the relative magnitude of agreement with each
-individual human coder for fixations, saccades, and PSOs, resembles that of the
-agreement of the human coders with each other. Classification of smooth
+individual human coder for fixations, saccades, and PSOs, resembles the
+agreement between the human coders. Classification of smooth
 pursuits is consistent with human labels for the categories moving dots, and
 videos. However, there is a substantial confusion of fixation and pursuit for
 the static images. In a real-world application of \remodnav, pursuit detection
@@ -726,7 +726,7 @@ For this evaluation, however, no such intervention was made.
 
 
 In order to further rank the performance of the proposed algorithm with respect
-to the ten algorithms studies in \citet{Andersson2017}, we followed their
+to the ten algorithms studied in \citet{Andersson2017}, we followed their
 approach to compute root mean square deviations (RMSD) from human labels for
 duration distribution characteristics (mean and standard deviation of
 durations, plus number of events) for each stimulus category (images, dots,
@@ -882,10 +882,10 @@ median now, and mean before}median ranking of $3.0$.
 % FROM HERE
 
 The combined results of the analyses on the dataset used by
-\citet{Andersson2017} demonstrate that \remodnav\ yields the highest congruency
+\citet{Andersson2017} demonstrates that \remodnav\ yields the highest congruency
 to manual human annotation in any stimulus category on a sample-by-sample basis
 compared to ten contemporary algorithms when detecting fixations, saccades, and
-post-saccadic oscillations. Its performance stays good, and exceeds all other
+post-saccadic oscillations. Its performance stays good and exceeds all other
 algorithms performance in the dots and video category, when including smooth
 pursuit detection as well. In this regard, the results reveal that REMoDNaVs
 performance equals or exceeds those of the original NH. Taking the number of
@@ -908,7 +908,7 @@ performance in NHs strong points.
 
 
 Given that \remodnav\ yields biologically plausible results for dynamic
-stimulation, as indicated by the previous results, we determined whether it is
+stimulation, as indicated by the previous comparison, we determined whether it is
 capable of analyzing data from dynamic stimulation without a trial structure.
 For this, we applied it to the high quality eye tracking dataset obtained from
 15 subjects watching the movie in a laboratory setting. This analysis further
@@ -919,8 +919,8 @@ Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie
 stimulus was presented on a $522\times294$mm LCD monitor at a resolution of $1920\times1280$px at a viewing distance of 85cm \citep{Hanke2016}.  The top panel in
 \fig{remodnav} displays the performance of \remodnav\ for a high quality data
 sample. An individual main sequence for a lab subject is displayed in the
-bottom right panel in \fig{overallComp}. In order to compare event detection
-between high and lower quality sample, we computed the event distribution
+bottom right panel in \fig{overallComp}. To compare the event detection
+between high and lower quality samples, we computed the event distribution
 parameters per event type and movie run. The top panel in \fig{dist}
 displays the resulting distributions for the high quality dataset.
 
@@ -972,7 +972,7 @@ displays the resulting distributions for the high quality dataset.
 
 \subsection*{Lower-quality data}\label{ana_3}
 
-In order to determine the robustness of \remodnav\ to noise, in a last step, we
+In order to determine the robustness of \remodnav\ to noise, as a last step, we
 applied it to the lower quality eye tracking dataset of the studyforrest
 publication. This data was recorded with a different Eyelink 1000 (software
 version 4.594) equipped with an MR-compatible telephoto lens and illumination
@@ -1004,9 +1004,9 @@ in the top right panel in \fig{overallComp}, and the left column in
 \fig{dist} displays the distribution parameters per event type for the lower
 quality dataset in the bottom panel.
 Altogether, \fig{remodnav}, \fig{dist} and
-\fig{overallComp} illustrate a high similiarity between performance in high
+\fig{overallComp} illustrate a high similarity between performance in high
 and lower quality datasets. In both cases, the main sequences follow the known
-peak-velocity to amplitude relationship of saccades. It is noteable that the
+peak-velocity to amplitude relationship of saccades. It is notable that the
 MRI sample displays fewer saccades of the shortest range. Given the higher
 spatial uncertainty in this dataset, this is unsurprising: the eye tracker
 likely was not able to capture these small eye movements under the low-light
@@ -1038,7 +1038,7 @@ The literature on eye event detection algorithms suggests that there is no true
 approaches using deep neural networks \citep{Startsev2018}, but those need large amounts of suitable training data that may not be easily
 available.
 % till here
-As evident from many evaluations and applications of algorithms (e.g.
+As evident from the many evaluations and applications of algorithms (e.g.
 \cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}),
 different underlying stimulation, data characteristics, or use cases make
 certain algorithms more suitable than others. Hard-coded thresholds and
@@ -1066,7 +1066,7 @@ robust algorithm for the classification of various eye movements in eye
 tracking data from dynamic stimulation.  The combined results from all analyses
 are encouraging. Based on data from dynamic and static stimulation from the
 Andersson dataset, \remodnav\ performs well and even outperforms contemporary
-algorithms, and this is especially true for dynamic stimulation. Therefore, we
+algorithms---especially in the case of dynamic stimulation. Therefore, we
 are confident that \remodnav\ is currently a good choice for event detection
 from eye gaze data obtained during dynamic stimulation.  Furthermore, the
 algorithm yields similar, and thus robust, results for high and lower quality
@@ -1075,13 +1075,13 @@ stimulation, in particular noisy data such as the eye tracking data recorded
 simultaneously with fMRI acquisition. These results confirm that \remodnav\ is
 well able to detect eye movements from dynamic stimulation, even when the
 quality of data is lower. Therefore, the algorithm is a promising tool for
-research paradigms with dynamic stimuli; where lower data quality is an inherent
-property of the acquisition procedure, such as simultaneous fMRI and eye gaze
+research paradigms with dynamic stimuli where lower data quality is an inherent
+property of the acquisition procedure; such as simultaneous fMRI and eye gaze
 recordings, or usage of remote eye trackers.  Furthermore, the algorithm proved
 to be well applicable to other types of stimulation. Its classification
 performance on static images was good. This demonstrates that our changes to
-the original NH algorithm did not interfere with its performance on its strong
-points. Lastly, \remodnav\ is a user-friendly tool with options available to customize
+the original NH algorithm did not interfere with where it performed best. 
+Lastly, \remodnav\ is a user-friendly tool with options available to customize
 it to individual use cases. It is OS independent, uses only freely available
 software, is easily installable, provides simple command-line execution, and is
 ready-to-use without manual labeling or other forms of training data being
