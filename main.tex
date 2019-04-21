@@ -259,7 +259,7 @@ applicability to prolonged recordings that lack any kind of trial structure,
 and exhibit periods of signal-loss and non-stationary noise levels.
 % maybe work in \citep{Hooge2018} again
 In addition to the event categories \textit{fixation}, \textit{saccade}, and
-\textit{post-saccadic oscillation} (sometimes termed ``glissade"), the
+\textit{post-saccadic oscillation} (PSO; sometimes termed ``glissade"), the
 algorithm had to support the detection of \textit{smooth pursuit} events, as
 emphasized by \cite{Friedman2018}.  These are slow movements of the eye during
 tracking of a moving target and are routinely evoked by moving visual objects
@@ -278,7 +278,7 @@ detection and classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
 more homogeneous segments with more uniform noise levels. Furthermore, it adds
 support for pursuit event detection. We evaluated \remodnav\ on three different
-dataset from conventional paradigms, and natural stimulation (high and low
+dataset from conventional paradigms, and natural stimulation (high and lower
 quality), and relate its performance to the algorithm comparison by
 \cite{Andersson2017}.
 
@@ -558,7 +558,7 @@ onset and offset coordinates, amplitude, peak velocity, median velocity and
 average velocity. The remaining arguments are the only two mandatory
 parameters: the conversion factor from pixels to visual degrees, \ie the visual
 angle of a single (square) pixel (\texttt{<px2deg>} in \unit{deg/s}), and the
-temporal sampling rate (\texttt{<sampling\_rate} in \unit{Hz}).
+temporal sampling rate (\texttt{<sampling\_rate>} in \unit{Hz}).
 
 All additionally supported parameters (sorted by algorithm step) with their
 description and default value, are listed in \tab{parameters}.
@@ -586,89 +586,61 @@ input data file (see \fig{remodnav} for an example).
 % THIS SECTION  WILL BASICALLY SHOW THE INPUTS AND THE OUTPUTS(RESULTS
 % BASICALLY)
 
-% \todo[inline]{\textit{Testing and comparison --- explaining rationale of the
-% compared algorithms ie they were winners in the anderson paper}}
+The selection of datasets and analyses for validating algorithm performance was
+guided by three objectives: 1) compare algorithm performance to other existing
+approaches; 2) demonstrate plausible results on data from prolonged gaze
+coordinate recordings during natural viewing; and 3) illustrate result
+robustness on lower-quality data. The following three sections each introduce a
+dataset and present the validation results for these objectives.  All analysis
+presented here are performed using default parameters (\tab{parameters}), with
+no dataset-specific tuning other than the built-in adaptive procedures.
 
-We applied our algorithm to two datasets, each to fulfill different objectives.
-First, in order to validate REMoDNaV, we used the manually annotated dataset
-from the Humanities Lab, Lund University, used by
-\cite{Andersson2017}\footnote{github.com/richardandersson/EyeMovementDetector\linebreak[0]Evaluation},
-to see how our algorithm compared against the NH algorithm it is based on and
-manual human annotation of eye gaze events. This was done to verify that
-changes introduced in \remodnav\ do not decrease performance below that of the
-NH algorithm, and to evaluate whether REMoDNaV indeed improves eye movement
-detection during dynamic stimulation as intended, compared to ten contemporary
-event detection algorithms. Secondly, we used our algorithm on the studyforrest
-dataset \citep{Hanke2016} to see the results of dynamic stimuli under two
-different noise conditions: A high-quality dataset from a laboratory setting,
-and low-quality data from a simultaneous fMRI and eye gaze acquisition.  This
-analysis aims to provide an estimate of the robustness of the algorithm results
-and follows a simple reasoning: As the stimulus (the Hollywood movie: Forrest
-Gump) is the same in both noise conditions, it should evoke similar gaze
-characteristics regardless of the quality of its measurement. Should \remodnav\
-extract similar eye event properties, then this is a good indicator of robust
-performance even under high noise conditions.
 
-\subsection*{Evaluation of the algorithm: comparing outputs against human
-coders and a current algorithm}\label{ana_1}
+\subsection*{Algorithm comparison}\label{ana_1}
 
-The dataset provided by \cite{Andersson2017} consists of monocular eye gaze
-data produced from viewing stimuli from three distinct categories---images,
-moving dots and videos. In addition to the eye tracking metadata (eye tracker
-sampling rate (500hz), size of the screen, raw eye gaze data, distance from
-screen) and eye gaze data (coordinates), each frame was also labeled by two
-human observers to assign the event they thought it was. A total of six
-different labels were used, namely, fixation, saccade, post-saccadic
-oscillation, smooth pursuit, blink and undefined (a sample that did not fit any
-other category). A minor labeling mistake reported in \cite{Zemblys2018} was
-fixed prior to the computations.
+Presently, \cite{Andersson2017} represents the most comprehensive comparative
+study on eve movement detection algorithms. Moreover, the dataset employed
+in that study was made publicly available. Consequently, evaluating \remodnav\
+performance on these data and using their metrics offers a straightforward
+approach to relate this new development to alternative solutions.
 
-To compare the REMoDNaV results to the human coders and the performance of the
-NH algorithm, we applied \remodnav\ to the Humanities lab dataset and followed
-the approach by \citet{Andersson2017}: For each stimulus category, we
-computed the proportion of misclassification per event type compared to each of
-the human coders, and compared human coders against each other. A time point
-classified by \remodnav\ counted as ``misclassified" if the associated event did
-not correspond to the label the human coder assigned. We limited this analysis
-to all time points that have been labeled as fixation, saccade, PSO, or pursuit
-by any method, hence ignoring the rarely used NaN/blinks or ``undefined"
-category. To provide a comparison to NH and the other algorithms in
-\cite{Andersson2017}, this misclassification analysis was repeated excluding
-samples labeled as pursuit (as none of the algorithms classed this category).
-The results of this analysis are displayed in \tab{mclf}. For the
-comparison performed by \citet{Andersson2017}, the NH algorithm disagreed with
-human coders in 32\% of samples for images, in 93\% of samples for moving dots,
-and in 70\% of samples for videos. In a direct comparison, i.e. if smooth
-pursuit movements are not taken into account, our algorithm had a lower
-misclassification rate. The highest disagreement across all stimuli categories
-and coders is \maxmclf\%. Compared to all ten algorithms used in
-\citet{Andersson2017}, \remodnav\ displays the lowest misclassification rates in
-all categories.
+% dataset
+The dataset provided by
+\cite{Andersson2017}\footnote{github.com/richardandersson/EyeMovementDetector\linebreak[0]Evaluation}
+consists of monocular eye gaze data produced from viewing stimuli from three
+distinct categories---images, moving dots and videos. The data release contains
+gaze coordinate time series (\unit[500]{Hz} sampling rate), and metadata on
+stimulus size and viewing distance.  Importantly, each time point was manually
+classified by two expert human raters as one of six event categories: fixation,
+saccade, PSO, smooth pursuit, blink and undefined (a sample that did not fit
+any other category). A minor labeling mistake reported in \cite{Zemblys2018}
+was fixed prior to this validation analysis.
 
-When taking smooth pursuit movements into account, the misclassification ratio
-increases, as would be expected with the introduction of a fourth eye movement
-category. Importantly, despite an increase, the misclassification rate remains
-comparably low, thus still exceeding the performance of all contemporary
-algorithms in \citet{Andersson2017} in the dynamic categories dots and videos.
-For a comparison between algorithm and human coders classification, \fig{conf}
-displays the resulting confusion matrices with Jaccard indices
-\citep[JI; ][]{jaccard1901etude} quantifying the similarity between
-classification decisions. The JI is bound in range [0, 1] with higher values
-indicating higher similarity. A value of 0.93 in the upper left cell of the
-very first matrix in \fig{conf} for example indicates that 93\% of frames that
-are labeled as a fixation by human coders RA and MN are the same. This index
-allows to quantify the similarity of classifications independent from values in
-other cells. While the highest similarity in labeling (evident from high values
-along the diagonal) exists between human coders, the algorithm still performs
-well. For the new event type smooth pursuit, detection is very consistent to
-human labels especially in the moving dot category (JI of .79 and .75,
-respectively), and still good in the video category (JI of .56 and .63,
-respectively).  \todo[inline]{if we keep these values in here, we might want to
-make Latex commands for them as well? }
+For each stimulus category, we computed the proportion of misclassifications
+per event type, comparing \remodnav\ to each of the human coders, and, as a
+baseline measure, the human coders against each other.
+%
+A time point was counted as misclassified if the two compared classifications
+did not assign the same label. We limited this analysis to all time points that
+were labeled as fixation, saccade, PSO, or pursuit by any method, hence
+ignoring the rarely used NaN/blinks or ``undefined" category. For a direct
+comparison with the results in \cite{Andersson2017}, the analysis was repeated
+while also excluding samples labeled as pursuit. \tab{mclf} shows the
+misclassification rates for all pairwise comparisons, and all stimulus types.
+In comparison to the NH algorithm, after which the proposed work was modelled,
+\remodnav performed consistently better (32/93/70\% average misclassification
+vs. \imgMNALMclfWOP/\dotsRAALMclfWOP/ \videoRAALMclfWOP\% worst
+misclassification for images, dots, and videos).  Compared to all ten
+algorithms evaluated in \citet{Andersson2017}, \remodnav\ exhibits the lowest
+misclassification rates across all stimulus categories.
+%
+When taking smooth pursuit events into account, the misclassification rate
+naturally increases, but remains comparably low, and still exceeds the
+performance of all algorithms tested in \citet{Andersson2017}.
 
 \begin{table}[tbp]
   % table caption is above the table
-  \caption{Confusion matrices for different stimulus categories}
+  \caption{Confusion matrices for different stimulus categories. Compare \citet[][Table 8-10]{Andersson2017}}
   \label{tab:mclf}       % Give a unique label
   % For LaTeX tables use
   \begin{tabular}{llllllll}
@@ -716,13 +688,22 @@ make Latex commands for them as well? }
   columns display the percentage of labels used in misclassified samples.
   Within each row, percentages per Coder should add up tp 100\%, in rare cases
   rounding leads to 99 or 101\%, though.
-  \todo[inline]{add explicit reference to tables in \citet{Andersson2017} that
-  contain the analog results}
+  \todo[inline]{dissolve this note into the caption}
 
 \end{table}
 
-% Simple quick example of what I envision a confusion matrix graphic could look
-% like.
+\fig{conf} shows confusion patterns for a comparison of algorithm
+classifications with human labeling. While \remodnav\ does not achieve a
+labeling similarity that reaches the human inter-rater aggreement, it still
+performs well. In particular, the relative magnitude of agreement with each
+individual human coder for fixations, saccades, and PSOs, resembles that of the
+agreement of the human coders with each other. Classification of smooth
+pursuits is consistent with human labels for the categories moving dots, and
+videos. However, there is a substantial confusion of fixation and pursuit for
+the static images. In a real-world application of \remodnav, pursuit detection
+could be disabled (by setting a high pursuit velocity threshold) for data from
+static images, if the occurrence of pursuit events can be ruled out a priori.
+For this evaluation, however, no such intervention was made.
 
 \begin{figure*}
   % Use the relevant command to insert your figure file.
@@ -746,12 +727,14 @@ make Latex commands for them as well? }
   \label{fig:conf}
 \end{figure*}
 
-%\begin{figure*}[!ht]
-%\centering
-%\includegraphics[width=1\textwidth]{Mainseqs_legends.pdf}
-%\caption{\label{fig:Mainseqs}Overview of use cases to validate to anderson dataset. Three sets of stimuli, namely, images, dots, and videos which are processed by human observers and the algorithm. Sample A shows results that show a good match between the human and algorithmic results,sample B showing acceptable results, while sample C shows a poor match. In the case of the human observers the results of each observer --- represented by either blue or red --- are superimposed onto one another. Event detection done by the algorithm additionally split saccadic events into Segment defining saccades (SD-S) and PSOs to regular and High velocity PSOs (HV-PSO)  }
 
-%\end{figure*}
+
+\subsection*{Prolonged natural viewing}\label{ana_2}
+
+\subsection*{Lower-quality data}\label{ana_3}
+
+\bigskip
+
 
 Additionally, for each stimulus category (images, dots, videos), we determined
 the mean and standard deviation of the event durations per event category (fixations,
@@ -947,7 +930,7 @@ stimulus was presented on a $522\times294$mm LCD monitor at a resolution of $192
 \fig{remodnav} displays the performance of \remodnav\ for a high quality data
 sample. An individual main sequence for a lab subject is displayed in the
 bottom right panel in \fig{overallComp}. In order to compare event detection
-between high and low quality sample, we computed the event distribution
+between high and lower quality sample, we computed the event distribution
 parameters per event type and movie run. The top panel in \fig{dist}
 displays the resulting distributions for the high quality dataset.
 
@@ -984,7 +967,7 @@ displays the resulting distributions for the high quality dataset.
   \includegraphics[width=0.24\textwidth]{img/hist_pursuit_mri.pdf} \\
   % figure caption is below the figure
   \caption{Comparison of eye movement event duration distributions for the
-    high-quality lab sample (top row), and the low quality MRI sample
+    high-quality lab sample (top row), and the lower quality MRI sample
     (bottom row) across all participants (each $N=15$), and the entire duration of
     the same feature-length movie stimulus. All histograms depict absolute
     number of events. Visible differences are limited to an overall lower number of
@@ -997,10 +980,10 @@ displays the resulting distributions for the high quality dataset.
 \end{figure*}
 
 
-\subsection*{Low-quality data}\label{ana_3}
+\subsection*{Lower-quality data}\label{ana_3}
 
 In order to determine the robustness of \remodnav\ to noise, in a last step, we
-applied it to the low quality eye tracking dataset of the studyforrest
+applied it to the lower quality eye tracking dataset of the studyforrest
 publication. This data was recorded with a different Eyelink 1000 (software
 version 4.594) equipped with an MR-compatible telephoto lens and illumination
 kit (SR Research Ltd., Mississauga, Ontario, Canada) at $1000$Hz during
@@ -1011,16 +994,16 @@ recorded the participants left eye at a distance of about 100cm
 \citep{Hanke2016}.  The lower data quality in this dataset is evident from a
 generally higher amount of data loss and a larger spatial uncertainty (see
 \citet{Hanke2016} for details on data quality). As the stimulus material was
-the same between the high and low quality data sample, \remodnav\ demonstrates
-robust performance if the characteristics of extracted events within the low
-dataset correspond to those obtained from the previous high quality data
+the same between the high and lower quality data sample, \remodnav\ demonstrates
+robust performance if the characteristics of extracted events within the lower
+quality dataset correspond to those obtained from the previous high quality data
 sample.
 
 % N+H describe: "Data quality is related to accuracy, precision, percentage of
 % data loss, perhaps in addition to a subjective rating from the person
 % responsible for the recording"
 
-\fig{remodnav} displays the performance of \remodnav\ for a low
+\fig{remodnav} displays the performance of \remodnav\ for a lower
 quality data sample in the bottom row.  As evident in both panels, periods with
 data loss do not interfere with the detection of eye movement events in their
 vicinity beyond the border region of data loss that is masked during
@@ -1028,20 +1011,20 @@ preprocessing. The detection of saccades corresponds to the velocity peaks in
 the time series. An individual main sequence for an MRI subject is displayed
 in the top right panel in \fig{overallComp}, and the left column in
 \fig{overallComp} shows all events produced from both datasets. Lastly,
-\fig{dist} displays the distribution parameters per event type for the low
+\fig{dist} displays the distribution parameters per event type for the lower
 quality dataset in the bottom panel.
 Altogether, \fig{remodnav}, \fig{dist} and
 \fig{overallComp} illustrate a high similiarity between performance in high
-and low quality datasets. In both cases, the main sequences follow the known
+and lower quality datasets. In both cases, the main sequences follow the known
 peak-velocity to amplitude relationship of saccades. It is noteable that the
 MRI sample displays fewer saccades of the shortest range. Given the higher
 spatial uncertainty in this dataset, this is unsurprising: the eye tracker
 likely was not able to capture these small eye movements under the low-light
 conditions. Apart from this aspect, both main sequences are comparable. The
 resulting duration distributions between both datasets are similar, despite the
-generally lower amount of events in the low quality dataset. Given
+generally lower amount of events in the lower quality dataset. Given
 that \remodnav\ classifies data from dynamic stimulation well, and that results
-on low and high quality data yield similar biologically plausible results, the
+on lower and high quality data yield similar biologically plausible results, the
 performance is evidently robust, even under high noise conditions.
 
 \begin{figure*}[tbp]
@@ -1096,12 +1079,12 @@ Andersson dataset, \remodnav\ performs well and even outperforms contemporary
 algorithms, and this is especially true for dynamic stimulation. Therefore, we
 are confident that \remodnav\ is currently a good choice for event detection
 from eye gaze data obtained during dynamic stimulation.  Furthermore, the
-algorithm yields similar, and thus robust, results for high and low quality
+algorithm yields similar, and thus robust, results for high and lower quality
 data. We specifically developed \remodnav\ to yield robust results with dynamic
 stimulation, in particular noisy data such as the eye tracking data recorded
 simultaneously with fMRI acquisition. These results confirm that \remodnav\ is
 well able to detect eye movements from dynamic stimulation, even when the
-quality of data is low. Therefore, the algorithm is a promising tool for
+quality of data is lower. Therefore, the algorithm is a promising tool for
 research paradigms with dynamic stimuli; where lower data quality is an inherent
 property of the acquisition procedure, such as simultaneous fMRI and eye gaze
 recordings, or usage of remote eye trackers.  Furthermore, the algorithm proved
