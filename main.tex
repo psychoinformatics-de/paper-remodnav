@@ -640,7 +640,16 @@ performance of all algorithms tested in \citet{Andersson2017}.
 
 \begin{table}[tbp]
   % table caption is above the table
-  \caption{Confusion matrices for different stimulus categories. Compare \citet[][Table 8-10]{Andersson2017}}
+  \caption{Proportion of samples in each stimulus category classified in
+  disagreement between human coders (MN, RA) and the \remodnav\ algorithm
+  (AL). The MC (misclassification) column lists proportions considering
+  all four event categories (fixation, saccade, PSO, pursuit), while
+  the w/oP (without pursuit) column excludes pursuit events for a direct
+  comparison with \citet[][Table 8-10]{Andersson2017}.
+  The remaining columns show the percentage of labels assigned to incongruent
+  time points by each rater (deviation of their sum from 100\% is due to
+  rounding).
+  }
   \label{tab:mclf}       % Give a unique label
   % For LaTeX tables use
   \begin{tabular}{llllllll}
@@ -678,18 +687,6 @@ performance of all algorithms tested in \citet{Andersson2017}.
     ---& ---& ---& AL & \videoRAALFIXcod & \videoRAALSACcod & \videoRAALPSOcod & \videoRAALSPcod \\
     \noalign{\smallskip}\hline
   \end{tabular}
-
-  \textit{Note}: Proportion of samples in in the image category classified in
-  disagreement within the human coders (MN-RA) or between \remodnav\ algorithm
-  (AL) and one human coder. The MC (misclassification) column indicates the
-  proportion of samples where the human coders disagreed with each other, or
-  where the algorithm disagreed with a human coder. The w/oP (without pursuit)
-  column is the same measure, but excludes all pursuit samples. The remaining
-  columns display the percentage of labels used in misclassified samples.
-  Within each row, percentages per Coder should add up tp 100\%, in rare cases
-  rounding leads to 99 or 101\%, though.
-  \todo[inline]{dissolve this note into the caption}
-
 \end{table}
 
 \fig{conf} shows confusion patterns for a comparison of algorithm
