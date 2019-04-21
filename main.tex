@@ -725,60 +725,47 @@ For this evaluation, however, no such intervention was made.
 \end{figure*}
 
 
+In order to further rank the performance of the proposed algorithm with respect
+to the ten algorithms studies in \citet{Andersson2017}, we followed their
+approach to compute root mean square deviations (RMSD) from human labels for
+duration distribution characteristics (mean and standard deviation of
+durations, plus number of events) for each stimulus category (images, dots,
+videos) and event type (fixations, saccades, PSOs, pursuits). This measure
+represents a scalar distribution similarity score that can be used as an
+additional comparison metric of algorithm performance that focuses on overall
+number and durations of detected events, instead of sample-by-sample
+misclassification. The RMSD measure has a lower bound of $0.0$ (identical to
+the average of both human raters), with higher values indicating larger
+differences \citep[for detail information on the calculation of this metric
+see][]{Andersson2017}.
 
-\subsection*{Prolonged natural viewing}\label{ana_2}
+Tables \ref{tab:rmsd_fix}-\ref{tab:rmsd_pur} reproduce \citet[Tables
+3-6]{Andersson2017}, and the RMSD calculation for the added rows on \remodnav\
+uses the scores for the human raters given in these original tables. As
+acknowledged by the authors, the absolute value of the RMSD scores is not
+informative due to scaling with respect to the respective maximum value of each
+characteristic.  Therefore, we converted RSMDs for each algorithm and event
+type into zero-based ranks.
 
-\subsection*{Lower-quality data}\label{ana_3}
+The LNS algorithm \cite{Larsson2013} was found to have the most human-like
+performance for saccade and PSO detection in \cite{Andersson2017}.  \remodnav\
+performs comparable to LNS for both event types (saccades: $2.0$ vs. $3.3$;
+PSOs: $2.3$ vs. $2.0$, mean rank across stimulus categories for LNS and \remodnav,
+respectively).
 
-\bigskip
+Depending on the stimulus type, different algorithms performed best for
+fixation detection. NH performed best for images and videos, but worst for
+moving dots. \remodnav\ outperforms all other algorithms in the dots category,
+and achieves rank 5 and 6 (middle range) for videos and images, respectively.
+Across all stimulus and event categories, \remodnav\ achieves a \todo{why
+median now, and mean before}median ranking of $3.0$.
 
-
-Additionally, for each stimulus category (images, dots, videos), we determined
-the mean and standard deviation of the event durations per event category (fixations,
-saccades, PSOs, pursuits) and the number of detected events per event category.
-Based on these results, following equation 2 in \citet{Andersson2017}, we computed
-the root mean squared deviations (RMSD) for the full set of algorithms, human coders,
-and REMoDNav. The RMSD is proposed by \cite{Andersson2017} as a single similarity
-measure of distribution parameters to rank algorithms according to their similarity
-to human coders in three dimensions. As \citet{Andersson2017} point out, this measure
-ensures that we do not only evaluate performance on a sample-by-sample classification
-similarity, but also evaluate whether an algorithm detects similar event counts and
-duration distributions.
-The RMSD measure has a lower bound of 0 and higher values denote
-higher deviations, but for a thorough explanation of the measure and the procedures
-necessary for its computation, please refer to the original publication by
-\cite{Andersson2017}. By computing the RMSD of \remodnav\ within the original set
-of data from \citet{Andersson2017}, we are able to compare the similarity of the
-three distribution parameters produced by \remodnav\ to human labeling and those of
-the other algorithms, and thus rank \remodnav\ within the set of algorithms used in
-\citet{Andersson2017}.
-For a more straightforward interpretation of the RMSD measure, we converted
-RMSDs per event and stimulus category into ranks (where 0 is the best).
-The results of the RMSD computations are summarized in Tables \ref{tab:rmsd_fix},
-\ref{tab:rmsd_sac}, \ref{tab:rmsd_pso} and \ref{tab:rmsd_pur}.
-The "best" algorithm with regard to saccade and PSO detection in \cite{Andersson2017}
-was the ``LNS" algorithm by \cite{Larsson2013}. \remodnav\ performs comparable to
-``LNS" for saccades: Across stimulus categories, ``LNS" achieves a mean rank of $2.0$,
-while \remodnav\ achieves a mean rank of $3.3$. For PSOs, across
-stimulus categories, ``LNS" has a mean rank of $2.3$, while \remodnav\ achieves a
-mean rank of $2.0$.
-In the original set, different algorithms performed best for fixation detection
-given the category. NH performed best for images  and videos, but worst for dots.
-In our evaluation, \remodnav\ outperforms all other
-algorithms in the dots category, and achieves rank 5 and 6 for videos and images,
-respectively. That is, for fixation detection in videos and images, \remodnav\
-performs in the middle range. Across all stimulus and event categories,
-\remodnav\ achieves a median ranking of $3.0$ (both with and without inclusion of
-its ranks for smooth pursuit detection). Thus, \remodnav\ detects the number
-of events and their duration distribution consistently similar to human coders,
-especially so for saccades and PSOs, and fixations in the dots category.
-
-
-\begin{table*}[tbp]
+\begin{table*}[p]
   % table caption is above the table
   \caption{RMSD ranks of fixation parameters for various stimulation types}
   \label{tab:rmsd_fix}       % Give a unique label
   % For LaTeX tables use
+  \begin{small}
   \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
     \hline\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
@@ -799,6 +786,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
     \remodnav\ & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
+  \end{small}
 
   \textit{Note}: Fixation distribution parameters for the algorithms
   reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
@@ -806,11 +794,12 @@ especially so for saccades and PSOs, and fixations in the dots category.
 
 \end{table*}
 
-\begin{table*}[tbp]
+\begin{table*}[p]
   % table caption is above the table
   \caption{RMSD ranks of saccade parameters for various stimulation types}
   \label{tab:rmsd_sac}       % Give a unique label
   % For LaTeX tables use
+  \begin{small}
   \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
     \hline\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
@@ -831,6 +820,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
     \remodnav\ & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
+  \end{small}
 
   \textit{Note}: Saccade distribution parameters for the algorithms
   reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
@@ -838,11 +828,12 @@ especially so for saccades and PSOs, and fixations in the dots category.
 
 \end{table*}
 
-\begin{table*}[tbp]
+\begin{table*}[p]
   % table caption is above the table
   \caption{RMSD ranks of PSO parameters for various stimulation types}
   \label{tab:rmsd_pso}       % Give a unique label
   % For LaTeX tables use
+  \begin{small}
   \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
     \hline\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
@@ -855,6 +846,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
     \remodnav\ & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
+  \end{small}
 
   \textit{Note}: PSO distribution parameters for the algorithms
   reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
@@ -867,6 +859,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
   \caption{RMSD ranks of pursuit parameters for various stimulation types}
   \label{tab:rmsd_pur}       % Give a unique label
   % For LaTeX tables use
+  \begin{small}
   \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
     \hline\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
@@ -877,6 +870,7 @@ especially so for saccades and PSOs, and fixations in the dots category.
     \remodnav\ & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
     \noalign{\smallskip}\hline
   \end{tabular*}
+  \end{small}
 
   \textit{Note}: Smooth pursuit distribution parameters for the algorithms
   reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
@@ -885,34 +879,33 @@ especially so for saccades and PSOs, and fixations in the dots category.
 \end{table*}
 
 
+% FROM HERE
+
 The combined results of the analyses on the dataset used by
 \citet{Andersson2017} demonstrate that \remodnav\ yields the highest congruency
 to manual human annotation in any stimulus category on a sample-by-sample basis
-compared to ten contemporary algorithms when detecting fixations, saccades,
-and post-saccadic oscillations. Its performance stays good, and exceeds all other
+compared to ten contemporary algorithms when detecting fixations, saccades, and
+post-saccadic oscillations. Its performance stays good, and exceeds all other
 algorithms performance in the dots and video category, when including smooth
 pursuit detection as well. In this regard, the results reveal that REMoDNaVs
-performance equals or exceeds those of the original NH. Taking the number of events
-and their duration distribution into account, REMoDNaVs performance stays good.
-Importantly, \remodnav\ performs similar to human coders in almost all event
-categories and stimulus types. NH outperforms it only for fixation detection
-in the image and video category, however, in these categories \remodnav\ still
-classifies comparatively well. Thus, \remodnav\ does improve the NH algorithm
-in aspects that were  suboptimal, but does not diminish performance in NHs strong points.
+performance equals or exceeds those of the original NH. Taking the number of
+events and their duration distribution into account, REMoDNaVs performance
+stays good.  Importantly, \remodnav\ performs similar to human coders in almost
+all event categories and stimulus types. NH outperforms it only for fixation
+detection in the image and video category, however, in these categories
+\remodnav\ still classifies comparatively well. Thus, \remodnav\ does improve
+the NH algorithm in aspects that were  suboptimal, but does not diminish
+performance in NHs strong points.
 
-%\subsubsection*{Evaluation of events}
 
-\subsection*{Prolonged recordings of natural viewing}\label{ana_2}
 
-% discuss inlab vs scanner data
+\subsection*{Prolonged natural viewing}\label{ana_2}
 
-% \todo[inline]{\textit{Need to determine exactly which plots and tables will
-% go here}}
+\subsection*{Lower-quality data}\label{ana_3}
 
-% \todo[inline]{\textit{This section contains the analysis of the main
-% sequences -- which I assume is the meat of the thesis. The goal is to have as
-% much information as possible be contained in figures and/or tables (and their
-% captions). We don't pay for those, but we do pay for the main text body.}}
+\bigskip
+
+
 
 Given that \remodnav\ yields biologically plausible results for dynamic
 stimulation, as indicated by the previous results, we determined whether it is
