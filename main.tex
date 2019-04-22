@@ -888,49 +888,56 @@ paradigms and stimuli.
 
 \subsection*{Prolonged natural viewing}\label{ana_2}
 
-\subsection*{Lower-quality data}\label{ana_3}
+Given that \remodnav\ yielded plausible results for the "video" stimulus
+category data in the \citet{Andersson2017} dataset (\fig{conf}, and
+Tables~\ref{tab:rmsd_fix}-\ref{tab:rmsd_pur}, right columns), we determined
+whether it is capable of analyzing data from dynamic stimulation without a
+trial structure.
 
-\bigskip
-
-
-
-Given that \remodnav\ yields biologically plausible results for dynamic
-stimulation, as indicated by the previous comparison, we determined whether it is
-capable of analyzing data from dynamic stimulation without a trial structure.
-For this, we applied it to the high quality eye tracking dataset obtained from
-15 subjects watching the movie in a laboratory setting. This analysis further
-serves as a base line to compare results obtained from a lower quality
-recording to. Eye movements in this high-quality dataset were recorded with an
-Eyelink 1000 with a standard desktop mount (software version 4.51; SR Research
-Ltd., Mississauga, Ontario, Canada) and a sampling rate of 1000Hz. The movie
-stimulus was presented on a $522\times294$mm LCD monitor at a resolution of $1920\times1280$px at a viewing distance of 85cm \citep{Hanke2016}.  The top panel in
-\fig{remodnav} displays the performance of \remodnav\ for a high quality data
-sample. An individual main sequence for a lab subject is displayed in the
-bottom right panel in \fig{overallComp}. To compare the event detection
-between high and lower quality samples, we computed the event distribution
-parameters per event type and movie run. The top panel in \fig{dist}
-displays the resulting distributions for the high quality dataset.
+As a test dataset we used publicly available eye tracking data from the
+\textit{studyforrest.org} project, were 15~participants were recorded watching
+a feature-length (\unit[$\approx$2]{h}) movie in a laboratory setting
+\citep{Hanke2016}. Eye movements were measured by an Eyelink 1000 with a
+standard desktop mount (software version 4.51; SR Research Ltd., Mississauga,
+Ontario, Canada) and a sampling rate of 1000Hz. The movie stimulus was
+presented on a $522\times294$mm LCD monitor at a resolution of
+$1920\times1280$px at a viewing distance of \unit[85]{cm}. Participants
+watched the movie in eight approximately \unit[15]{min} long segments,
+with measurement recalibration before every segment.
 
 \begin{figure*}[tbp]
-  % TODO make final figure and switch
-  %\includegraphics[width=1\textwidth]{img/remodnav.eps}
-  \includegraphics[trim=0 8mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
-  \includegraphics[trim=0 0 0 2mm,clip,width=1\textwidth-1mm]{img/remodnav_mri.pdf}\\
-  \caption{Exemplary eye movement detection results for the same \unit[10]{s} excerpt
-  of a movie stimulus for a single participant in the high quality lab sample (top),
-  and in the lower quality MRI sample (bottom). The plots show filtered gaze coordinates
-  (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
-  with periods of fixation (green), pursuit (beige), saccades (blue), and
-  high/low-velocity post-saccadic oscillations (dark/light purple. The variable noise
-  level, and prolonged signal loss (white) visible in the MRI sample represent
-  a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
-  saccade events first, and subsequently tunes the velocity threshold to short time
-  windows between these events. Figures like this accompany the program output to
-  facilitate quality control and discovery of inappropriate preprocessing and detection
-  parameterization.}
+  \includegraphics[trim=0 8mm 3mm 0,clip,width=.5\textwidth]{img/mainseq_lab_300dpi.png}
+  \includegraphics[trim=8mm 8mm 0 0,clip,width=.5\textwidth-3.3mm]{img/mainseq_sub_lab_300dpi.png} \\
+  \includegraphics[trim=0 0 3mm 0,clip,width=.5\textwidth]{img/mainseq_mri_300dpi.png}
+  \includegraphics[trim=8mm 0 0 0,clip,width=.5\textwidth-3.3mm]{img/mainseq_sub_mri_300dpi.png}
 
-  \label{fig:remodnav}
+  \caption{Main sequence of eye movement events during one 15 minute sequence of
+  the movie (segment 2) for lab (top), and MRI participants (bottom). Data
+  across all participants per dataset is shown on the left, and data for a single
+  exemplary participant on the right.}
+
+  \label{fig:overallComp}
 \end{figure*}
+
+As no manual eye movement event labeling exists for these data, algorithm
+evaluation was limited to a comparison of marginal distributions and well-known
+properties, such as the log-log-linear relationship of saccade amplitude and
+saccade peak velocity \citep{bahill1975main}. \fig{overallComp} (top row)
+depicts this main sequence relationship.
+%
+Additionally, \fig{dist} (top row) shows duration histograms for all four event
+types across all participants. Shapes and locations of these distributions
+match previous reports in the literature, such as a strong bias towards short
+(less than \unit[500]{ms}) fixations for dynamic stimuli
+\citep[Fig.~3]{dorr2010variability}, peak number of PSOs with durations between
+\unit[10-20]{ms} \citep[Fig.~11]{Nystrom2010AnData}, and a non-Gaussian saccade
+duration distribution located below \unit[100]{ms} \citep[Fig.~8, albeit for
+static scene perception]{Nystrom2010AnData}.
+
+Overall, the presented summary statistics suggest that \remodnav\ is capable
+of detecting eye movements with plausible characteristics, in prolonged
+gaze recordings without a trial structure. An visualization of such a detection
+result is depicted in \fig{remodnav} (top row).
 
 \begin{figure*}
   % Use the relevant command to insert your figure file.
@@ -954,6 +961,25 @@ displays the resulting distributions for the high quality dataset.
     (\unit[23.75]{\textdegree} MRI vs. \unit[34]{\textdegree} lab).}
   \label{fig:dist}
   % Give a unique label
+\end{figure*}
+
+\begin{figure*}[tbp]
+  \includegraphics[trim=0 8mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
+  \includegraphics[trim=0 0 0 2mm,clip,width=1\textwidth-1mm]{img/remodnav_mri.pdf}\\
+  \caption{Exemplary eye movement detection results for the same \unit[10]{s} excerpt
+  of a movie stimulus for a single participant in the high quality lab sample (top),
+  and in the lower quality MRI sample (bottom). The plots show filtered gaze coordinates
+  (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
+  with periods of fixation (green), pursuit (beige), saccades (blue), and
+  high/low-velocity post-saccadic oscillations (dark/light purple. The variable noise
+  level, and prolonged signal loss (white) visible in the MRI sample represent
+  a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
+  saccade events first, and subsequently tunes the velocity threshold to short time
+  windows between these events. Figures like this accompany the program output to
+  facilitate quality control and discovery of inappropriate preprocessing and detection
+  parameterization.}
+
+  \label{fig:remodnav}
 \end{figure*}
 
 
@@ -1003,20 +1029,6 @@ generally lower amount of events in the lower quality dataset. Given
 that \remodnav\ classifies data from dynamic stimulation well, and that results
 on lower and high quality data yield similar biologically plausible results, the
 performance is evidently robust, even under high noise conditions.
-
-\begin{figure*}[tbp]
-  \includegraphics[trim=0 8mm 3mm 0,clip,width=.5\textwidth]{img/mainseq_lab_300dpi.png}
-  \includegraphics[trim=8mm 8mm 0 0,clip,width=.5\textwidth-3.3mm]{img/mainseq_sub_lab_300dpi.png} \\
-  \includegraphics[trim=0 0 3mm 0,clip,width=.5\textwidth]{img/mainseq_mri_300dpi.png}
-  \includegraphics[trim=8mm 0 0 0,clip,width=.5\textwidth-3.3mm]{img/mainseq_sub_mri_300dpi.png}
-
-  \caption{Main sequence of eye movement events during one 15 minute sequence of
-  the movie (segment 2) for lab (top), and MRI participants (bottom). Data
-  across all participants per dataset is shown on the left, and data for a single
-  exemplary participant on the right.}
-
-  \label{fig:overallComp}
-\end{figure*}
 
 
 % move to discussion?
