@@ -339,11 +339,10 @@ Separately, data are also smoothed with a Savitzky-Golay filter
 localization of major saccades for time series chunking is performed on this
 type of filtered data.
 
-After spike-removal and temporal filtering, movement velocities and
-accelerations are computed (\fig{alg}A, 4-5). To
-disregard biologically implausible measurements, a configurable maximum
-velocity (\param{max\_vel}) is enforced---samples exceeding this threshold
-are replaced by this set value.
+After spike-removal and temporal filtering, movement velocities are computed
+(\fig{alg}A, 4-5). To disregard biologically implausible measurements, a
+configurable maximum velocity (\param{max\_vel}) is enforced---any samples
+exceeding this threshold are replaced by this set value.
 
 \begin{table*}[tbp]
   \caption{Algorithm parameters and their default values}
