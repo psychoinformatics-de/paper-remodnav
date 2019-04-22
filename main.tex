@@ -703,8 +703,8 @@ For this evaluation, however, no such intervention was made.
   % TODO make final figure and switch
   %\includegraphics[width=1\textwidth]{img/conf_drawing.eps}
   \includegraphics[trim=0 0 0 0,clip,width=1\textwidth]{img/confusion_MN_RA.pdf} \\
-  \includegraphics[trim=0 0 0 6mm,clip,width=1\textwidth]{img/confusion_MN_AL.pdf} \\
-  \includegraphics[trim=0 0 0 6mm,clip,width=1\textwidth]{img/confusion_RA_AL.pdf}
+  \includegraphics[trim=0 0 0 6.6mm,clip,width=1\textwidth]{img/confusion_MN_AL.pdf} \\
+  \includegraphics[trim=0 0 0 6.6mm,clip,width=1\textwidth]{img/confusion_RA_AL.pdf}
   % figure caption is below the figure
 
   \caption{Confusion patterns for pairwise eye movement classification
@@ -734,7 +734,7 @@ the average of both human raters), with higher values indicating larger
 differences \citep[for detail information on the calculation of this metric
 see][]{Andersson2017}.
 
-Tables \ref{tab:rmsd_fix}-\ref{tab:rmsd_pur} reproduce \citet[Tables
+\tab{rmsd} reproduces \citet[Tables
 3-6]{Andersson2017}, and the RMSD calculation for the added rows on \remodnav\
 is based on the scores for the human raters given in these original tables. As
 acknowledged by the authors, the absolute value of the RMSD scores is not
@@ -757,12 +757,18 @@ median now, and mean before}median ranking of $3.0$.
 
 \begin{table*}[p]
   % table caption is above the table
-  \caption{RMSD ranks of fixation parameters for various stimulation types}
-  \label{tab:rmsd_fix}       % Give a unique label
+  \caption{Comparison of event duration statistics for image, dot, and video
+    stimuli. This table reproduces \citet[Tables 3-6]{Andersson2017}, and
+    root-mean-square-deviations (RMSD) from human raters are shown
+    for fixations, saccades, PSOs, and pursuit as zero-based ranks (rank zero
+    is closest to the average of the two human raters. Rows for \remodnav\
+  have been added.}
+  \label{tab:rmsd}       % Give a unique label
   % For LaTeX tables use
   \begin{small}
   \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
-    \hline\noalign{\smallskip}
+    \multicolumn{13}{l}{\textit{Fixations}}\\
+    \toprule
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
     Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -779,24 +785,10 @@ median now, and mean before}median ranking of $3.0$.
     BIT       & \FIXimgmnBIT  & \FIXimgsdBIT  & \FIXimgnoBIT  & \rankFIXimgBIT  &  \FIXdotsmnBIT  & \FIXdotssdBIT  & \FIXdotsnoBIT  & \rankFIXdotsBIT   & \FIXvideomnBIT  & \FIXvideosdBIT  & \FIXvideonoBIT  & \rankFIXvideoBIT   \\
     LNS       & -             & -             & -             &  -              &  -              & -              & -              &  -                & -               & -               & -               &  -                 \\
     \remodnav\ & \FIXimgmnRE   & \FIXimgsdRE   & \FIXimgnoRE   & \rankFIXimgRE   &  \FIXdotsmnRE   & \FIXdotssdRE   & \FIXdotsnoRE   & \rankFIXdotsRE    & \FIXvideomnRE   & \FIXvideosdRE   & \FIXvideonoRE   & \rankFIXvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular*}
-  \end{small}
-
-  \textit{Note}: Fixation distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
-  were converted into ranks (lower is better).
-
-\end{table*}
-
-\begin{table*}[p]
-  % table caption is above the table
-  \caption{RMSD ranks of saccade parameters for various stimulation types}
-  \label{tab:rmsd_sac}       % Give a unique label
-  % For LaTeX tables use
-  \begin{small}
-  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
-    \hline\noalign{\smallskip}
+    \noalign{\smallskip}\bottomrule
+    \\
+    \multicolumn{13}{l}{Saccades}\\
+    \toprule\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
     Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -813,24 +805,10 @@ median now, and mean before}median ranking of $3.0$.
     BIT       & -             & -             & -             & -               &  -              & -              & -              & -                 & -               & -               & -               & -                  \\
     LNS       & \SACimgmnLNS  & \SACimgsdLNS  & \SACimgnoLNS  & \rankSACimgLNS  &  \SACdotsmnLNS  & \SACdotssdLNS  & \SACdotsnoLNS  & \rankSACdotsLNS   & \SACvideomnLNS  & \SACvideosdLNS  & \SACvideonoLNS  & \rankSACvideoLNS   \\
     \remodnav\ & \SACimgmnRE   & \SACimgsdRE   & \SACimgnoRE   & \rankSACimgRE   &  \SACdotsmnRE   & \SACdotssdRE   & \SACdotsnoRE   & \rankSACdotsRE    & \SACvideomnRE   & \SACvideosdRE   & \SACvideonoRE   & \rankSACvideoRE    \\
-    \noalign{\smallskip}\hline
-  \end{tabular*}
-  \end{small}
-
-  \textit{Note}: Saccade distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
-  were converted into ranks (lower is better).
-
-\end{table*}
-
-\begin{table*}[p]
-  % table caption is above the table
-  \caption{RMSD ranks of PSO parameters for various stimulation types}
-  \label{tab:rmsd_pso}       % Give a unique label
-  % For LaTeX tables use
-  \begin{small}
-  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
-    \hline\noalign{\smallskip}
+    \noalign{\smallskip}\bottomrule
+    \\
+    \multicolumn{13}{l}{Post-saccadic oscillations}\\
+    \toprule\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
     Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -840,37 +818,18 @@ median now, and mean before}median ranking of $3.0$.
     LNS       & \PSOimgmnLNS  & \PSOimgsdLNS  & \PSOimgnoLNS  & \rankPSOimgLNS  &  \PSOdotsmnLNS  & \PSOdotssdLNS  & \PSOdotsnoLNS  & \rankPSOdotsLNS   & \PSOvideomnLNS  & \PSOvideosdLNS  & \PSOvideonoLNS  & \rankPSOvideoLNS   \\
     \remodnav\ & \PSOimgmnRE   & \PSOimgsdRE   & \PSOimgnoRE   & \rankPSOimgRE   &  \PSOdotsmnRE   & \PSOdotssdRE   & \PSOdotsnoRE   & \rankPSOdotsRE    & \PSOvideomnRE   & \PSOvideosdRE   & \PSOvideonoRE   & \rankPSOvideoRE    \\
     \noalign{\smallskip}\hline
-  \end{tabular*}
-  \end{small}
-
-  \textit{Note}: PSO distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
-  were converted into ranks (lower is better).
-
-\end{table*}
-
-\begin{table*}[tbp]
-  % table caption is above the table
-  \caption{RMSD ranks of pursuit parameters for various stimulation types}
-  \label{tab:rmsd_pur}       % Give a unique label
-  % For LaTeX tables use
-  \begin{small}
-  \begin{tabular*}{\textwidth}{c @{\extracolsep{\fill}}lllllllllllll}
-    \hline\noalign{\smallskip}
+    \\
+    \multicolumn{13}{l}{Pursuit}\\
+    \toprule\noalign{\smallskip}
     & \multicolumn{4}{l}{Images} & \multicolumn{4}{l}{Dots} & \multicolumn{4}{l}{Videos}\\
     Algorithm & Mean & SD & \# & rank &  Mean & SD & \# & rank & Mean & SD & \# & rank \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
     MN        & \PURimgmnMN   & \PURimgsdMN   & \PURimgnoMN   & \rankPURimgMN   &  \PURdotsmnMN   & \PURdotssdMN   & \PURdotsnoMN   & \rankPURdotsMN    & \PURvideomnMN   & \PURvideosdMN   & \PURvideonoMN   & \rankPURvideoMN    \\
     RA        & \PURimgmnRA   & \PURimgsdRA   & \PURimgnoRA   & \rankPURimgRA   &  \PURdotsmnRA   & \PURdotssdRA   & \PURdotsnoRA   & \rankPURdotsRA    & \PURvideomnRA   & \PURvideosdRA   & \PURvideonoRA   & \rankPURvideoRA    \\
     \remodnav\ & \PURimgmnRE   & \PURimgsdRE   & \PURimgnoRE   & \rankPURimgRE   &  \PURdotsmnRE   & \PURdotssdRE   & \PURdotsnoRE   & \rankPURdotsRE    & \PURvideomnRE   & \PURvideosdRE   & \PURvideonoRE   & \rankPURvideoRE    \\
-    \noalign{\smallskip}\hline
+    \noalign{\smallskip}\bottomrule
   \end{tabular*}
   \end{small}
-
-  \textit{Note}: Smooth pursuit distribution parameters for the algorithms
-  reported in \citet{Andersson2017} and \remodnav\ (bottom row). RMSDs
-  were converted into ranks (lower is better).
-
 \end{table*}
 
 
@@ -889,7 +848,7 @@ paradigms and stimuli.
 
 Given that \remodnav\ yielded plausible results for the "video" stimulus
 category data in the \citet{Andersson2017} dataset (\fig{conf}, and
-Tables~\ref{tab:rmsd_fix}-\ref{tab:rmsd_pur}, right columns), we determined
+\tab{rmsd}, right columns), we determined
 whether it is capable of analyzing data from dynamic stimulation without a
 trial structure.
 
@@ -1123,27 +1082,6 @@ and, subsequently, the labeling of all other eye events.
   training sets (that could be tedious to create, or not fitting to exact use
   case if taken from e.g. open datasets)}
 
-\todo[inline]{Merge RMSD tables into a single big one that fits a single page,
-and dissolve the redundant "notes" into a single caption}
-% \section*{Notes} % Optional - only if NO new datasets are included
-
-% This section is required if the paper does not include novel data or
-% analyses.  It allows authors %to briefly summarize the key points from the
-% article.
-
-%% we introduce no new data
-
-% \section*{Data availability} % Optional - only if novel data or analyses are
-% included
-
-% Please add details of where any datasets that are mentioned in the paper, and
-% that have not have not previously been formally published, can be found.  If
-% previously published datasets are mentioned, these should be cited in the
-% references, as per usual scholarly conventions.
-
-% \todo[inline]{This will be completed at the end with info on where readers
-% can obtain data and code}
-
 
 \section*{Software availability}
 
@@ -1189,7 +1127,6 @@ AD, AW, MH wrote the manuscript.
 No competing interests were disclosed.
 
 \subsection*{Grant information}
-
 % Please state who funded the work discussed in this article, whether it is your employer,
 % a grant funder etc. Please do not list funding that you have that is not relevant to this
 % specific piece of research. For each funder, please state the funder’s name, the grant
