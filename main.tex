@@ -431,25 +431,21 @@ are replaced by this set value.
 \subsubsection*{Saccade velocity threshold}
 
 Except for a few modifications, \remodnav\ employs the adaptive saccade
-detection algorithm proposed by \cite{Nystrom2010AnData}, where saccades
-are initially located by thresholding the velocity time series by a critical
-value. Starting from an initial velocity threshold (\param{velthres\_
-startvelocity}, termed $PT_1$ in NH), the critical value is determined
-adaptively by computing the variance of sub-threshold velocities ($V$), and
-placing the new velocity threshold at:
+detection algorithm proposed by \cite{Nystrom2010AnData}, where saccades are
+initially located by thresholding the velocity time series by a critical value.
+Starting from an initial velocity threshold (\param{velthresh\_startvelocity},
+termed $PT_1$ in NH), the critical value is determined adaptively by computing
+the variance of sub-threshold velocities ($V$), and placing the new velocity
+threshold at:
 %
-\begin{equation}
-  PT_n = \overline{V}_{n-1} + F \times \sqrt{{\sum(V_{n-1} -
-\overline{V}_{n-1})^2} \over {N-1}}
-\end{equation}
+\begin{equation} PT_n = \overline{V}_{n-1} + F \times \sqrt{{\sum(V_{n-1} -
+  \overline{V}_{n-1})^2} \over {N-1}} \end{equation}
 %
-where $F$ determines how many standard deviations above the average
-velocity the new threshold is located.  This procedure is repeated until it
-stabilizes on a threshold velocity.
+where $F$ determines how many standard deviations above the average velocity
+the new threshold is located.  This procedure is repeated until it stabilizes
+on a threshold velocity.
 %
-\begin{equation}
-|PT_n - PT_{n-1}| < 1^\circ/sec
-\end{equation}
+\begin{equation} |PT_n - PT_{n-1}| < 1^\circ/sec \end{equation}
 
 \remodnav\ alters this algorithm by using robust statistics that are more
 suitable for the non-normal distribution of velocities \citep{Friedman2018},
