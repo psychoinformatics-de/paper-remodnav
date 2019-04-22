@@ -900,8 +900,8 @@ a feature-length (\unit[$\approx$2]{h}) movie in a laboratory setting
 \citep{Hanke2016}. Eye movements were measured by an Eyelink 1000 with a
 standard desktop mount (software version 4.51; SR Research Ltd., Mississauga,
 Ontario, Canada) and a sampling rate of 1000Hz. The movie stimulus was
-presented on a $522\times294$mm LCD monitor at a resolution of
-$1920\times1280$px at a viewing distance of \unit[85]{cm}. Participants
+presented on a \unit[$522\times294$]{mm} LCD monitor at a resolution of
+\unit[$1920\times1280$]{px} at a viewing distance of \unit[85]{cm}. Participants
 watched the movie in eight approximately \unit[15]{min} long segments,
 with measurement recalibration before every segment.
 
@@ -985,79 +985,60 @@ result is depicted in \fig{remodnav} (top row).
 
 \subsection*{Lower-quality data}\label{ana_3}
 
-In order to determine the robustness of \remodnav\ to noise, as a last step, we
-applied it to the lower quality eye tracking dataset of the studyforrest
-publication. This data was recorded with a different Eyelink 1000 (software
-version 4.594) equipped with an MR-compatible telephoto lens and illumination
-kit (SR Research Ltd., Mississauga, Ontario, Canada) at $1000$Hz during
-simultaneous fMRI acquisition. The movie was presented at a viewing distance of
-$63$cm on a 26cm ($1280\times1024$px) LCD screen in 720p resolution at full
-width. The eye tracking camera was mounted outside the scanner bore and
-recorded the participants left eye at a distance of about 100cm
-\citep{Hanke2016}.  The lower data quality in this dataset is evident from a
-generally higher amount of data loss and a larger spatial uncertainty (see
-\citet{Hanke2016} for details on data quality). As the stimulus material was
-the same between the high and lower quality data sample, \remodnav\ demonstrates
-robust performance if the characteristics of extracted events within the lower
-quality dataset correspond to those obtained from the previous high quality data
-sample.
+An explicit goal for \remodnav\ development was robust performance on
+lower-quality data. While lack of quality cannot be arbitrarily compensated and
+will inevitably lead to misses in eye movement detection, it is beneficial for
+any further analysis if operation on noisy data does not introduce unexpected
+event property biases.
+
+In order to investigate noise-robustness with ran \remodnav\ on another
+publicly available dataset from the \textit{studyforrest.org} project, where 15
+different participants watched the exact same movie stimulus, but this time
+while lying on their back in the bore of an MRI scanner \citep{Hanke2016}.
+These data were recorded with a different Eyelink 1000 (software version 4.594)
+equipped with an MR-compatible telephoto lens and illumination kit (SR Research
+Ltd., Mississauga, Ontario, Canada) at \unit[1000]{Hz} during simultaneous fMRI
+acquisition. The movie was presented at a viewing distance of \unit[$63$]{cm}
+on a \unit[26]{cm} (\unit[$1280\times1024$]{px}) LCD screen in 720p resolution
+at full width, yielding a substantially smaller stimulus size, compared to the
+previous stimulation setup. The eye tracking camera was mounted outside the
+scanner bore and recorded the participants left eye at a distance of about
+\unit[100]{cm}.  Compared to the lab-setup, physical limitations of the scanner
+environment, and sub-optimal infrared illumination lead to substantially
+noisier data, as evident from a generally higher amount of data loss and a
+larger spatial uncertainty \citep[Technical Validation]{Hanke2016}. An example
+of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
+row, black lines). Except for the differences in stimulation setup, all other
+aspects of data acquisition, eye tracker calibration, and data processing
+where identical to the previous dataset.
+
+We performed the identical analysis as before, in order to compare performance
+between a high and lower-quality data acquisition.
+Figures~\ref{fig:overallComp}-\ref{fig:remodnav} depict the results for the
+lab-quality dataset, and the MRI-scanner dataset in the top and bottom rows,
+respectively.
 
 % N+H describe: "Data quality is related to accuracy, precision, percentage of
 % data loss, perhaps in addition to a subjective rating from the person
 % responsible for the recording"
 
-\fig{remodnav} displays the performance of \remodnav\ for a lower
-quality data sample in the bottom row.  As evident in both panels, periods with
-data loss do not interfere with the detection of eye movement events in their
-vicinity beyond the border region of data loss that is masked during
-preprocessing. The detection of saccades corresponds to the velocity peaks in
-the time series. An individual main sequence for an MRI subject is displayed
-in the top right panel in \fig{overallComp}, and the left column in
-\fig{overallComp} shows all events produced from both datasets. Lastly,
-\fig{dist} displays the distribution parameters per event type for the lower
-quality dataset in the bottom panel.
-Altogether, \fig{remodnav}, \fig{dist} and
-\fig{overallComp} illustrate a high similarity between performance in high
-and lower quality datasets. In both cases, the main sequences follow the known
-peak-velocity to amplitude relationship of saccades. It is notable that the
-MRI sample displays fewer saccades of the shortest range. Given the higher
-spatial uncertainty in this dataset, this is unsurprising: the eye tracker
-likely was not able to capture these small eye movements under the low-light
-conditions. Apart from this aspect, both main sequences are comparable. The
-resulting duration distributions between both datasets are similar, despite the
-generally lower amount of events in the lower quality dataset. Given
-that \remodnav\ classifies data from dynamic stimulation well, and that results
-on lower and high quality data yield similar biologically plausible results, the
-performance is evidently robust, even under high noise conditions.
-
-
-% move to discussion?
-The literature on eye event detection algorithms suggests that there is no true
-``one-fits-all" solution for event detection.  There are some successful
-approaches using deep neural networks \citep{Startsev2018}, but those need large amounts of suitable training data that may not be easily
-available.
-% till here
-As evident from the many evaluations and applications of algorithms (e.g.
-\cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}),
-different underlying stimulation, data characteristics, or use cases make
-certain algorithms more suitable than others. Hard-coded thresholds and
-parameters may be applicable but they can also be detrimental or require user-specific changes to
-the default parameter values. Although the default parameter
-values were applicable for our own analyses---we cannot anticipate how the data from other
-groups or paradigms will look like.  \remodnav\ therefore contains a broad range of
-transparent, interpretable and adjustable parameters with default values
-justified from physiological findings or biological limitations, and no
-hard-coded values. This gives users an option to adjust the algorithm to their
-data's characteristics and concomitantly offers a sensible starting point with defaults that
-proved to work well with the different datasets we evaluated the algorithm on.
-Only velocity thresholds for saccade detection are estimated iteratively from
-the data. Apart from the advantage of taking noise levels into account, this
-also follows the reasoning of \cite{Nystrom2010AnData} that uninformed
-adjustments of this parameter can have vast consequences on saccade detection,
-and, subsequently, the labeling of all other eye events.
+Overall, the detection results exhibit strong similarity, despite the potential
+behavioral impact of watching a movie while lying on their back and looking
+upwards on the participants, or the well known effect of increasing fatigue
+during a two-hour session in an MRI-scanner. In particular, saccade amplitude
+and peak velocity exhibit a clear main-sequence relationship that resembles
+that found for the lab acquisition (\fig{overallComp}). Duration distributions
+for fixations, PSOs, and pursuit are strikingly similar between the two
+datasets (\fig{dist}), except for a generally lower number of detected events
+for the MRI experiment, which could be explained by the higher noise level and
+fraction of signal loss. There is a notable difference regarding the saccade
+duration distributions, with a bias towards shorter saccades in the MRI
+dataset. This effect may be attributable to the differences in stimulus size
+(30\% smaller in the MRI environment).
 
 
 \section*{Conclusion}\label{con}
+
 
 Based on the adaptive, velocity-based algorithm for fixation, saccade, and
 glissade detection by \cite{Nystrom2010AnData}, we have developed a novel and
@@ -1104,6 +1085,32 @@ way to do this is to study the classification performance as shown in
 for every detection task, enabling researchers to visually detect implausible results
 early on.
 
+% move to discussion?
+The literature on eye event detection algorithms suggests that there is no true
+``one-fits-all" solution for event detection.  There are some successful
+approaches using deep neural networks \citep{Startsev2018}, but those need large amounts of suitable training data that may not be easily
+available.
+% till here
+As evident from the many evaluations and applications of algorithms (e.g.
+\cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}),
+different underlying stimulation, data characteristics, or use cases make
+certain algorithms more suitable than others. Hard-coded thresholds and
+parameters may be applicable but they can also be detrimental or require user-specific changes to
+the default parameter values. Although the default parameter
+values were applicable for our own analyses---we cannot anticipate how the data from other
+groups or paradigms will look like.  \remodnav\ therefore contains a broad range of
+transparent, interpretable and adjustable parameters with default values
+justified from physiological findings or biological limitations, and no
+hard-coded values. This gives users an option to adjust the algorithm to their
+data's characteristics and concomitantly offers a sensible starting point with defaults that
+proved to work well with the different datasets we evaluated the algorithm on.
+Only velocity thresholds for saccade detection are estimated iteratively from
+the data. Apart from the advantage of taking noise levels into account, this
+also follows the reasoning of \cite{Nystrom2010AnData} that uninformed
+adjustments of this parameter can have vast consequences on saccade detection,
+and, subsequently, the labeling of all other eye events.
+
+
 \todo[inline]{There are a number of (some very recent) ML approaches
   (Startsev,2018; Komogortsev,2010) that perform well. We should acknowledge
   that but also find arguments to justify our approach. One advantage of
@@ -1117,7 +1124,8 @@ early on.
   training sets (that could be tedious to create, or not fitting to exact use
   case if taken from e.g. open datasets)}
 
-
+\todo[inline]{Merge RMSD tables into a single big one that fits a single page,
+and dissolve the redundant "notes" into a single caption}
 % \section*{Notes} % Optional - only if NO new datasets are included
 
 % This section is required if the paper does not include novel data or
