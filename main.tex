@@ -547,7 +547,7 @@ remodnav <inputfile> <outputfile> \
 where \texttt{<inputfile>} is the name of a tab-separated-value (TSV) text file
 with one gaze coordinate sample per line. An input file can have any number of
 columns, only the first two columns are read and interpreted as $X$ and $Y$
-coordinates. The second argument \texttt{<outputfile>} it the file name of a
+coordinates. The second argument \texttt{<outputfile>} is the file name of a
 BIDS-compliant \citep{gorgolewski2016brain} TSV text file that will contain a
 report on one detected eye movement event per line, with onset and offset time,
 onset and offset coordinates, amplitude, peak velocity, median velocity and
@@ -709,7 +709,7 @@ For this evaluation, however, no such intervention was made.
   % figure caption is below the figure
 
   \caption{Confusion patterns for pairwise eye movement classification
-    comparison of both human rater \citep[MN and RA; ][]{Andersson2017} and the
+    comparison of both human raters \citep[MN and RA; ][]{Andersson2017} and the
     \remodnav\ algorithm (AL) for gaze recordings from stimulation with static
     images (left column), moving dots (middle column), and video clips (right
     column).  All matrices present gaze sample based Jaccard indices \citep[JI;
@@ -895,7 +895,7 @@ whether it is capable of analyzing data from dynamic stimulation without a
 trial structure.
 
 As a test dataset we used publicly available eye tracking data from the
-\textit{studyforrest.org} project, were 15~participants were recorded watching
+\textit{studyforrest.org} project, where 15~participants were recorded watching
 a feature-length (\unit[$\approx$2]{h}) movie in a laboratory setting
 \citep{Hanke2016}. Eye movements were measured by an Eyelink 1000 with a
 standard desktop mount (software version 4.51; SR Research Ltd., Mississauga,
@@ -936,7 +936,7 @@ static scene perception]{Nystrom2010AnData}.
 
 Overall, the presented summary statistics suggest that \remodnav\ is capable
 of detecting eye movements with plausible characteristics, in prolonged
-gaze recordings without a trial structure. An visualization of such a detection
+gaze recordings without a trial structure. A visualization of such a detection
 result is depicted in \fig{remodnav} (top row).
 
 \begin{figure*}
@@ -971,7 +971,7 @@ result is depicted in \fig{remodnav} (top row).
   and in the lower quality MRI sample (bottom). The plots show filtered gaze coordinates
   (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
   with periods of fixation (green), pursuit (beige), saccades (blue), and
-  high/low-velocity post-saccadic oscillations (dark/light purple. The variable noise
+  high/low-velocity post-saccadic oscillations (dark/light purple). The variable noise
   level, and prolonged signal loss (white) visible in the MRI sample represent
   a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
   saccade events first, and subsequently tunes the velocity threshold to short time
@@ -991,7 +991,7 @@ will inevitably lead to misses in eye movement detection, it is beneficial for
 any further analysis if operation on noisy data does not introduce unexpected
 event property biases.
 
-In order to investigate noise-robustness with ran \remodnav\ on another
+In order to investigate noise-robustness we ran \remodnav\ on another
 publicly available dataset from the \textit{studyforrest.org} project, where 15
 different participants watched the exact same movie stimulus, but this time
 while lying on their back in the bore of an MRI scanner \citep{Hanke2016}.
