@@ -241,7 +241,7 @@ stimulation (\unit[$\approx$15]{min}) with a feature film, we found the
 average and median durations of labeled fixations to exceeded literature
 reports \citep[\eg][]{holmqvist2011eye,dorr2010variability} by up to a factor
 of two.  Additionally, and in particular for increasing levels of noise in the
-data, the algorithm classified too few fixations, as remarked by
+data, the algorithm classified too few fixations, as also noted by
 \citet{Friedman2018}, because it discarded potential fixation events that
 contained artifacts such as blinks.
 %
@@ -253,8 +253,8 @@ setups.
 
 Therefore our objective was to improve upon the available eye movement
 detection and classification algorithms, and develop a tool that performs
-robustly on data from dynamic natural stimulation, without sacrificing quality
-of performance for static and simplified stimulation. Importantly, we aimed for
+robustly on data from dynamic natural stimulation, without sacrificing detection
+accuracy for static and simplified stimulation. Importantly, we aimed for
 applicability to prolonged recordings that lack any kind of trial structure,
 and exhibit periods of signal-loss and non-stationary noise levels.
 % maybe work in \citep{Hooge2018} again
@@ -266,8 +266,8 @@ tracking of a moving target and are routinely evoked by moving visual objects
 during dynamic stimulation \citep{carl1987pursuits}.  If this type of eye
 movement is not properly detected and labeled, erroneous fixation and saccade
 events (which smooth pursuits would be classified into instead) are introduced.
-Contemporary algorithms rarely provide this functionality (but see e.g.
-\cite{LARSSON2015145}; \cite{Komogortsev2013} as existing algorithms with
+Contemporary algorithms rarely provide this functionality (but see \eg
+\cite[but see \eg][]{LARSSON2015145,Komogortsev2013} for existing algorithms with
 smooth pursuit detection).
 
 Here we introduce \remodnav\ (robust eye movement detection for natural
@@ -295,8 +295,8 @@ quality), and relate its performance to the algorithm comparison by
 
 Like NH, \remodnav\ is a \textit{velocity-based} event detection algorithm.
 Compared to \textit{dispersion-based} algorithms, these types of algorithms are
-less susceptible to noise and spatio-temporal precision, and thus applicable to
-a large range of sampling frequencies. Furthermore, any influence of
+less susceptible to noise and spatio-temporal precision, and are thus applicable to
+a wide range of sampling frequencies. Furthermore, any influence of
 biologically implausible velocities and accelerations can be prevented with the
 use of appropriate filters and thresholds \citep{holmqvist2011eye}.
 
@@ -325,17 +325,17 @@ standard in many eye tracking toolboxes and often used for preprocessing
 \citep[\eg][]{Nystrom2010AnData}.
 %
 Data samples around signal loss (\eg eye blinks) can be nulled in order to
-remove spurious movement signals (\param{dilate\_nan}, \param{min\_
-blink\_duration}; \fig{alg}A, 2).
+remove spurious movement signals (\param{dilate\_nan},
+\param{min\_blink\_duration}; \fig{alg}A, 2).
 %
 Coordinate time series are temporally filtered in two different ways
-(\fig{alg}A, 3). A relatively large median filter
-(\param{median\_filter\_ length}) is used to emphasize long-distance saccades.
-This type of filtered data is later used for a coarse segmentation of a time
-series into shorter intervals between major saccades.
+(\fig{alg}A, 3). A relatively large median filter (\param{median\_
+filter\_length}) is used to emphasize long-distance saccades.  This type of
+filtered data is later used for a coarse segmentation of a time series into
+shorter intervals between major saccades.
 %
 Separately, data are also smoothed with a Savitzky-Golay filter
-(\param{savgol\_\{length,polyord\}}). All event detection beyond the
+(\param{savgol\_ \{length,polyord\}}). All event detection beyond the
 localization of major saccades for time series chunking is performed on this
 type of filtered data.
 
