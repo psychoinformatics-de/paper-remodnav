@@ -997,115 +997,51 @@ dataset. This effect may be attributable to the differences in stimulus size
 
 \section*{Conclusion}\label{con}
 
+Based on the adaptive, velocity-based algorithm for fixation, saccade, and PSO
+detection by \cite{Nystrom2010AnData}, we have developed an improved algorithm
+that, in contrast to the original, performs robustly on prolonged recordings
+with dynamic stimulation, without a trial structure and variable noise levels,
+and also supports the detection of smooth pursuit events. Through a series of
+validation analyses we have shown that its performance is comparable to or
+better than ten other contemporary detection algorithms, and that plausible
+detection results are achieved on high and lower quality data.
+These aspects of algorithm capabilities and performance suggest that \remodnav
+is a state-of-the-art tool for eye movement detection with particular relevance
+for emerging complex, naturalistic data collections paradigms, such as
+mobile or outdoor aquisition, or the combination of eye tracking and functional
+MRI in simultaneous measurements.
 
-Based on the adaptive, velocity-based algorithm for fixation, saccade, and
-glissade detection by \cite{Nystrom2010AnData}, we have developed a novel and
-robust algorithm for the classification of various eye movements in eye
-tracking data from dynamic stimulation.  The combined results from all analyses
-are encouraging. Based on data from dynamic and static stimulation from the
-Andersson dataset, \remodnav\ performs well and even outperforms contemporary
-algorithms---especially in the case of dynamic stimulation. Therefore, we
-are confident that \remodnav\ is currently a good choice for event detection
-from eye gaze data obtained during dynamic stimulation.  Furthermore, the
-algorithm yields similar, and thus robust, results for high and lower quality
-data. We specifically developed \remodnav\ to yield robust results with dynamic
-stimulation, in particular noisy data such as the eye tracking data recorded
-simultaneously with fMRI acquisition. These results confirm that \remodnav\ is
-well able to detect eye movements from dynamic stimulation, even when the
-quality of data is lower. Therefore, the algorithm is a promising tool for
-research paradigms with dynamic stimuli where lower data quality is an inherent
-property of the acquisition procedure; such as simultaneous fMRI and eye gaze
-recordings, or usage of remote eye trackers.  Furthermore, the algorithm proved
-to be well applicable to other types of stimulation. Its classification
-performance on static images was good. This demonstrates that our changes to
-the original NH algorithm did not interfere with where it performed best. 
-Lastly, \remodnav\ is a user-friendly tool with options available to customize
-it to individual use cases. It is OS independent, uses only freely available
-software, is easily installable, provides simple command-line execution, and is
-ready-to-use without manual labeling or other forms of training data being
-required. As such, REMoDNaV is a versatile tool that provides researchers with
-a robust method to classify eye movements obtained from different types of
-stimulation.
+The proposed algorithm is rule-based, hence can be applied to data without
+prior training, apart from the adaptive estimation of velocity thresholds.
+This aspect distinguishes it from other recent developments based on deep
+neural networks \citep{Startsev2018}. Such algorithms tend to require
+substantial amount of (labeled) training data, which can be a critical
+limitation in the context of a research study.
 
-Just as \cite{Andersson2017}, we considered human annotations to be a gold
-standard in event detection when we compared different algorithms performances.
-The implications of the obtained results from this comparison are hence only
-valid if this assumption is warranted. Some authors voice concern about human
-annotation, e.g. \cite{5523936}, as for the potential of biases that limit
-generalizability. However, \cite{Hooge2018} concluded that despite obvious
-variability between human annotations, manual labeling is still important in the context of algorithm validation---which was precisely its use in our study. Continuing in
-the same vein, the \remodnav\ algorithm is---as all event detection algorithms---far from perfect. Despite superior performance during dynamic stimulation
-compared to other algorithms, the results do not mirror human annotations
-\textit{exactly}. Therefore, as with any other algorithm, we recommend that every user
-should at least eye-ball their results for plausibility. One straightforward
-way to do this is to study the classification performance as shown in
-\fig{remodnav}. The \remodnav\ module will provide such a plot automatically
-for every detection task, enabling researchers to visually detect implausible results
-early on.
+Just as \cite{Andersson2017}, we considered human raters as a gold standard
+reference for event detection when evaluating algorithms.  The implications of
+the results presented herein are hence only valid if this assumption is
+warranted. Some authors voice concerns \cite[\eg][]{5523936}, regarding
+potential biases that may limit generalizability. Nevertheless, human-made
+event labels are a critical component of algorithm validation, as pointed out
+by \cite{Hooge2018}.
 
-% move to discussion?
-The literature on eye event detection algorithms suggests that there is no true
-``one-fits-all" solution for event detection.  There are some successful
-approaches using deep neural networks \citep{Startsev2018}, but those need large amounts of suitable training data that may not be easily
-available.
-% till here
-As evident from the many evaluations and applications of algorithms (e.g.
-\cite{Andersson2017}, \cite{Larsson2013}, \cite{Zemblys2018}, \cite{5523936}),
-different underlying stimulation, data characteristics, or use cases make
-certain algorithms more suitable than others. Hard-coded thresholds and
-parameters may be applicable but they can also be detrimental or require user-specific changes to
-the default parameter values. Although the default parameter
-values were applicable for our own analyses---we cannot anticipate how the data from other
-groups or paradigms will look like.  \remodnav\ therefore contains a broad range of
-transparent, interpretable and adjustable parameters with default values
-justified from physiological findings or biological limitations, and no
-hard-coded values. This gives users an option to adjust the algorithm to their
-data's characteristics and concomitantly offers a sensible starting point with defaults that
-proved to work well with the different datasets we evaluated the algorithm on.
-Only velocity thresholds for saccade detection are estimated iteratively from
-the data. Apart from the advantage of taking noise levels into account, this
-also follows the reasoning of \cite{Nystrom2010AnData} that uninformed
-adjustments of this parameter can have vast consequences on saccade detection,
-and, subsequently, the labeling of all other eye events.
+\remodnav\ aims to be a readily usable tool, available as cross platform
+compatible, free and open source software, with a simple command line interface
+and carefully chosen default settings. However, as evident from numerous
+algorithm evaluations
+\citep[\eg][]{Andersson2017,Larsson2013,Zemblys2018,5523936} different
+underlying stimulation, and data characteristics can make certain algorithms or
+parameterizations more suitable than others for particular applications. The
+provided implementation of the \remodnav\ algorithm acknowledges this fact by
+exposing a range of parameters through its user interface that can be altered
+in order to tune the detection for a particular use case.
 
-
-\todo[inline]{There are a number of (some very recent) ML approaches
-  (Startsev,2018; Komogortsev,2010) that perform well. We should acknowledge
-  that but also find arguments to justify our approach. One advantage of
-  \remodnav\ is how accessible and readily usable it is. To underline this, I
-  propose we update the README.md on Github similarly to
-  https://github.com/MikhailStartsev/deep\_em\_classifier in that we provide a
-  use case/tutorial: what is the input/how should it look like, what is the
-  command line call, how does the output look like. I think it is a great
-  advantage of \remodnav\ that we work with more "typical" file formats. Also,
-  \remodnav\ does not need training, and hence no extensive labeled data as
-  training sets (that could be tedious to create, or not fitting to exact use
-  case if taken from e.g. open datasets)}
-
-
-\section*{Software availability}
-
-The latest version of \remodnav\ can be installed from PyPi via \texttt{pip
-install remodnav}. It is recommended to use a dedicated virtualenv. The source
-code of the software can be found on Github \\
-(https://github.com/psychoinformatics-de/remodnav). All bugs, concerns and
-enhancement requests for this software should be submitted via Github.
-Questions with regard to REMoDNaV can be submitted to NeuroStars.org with a
-\texttt{remodnav} tag. NeuroStars.org is a platform similar to StackOverflow
-but dedicated to neuroinformatics.  \remodnav\ is released under MIT license.
-
-
-% This section will be generated by the Editorial Office before publication.
-% Authors are asked to provide some initial information to assist the Editorial
-% Office, as detailed below.
-
-%\begin{enumerate}
-%\item URL link to where the software can be downloaded from or used by a non-coder (AUTHOR TO PROVIDE; optional)
-%\item URL link to the author's version control system repository containing the source code (AUTHOR TO PROVIDE; required)
-%\item Link to source code as at time of publication ({\textit{F1000Research}} TO GENERATE)
-%\item Link to archived source code as at time of publication ({\textit{F1000Research}} TO GENERATE)
-%\item Software license (AUTHOR TO PROVIDE; required)
-%\end{enumerate}
+The latest version of \remodnav\ can be installed from
+PyPi\footnote{https://pypi.org/project/remodnav} via \texttt{pip install
+remodnav}. The source code of the software can be found on
+Github\footnote{https://github.com/psychoinformatics-de/remodnav}. All reports
+on defects and enhancement can be submitted there.
 
 
 \subsection*{Author contributions}
