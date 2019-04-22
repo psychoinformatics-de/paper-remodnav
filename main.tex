@@ -640,7 +640,7 @@ performance of all algorithms tested in \citet{Andersson2017}.
   (AL). The MC (misclassification) column lists proportions considering
   all four event categories (fixation, saccade, PSO, pursuit), while
   the w/oP (without pursuit) column excludes pursuit events for a direct
-  comparison with \citet[][Table 8-10]{Andersson2017}.
+  comparison with \citet[][Tables 8-10]{Andersson2017}.
   The remaining columns show the percentage of labels assigned to incongruent
   time points by each rater (deviation of their sum from 100\% is due to
   rounding).
@@ -739,7 +739,7 @@ Tables \ref{tab:rmsd_fix}-\ref{tab:rmsd_pur} reproduce \citet[Tables
 is based on the scores for the human raters given in these original tables. As
 acknowledged by the authors, the absolute value of the RMSD scores is not
 informative due to scaling with respect to the respective maximum value of each
-characteristic.  Therefore, we converted RSMDs for each algorithm and event
+characteristic.  Therefore, we converted RMSDs for each algorithm and event
 type into zero-based ranks (lower is more human-like).
 
 The LNS algorithm \citep{Larsson2013} was found to have the most human-like
@@ -898,9 +898,9 @@ As a test dataset we used publicly available eye tracking data from the
 a feature-length (\unit[$\approx$2]{h}) movie in a laboratory setting
 \citep{Hanke2016}. Eye movements were measured by an Eyelink 1000 with a
 standard desktop mount (software version 4.51; SR Research Ltd., Mississauga,
-Ontario, Canada) and a sampling rate of 1000Hz. The movie stimulus was
+Ontario, Canada) and a sampling rate of \unit[1000]{Hz}. The movie stimulus was
 presented on a \unit[$522\times294$]{mm} LCD monitor at a resolution of
-\unit[$1920\times1280$]{px} at a viewing distance of \unit[85]{cm}. Participants
+\unit[$1920\times1280$]{px} and a viewing distance of \unit[85]{cm}. Participants
 watched the movie in eight approximately \unit[15]{min} long segments,
 with measurement recalibration before every segment.
 
@@ -1001,15 +1001,15 @@ acquisition. The movie was presented at a viewing distance of \unit[$63$]{cm}
 on a \unit[26]{cm} (\unit[$1280\times1024$]{px}) LCD screen in 720p resolution
 at full width, yielding a substantially smaller stimulus size, compared to the
 previous stimulation setup. The eye tracking camera was mounted outside the
-scanner bore and recorded the participants left eye at a distance of about
+scanner bore and recorded the participants' left eye at a distance of about
 \unit[100]{cm}.  Compared to the lab-setup, physical limitations of the scanner
-environment, and sub-optimal infrared illumination lead to substantially
+environment, and sub-optimal infrared illumination led to substantially
 noisier data, as evident from a generally higher amount of data loss and a
 larger spatial uncertainty \citep[Technical Validation]{Hanke2016}. An example
 of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
 row, black lines). Except for the differences in stimulation setup, all other
 aspects of data acquisition, eye tracker calibration, and data processing
-where identical to the previous dataset.
+were identical to the previous dataset.
 
 We performed the identical analysis as before, in order to compare performance
 between a high and lower-quality data acquisition.
@@ -1218,9 +1218,9 @@ decision to publish, or preparation of the manuscript.}
 % Please do not list grant funding in this section.
 
 This work is based on an earlier Python implementation and evaluation of the
-original NH algorithm by Ulrike~Schnaithmann and Isabel~Dombrowe.  We are
-grateful to \cite{Andersson2017} for releasing the labeled eye tracking dataset
-used for validation under an open-source license.
+original NH algorithm by Ulrike~Schnaithmann and Isabel~Dombrowe
+\citep{Sch2017}.  We are grateful to \cite{Andersson2017} for releasing the
+labeled eye tracking dataset used for validation under an open-source license.
 
 \end{acknowledgements}
 
