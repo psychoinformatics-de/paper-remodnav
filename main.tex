@@ -583,8 +583,8 @@ input data file (see \fig{remodnav} for an example).
 % BASICALLY)
 
 The selection of datasets and analyses for validating algorithm performance was
-guided by three objectives: 1) compare algorithm performance to other existing
-approaches; 2) demonstrate plausible results on data from prolonged gaze
+guided by three objectives: 1) compare to other existing
+solutions; 2) demonstrate plausible results on data from prolonged gaze
 coordinate recordings during natural viewing; and 3) illustrate result
 robustness on lower-quality data. The following three sections each introduce a
 dataset and present the validation results for these objectives.  All analysis
@@ -724,10 +724,10 @@ For this evaluation, however, no such intervention was made.
 In order to further rank the performance of the proposed algorithm with respect
 to the ten algorithms studied in \citet{Andersson2017}, we followed their
 approach to compute root mean square deviations (RMSD) from human labels for
-duration distribution characteristics (mean and standard deviation of
+event duration distribution characteristics (mean and standard deviation of
 durations, plus number of events) for each stimulus category (images, dots,
 videos) and event type (fixations, saccades, PSOs, pursuits). This measure
-represents a scalar distribution similarity score that can be used as an
+represents a scalar distribution dissimilarity score that can be used as an
 additional comparison metric of algorithm performance that focuses on overall
 number and durations of detected events, instead of sample-by-sample
 misclassification. The RMSD measure has a lower bound of $0.0$ (identical to
@@ -741,7 +741,7 @@ is based on the scores for the human raters given in these original tables. As
 acknowledged by the authors, the absolute value of the RMSD scores is not
 informative due to scaling with respect to the respective maximum value of each
 characteristic.  Therefore, we converted RSMDs for each algorithm and event
-type into zero-based ranks.
+type into zero-based ranks (lower is more human-like).
 
 The LNS algorithm \citep{Larsson2013} was found to have the most human-like
 performance for saccade and PSO detection in \cite{Andersson2017}.  \remodnav\
