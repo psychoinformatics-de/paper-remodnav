@@ -767,14 +767,15 @@ def plot_dist(figures):
     if not figures:
         return
 
+    import datalad.api as dl
+    dl.install(op.join('data', 'studyforrest-data-eyemovementlabels'))
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
                        'sub*',
                        '*.tsv')
 
     data = sorted(glob(datapath))
-    from datalad.api import get
-    get(dataset='.', path=data)
+    dl.get(dataset='.', path=data)
 
     for ds, ds_name in [(mri_ids, 'mri'), (lab_ids, 'lab')]:
         dfs = [
