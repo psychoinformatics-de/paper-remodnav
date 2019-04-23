@@ -465,11 +465,11 @@ def savegaze():
     # hardcoding those, as I see no reason for updating them
     infiles = [
         op.join(
-            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'data',
             'raw_eyegaze', 'sub-32', 'beh',
             'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'),
         op.join(
-            'data', 'studyforrest-data-eyemovementlabels', 'inputs',
+            'data',
             'raw_eyegaze', 'sub-02', 'ses-movie',  'func',
             'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
         ),
