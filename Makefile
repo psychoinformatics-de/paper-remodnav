@@ -4,9 +4,10 @@ main.pdf: main.tex tools.bib EyeGaze.bib results_def.tex figures
 	latexmk -pdf -g $<
 
 results_def.tex: code/mk_figuresnstats.py
-	bash -c 'set -o pipefail; code/mk_figuresnstats.py -f -r -s -m | tee results_def.tex'
+	bash -c 'set -o pipefail; code/mk_figuresnstats.py -s | tee results_def.tex'
 
-figures: code/anderson.py
+figures: code/mk_figuresnstats.py
+	code/mk_figuresnstats.py -f -r -m
 	$(MAKE) -C img
 
 clean:
