@@ -3,8 +3,8 @@ all: main.pdf
 main.pdf: main.tex tools.bib EyeGaze.bib results_def.tex figures
 	latexmk -pdf -g $<
 
-results_def.tex: code/anderson.py
-	bash -c 'set -o pipefail; code/anderson.py -f -r -s -m | tee results_def.tex'
+results_def.tex: code/mk_figuresnstats.py
+	bash -c 'set -o pipefail; code/mk_figuresnstats.py -f -r -s -m | tee results_def.tex'
 
 figures: results_def.tex
 	$(MAKE) -C img
