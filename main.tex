@@ -623,15 +623,16 @@ comparison with the results in \cite{Andersson2017}, the analysis was repeated
 while also excluding samples labeled as pursuit. \tab{mclf} shows the
 misclassification rates for all pairwise comparisons, in all stimulus types.
 In comparison to the NH algorithm, after which the proposed work was modelled,
-\remodnav performed consistently better (32/93/70\% average misclassification
+\remodnav performed consistently better (32/93/70\% average misclassification for NH,
 vs. \imgMNALMclfWOP/\dotsRAALMclfWOP/ \videoRAALMclfWOP\% worst
-misclassification for images, dots, and videos).  Compared to all ten
+misclassification for \remodnav\ in categories images, dots, and videos). Compared to all ten
 algorithms evaluated in \citet{Andersson2017}, \remodnav\ exhibits the lowest
 misclassification rates across all stimulus categories.
 %
 When taking smooth pursuit events into account, the misclassification rate
-naturally increases, but remains comparably low, and still exceeds the
-performance of all algorithms tested in \citet{Andersson2017}.
+naturally increases, but remains comparably low. Importantly, it still exceeds the
+performance of all algorithms tested in \citet{Andersson2017} in the dots
+and video category, and performs among the best in the images category.
 
 \begin{table}[tbp]
   % table caption is above the table
@@ -757,7 +758,8 @@ median now, and mean before}median ranking of $3.0$.
 
 \begin{table*}[p]
   % table caption is above the table
-  \caption{Comparison of event duration statistics for image, dot, and video
+  \caption{Comparison of event duration statistics (mean, standard deviation, and number
+    of events) for image, dot, and video
     stimuli. This table reproduces \citet[Tables 3-6]{Andersson2017}, and
     root-mean-square-deviations (RMSD) from human raters are shown
     for fixations, saccades, PSOs, and pursuit as zero-based ranks (rank zero
