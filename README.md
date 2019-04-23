@@ -46,7 +46,8 @@ main.tex file, and render the PDF with a single call:
 In the root of the directory, run
 
     make -B
-    
+ 
+The full PDF will be ``main.pdf``.
  
 
 If you encounter failures, e.g. due to uninstalled python modules, restart ``make`` after running ``make clean``.
