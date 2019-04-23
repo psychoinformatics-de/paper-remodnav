@@ -16,6 +16,7 @@ pics: $(PICS)
 
 clean:
 	for p in *.svg; do rm -f $${p%*.svg}.eps $${p%*.svg}.pdf; done
+	-rm -rf *_300dpi.png
 
 .PHONY: ignore-%
 ignore-%:
