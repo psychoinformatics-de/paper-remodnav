@@ -474,7 +474,9 @@ def savegaze():
             'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
         ),
     ]
-    dl.get(infiles)
+    # one call per file due to https://github.com/datalad/datalad/issues/3356
+    for f in infiles:
+        dl.get(f)
     for f in infiles:
         # read data
         data = np.recfromcsv(f,
