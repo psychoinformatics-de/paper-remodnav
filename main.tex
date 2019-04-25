@@ -41,10 +41,12 @@
 %\documentclass{svjour3}                     % onecolumn (standard format)
 %\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
 %\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-\documentclass[smallextended,twocolumn]{svjour3}          % twocolumn
+\documentclass[11pt,smallextended,twocolumn]{article}          % twocolumn
+\usepackage[small]{caption}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 %
-\journalname{Behavior Research Methods}
-\smartqed  % flush right qed marks, e.g. at end of proof
+%%\journalname{}
+%%\smartqed  % flush right qed marks, e.g. at end of proof
 %
 \usepackage{graphicx}
 %
@@ -82,31 +84,34 @@
 % article itself.}
 
 \author{%
-  Asim~H.~Dar\textsuperscript{*} \and
-Adina~S.~Wagner\textsuperscript{*} \and
-Michael~Hanke\\
-{\small \textsuperscript{*} Both authors have contributed equally}}
+Asim~H.~Dar\textsuperscript{*,1}, %
+Adina~S.~Wagner\textsuperscript{*,2}, %
+Michael~Hanke\textsuperscript{2,3}\\
+{\small \textsuperscript{*} Both authors have contributed equally} \\
+{\small \textsuperscript{1} Special Lab Non-Invasive Brain Imaging, Leibniz Institute for Neurobiology, Magde\-burg, Germany} \\
+{\small \textsuperscript{2} Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7), Research Centre Jülich, Germany} \\
+{\small \textsuperscript{3} Institute of Systems Neuroscience, Medical Faculty, Heinrich Heine University Düsseldorf, Germany}}
 
-\institute{Asim~H.~Dar \at
-Special Lab Non-Invasive Brain Imaging, Leibniz Institute for Neurobiology, Brenneckestra{\ss}e~6, Magde\-burg, Germany
+%\institute{Asim~H.~Dar \at
+%Special Lab Non-Invasive Brain Imaging, Leibniz Institute for Neurobiology, Brenneckestra{\ss}e~6, Magde\-burg, Germany
 %Tel.: +123-45-678910\\
 %Fax: +123-45-678910\\
 %\email{fauthor@example.com}           %  \\
 %             \emph{Present address:} of F. Author  %  if needed
-\and
-Adina Wagner \at
-Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich, Germany
-\and
-Michael Hanke \at
-Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich and Institute of Systems Neuroscience, Medical Faculty,
-Heinrich Heine University Düsseldorf, Germany
-\email{michael.hanke@gmail.com}
-}
+%\and
+%Adina Wagner \at
+%Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich, Germany
+%\and
+%Michael Hanke \at
+%Psychoinformatics lab, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour), Research Centre Jülich and Institute of Systems Neuroscience, Medical Faculty,
+%Heinrich Heine University Düsseldorf, Germany
+%\email{michael.hanke@gmail.com}
+%}
 
 
 %\affil[1]{Psychoinformatics Lab, Institute of Psychology, Otto-von-Guericke University, Magdeburg, Germany}
 
-\date{Received: date / Accepted: date}
+%\date{Received: date / Accepted: date}
 
 \maketitle
 
@@ -162,6 +167,7 @@ glissade classification \and
 adaptive threshold algorithm \and
 data preprocessing
 }
+
 \end{abstract}
 
 % \todo[inline]{The scope of the article is a "Data Note" that describes new
@@ -352,8 +358,8 @@ motivated by the fact that blinks can produce artifacts in the eye-tracking sign
 eyelid closes and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
-(\fig{alg}A, 3). A relatively large median filter (\param{median\_
-filter\_length}) is used to emphasize long-distance saccades.  This type of
+(\fig{alg}A, 3). A relatively large median filter (\param{median\_filter\_length})
+is used to emphasize long-distance saccades.  This type of
 filtered data is later used for a coarse segmentation of a time series into
 shorter intervals between major saccades.
 %
@@ -513,7 +519,7 @@ to be split into shorter chunks to prevent the negative impact of sporadic
 noise flares on the aforementioned adaptive velocity thresholding procedure.
 
 \remodnav\ implements this chunking by determining a critical velocity on a
-median-filtered (\param{median\_ filter\_length}) time series comprising the
+median-filtered (\param{median\_filter\_length}) time series comprising the
 full duration of a recording (\fig{alg}D). Due to potentially elevated noise
 levels, the resulting threshold tends to overestimate an optimal threshold.
 Consequently, only periods of fastest eye movements will exceed this threshold.
@@ -521,7 +527,7 @@ All such periods of consecutive above-threshold velocities are weighted by the
 sum of these velocities. Boundaries of time series chunks are determined by
 selecting such events sequentially (starting with the largest sums), until a
 maximum average frequency across the whole time series is reached
-(\param{max\_initial\_saccade\_ freq}). The resulting chunks represent data
+(\param{max\_initial\_saccade\_freq}). The resulting chunks represent data
 intervals between saccades of maximum magnitude in the respective data.
 \fig{velest2} exemplifies event detection within such an intersaccadic interval.
 
@@ -531,7 +537,7 @@ Detection of these event types is identical to the NH algorithm, only the data
 context and metrics for determining the velocity thresholds differ.  For
 saccades that also represent time series chunk boundaries (event label
 \texttt{SACC}), a context of \unit[1]{s}
-(\param{saccade\_context\_window\_ length}) centered on the peak velocity is
+(\param{saccade\_context\_window\_length}) centered on the peak velocity is
 used by default, for any other saccade (event label \texttt{ISAC}) the entire
 time series chunk represents that context (\fig{alg}E).
 
@@ -541,7 +547,7 @@ equation \ref{eq:threshold} with $F$ set to $2\times\mathtt{noise\_factor}$ and
 immediately preceding and the following velocity minima that do not exceed the
 on/offset threshold are located and used as event boundaries. Qualifying events
 are rejected if they do not exceed a configurable minimum duration or violate
-the set saccade maximum proximity criterion (\param{min\_ saccade\_duration},
+the set saccade maximum proximity criterion (\param{min\_saccade\_duration},
 \param{min\_intersaccade\_duration}).
 
 As in NH, post-saccadic oscillations are events that immediately follow a
@@ -564,7 +570,7 @@ respectively.
 \subsection*{Pursuit and fixation classification}
 
 For all remaining, unlabeled time series segments that are longer than a
-minimum duration (\param{min\_fixation\_ duration}), velocities are low-pass
+minimum duration (\param{min\_fixation\_duration}), velocities are low-pass
 filtered (Butterworth, \param{lowpass\_cutoff\_freq}). Any segments
 exceeding a minimum velocity threshold (\param{pursuit\_velthresh}) are
 classified as pursuit (event label \texttt{PURS}). Pursuit on/offset classification
@@ -716,6 +722,7 @@ for \remodnav]{Startsev2018}.
   }
   \label{tab:mclf}       % Give a unique label
   % For LaTeX tables use
+  \begin{footnotesize}
   \begin{tabular}{llllllll}
     \textbf{Images}&&&&&&&\\
     \hline\noalign{\smallskip}
@@ -750,7 +757,9 @@ for \remodnav]{Startsev2018}.
     RA-AL & \videoRAALMCLF & \videoRAALMclfWOP & RA & \videoRAALFIXref & \videoRAALSACref & \videoRAALPSOref & \videoRAALSPref \\
     ---& ---& ---& AL & \videoRAALFIXcod & \videoRAALSACcod & \videoRAALPSOcod & \videoRAALSPcod \\
     \noalign{\smallskip}\hline
+
   \end{tabular}
+  \end{footnotesize}
 \end{table}
 
 \fig{conf} shows confusion patterns for a comparison of algorithm
@@ -1256,21 +1265,21 @@ decision to publish, or preparation of the manuscript.}
 % \todo[inline]{the journals template.tex says to use bibitem to create
 % references. we should do that once finished here}
 
-\begin{acknowledgements}
-
-% This section should acknowledge anyone who contributed to the research or the
-% article but who does not qualify as an author based on the criteria provided earlier
-% (e.g. someone or an organisation that provided writing assistance). Please state how
-% they contributed; authors should obtain permission to acknowledge from all those
-% mentioned in the Acknowledgements section.
-% Please do not list grant funding in this section.
-
-This work is based on an earlier Python implementation and evaluation of the
-original NH algorithm by Ulrike~Schnaithmann and Isabel~Dombrowe
-\citep{Sch2017}.  We are grateful to \cite{Andersson2017} for releasing the
-labeled eye tracking dataset used for validation under an open-source license.
-
-\end{acknowledgements}
+%\begin{acknowledgements}
+%
+%% This section should acknowledge anyone who contributed to the research or the
+%% article but who does not qualify as an author based on the criteria provided earlier
+%% (e.g. someone or an organisation that provided writing assistance). Please state how
+%% they contributed; authors should obtain permission to acknowledge from all those
+%% mentioned in the Acknowledgements section.
+%% Please do not list grant funding in this section.
+%
+%This work is based on an earlier Python implementation and evaluation of the
+%original NH algorithm by Ulrike~Schnaithmann and Isabel~Dombrowe
+%\citep{Sch2017}.  We are grateful to \cite{Andersson2017} for releasing the
+%labeled eye tracking dataset used for validation under an open-source license.
+%
+%\end{acknowledgements}
 
 \bibliographystyle{spbasic}      % basic style, author-year citations
 \bibliography{EyeGaze,tools,references}
