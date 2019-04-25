@@ -16,10 +16,15 @@ def load_anderson(category, name):
     from remodnav import clf as CLF
     import os.path as op
 
-    fname = op.join(
-        'remodnav', 'remodnav', 'tests', 'data', 'anderson_etal',
-        'annotated_data', 'data used in the article',
-        category, name + ('' if name.endswith('.mat') else '.mat'))
+    fname = op.join(*(
+        ('remodnav', 'remodnav', 'tests', 'data', 'anderson_etal',
+         'annotated_data') + \
+        (('fix_by_Zemblys2018',)
+         if name  == 'UH29_img_Europe_labelled_FIX_MN.mat'
+         else ('data used in the article', category)
+        ) + \
+        (name + ('' if name.endswith('.mat') else '.mat'),))
+    )
     get(fname)
     m = loadmat(fname)
     # viewing distance
@@ -229,48 +234,6 @@ def get_durations(events, evcodes):
     return durations
 
 
-def print_duration_stats():
-    for stimtype in ('img', 'dots', 'video'):
-    #for stimtype in ('img', 'video'):
-        for coder in ('MN', 'RA'):
-            print(stimtype, coder)
-            fixation_durations = []
-            saccade_durations = []
-            pso_durations = []
-            purs_durations = []
-            for fname in labeled_files[stimtype]:
-                data, target_labels, target_events, px2deg, sr = load_anderson(
-                    stimtype, fname.format(coder))
-                fixation_durations.extend(get_durations(
-                    target_events, ['FIXA']))
-                saccade_durations.extend(get_durations(
-                    target_events, ['SACC']))
-                pso_durations.extend(get_durations(
-                    target_events, ['PSO']))
-                purs_durations.extend(get_durations(
-                    target_events, ['PURS']))
-            print(
-                'FIX: %i (%i) [%i]' % (
-                    np.mean(fixation_durations) * 1000,
-                    np.std(fixation_durations) * 1000,
-                    len(fixation_durations)))
-            print(
-                'SAC: %i (%i) [%i]' % (
-                    np.mean(saccade_durations) * 1000,
-                    np.std(saccade_durations) * 1000,
-                    len(saccade_durations)))
-            print(
-                'PSO: %i (%i) [%i]' % (
-                    np.mean(pso_durations) * 1000,
-                    np.std(pso_durations) * 1000,
-                    len(pso_durations)))
-            print(
-                'PURS: %i (%i) [%i]' % (
-                    np.mean(purs_durations) * 1000,
-                    np.std(purs_durations) * 1000,
-                    len(purs_durations)))
-
-
 def confusion(refcoder,
               coder,
               figures,
@@ -303,8 +266,12 @@ def confusion(refcoder,
             sr = None
             for src in (refcoder, coder):
                 if src in ('RA', 'MN'):
+                    finame = fname.format(src)
+                    if finame == 'UH29_img_Europe_labelled_MN.mat':
+                        # pick up Zemblys fix
+                        finame = 'UH29_img_Europe_labelled_FIX_MN.mat'
                     data, target_labels, target_events, px2deg, sr = \
-                        load_anderson(stimtype, fname.format(src))
+                        load_anderson(stimtype, finame)
                     labels.append(target_labels.astype(int))
                 else:
                     clf = EyegazeClassifier(
@@ -681,7 +648,7 @@ def get_remodnav_params(stim_type):
     events = []
     # the data files exist twice (one per coder). The raw eye gaze data in corresponding
     # files should be the same, so I assume its safe to just take one coders files.
-    src = 'MN'
+    src = 'RA'
     for fname in labeled_files[stim_type]:
         data, target_labels, target_events, px2deg, sr = \
             load_anderson(stim_type, fname.format(src))

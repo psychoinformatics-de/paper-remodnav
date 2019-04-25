@@ -337,7 +337,7 @@ configurable maximum velocity (\param{max\_vel}) is enforced---any samples
 exceeding this threshold are replaced by this set value.
 
 \begin{table*}[tbp]
-  \caption{Algorithm parameters and their default values.}
+  \caption{Exhaustive list of algorithm parameters, their default values, and units.}
   \label{tab:parameters}
   \small
   \begin{tabular}{lp{85mm}l}
@@ -345,7 +345,7 @@ exceeding this threshold are replaced by this set value.
     & & \\
     \multicolumn{3}{l}{\textit{Preprocessing (in order of application during processing)}} \\
     \texttt{px2deg} &
-    size of a single (square) pixel in degrees of visual angle &
+    size of a single (square) pixel &
     no default [\unit{deg}]\\
     \texttt{sampling\_rate} &
     temporal data sampling rate/frequency &
@@ -370,7 +370,7 @@ exceeding this threshold are replaced by this set value.
     maximum velocity threshold, will replace value with maximum, and issue
     warning if exceeded to inform about
     potentially inappropriate filter settings
-    (default value based on \cite{holmqvist2011eye})&
+    \citep[default value based on ][]{holmqvist2011eye}&
     \unit[1000]{deg/s}\\
 
     \\\multicolumn{3}{l}{\textit{Event detection}} \\
@@ -410,7 +410,7 @@ exceeding this threshold are replaced by this set value.
     velocities in a pursuit event candidate &
     \unit[4]{Hz}\\
     \texttt{pursuit\_velthresh} &
-    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations (e.g. \cite{GOLTZ1997789}; \cite{cherici2012}) &
+    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations \citep[\eg ][]{GOLTZ1997789,cherici2012} &
     \unit[2]{deg/s}\\
   \end{tabular}
 \end{table*}
@@ -580,7 +580,7 @@ coordinate recordings during natural viewing; and 3) illustrate result
 robustness on lower-quality data. The following three sections each introduce a
 dataset and present the validation results for these objectives.  All analysis
 presented here are performed using default parameters (\tab{parameters}), with
-no dataset-specific tuning other than the built-in adaptive procedures.
+no dataset-specific tuning other than the built-in adaptive behavior.
 
 
 \subsection*{Algorithm comparison}\label{ana_1}
@@ -627,7 +627,7 @@ performance of all algorithms tested in \citet{Andersson2017} in the dots
 and video category, and performs among the best in the images category.
 Additionally, both with and without smooth pursuit, \remodnav s performance
 exceeds also that of a recent deep neural network trained specifically on
-video clips by \citet[ref. Table 7: 34\% misclassification versus \videoMNALMCLF\%
+video clips \citep[compare Table 7: 34\% misclassification versus \videoMNALMCLF\%
 for \remodnav]{Startsev2018}.
 
 
@@ -1004,12 +1004,11 @@ and also supports the detection of smooth pursuit events. Through a series of
 validation analyses we have shown that its performance is comparable to or
 better than ten other contemporary detection algorithms, and that plausible
 detection results are achieved on high and lower quality data.
-These aspects of algorithm capabilities and performance suggest that \remodnav
+These aspects of algorithm capabilities and performance suggest that \remodnav\
 is a state-of-the-art tool for eye movement detection with particular relevance
 for emerging complex, naturalistic data collections paradigms, such as
 mobile or outdoor aquisition, or the combination of eye tracking and functional
-MRI in simultaneous measurements. It should be noted though that this algorithm
-has no realtime capabilities.
+MRI in simultaneous measurements.
 
 The proposed algorithm is rule-based, hence can be applied to data without
 prior training, apart from the adaptive estimation of velocity thresholds.
@@ -1017,7 +1016,9 @@ This aspect distinguishes it from other recent developments based on deep
 neural networks \citep{Startsev2018}, and machine-learning in general
 \citep{Zemblys2018}. Such algorithms tend to require substantial amount of
 (labeled) training data, which can be a critical limitation in the context of a
-research study.
+research study. However, in its present form \remodnav\ cannot be used for
+real-time data analysis, as its approach for time series chunking is based
+on an initial sorting of major saccade events across the entire time series.
 
 Just as \cite{Andersson2017}, we considered human raters as a gold standard
 reference for event detection when evaluating algorithms.  The implications of
