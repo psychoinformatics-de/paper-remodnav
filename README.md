@@ -23,9 +23,11 @@ Install from [PyPi](https://pypi.org/project/remodnav):
     pip install remodnav
     pip install seaborn
 
+- ``datalad install`` the repository with ``datalad install https://github.com/psychoinformatics-de/paper-remodnav.git``
+
 - Appropriate Makefiles within the directory will execute data retrieval via datalad (about 550MB in total),
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
-main.tex file, and render the PDF with a single call: ``make``
+main.tex file, and render the PDF with a single call from the root of the directory: ``make``
 
 The full PDF will be ``main.pdf``.
  
