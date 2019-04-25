@@ -509,7 +509,7 @@ respectively.
 For all remaining, unlabeled time series segments that are longer than a
 minimum duration (\param{min\_fixation\_ duration}), velocities are low-pass
 filtered (Butterworth, \param{lowpass\_cutoff\_freq}). Any segments
-exceeding a minimum velocity threshold (\param{pursuit\_velthresh})\todo{re-find citation for default value} are
+exceeding a minimum velocity threshold (\param{pursuit\_velthresh}) are
 classified as pursuit (event label \texttt{PURS}). Pursuit on/offset detection
 uses the same approach as that for saccades: search for local minima preceding
 and following the above threshold velocities.
@@ -758,8 +758,8 @@ Depending on the stimulus type, different algorithms performed best for
 fixation detection. NH performed best for images and videos, but worst for
 moving dots. \remodnav\ outperforms all other algorithms in the dots category,
 and achieves rank 5 and 6 (middle range) for videos and images, respectively.
-Across all stimulus and event categories, \remodnav\ achieves a \todo{why
-median now, and mean before}median ranking of $3.0$.
+Across all stimulus and event categories, \remodnav\ achieves a mean ranking
+of $2.9$, and a mean ranking of $3.2$ when not taking smooth pursuit into account.
 
 \begin{table*}[p]
   % table caption is above the table
