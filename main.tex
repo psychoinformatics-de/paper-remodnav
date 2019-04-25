@@ -337,7 +337,7 @@ configurable maximum velocity (\param{max\_vel}) is enforced---any samples
 exceeding this threshold are replaced by this set value.
 
 \begin{table*}[tbp]
-  \caption{Algorithm parameters and their default values.}
+  \caption{Exhaustive list of algorithm parameters, their default values, and units.}
   \label{tab:parameters}
   \small
   \begin{tabular}{lp{85mm}l}
@@ -345,7 +345,7 @@ exceeding this threshold are replaced by this set value.
     & & \\
     \multicolumn{3}{l}{\textit{Preprocessing (in order of application during processing)}} \\
     \texttt{px2deg} &
-    size of a single (square) pixel in degrees of visual angle &
+    size of a single (square) pixel &
     no default [\unit{deg}]\\
     \texttt{sampling\_rate} &
     temporal data sampling rate/frequency &
@@ -370,7 +370,7 @@ exceeding this threshold are replaced by this set value.
     maximum velocity threshold, will replace value with maximum, and issue
     warning if exceeded to inform about
     potentially inappropriate filter settings
-    (default value based on \cite{holmqvist2011eye})&
+    \citep[default value based on ][]{holmqvist2011eye}&
     \unit[1000]{deg/s}\\
 
     \\\multicolumn{3}{l}{\textit{Event detection}} \\
@@ -410,7 +410,7 @@ exceeding this threshold are replaced by this set value.
     velocities in a pursuit event candidate &
     \unit[4]{Hz}\\
     \texttt{pursuit\_velthresh} &
-    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations (e.g. \cite{GOLTZ1997789}; \cite{cherici2012}) &
+    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations \citep[\eg ][]{GOLTZ1997789,cherici2012} &
     \unit[2]{deg/s}\\
   \end{tabular}
 \end{table*}
