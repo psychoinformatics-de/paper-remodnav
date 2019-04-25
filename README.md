@@ -1,10 +1,14 @@
-# paper-remodnav
+# REMoDNaV: Robust Eye Movement Detection for Natural Viewing
 
-This repository contains all analysis code for results and figures presented in the publication
-[REMoDNaV: Robust Eye Movement Detection for Natural Viewing](yettolink),
-and the LaTeX files necessary to compile the full PDF. 
-To obtain the input data used for the analysis, recompute the results, and recompile the PDF with
-all results and figures, do the following:
+This repository contains the raw data, the code to generate summary statistics, and raw figures for the manuscript, and the manuscript sources for the publication [REMoDNaV: Robust Eye Movement Detection for Natural Viewing](yettolink).
+
+## Content
+
+This repository contains the raw data, the manuscript sources, and the code to generate summary statistics, and raw figures for the manuscript, as well as all derived data contained in the data release.
+
+## Manuscript
+
+To recompute results and compile the paper, do the following:
 
 [Optional] create a virtual environment:
 
@@ -12,41 +16,21 @@ all results and figures, do the following:
     virtualenv --python=python3 ~/env/remodnav
     . ~/env/remodnav/bin/activate
     
-- if you haven't yet, install [``remodnav``](https://github.com/psychoinformatics-de/remodnav)
-  and its dependecies (numpy, matplotlib, statsmodels, scipy, pandas):
+- if you haven't yet, install [``remodnav``](https://github.com/psychoinformatics-de/remodnav), ``seaborn``, and
+ [``datalad``](https://www.datalad.org). Depending on your operating system, datalad can be installed via
+ ``pip install datalad`` or ``sudo apt-get install datalad`` (please check the 
+ [docs](http://docs.datalad.org/en/latest/gettingstarted.html) if you are unsure which option is applicable to your system)
  
- 
-Install from [PyPi](https://pypi.org/project/remodnav) with all dependencies:
+Install from [PyPi](https://pypi.org/project/remodnav):
 
     # install from PyPi
     pip install remodnav
+    pip install seaborn
 
-
-- Additionally, please install ``seaborn`` (``pip install seaborn``) and
- [``datalad``](https://www.datalad.org). Depending on your operating system, datalad can be installed via
-  ``pip install datalad`` or ``sudo apt-get install datalad`` (please check the [docs](http://docs.datalad.org/en/latest/gettingstarted.html)
-  if you are unsure which option is applicable to your system)
-- datalad install this repository and its subdatasets:
-
-Installing recursively with
-
-     # with SSH
-     datalad install -r git@github.com:psychoinformatics-de/paper-remodnav.git
-     # or using HTTPS
-     datalad install -r https://github.com/psychoinformatics-de/paper-remodnav.git
-
-
-- Note: To render figures, [``inkscape``](https://inkscape.org/de/) has to be installed on your system;
-  To compile the PDF, ``pdflatex`` has to be installed.
-
-Appropriate Makefiles within the directory will execute data retrieval via datalad (about 550MB in total),
+- Appropriate Makefiles within the directory will execute data retrieval via datalad (about 550MB in total),
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
-main.tex file, and render the PDF with a single call:
+main.tex file, and render the PDF with a single call: ``make``
 
-In the root of the directory, run
-
-    make -B
- 
 The full PDF will be ``main.pdf``.
  
 
