@@ -547,7 +547,8 @@ def mainseq(s_mri = 'sub-19',
                     sym,
                     alpha=0.20,
                     color=color,
-                    lw = 1
+                    lw = 1,
+                    rasterized=True
                 )
 
             # cheat: custom legend to not propagate alpha into legend markers
