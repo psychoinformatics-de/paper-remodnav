@@ -481,8 +481,8 @@ def savegaze():
         pl.close()
 
 
-def mainseq(s_mri = 'sub-19',
-            s_lab = 'sub-29'):
+def mainseq(s_mri,
+            s_lab):
     """
     plot main sequences from movie data for lab and mri subjects.
     """
@@ -525,10 +525,8 @@ def mainseq(s_mri = 'sub-19',
                 (df, ''),
                 (sub_df, '_sub')):
             # extract relevant event types
-            SACCs = d[d.label == 'SACC']
-            ISACs = d[d.label == 'ISAC']
-            HPSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS')]
-            LPSOs = d[(d.label == 'LPSO') | (d.label == 'ILPS')]
+            SACCs = d[(d.label == 'SACC') | (d.label == 'ISAC')]
+            PSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS') | (d.label == 'LPSO') | (d.label == 'ILPS')]
 
             fig = pl.figure(
                 # fake size to get the font size down in relation
@@ -537,45 +535,36 @@ def mainseq(s_mri = 'sub-19',
                 frameon=False)
 
             for ev, sym, color in (
-                    (ISACs, '.', 'darkred'),
                     (SACCs, '.', 'red'),
-                    (HPSOs, '+', 'dodgerblue'),
-                    (LPSOs, '+', 'darkblue'))[::-1]:
+                    (PSOs, '+', 'darkblue'),
+                    ):
                 pl.loglog(
                     ev['amp'],
                     ev['peak_vel'],
                     sym,
-                    alpha=0.20,
+                    # scale alpha down with increasing number of data points
+                    alpha=min(0.1, 1.0 / max(0.0001, 0.002 * len(ev))),
                     color=color,
                     lw = 1,
                     rasterized=True
                 )
 
             # cheat: custom legend to not propagate alpha into legend markers
-            custom_legend = [Line2D([0], [0],
-                                    marker='.',
-                                    color='w',
-                                    markerfacecolor='darkred',
-                                    label='Saccade (ISAC)',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='.',
-                                    color='w',
-                                    markerfacecolor='red',
-                                    label='Major saccade (SACC)',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='P',
-                                    color='w',
-                                    markerfacecolor='dodgerblue',
-                                    label='High velocity PSOs',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='P',
-                                    color='w',
-                                    markerfacecolor='darkblue',
-                                    label='Low velocity PSOs',
-                                    markersize=10)]
+            custom_legend = [
+                Line2D([0], [0],
+                       marker='.',
+                       color='w',
+                       markerfacecolor='red',
+                       label='Saccade',
+                       markersize=10),
+                Line2D([0], [0],
+                       marker='P',
+                       color='w',
+                       markerfacecolor='darkblue',
+                       label='PSO',
+                       #label='Low velocity PSOs',
+                       markersize=10),
+            ]
 
             pl.ylim((10.0, 1000))
             pl.xlim((0.01, 40.0))
@@ -809,11 +798,11 @@ if __name__ == '__main__':
     parser.add_argument(
         '--sublab',
         help='individual lab-subject for single main sequence',
-        default='sub-29')
+        default='sub-27')
     parser.add_argument(
         '--submri',
         help='individual mri-subject for single main sequence',
-        default='sub-19')
+        default='sub-17')
 
 
     args = parser.parse_args()
