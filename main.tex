@@ -1022,7 +1022,11 @@ on an initial sorting of major saccade events across the entire time series.
 The proposed algorithm presently does not support the detection of eye blinks
 as a category distinct from periods of general signal loss. While such a feature
 could potentially be added, the current default preprocessing aims at removing
-blink-related signal.
+blink-related signal. Lastly, the evaluation results presented here are based
+on data with a relatively high temporal resolution (\unit[0.5 and 1]{kHz}). While
+the algorithm does not impose any hard constraints on data acquisition parameters,
+its performance on data from low-end, consumer grade hardware (\eg \unit[50]{Hz}
+sampling rate) has not been tested.
 
 Just as \cite{Andersson2017}, we considered human raters as a gold standard
 reference for event detection when evaluating algorithms.  The implications of
