@@ -780,6 +780,82 @@ def plot_dist(figures):
             pl.close()
 
 
+def kappa():
+    """
+    During the review process, reviewer 2 requested Cohens Kappa computation.
+    We have not implemented the measure before because we felt it did not add
+    information beyond the confusion and RMSD computations.
+    """
+    px2deg = None
+    sr = None
+    from sklearn.metrics import cohen_kappa_score
+    # for every stimulus type
+    for stim in ['img', 'dots', 'video']:
+        # for every eye movement label used in Anderson et al. (2017)
+        for (ev, i) in [('Fix', 1), ('Sac', 2), ('PSO', 3)]:
+            # initialize lists to store classification results in
+            RA_res = []
+            MN_res = []
+            AL_res = []
+            # aggregate the target_labels of all files per coder + stim_type
+            for idx, fname in enumerate(labeled_files[stim]):
+                for coder in ['MN', 'RA', 'AL']:
+                    if coder in ['MN', 'RA']:
+                        data, target_labels, target_events, px2deg, sr = \
+                            load_anderson(stim, fname.format(coder))
+                        # dichotomize classification based on event type
+                        labels = [1 if j == i else 0 for j in target_labels]
+                        if coder == 'MN':
+                            MN_res.append(labels)
+                        elif coder == 'RA':
+                            RA_res.append(labels)
+                    else:
+                        # get REMoDNaV classification
+                        clf = EyegazeClassifier(
+                            px2deg=px2deg,
+                            sampling_rate=sr,
+                        )
+                        p = clf.preproc(data)
+                        events = clf(p)
+
+                        # convert event list into anderson-style label array
+                        l = np.zeros(target_labels.shape, target_labels.dtype)
+                        for e in events:
+                            l[int(e['start_time'] * sr):int((e['end_time']) * sr)] = \
+                                anderson_remap[label_map[e['label']]]
+                        # dichotomize REMoDNaV classification results as well
+                        labels = [1 if j == i else 0 for j in l]
+                        AL_res.append(labels)
+
+                if len(MN_res[idx]) != len(RA_res[idx]):
+                    print(
+                        "% #\n% # %INCONSISTENCY Found label length mismatch "
+                        "between coders for: {}\n% #\n".format(fname))
+                    shorter = min([len(RA_res[idx]), len(MN_res[idx])])
+                    print('% Truncate labels to shorter sample: {}'.format(
+                        shorter))
+                    # truncate the labels by indexing up to the highest index
+                    # in the shorter list of labels
+                    MN_res[idx] = MN_res[idx][:shorter]
+                    RA_res[idx] = RA_res[idx][:shorter]
+                    AL_res[idx] = AL_res[idx][:shorter]
+            # dummy check whether we really have the same number of files per coder
+            assert len(RA_res) == len(MN_res)
+            # flatten the list of lists
+            RA_res_flat = [item for sublist in RA_res for item in sublist]
+            MN_res_flat = [item for sublist in MN_res for item in sublist]
+            AL_res_flat = [item for sublist in AL_res for item in sublist]
+            #print(sum(RA_res_flat), sum(MN_res_flat))
+            assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
+            # compute Cohens Kappa
+            for rating, comb in [('RA_MN', [RA_res_flat, MN_res_flat]),
+                                 ('AL_RA', [RA_res_flat, AL_res_flat]),
+                                 ('AL_MN', [MN_res_flat, AL_res_flat])]:
+                kappa = cohen_kappa_score(comb[0], comb[1])
+                label = 'kappa_{}_{}_{}'.format(rating, stim, ev)
+                print('\\newcommand{\\%s}{%s}' % (label, kappa))
+
+
 if __name__ == '__main__':
 
     import argparse
