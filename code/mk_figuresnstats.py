@@ -848,12 +848,12 @@ def kappa():
             #print(sum(RA_res_flat), sum(MN_res_flat))
             assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
             # compute Cohens Kappa
-            for rating, comb in [('RA_MN', [RA_res_flat, MN_res_flat]),
-                                 ('AL_RA', [RA_res_flat, AL_res_flat]),
-                                 ('AL_MN', [MN_res_flat, AL_res_flat])]:
+            for rating, comb in [('RAMN', [RA_res_flat, MN_res_flat]),
+                                 ('ALRA', [RA_res_flat, AL_res_flat]),
+                                 ('ALMN', [MN_res_flat, AL_res_flat])]:
                 kappa = cohen_kappa_score(comb[0], comb[1])
-                label = 'kappa_{}_{}_{}'.format(rating, stim, ev)
-                print('\\newcommand{\\%s}{%s}' % (label, kappa))
+                label = 'kappa{}{}{}'.format(rating, stim, ev)
+                print('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
 
 
 if __name__ == '__main__':
