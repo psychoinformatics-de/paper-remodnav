@@ -227,6 +227,16 @@ lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
            '32', '33', '34', '35', '36']
 
 
+# this used to be within confusion(), is global now because we also need it for Kappa()
+# --> defines mapping between remodnav labels (strings) and andersson labels (ints)
+anderson_remap = {
+    'FIX': 1,
+    'SAC': 2,
+    'PSO': 3,
+    'PUR': 4,
+}
+
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
@@ -240,12 +250,6 @@ def confusion(refcoder,
               stats):
     conditions = ['FIX', 'SAC', 'PSO', 'PUR']
     #conditions = ['FIX', 'SAC', 'PSO']
-    anderson_remap = {
-        'FIX': 1,
-        'SAC': 2,
-        'PSO': 3,
-        'PUR': 4,
-    }
     plotter = 1
     # initialize a maximum misclassification rate, to later automatically reference,
     max_mclf = 0
