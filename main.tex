@@ -718,6 +718,64 @@ For this evaluation, however, no such intervention was made.
 \end{figure*}
 
 
+\begin{table}[tbp]
+  % table caption is above the table
+  \caption{Cohen's Kappa reliability between human coders (MN, RA), and \remodnav\ (AL)
+  with each of the human coders.
+  }
+  \label{tab:kappa}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular*}{0.5\textwidth}{c @{\extracolsep{\fill}}llll}
+    \textbf {Fixations}                   &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                            & Images           & Dots              & Videos             \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN versus RA                          & \kappaRAMNimgFix & \kappaRAMNdotsFix & \kappaRAMNvideoFix \\
+    AL versus RA                          & \kappaALRAimgFix & \kappaALRAdotsFix & \kappaALRAvideoFix \\
+    AL versus MN                          & \kappaALMNimgFix & \kappaALMNdotsFix & \kappaALMNvideoFix \\
+    \noalign{\smallskip}
+    \textbf{Saccades}                     &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                            & Images           & Dots              & Videos             \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN versus RA                          & \kappaRAMNimgSac & \kappaRAMNdotsSac & \kappaRAMNvideoSac \\
+    AL versus RA                          & \kappaALRAimgSac & \kappaALRAdotsSac & \kappaALRAvideoSac \\
+    AL versus MN                          & \kappaALMNimgSac & \kappaALMNdotsSac & \kappaALMNvideoSac \\
+    \noalign{\smallskip}
+    \textbf{PSOs}                         &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                            & Images           & Dots              & Videos             \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN versus RA                          & \kappaRAMNimgPSO & \kappaRAMNdotsPSO & \kappaRAMNvideoPSO \\
+    AL versus RA                          & \kappaALRAimgPSO & \kappaALRAdotsPSO & \kappaALRAvideoPSO \\
+    AL versus MN                          & \kappaALMNimgPSO & \kappaALMNdotsPSO & \kappaALMNvideoPSO \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+\end{table}
+
+In addition to the confusion analysis and again following \citet{Andersson2017},
+we computed Cohen's Kappa \citep{cohen1960coefficient} for an additional measure
+of similarity between human and algorithm performance. It quantifies the
+sample-by-sample agreement between two ratings following equation \ref{eq:kappa}:
+%
+\begin{equation}\label{eq:kappa}
+K = \frac{P_o - P_c}{1- P_c}
+\end{equation}
+%
+where $P_o$ is the observed proportion of agreement between the ratings, and
+$P_c$ is the proportion of chance agreement. A value of $K=1$ indicates perfect
+agreement, $K=0$ indicates chance level agreement, and values of $K<0$ indicate
+below chance performance. Table \ref{tab:kappa} displays the resulting values
+between the two human experts, and \remodnav\ with each of the experts, for
+each stimulus category and the three event types used in \citet{Andersson2017},
+namely fixations, saccades, and PSOs (compare to \citet{Andersson2017}, table 7).
+\todo[inline]{After validating that what I computed actually is what we need, we
+need to interprete these values. Granted that direct comparisons between Kappa values
+are not possible  because of the unclear computation of K in the paper,
+we have higher or equal (tiny bit higher) values than NH on every stimulus and event type.
+LNS has higher values for PSOs, we're equal with LNS on saccades.}
+
+
 In order to further rank the performance of the proposed algorithm with respect
 to the ten algorithms studied in \citet{Andersson2017}, we followed their
 approach to compute root mean square deviations (RMSD) from human labels for
@@ -830,43 +888,6 @@ of $2.9$, and a mean ranking of $3.2$ when not taking smooth pursuit into accoun
   \end{tabular*}
   \end{small}
 \end{table*}
-
-
-
-\begin{table}[tbp]
-  % table caption is above the table
-  \caption{Cohen's Kappa reliability between human coders (MN, RA), and \remodnav\ (AL)
-  with each of the human coders.
-  }
-  \label{tab:kappa}       % Give a unique label
-  % For LaTeX tables use
-  \begin{tabular}{llll}
-    \textbf {Fixations}            &                  &                   &                    \\
-    \hline\noalign{\smallskip}
-    Comparison                     & Img              & Dots              & Vid                \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN-RA                          & \kappaRAMNimgFix & \kappaRAMNdotsFix & \kappaRAMNvideoFix \\
-    RA-AL                          & \kappaALRAimgFix & \kappaALRAdotsFix & \kappaALRAvideoFix \\
-    MN-AL                          & \kappaALMNimgFix & \kappaALMNdotsFix & \kappaALMNvideoFix \\
-    \noalign{\smallskip}
-    \textbf{Saccades}              &                  &                   &                    \\
-    \hline\noalign{\smallskip}
-    Comparison                     & Img              & Dots              & Vid                \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN-RA                          & \kappaRAMNimgSac & \kappaRAMNdotsSac & \kappaRAMNvideoSac \\
-    RA-AL                          & \kappaALRAimgSac & \kappaALRAdotsSac & \kappaALRAvideoSac \\
-    MN-AL                          & \kappaALMNimgSac & \kappaALMNdotsSac & \kappaALMNvideoSac \\
-    \noalign{\smallskip}
-    \textbf{PSOs}                  &                  &                   &                    \\
-    \hline\noalign{\smallskip}
-    Comparison                     & Img              & Dots              & Vid                \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    MN-RA                          & \kappaRAMNimgPSO & \kappaRAMNdotsPSO & \kappaRAMNvideoPSO \\
-    RA-AL                          & \kappaALRAimgPSO & \kappaALRAdotsPSO & \kappaALRAvideoPSO \\
-    MN-AL                          & \kappaALMNimgPSO & \kappaALMNdotsPSO & \kappaALMNvideoPSO \\
-    \noalign{\smallskip}\hline
-  \end{tabular}
-\end{table}
 
 Taken together, \remodnav\ yields classification results that are, on average,
 more human-like than any other algorithm tested on the dataset and metrics put
