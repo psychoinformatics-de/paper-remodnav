@@ -832,6 +832,42 @@ of $2.9$, and a mean ranking of $3.2$ when not taking smooth pursuit into accoun
 \end{table*}
 
 
+
+\begin{table}[tbp]
+  % table caption is above the table
+  \caption{Cohen's Kappa reliability between human coders (MN, RA), and \remodnav\ (AL)
+  with each of the human coders.
+  }
+  \label{tab:kappa}       % Give a unique label
+  % For LaTeX tables use
+  \begin{tabular}{llll}
+    \textbf {Fixations}            &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                     & Img              & Dots              & Vid                \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN-RA                          & \kappaRAMNimgFix & \kappaRAMNdotsFix & \kappaRAMNvideoFix \\
+    RA-AL                          & \kappaALRAimgFix & \kappaALRAdotsFix & \kappaALRAvideoFix \\
+    MN-AL                          & \kappaALMNimgFix & \kappaALMNdotsFix & \kappaALMNvideoFix \\
+    \noalign{\smallskip}
+    \textbf{Saccades}              &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                     & Img              & Dots              & Vid                \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN-RA                          & \kappaRAMNimgSac & \kappaRAMNdotsSac & \kappaRAMNvideoSac \\
+    RA-AL                          & \kappaALRAimgSac & \kappaALRAdotsSac & \kappaALRAvideoSac \\
+    MN-AL                          & \kappaALMNimgSac & \kappaALMNdotsSac & \kappaALMNvideoSac \\
+    \noalign{\smallskip}
+    \textbf{PSOs}                  &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                     & Img              & Dots              & Vid                \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN-RA                          & \kappaRAMNimgPSO & \kappaRAMNdotsPSO & \kappaRAMNvideoPSO \\
+    RA-AL                          & \kappaALRAimgPSO & \kappaALRAdotsPSO & \kappaALRAvideoPSO \\
+    MN-AL                          & \kappaALMNimgPSO & \kappaALMNdotsPSO & \kappaALMNvideoPSO \\
+    \noalign{\smallskip}\hline
+  \end{tabular}
+\end{table}
+
 Taken together, \remodnav\ yields classification results that are, on average,
 more human-like than any other algorithm tested on the dataset and metrics put
 forth by \citet{Andersson2017}. In particular, its performance largely equals
