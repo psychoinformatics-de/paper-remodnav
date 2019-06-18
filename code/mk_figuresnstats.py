@@ -891,6 +891,7 @@ if __name__ == '__main__':
         savefigs(args.figure, args.stats)
         print_RMSD()
         plot_dist(args.figure)
+        kappa()
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:
