@@ -269,7 +269,11 @@ aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
 that employs an adaptive approach to velocity based eye movement event
 detection and classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
-more homogeneous segments with more uniform noise levels. Furthermore, it adds
+more homogeneous segments with more uniform noise levels.
+Just as the original algorithm, its frame of reference is world centered, that
+is, the gaze coordinates have a reference to a stimulation set-up with a fixed
+position in the world such x and y coordinates in pixel of a computer screen.
+Furthermore, it adds
 support for pursuit event detection. Apart from this, it is built and distributed
 as free, open source software, and can be easily obtained and executed with free
 tools. We evaluated \remodnav\ on three different
