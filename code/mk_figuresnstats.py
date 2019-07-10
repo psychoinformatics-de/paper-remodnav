@@ -465,6 +465,7 @@ def savegaze():
         # window is within the originally plotted 50s and contains missing data
         # for both data types (lab & mri)
         events = clf(p[15000:25000])
+        events_detail = clf(p[24500:24750])
 
         fig = pl.figure(
             # fake size to get the font size down in relation
@@ -480,6 +481,24 @@ def savegaze():
             vel_lim=(0, 1000))
         pl.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
+        pl.close()
+        # plot details
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(7, 2),
+            dpi=120,
+            frameon=False)
+        ut.show_gaze(
+            pp=p[24500:24750],
+            events=events_detail,
+            sampling_rate=1000.0,
+            show_vels=True,
+            coord_lim=(0, 1280),
+            vel_lim=(0, 1000))
+        pl.savefig(
+            op.join('img', 'remodnav_{}_detail.svg'.format(ext)),
             transparent=True,
             bbox_inches="tight")
         pl.close()
