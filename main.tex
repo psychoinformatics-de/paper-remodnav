@@ -262,7 +262,29 @@ movement is not properly detected and labeled, erroneous fixation and saccade
 events (which smooth pursuits would be classified into instead) are introduced.
 Contemporary algorithms rarely provide this functionality
 \cite[but see \eg][for existing algorithms with
-smooth pursuit detection]{LARSSON2015145,Komogortsev2013}.
+smooth pursuit classification]{LARSSON2015145,Komogortsev2013}. Following the suggestion
+of \citet{hessels2018eye}, we define the different supported eye-movements
+on a functional and oculomotor dimension below. The exact computational
+definitions of the supported eye movements are given within the algorithm
+overview in the Methods section.
+A \textit{fixation} is a period of time during which a part of the visual stimulus
+is looked at and thereby projected to a relatively constant location on the retina.
+This type of eye movement is necessary for visual intake, and characterized by a
+relatively still gaze position in the eye-tracker signal.
+A fixation event therefore excludes periods of \textit{smooth pursuit}.
+These are eye movements during which a moving part of the visual stimulus is
+looked at for visual intake, and thereby projected to a relatively constant
+location on the retina.
+The event is characterized by steadily changing gaze position in the eye-tracker
+signal.
+\textit{Saccades} on the other hand are also characterized by changing gaze positions,
+but their velocity trace is usually higher than that of pursuit movements.
+They serve to shift the position of the eye to a target region, and, unlike
+during pursuit or fixation events, visual intake
+is surpressed (cite). \textit{Post-saccadic oscillations}, finally, are periods of
+ocular instability after a saccade.
+\todo{citations and language improvments for this part}
+
 
 Here we introduce \remodnav\ (robust eye movement detection for natural
 viewing), a new tool that aims to meet these objectives. It is built on the
@@ -271,13 +293,16 @@ that employs an adaptive approach to velocity based eye movement event
 detection and classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
 more homogeneous segments with more uniform noise levels.
-Just as the original algorithm, its frame of reference is world centered, that
-is, the gaze coordinates have a reference to a stimulation set-up with a fixed
-position in the world such x and y coordinates in pixel of a computer screen.
-Furthermore, it adds
-support for pursuit event detection. Apart from this, it is built and distributed
-as free, open source software, and can be easily obtained and executed with free
-tools. We evaluated \remodnav\ on three different
+Furthermore, it adds support for pursuit event classification.
+Just as the original algorithm, its frame of reference is world centered,
+i.e. the gaze coordinates have a reference to a stimulation set-up with a fixed
+position in the world such as x and y coordinates in pixel of a computer screen,
+and it is meant to be used with eye tracking data from participants viewing
+static (e.g. images) or dynamic (e.g. videos) stimuli, recorded with remote or
+tower-mounted eye trackers.
+Importantly, it is built and distributed as free, open source software,
+and can be easily obtained and executed with free tools.
+We evaluated \remodnav\ on three different
 datasets from conventional paradigms, and natural stimulation (high and lower
 quality), and relate its performance to the algorithm comparison by
 \cite{Andersson2017}.
@@ -305,6 +330,11 @@ general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
 parameters are given in parenthesis. \tab{parameters} summarizes all
 parameters, and lists their default values.
+The computational components of the different eye movement definitions
+\citep{hessels2018eye} are given within the event classification description.
+Note, however, that some of the computational
+components of eye movements can be adjusted to an individual researcher's own
+definition by changing the algorithms' parameter values.
 
 \begin{figure*}
   \includegraphics[width=1\textwidth]{img/remodnav_algorithm.pdf}
