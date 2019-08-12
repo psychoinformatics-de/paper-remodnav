@@ -199,7 +199,7 @@ data preprocessing
 % precise computation of saccades and fixations.
 
 A spreading theme in cognitive neuroscience is to use dynamic and naturalistic
-stimuli such as video clips or movies as opposed to basic, static and articial
+stimuli such as video clips or movies as opposed to static and isolated
 stimuli \citep{real_world}. Using
 dynamic stimuli promises to observe the nuances of cognition in a more life-like
 environment. Some interesting applications include the determination of neural
@@ -224,7 +224,7 @@ application of appropriate event classification algorithms.
 However, a recent comparison of algorithms found that while many readily
 available algorithms for eye movement classification performed well on data
 from static stimulation or short trial-based acquisitions with simplified
-moving stimuli, none worked particularly well on data from complex natural
+moving stimuli, none worked particularly well on data from complex naturalistic
 dynamic stimulation, such as video clips, when compared to human coders
 \citep{Andersson2017}.
 %
@@ -233,17 +233,17 @@ the winners in the aforementioned comparison, on data from prolonged
 stimulation (\unit[$\approx$15]{min}) with a feature film, we found the
 average and median durations of labeled fixations to exceed literature
 reports \citep[\eg][]{holmqvist2011eye,dorr2010variability} by up to a factor
-of two.  Additionally, and in particular for increasing levels of noise in the
+of two. Additionally, and in particular for increasing levels of noise in the
 data, the algorithm classified too few fixations, as also noted by
 \citet{Friedman2018}, because it discarded potential fixation events that
 contained data artifacts such as signal-loss and distortion associated with
 blinks.
 %
-However, robust performance on noisy data is of particular relevance in the
-context of ``natural stimulation'', as the ultimate natural stimulation is the
-actual natural environment, and data acquired outdoors or with mobile
-devices typically does not match the quality achieved in dedicated lab
-setups.
+%However, robust performance on noisy data is of particular relevance in the
+%context of ``natural stimulation'', as the ultimate natural stimulation is the
+%actual natural environment, and data acquired outdoors or with mobile
+%devices typically does not match the quality achieved in dedicated lab
+%setups.
 
 Therefore our objective was to improve upon the available eye movement
 detection and classification algorithms, and develop a tool that performs
@@ -257,7 +257,7 @@ In addition to the event categories \textit{fixation}, \textit{saccade}, and
 algorithm had to support the classification of \textit{smooth pursuit} events, as
 emphasized by \cite{Andersson2017}. These are slow movements of the eye during
 tracking of a moving target and are routinely evoked by moving visual objects
-during dynamic stimulation \citep{carl1987pursuits}.  If this type of eye
+during dynamic stimulation \citep{carl1987pursuits}. If this type of eye
 movement is not properly detected and labeled, erroneous fixation and saccade
 events (which smooth pursuits would be classified into instead) are introduced.
 Contemporary algorithms rarely provide this functionality
