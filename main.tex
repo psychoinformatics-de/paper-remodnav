@@ -128,14 +128,14 @@ Heinrich Heine University Düsseldorf, Germany
 Tracking of eye movements is an established measurement for many types of
 experimental paradigms.
 More complex and lengthier visual stimuli have made algorithmic approaches to
-eye movement event detection the most pragmatic option.
+eye movement event classification the most pragmatic option.
 A recent analysis revealed that many current algorithms are lackluster when it
 comes to data from viewing dynamic stimuli such as video sequences.
-Here we present an event detection algorithm---built on an existing
+Here we present an event classification algorithm---built on an existing
 velocity-based approach---that is suitable for both static and dynamic
 stimulation, and is capable of detecting saccades, post-saccadic
 oscillations, fixations, and smooth pursuit events.
-We validated detection performance and robustness on three public datasets:
+We validated classification performance and robustness on three public datasets:
 1)~manually annotated, trial-based gaze trajectories for viewing static images,
 moving dots, and short video sequences, 2)~lab-quality gaze recordings for a
 feature length movie, and 3)~gaze recordings acquired under suboptimal lighting
@@ -148,16 +148,16 @@ recordings without a trial structure. Lastly, algorithm performance is robust
 on data acquired under suboptimal conditions that exhibit a temporally
 varying noise level.
 These results indicate that the proposed algorithm is a robust tool with
-improved detection accuracy across a range of use cases.
+improved classification accuracy across a range of use cases.
 A cross-platform compatible implementation in the Python programming language
 is available as free and open source software.
 
 \keywords{%
 eye tracking \and
-adaptive detection algorithm \and
-saccade detection algorithm \and
+adaptive classification algorithm \and
+saccade classification algorithm \and
 statistical saccade analysis \and
-glissade detection \and
+glissade classification \and
 adaptive threshold algorithm \and
 data preprocessing
 }
@@ -219,7 +219,7 @@ to disentangle different cognitive, occulomotor, or perceptive states
 associated with different types of eye movements, most research relies on the
 classification of eye gaze data into distinct eye movement event categories
 \citep{Schutz2011}. The most feasible approach for doing this lies in the
-application of appropriate event detection algorithms.
+application of appropriate event classification algorithms.
 
 However, a recent comparison of algorithms found that while many readily
 available algorithms for eye movement classification performed well on data
@@ -247,15 +247,15 @@ setups.
 
 Therefore our objective was to improve upon the available eye movement
 detection and classification algorithms, and develop a tool that performs
-robustly on data from dynamic natural stimulation, without sacrificing detection
+robustly on data from dynamic, naturalistic stimulation, without sacrificing classification
 accuracy for static and simplified stimulation. Importantly, we aimed for
 applicability to prolonged recordings that lack any kind of trial structure,
 and exhibit periods of signal-loss and non-stationary noise levels.
 % maybe work in \citep{Hooge2018} again
 In addition to the event categories \textit{fixation}, \textit{saccade}, and
 \textit{post-saccadic oscillation} (PSO; sometimes termed ``glissade"), the
-algorithm had to support the detection of \textit{smooth pursuit} events, as
-emphasized by \cite{Andersson2017}.  These are slow movements of the eye during
+algorithm had to support the classification of \textit{smooth pursuit} events, as
+emphasized by \cite{Andersson2017}. These are slow movements of the eye during
 tracking of a moving target and are routinely evoked by moving visual objects
 during dynamic stimulation \citep{carl1987pursuits}.  If this type of eye
 movement is not properly detected and labeled, erroneous fixation and saccade
@@ -318,14 +318,14 @@ quality), and relate its performance to the algorithm comparison by
 %technical details required for implementation of the tool by other
 %developers.}}
 
-Like NH, \remodnav\ is a \textit{velocity-based} event detection algorithm.
+Like NH, \remodnav\ is a \textit{velocity-based} event classification algorithm.
 Compared to \textit{dispersion-based} algorithms, these types of algorithms are
 less susceptible to noise and spatio-temporal precision, and are thus applicable to
 a wide range of sampling frequencies. Furthermore, any influence of
 biologically implausible velocities and accelerations can be prevented with the
 use of appropriate filters and thresholds \citep{holmqvist2011eye}.
 
-The algorithm comprises two major steps: preprocessing and event detection.  A
+The algorithm comprises two major steps: preprocessing and event classification.  A
 general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
 parameters are given in parenthesis. \tab{parameters} summarizes all
@@ -346,7 +346,7 @@ definition by changing the algorithms' parameter values.
 \subsection*{Preprocessing}
 
 The goal of data preprocessing is to compute a time series of eye movement
-velocities on which the event detection algorithm can be executed, while jointly
+velocities on which the event classification algorithm can be executed, while jointly
 reducing non-movement-related noise in the data as much as possible. 
 
 First, implausible spikes in the coordinate time series are removed with a
@@ -365,7 +365,7 @@ filtered data is later used for a coarse segmentation of a time series into
 shorter intervals between major saccades.
 %
 Separately, data are also smoothed with a Savitzky-Golay filter
-(\param{savgol\_ \{length,polyord\}}). All event detection beyond the
+(\param{savgol\_ \{length,polyord\}}). All event classification beyond the
 localization of major saccades for time series chunking is performed on this
 type of filtered data.
 
@@ -411,7 +411,7 @@ exceeding this threshold are replaced by this set value.
     \citep[default value based on ][]{holmqvist2011eye}&
     \unit[1000]{deg/s}\\
 
-    \\\multicolumn{3}{l}{\textit{Event detection}} \\
+    \\\multicolumn{3}{l}{\textit{Event classification}} \\
     \texttt{min\_saccade\_duration} &
     minimum duration of a saccade event candidate &
     \unit[0.01]{s}\\
@@ -425,7 +425,7 @@ exceeding this threshold are replaced by this set value.
     minimum duration of a pursuit event candidate &
     \unit[0.04]{s}\\
     \texttt{min\_intersaccade\_duration} &
-    no saccade detection is performed in windows shorter than twice this value, plus minimum saccade and PSO duration&
+    no saccade classification is performed in windows shorter than twice this value, plus minimum saccade and PSO duration&
     \unit[0.04]{s}\\
     \texttt{noise\_factor} &
     adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives \citep[equivalent: 3.0]{Nystrom2010AnData}&
@@ -435,7 +435,7 @@ exceeding this threshold are replaced by this set value.
     be larger than any conceivable minimum saccade velocity &
     \unit[300]{deg/s}\\
     \texttt{max\_initial\_saccade\_freq} &
-    maximum saccade frequency for initial detection of major saccades, initial data
+    maximum saccade frequency for initial classification of major saccades, initial data
     chunking is stopped if this frequency is reached (should be smaller than an expected
     (natural) saccade frequency in a particular context), default based on literature reports of a natural, free-viewing saccade frequency of \unit[$\sim$1.7 $\pm$0.3]{Hz} during a movie stimulus \citep{amit2017temporal} &
     \unit[2]{Hz}\\
@@ -455,7 +455,7 @@ exceeding this threshold are replaced by this set value.
 
 
 
-\subsection*{Event detection}
+\subsection*{Event classification}
 
 \subsubsection*{Saccade velocity threshold}
 
@@ -534,13 +534,13 @@ and high-velocity oscillations (event label \texttt{HPSO} or \texttt{IHPS}),
 where the velocity exceeds the saccade onset or peak velocity threshold,
 respectively.
 
-\subsection*{Pursuit and fixation detection}
+\subsection*{Pursuit and fixation classification}
 
 For all remaining, unlabeled time series segments that are longer than a
 minimum duration (\param{min\_fixation\_ duration}), velocities are low-pass
 filtered (Butterworth, \param{lowpass\_cutoff\_freq}). Any segments
 exceeding a minimum velocity threshold (\param{pursuit\_velthresh}) are
-classified as pursuit (event label \texttt{PURS}). Pursuit on/offset detection
+classified as pursuit (event label \texttt{PURS}). Pursuit on/offset classification
 uses the same approach as that for saccades: search for local minima preceding
 and following the above threshold velocities.
 %
@@ -590,7 +590,7 @@ description and default value, are listed in \tab{parameters}.
 While the required user input is kept minimal, the number of configurable
 parameters is purposefully large to facilitate optimal parameterization for
 data with specific properties. Besides the list of detected events, a
-visualization of the detection results, together with a time course of
+visualization of the classification results, together with a time course of
 horizontal and vertical gaze position, and velocities is provided for
 illustration and initial quality assessment of algorithm performance on each
 input data file.
@@ -624,7 +624,7 @@ no dataset-specific tuning other than the built-in adaptive behavior.
 \subsection*{Algorithm comparison}\label{ana_1}
 
 Presently, \cite{Andersson2017} represents the most comprehensive comparative
-study on eye movement detection algorithms. Moreover, the dataset employed
+study on eye movement classification algorithms. Moreover, the dataset employed
 in that study was made publicly available. Consequently, evaluating \remodnav\
 performance on these data and using their metrics offers a straightforward
 approach to relate this new development to alternative solutions.
@@ -728,7 +728,7 @@ individual human coder for fixations, saccades, and PSOs, resembles the
 agreement between the human coders. Classification of smooth
 pursuits is consistent with human labels for the categories moving dots, and
 videos. However, there is a substantial confusion of fixation and pursuit for
-the static images. In a real-world application of \remodnav, pursuit detection
+the static images. In a real-world application of \remodnav, pursuit classification
 could be disabled (by setting a high pursuit velocity threshold) for data from
 static images, if the occurrence of pursuit events can be ruled out a priori.
 For this evaluation, however, no such intervention was made.
@@ -837,13 +837,13 @@ characteristic.  Therefore, we converted RMSDs for each algorithm and event
 type into zero-based ranks (lower is more human-like).
 
 The LNS algorithm \citep{Larsson2013} was found to have the most human-like
-performance for saccade and PSO detection in \cite{Andersson2017}.  \remodnav\
+performance for saccade and PSO classification in \cite{Andersson2017}.  \remodnav\
 performs comparable to LNS for both event types (saccades: $2.0$ vs. $3.3$;
 PSOs: $2.3$ vs. $2.0$, mean rank across stimulus categories for LNS and \remodnav,
 respectively).
 
 Depending on the stimulus type, different algorithms performed best for
-fixation detection. NH performed best for images and videos, but worst for
+fixation classification. NH performed best for images and videos, but worst for
 moving dots. \remodnav\ outperforms all other algorithms in the dots category,
 and achieves rank 5 and 6 (middle range) for videos and images, respectively.
 Across all stimulus and event categories, \remodnav\ achieves a mean ranking
@@ -988,7 +988,7 @@ static scene perception]{Nystrom2010AnData}.
 
 Overall, the presented summary statistics suggest that \remodnav\ is capable
 of detecting eye movements with plausible characteristics, in prolonged
-gaze recordings without a trial structure. A visualization of such a detection
+gaze recordings without a trial structure. A visualization of such a classification
 result is depicted in \fig{remodnav} (top row).
 
 \begin{figure*}
@@ -1020,7 +1020,7 @@ result is depicted in \fig{remodnav} (top row).
   \includegraphics[trim=0 0 0 0,clip,width=1\textwidth]{img/remodnav_mri.pdf}\\
   \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/remodnav_lab_detail.pdf}
   \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/remodnav_mri_detail.pdf}\\
-  \caption{Exemplary eye movement detection results for the same \unit[10]{s} excerpt
+  \caption{Exemplary eye movement classification results for the same \unit[10]{s} excerpt
   of a movie stimulus for a single participant in the high quality lab sample (top),
   and in the lower quality MRI sample (middle). The bottom panel shows 0.25 seconds of
   lab (left) and mri (right) sample in greater detail. The plots show filtered gaze coordinates
@@ -1031,7 +1031,7 @@ result is depicted in \fig{remodnav} (top row).
   a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
   saccade events first, and subsequently tunes the velocity threshold to short time
   windows between these events. Figures like this accompany the program output to
-  facilitate quality control and discovery of inappropriate preprocessing and detection
+  facilitate quality control and discovery of inappropriate preprocessing and classification
   parameterization.}
 
   \label{fig:remodnav}
@@ -1042,7 +1042,7 @@ result is depicted in \fig{remodnav} (top row).
 
 An explicit goal for \remodnav\ development was robust performance on
 lower-quality data. While lack of quality cannot be arbitrarily compensated and
-will inevitably lead to misses in eye movement detection, it is beneficial for
+will inevitably lead to misses in eye movement classification, it is beneficial for
 any further analysis if operation on noisy data does not introduce unexpected
 event property biases.
 
@@ -1077,7 +1077,7 @@ respectively.
 % data loss, perhaps in addition to a subjective rating from the person
 % responsible for the recording"
 
-Overall, the detection results exhibit strong similarity, despite the potential
+Overall, the classification results exhibit strong similarity, despite the potential
 behavioral impact of watching a movie while lying on their back and looking
 upwards on the participants, or the well known effect of increasing fatigue \citep{wakefulness}
 during a two-hour session in an MRI-scanner. In particular, saccade amplitude
@@ -1095,15 +1095,15 @@ dataset. This effect may be attributable to the differences in stimulus size
 \section*{Conclusion}\label{con}
 
 Based on the adaptive, velocity-based algorithm for fixation, saccade, and PSO
-detection by \cite{Nystrom2010AnData}, we have developed an improved algorithm
+classification by \cite{Nystrom2010AnData}, we have developed an improved algorithm
 that, in contrast to the original, performs robustly on prolonged recordings
 with dynamic stimulation, without a trial structure and variable noise levels,
-and also supports the detection of smooth pursuit events. Through a series of
+and also supports the classification of smooth pursuit events. Through a series of
 validation analyses we have shown that its performance is comparable to or
 better than ten other contemporary detection algorithms, and that plausible
-detection results are achieved on high and lower quality data.
+classification results are achieved on high and lower quality data.
 These aspects of algorithm capabilities and performance suggest that \remodnav\
-is a state-of-the-art tool for eye movement detection with particular relevance
+is a state-of-the-art tool for eye movement classification with particular relevance
 for emerging complex, naturalistic data collections paradigms, such as
 the combination of eye tracking and functional
 MRI in simultaneous measurements.
@@ -1117,7 +1117,7 @@ neural networks \citep{Startsev2018}, and machine-learning in general
 research study. However, in its present form \remodnav\ cannot be used for
 real-time data analysis, as its approach for time series chunking is based
 on an initial sorting of major saccade events across the entire time series.
-The proposed algorithm presently does not support the detection of eye blinks
+The proposed algorithm presently does not support the classification of eye blinks
 as a category distinct from periods of general signal loss. While such a feature
 could potentially be added, the current default preprocessing aims at removing
 blink-related signal. Lastly, the evaluation results presented here are based
@@ -1127,7 +1127,7 @@ its performance on data from low-end, consumer grade hardware (\eg \unit[50]{Hz}
 sampling rate) has not been tested.
 
 Just as \cite{Andersson2017}, we considered human raters as a gold standard
-reference for event detection when evaluating algorithms.  The implications of
+reference for event classification when evaluating algorithms.  The implications of
 the results presented herein are hence only valid if this assumption is
 warranted. Some authors voice concerns \cite[\eg][]{5523936}, regarding
 potential biases that may limit generalizability. Nevertheless, human-made
@@ -1144,7 +1144,7 @@ parameterizations more suitable than others for particular applications. The
 provided implementation of the \remodnav\ algorithm \citep{michael_hanke_2019_2651042}
 acknowledges this fact by
 exposing a range of parameters through its user interface that can be altered
-in order to tune the detection for a particular use case.
+in order to tune the classification for a particular use case.
 
 The latest version of \remodnav\ can be installed from
 PyPi\footnote{https://pypi.org/project/remodnav} via \texttt{pip install
