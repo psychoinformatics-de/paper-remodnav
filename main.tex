@@ -576,7 +576,11 @@ remodnav <inputfile> <outputfile> \
 where \texttt{<inputfile>} is the name of a tab-separated-value (TSV) text file
 with one gaze coordinate sample per line. An input file can have any number of
 columns, only the first two columns are read and interpreted as $X$ and $Y$
-coordinates. The second argument \texttt{<outputfile>} is the file name of a
+coordinates. Note that this constrains input data to a dense data representation,
+i.e. either data from eye trackers with fixed sampling frequency throughout the
+recording, or sparse data that has been transformed into a dense representation
+beforehand.
+The second argument \texttt{<outputfile>} is the file name of a
 BIDS-compliant \citep{gorgolewski2016brain} TSV text file that will contain a
 report on one detected eye movement event per line, with onset and offset time,
 onset and offset coordinates, amplitude, peak velocity, median velocity and
@@ -1131,6 +1135,10 @@ low-velocity PSOs first introduced by \citet{Nystrom2010AnData}. To our knowledg
 the subsequent literature does not make use of this differentiation. Based on use case,
 users can decide on whether to differ between the two event types, or combine them into
 a general PSO category, as done in our own validation analyses.
+Note that the algorithm assumes a constant sampling rate in the input data,
+as each line in an input file is treated as one sample, and a time column is not supported.
+However, sparse data formats can be analysed by converting them
+to a dense time series prior to the classification with \remodnav\.
 Lastly, the evaluation results presented here are based
 on data with a relatively high temporal resolution (\unit[0.5 and 1]{kHz}). While
 the algorithm does not impose any hard constraints on data acquisition parameters,
