@@ -1126,7 +1126,12 @@ on an initial sorting of major saccade events across the entire time series.
 The proposed algorithm presently does not support the classification of eye blinks
 as a category distinct from periods of general signal loss. While such a feature
 could potentially be added, the current default preprocessing aims at removing
-blink-related signal. Lastly, the evaluation results presented here are based
+blink-related signal. The algorithm preserves a distinction between high- and
+low-velocity PSOs first introduced by \citet{Nystrom2010AnData}. To our knowledge,
+the subsequent literature does not make use of this differentiation. Based on use case,
+users can decide on whether to differ between the two event types, or combine them into
+a general PSO category, as done in our own validation analyses.
+Lastly, the evaluation results presented here are based
 on data with a relatively high temporal resolution (\unit[0.5 and 1]{kHz}). While
 the algorithm does not impose any hard constraints on data acquisition parameters,
 its performance on data from low-end, consumer grade hardware (\eg \unit[50]{Hz}
