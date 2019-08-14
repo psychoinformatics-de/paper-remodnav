@@ -258,14 +258,14 @@ algorithms.
 % maybe work in \citep{Hooge2018} again
 
 Following the best practices proposed by \citet{hessels2018eye},
-we define the different supported eye-movements
+we define the different eye-movements that are supported by our algorithm
 on a functional and oculomotor dimension below. The exact computational
 definitions of the supported eye movements are given within the algorithm
 overview in the Methods section.
-In addition to the event categories \textit{fixation}, \textit{saccade}, and
-\textit{post-saccadic oscillation} (PSO; sometimes termed ``glissade"), the
-algorithm had to support the classification of \textit{smooth pursuit} events, as
-emphasized by \cite{Andersson2017}.
+\remodnav\ classifies the event categories \textit{fixation}, \textit{saccade}, and
+\textit{post-saccadic oscillation} (PSO; sometimes termed ``glissade"), and apart from
+this, as emphasized by \cite{Andersson2017}, the algorithm also has to support the
+classification of \textit{smooth pursuit} events.
 A \textit{fixation} is a period of time during which a part of the visual stimulus
 is looked at and thereby projected to a relatively constant location on the retina.
 This type of eye movement is necessary for visual intake, and characterized by a
@@ -288,7 +288,8 @@ is surpressed \citep{Schutz2011}. \textit{Post-saccadic oscillations}, finally, 
 ocular instability after a saccade \citep{Nystrom2010AnData}.
 
 Here we introduce \remodnav\ (robust eye movement detection for natural
-viewing), a new tool that aims to meet these objectives. It is built on the
+viewing), a new tool that aims to meet our objectives and classifies the
+eye movement events defined above. It is built on the
 aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
 that employs an adaptive approach to velocity based eye movement event
 detection and classification. \remodnav\ enhances NH with the use of robust
@@ -351,8 +352,8 @@ standard in many eye tracking toolboxes and often used for preprocessing
 %
 Data samples around signal loss (\eg eye blinks) can be removed in order to
 eliminate spurious movement signals (\param{dilate\_nan},
-\param{min\_blink\_duration}; \fig{alg}A, 2). This is due to the fact that
-blinks produce artifacts in the eye-tracking signal when the eyelid closes
+\param{min\_blink\_duration}; \fig{alg}A, 2). This is based on the fact that
+blinks can produce artifacts in the eye-tracking signal when the eyelid closes
 and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
@@ -619,6 +620,8 @@ average velocity. The remaining arguments are the only two mandatory
 parameters: the conversion factor from pixels to visual degrees, \ie the visual
 angle of a single (square) pixel (\texttt{<px2deg>} in \unit{deg}), and the
 temporal sampling rate (\texttt{<sampling\_rate>} in \unit{Hz}).
+All other optional parameters listed in \tab{parameters} can be added to the
+program invocation to override the default values.
 
 All additionally supported parameters (sorted by algorithm step) with their
 description and default value, are listed in \tab{parameters}.
@@ -1017,7 +1020,7 @@ match previous reports in the literature, such as a strong bias towards short
 \unit[10-20]{ms} \citep[Fig.~11]{Nystrom2010AnData}, and a non-Gaussian saccade
 duration distribution located below \unit[100]{ms} \citep[Fig.~8, albeit for
 static scene perception]{Nystrom2010AnData}.
-
+%
 Overall, the presented summary statistics suggest that \remodnav\ is capable
 of detecting eye movements with plausible characteristics, in prolonged
 gaze recordings without a trial structure. A visualization of such a classification
@@ -1099,7 +1102,7 @@ compared to zero out of 15 subjects in the laboratory setting.
 The average spatial accuracy as assessed with a 13-point calibration procedure
 in the scanner was 0.75 degrees of visual angle, and the spatial precision,
 defined as the variance in accuracy following \citet{holmqvist2012eye},
-was 0.44 degrees of visual angle. (do we have these values for in-lab acquisition?)
+was 0.44 degrees of visual angle. \todo[inline]{do we have these values for in-lab acquisition?}
 An example of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
 row, black lines). Except for the differences in stimulation setup, all other
 aspects of data acquisition, eye tracker calibration, and data processing
@@ -1169,7 +1172,7 @@ a general PSO category, as done in our own validation analyses.
 Note that the algorithm assumes a constant sampling rate in the input data,
 as each line in an input file is treated as one sample, and a time column is not supported.
 However, sparse data formats can be analysed by converting them
-to a dense time series prior to the classification with \remodnav\.
+to a dense time series prior to the classification with \remodnav\ .
 Lastly, the evaluation results presented here are based
 on data with a relatively high temporal resolution (\unit[0.5 and 1]{kHz}). While
 the algorithm does not impose any hard constraints on data acquisition parameters,
