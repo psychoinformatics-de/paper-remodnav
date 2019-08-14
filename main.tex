@@ -336,12 +336,6 @@ Note, however, that some of the computational
 components of eye movements can be adjusted to an individual researcher's own
 definition by changing the algorithms' parameter values.
 
-\begin{figure*}
-  \includegraphics[width=1\textwidth]{img/remodnav_algorithm.pdf}
-  \caption{\remodnav workflow. Optional steps and configurable parameters are in bold.}
-  \label{fig:alg}
-\end{figure*}
-
 
 \subsection*{Preprocessing}
 
@@ -373,6 +367,20 @@ After spike-removal and temporal filtering, movement velocities are computed
 (\fig{alg}A, 4-5). To disregard biologically implausible measurements, a
 configurable maximum velocity (\param{max\_vel}) is enforced---any samples
 exceeding this threshold are replaced by this set value.
+
+The result of a default preprocessing procedure is displayed in \fig{preproc}.
+
+\begin{figure}
+  \includegraphics[width=0.5\textwidth]{img/preproc.pdf}
+  \caption{Examplary preprocessing.}
+  \label{fig:preproc}
+\end{figure}
+
+\begin{figure*}
+  \includegraphics[width=1\textwidth]{img/pseudocode.pdf}
+  \caption{\remodnav workflow in pseudocode. Optional steps and configurable parameters are in bold.}
+  \label{fig:alg}
+\end{figure*}
 
 \begin{table*}[tbp]
   \caption{Exhaustive list of algorithm parameters, their default values, and units.}
@@ -487,6 +495,16 @@ PT_n = median({V}_{n-1}) + F \times MAD({V}_{n-1})
 where $MAD$ is the median absolute deviation, and $F$ is a
 scalar parameter of the algorithm.
 
+This iterative process is illustrated in \fig{velest1}.
+
+\begin{figure}
+  \includegraphics[width=0.5\textwidth]{img/vel_est_1.pdf}
+  \caption{Iterative, global peak velocity estimation, adapted from NH.\
+  SACC = major saccades, HPSO/LPSO = high/low velocity post saccadic\
+  oscillations, MAD = median absolute deviation.}
+  \label{fig:velest1}
+\end{figure}
+
 \subsection*{Time series chunking}
 
 As the algorithm aims to be applicable to prolonged recordings without an
@@ -505,7 +523,7 @@ selecting such events sequentially (starting with the largest sums), until a
 maximum average frequency across the whole time series is reached
 (\param{max\_initial\_saccade\_ freq}). The resulting chunks represent data
 intervals between saccades of maximum magnitude in the respective data.
-
+\fig{velest2} exemplifies event detection within such an intersaccadic interval.
 
 \subsection*{Detection of saccades and post-saccadic oscillations}
 
@@ -533,6 +551,15 @@ time window (\param{max\_pso\_duration}). \remodnav\ distinguishes low-velocity
 and high-velocity oscillations (event label \texttt{HPSO} or \texttt{IHPS}),
 where the velocity exceeds the saccade onset or peak velocity threshold,
 respectively.
+
+\begin{figure}
+  \includegraphics[width=0.5\textwidth]{img/vel_est_2.pdf}
+  \caption{Iterative event detection between major saccades (SACCs).\
+  SACC = major saccades, ISAC = saccade within major saccade window,\
+  ILPS = low velocity post saccadic oscillations within major saccade\
+  window, FIXA = fixation, PURS = smooth pursuit.}
+  \label{fig:velest2}
+\end{figure}
 
 \subsection*{Pursuit and fixation classification}
 
