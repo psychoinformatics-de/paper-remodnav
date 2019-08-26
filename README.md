@@ -22,6 +22,8 @@ Install from [PyPi](https://pypi.org/project/remodnav):
     # install from PyPi
     pip install remodnav
     pip install seaborn
+    # if not installed with another method
+    pip install datalad
 
 - ``datalad install`` the repository with ``datalad install https://github.com/psychoinformatics-de/paper-remodnav.git``
 
