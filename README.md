@@ -29,6 +29,9 @@ Install from [PyPi](https://pypi.org/project/remodnav):
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
 main.tex file, and render the PDF with a single call from the root of the directory: ``make``
 
+- Note that [inkscape](https://inkscape.org/de/release/inkscape-0.92.4/), [latexmk](https://mg.readthedocs.io/latexmk.html),
+  and [texlive-latex-extra](https://wiki.ubuntuusers.de/TeX_Live/) need to be installed on your system to render the figures and the     PDF.
+
 The full PDF will be ``main.pdf``.
  
 
