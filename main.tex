@@ -351,11 +351,11 @@ heuristic spike filter \citep{stampe1993} (\fig{alg}A, 1). This filter is
 standard in many eye tracking toolboxes and often used for preprocessing
 \citep[\eg][]{Nystrom2010AnData}.
 %
-Data samples around signal loss (\eg eye blinks) can be removed in order to
-eliminate spurious movement signals (\param{dilate\_nan},
-\param{min\_blink\_duration}; \fig{alg}A, 2). This is based on the fact that
-blinks can produce artifacts in the eye-tracking signal when the eyelid closes
-and re-opens \citep{choe2016pupil}.
+Data samples around signal loss (\eg eye blinks) can be set to non-numeric values (NaN)
+in order to eliminate spurious movement signals without shortening the time series
+(\param{dilate\_nan}, \param{min\_blink\_duration}; \fig{alg}A, 2). This is based
+on the fact that blinks can produce artifacts in the eye-tracking signal when the
+eyelid closes and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
 (\fig{alg}A, 3). A relatively large median filter (\param{median\_
