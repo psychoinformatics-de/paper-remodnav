@@ -835,8 +835,8 @@ K = \frac{P_o - P_c}{1- P_c}
 %
 where $P_o$ is the observed proportion of agreement between the ratings, and
 $P_c$ is the proportion of chance agreement. A value of $K=1$ indicates perfect
-agreement, $K=0$ indicates chance level agreement, and values of $K<0$ indicate
-below chance performance. Table \ref{tab:kappa} displays the resulting values
+agreement, and $K=0$ indicates chance level agreement.
+Table \ref{tab:kappa} displays the resulting values
 between the two human experts, and \remodnav\ with each of the experts, for
 each stimulus category and the three event types used in \citet{Andersson2017},
 namely fixations, saccades, and PSOs (compare to \citet{Andersson2017}, table 7).
@@ -1052,7 +1052,7 @@ result is depicted in \fig{remodnav} (top row).
   \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/remodnav_mri_detail.pdf}\\
   \caption{Exemplary eye movement classification results for the same \unit[10]{s} excerpt
   of a movie stimulus for a single participant in the high quality lab sample (top),
-  and in the lower quality MRI sample (middle). The bottom panel shows 0.25 seconds of
+  and in the lower quality MRI sample (middle). The bottom panel shows \unit[250]{ms} of
   lab (left) and mri (right) sample in greater detail. The plots show filtered gaze coordinates
   (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
   with periods of fixation (green), pursuit (beige), saccades (blue), and
@@ -1094,8 +1094,9 @@ noisier data, as evident from a generally higher amount of data loss and a
 larger spatial uncertainty \citep[Technical Validation]{Hanke2016}: Six out
 of 15 subjects had one or more movie segments with data loss greater than 30\%,
 compared to zero out of 15 subjects in the laboratory setting.
-The average spatial accuracy as assessed with a 13-point calibration procedure
-in the scanner was 0.75 degrees of visual angle, and the spatial precision,
+The average spatial accuracy at the start of a recording, assessed with a 13-point
+calibration procedure, was \unit[0.58]{degrees of visual angle} for the MRI sample and
+\unit[0.45]{degrees} for the lab sample. The spatial precision,
 defined as the variance in accuracy following \citet{holmqvist2012eye},
 was 0.44 degrees of visual angle.
 An example of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
@@ -1106,7 +1107,7 @@ were identical to the previous dataset.
 We performed the identical analysis as before, in order to compare performance
 between a high and lower-quality data acquisition. This approach differs from
 the common approach of adding increasing levels of artificial noise to data,
-but bears the important advantage of incoporating real lower-quality data
+but bears the important advantage of incorporating real lower-quality data
 characteristics instead of potentially inappropriate or unnatural noise.
 Figures~\ref{fig:overallComp}-\ref{fig:remodnav} depict the results for the
 lab-quality dataset, and the MRI-scanner dataset in the top and bottom rows,
