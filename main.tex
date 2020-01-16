@@ -327,11 +327,11 @@ general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
 parameters are given in parenthesis. \tab{parameters} summarizes all
 parameters, and lists their default values.
-The computational components of the different eye movement definitions
+The computational definitions of the different eye movement
 \citep{hessels2018eye} are given within the event classification description.
-Note, however, that some of the computational components of eye movements can be
+Note, however, that some of the computational definitions of eye movements can be
 adjusted to comply to alternative definitions by changing the algorithms'
-parameter values.
+parameters.
 
 
 \subsection*{Preprocessing}
@@ -347,8 +347,8 @@ standard in many eye tracking toolboxes and often used for preprocessing
 %
 Data samples around signal loss (\eg eye blinks) can be set to non-numeric values (NaN)
 in order to eliminate spurious movement signals without shortening the time series
-(\param{dilate\_nan}, \param{min\_blink\_duration}; \fig{alg}A, 2). This is based
-on the fact that blinks can produce artifacts in the eye-tracking signal when the
+(\param{dilate\_nan}, \param{min\_blink\_duration}; \fig{alg}A, 2). This is
+motivated by the fact that blinks can produce artifacts in the eye-tracking signal when the
 eyelid closes and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
@@ -367,13 +367,13 @@ After spike-removal and temporal filtering, movement velocities are computed
 configurable maximum velocity (\param{max\_vel}) is enforced---any samples
 exceeding this threshold are replaced by this set value.
 
-The result of a default preprocessing procedure is displayed in \fig{preproc}.
-
-\begin{figure}
-  \includegraphics[width=0.5\textwidth]{img/preproc.pdf}
-  \caption{Examplary preprocessing.}
-  \label{fig:preproc}
-\end{figure}
+%The result of a default preprocessing procedure is displayed in \fig{preproc}.
+%
+%\begin{figure}
+%  \includegraphics[width=0.5\textwidth]{img/preproc.pdf}
+%  \caption{Examplary preprocessing.}
+%  \label{fig:preproc}
+%\end{figure}
 
 \begin{figure*}
   \includegraphics[width=1\textwidth]{img/pseudocode.pdf}
@@ -493,15 +493,16 @@ PT_n = median({V}_{n-1}) + F \times MAD({V}_{n-1})
 %
 where $MAD$ is the median absolute deviation, and $F$ is a
 scalar parameter of the algorithm.
-
 This iterative process is illustrated in \fig{velest1}.
 
 \begin{figure}
   \includegraphics[width=0.5\textwidth]{img/vel_est_1.pdf}
-  \caption{Iterative, global peak velocity estimation, adapted from NH.\
-  SACC = major saccades, HPSO/LPSO = high/low velocity post saccadic\
-  oscillations, MAD = median absolute deviation.}
-  \label{fig:velest1}
+  \caption{Iterative, global estimation of velocity thresholds
+    for saccades (SACC), and high/low velocity post saccadic oscillations (HPSO/LPSO).
+    The method is adapted from \cite{Nystrom2010AnData}, but is modified to use robust statistics
+    with median absolute deviation (MAD) as a measure of variability, more suitable
+    for data with a non-normal distribution.}
+    \label{fig:velest1}
 \end{figure}
 
 \subsection*{Time series chunking}
@@ -553,10 +554,10 @@ respectively.
 
 \begin{figure}
   \includegraphics[width=0.5\textwidth]{img/vel_est_2.pdf}
-  \caption{Iterative event detection between major saccades (SACCs).\
-  SACC = major saccades, ISAC = saccade within major saccade window,\
-  ILPS = low velocity post saccadic oscillations within major saccade\
-  window, FIXA = fixation, PURS = smooth pursuit.}
+  \caption{Iterative event detection between major saccades (SACC).
+  The algorithms reports saccades within major saccade window (ISAC),
+  high/low velocity post saccadic oscillations after ISAC events (IHPS/ILPS),
+  fixations (FIXA), and smooth pursuits (PURS).}
   \label{fig:velest2}
 \end{figure}
 
@@ -614,10 +615,10 @@ average velocity. The remaining arguments are the only two mandatory
 parameters: the conversion factor from pixels to visual degrees, \ie the visual
 angle of a single (square) pixel (\texttt{<px2deg>} in \unit{deg}), and the
 temporal sampling rate (\texttt{<sampling\_rate>} in \unit{Hz}).
-All other optional parameters listed in \tab{parameters} can be added to the
-program invocation to override the default values.
+Any other supported parameter can be added to the program invocation to override
+the default values.
 
-All additionally supported parameters (sorted by algorithm step) with their
+A complete list of supported parameters (sorted by algorithm step) with their
 description and default value, are listed in \tab{parameters}.
 While the required user input is kept minimal, the number of configurable
 parameters is purposefully large to facilitate optimal parameterization for
