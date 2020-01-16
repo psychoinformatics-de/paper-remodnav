@@ -1,10 +1,8 @@
-all: pics \
-  mainseq_lab_300dpi.png mainseq_mri_300dpi.png \
-  mainseq_sub_lab_300dpi.png mainseq_sub_mri_300dpi.png
+all: pics
 
 # Optionally some PICS could be ignored. By default XXX ones.
 # PICS_IGNORE must contain a rule for grep
-PICS_IGNORE ?= "mainseq_"
+PICS_IGNORE ?= " "
 
 # For every .svg we must have a pdf
 PICS=$(shell find . -iname \*svg \

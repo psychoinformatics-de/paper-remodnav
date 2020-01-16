@@ -227,6 +227,16 @@ lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
            '32', '33', '34', '35', '36']
 
 
+# this used to be within confusion(), is global now because we also need it for Kappa()
+# --> defines mapping between remodnav labels (strings) and andersson labels (ints)
+anderson_remap = {
+    'FIX': 1,
+    'SAC': 2,
+    'PSO': 3,
+    'PUR': 4,
+}
+
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
@@ -240,12 +250,6 @@ def confusion(refcoder,
               stats):
     conditions = ['FIX', 'SAC', 'PSO', 'PUR']
     #conditions = ['FIX', 'SAC', 'PSO']
-    anderson_remap = {
-        'FIX': 1,
-        'SAC': 2,
-        'PSO': 3,
-        'PUR': 4,
-    }
     plotter = 1
     # initialize a maximum misclassification rate, to later automatically reference,
     max_mclf = 0
@@ -461,6 +465,7 @@ def savegaze():
         # window is within the originally plotted 50s and contains missing data
         # for both data types (lab & mri)
         events = clf(p[15000:25000])
+        events_detail = clf(p[24500:24750])
 
         fig = pl.figure(
             # fake size to get the font size down in relation
@@ -479,10 +484,28 @@ def savegaze():
             transparent=True,
             bbox_inches="tight")
         pl.close()
+        # plot details
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(7, 2),
+            dpi=120,
+            frameon=False)
+        ut.show_gaze(
+            pp=p[24500:24750],
+            events=events_detail,
+            sampling_rate=1000.0,
+            show_vels=True,
+            coord_lim=(0, 1280),
+            vel_lim=(0, 1000))
+        pl.savefig(
+            op.join('img', 'remodnav_{}_detail.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
+        pl.close()
 
 
-def mainseq(s_mri = 'sub-19',
-            s_lab = 'sub-29'):
+def mainseq(s_mri,
+            s_lab):
     """
     plot main sequences from movie data for lab and mri subjects.
     """
@@ -525,10 +548,8 @@ def mainseq(s_mri = 'sub-19',
                 (df, ''),
                 (sub_df, '_sub')):
             # extract relevant event types
-            SACCs = d[d.label == 'SACC']
-            ISACs = d[d.label == 'ISAC']
-            HPSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS')]
-            LPSOs = d[(d.label == 'LPSO') | (d.label == 'ILPS')]
+            SACCs = d[(d.label == 'SACC') | (d.label == 'ISAC')]
+            PSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS') | (d.label == 'LPSO') | (d.label == 'ILPS')]
 
             fig = pl.figure(
                 # fake size to get the font size down in relation
@@ -537,44 +558,36 @@ def mainseq(s_mri = 'sub-19',
                 frameon=False)
 
             for ev, sym, color in (
-                    (ISACs, '.', 'darkred'),
                     (SACCs, '.', 'red'),
-                    (HPSOs, '+', 'dodgerblue'),
-                    (LPSOs, '+', 'darkblue'))[::-1]:
+                    (PSOs, '+', 'darkblue'),
+                    ):
                 pl.loglog(
                     ev['amp'],
                     ev['peak_vel'],
                     sym,
-                    alpha=0.20,
+                    # scale alpha down with increasing number of data points
+                    alpha=min(0.1, 1.0 / max(0.0001, 0.002 * len(ev))),
                     color=color,
-                    lw = 1
+                    lw = 1,
+                    rasterized=True
                 )
 
             # cheat: custom legend to not propagate alpha into legend markers
-            custom_legend = [Line2D([0], [0],
-                                    marker='.',
-                                    color='w',
-                                    markerfacecolor='darkred',
-                                    label='Saccade (ISAC)',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='.',
-                                    color='w',
-                                    markerfacecolor='red',
-                                    label='Major saccade (SACC)',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='P',
-                                    color='w',
-                                    markerfacecolor='dodgerblue',
-                                    label='High velocity PSOs',
-                                    markersize=10),
-                             Line2D([0], [0],
-                                    marker='P',
-                                    color='w',
-                                    markerfacecolor='darkblue',
-                                    label='Low velocity PSOs',
-                                    markersize=10)]
+            custom_legend = [
+                Line2D([0], [0],
+                       marker='.',
+                       color='w',
+                       markerfacecolor='red',
+                       label='Saccade',
+                       markersize=10),
+                Line2D([0], [0],
+                       marker='P',
+                       color='w',
+                       markerfacecolor='darkblue',
+                       label='PSO',
+                       #label='Low velocity PSOs',
+                       markersize=10),
+            ]
 
             pl.ylim((10.0, 1000))
             pl.xlim((0.01, 40.0))
@@ -786,6 +799,82 @@ def plot_dist(figures):
             pl.close()
 
 
+def kappa():
+    """
+    During the review process, reviewer 2 requested Cohens Kappa computation.
+    We have not implemented the measure before because we felt it did not add
+    information beyond the confusion and RMSD computations.
+    """
+    px2deg = None
+    sr = None
+    from sklearn.metrics import cohen_kappa_score
+    # for every stimulus type
+    for stim in ['img', 'dots', 'video']:
+        # for every eye movement label used in Anderson et al. (2017)
+        for (ev, i) in [('Fix', 1), ('Sac', 2), ('PSO', 3)]:
+            # initialize lists to store classification results in
+            RA_res = []
+            MN_res = []
+            AL_res = []
+            # aggregate the target_labels of all files per coder + stim_type
+            for idx, fname in enumerate(labeled_files[stim]):
+                for coder in ['MN', 'RA', 'AL']:
+                    if coder in ['MN', 'RA']:
+                        data, target_labels, target_events, px2deg, sr = \
+                            load_anderson(stim, fname.format(coder))
+                        # dichotomize classification based on event type
+                        labels = [1 if j == i else 0 for j in target_labels]
+                        if coder == 'MN':
+                            MN_res.append(labels)
+                        elif coder == 'RA':
+                            RA_res.append(labels)
+                    else:
+                        # get REMoDNaV classification
+                        clf = EyegazeClassifier(
+                            px2deg=px2deg,
+                            sampling_rate=sr,
+                        )
+                        p = clf.preproc(data)
+                        events = clf(p)
+
+                        # convert event list into anderson-style label array
+                        l = np.zeros(target_labels.shape, target_labels.dtype)
+                        for e in events:
+                            l[int(e['start_time'] * sr):int((e['end_time']) * sr)] = \
+                                anderson_remap[label_map[e['label']]]
+                        # dichotomize REMoDNaV classification results as well
+                        labels = [1 if j == i else 0 for j in l]
+                        AL_res.append(labels)
+
+                if len(MN_res[idx]) != len(RA_res[idx]):
+                    print(
+                        "% #\n% # %INCONSISTENCY Found label length mismatch "
+                        "between coders for: {}\n% #\n".format(fname))
+                    shorter = min([len(RA_res[idx]), len(MN_res[idx])])
+                    print('% Truncate labels to shorter sample: {}'.format(
+                        shorter))
+                    # truncate the labels by indexing up to the highest index
+                    # in the shorter list of labels
+                    MN_res[idx] = MN_res[idx][:shorter]
+                    RA_res[idx] = RA_res[idx][:shorter]
+                    AL_res[idx] = AL_res[idx][:shorter]
+            # dummy check whether we really have the same number of files per coder
+            assert len(RA_res) == len(MN_res)
+            # flatten the list of lists
+            RA_res_flat = [item for sublist in RA_res for item in sublist]
+            MN_res_flat = [item for sublist in MN_res for item in sublist]
+            AL_res_flat = [item for sublist in AL_res for item in sublist]
+            #print(sum(RA_res_flat), sum(MN_res_flat))
+            assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
+            # compute Cohens Kappa
+            for rating, comb in [('RAMN', [RA_res_flat, MN_res_flat]),
+                                 ('ALRA', [RA_res_flat, AL_res_flat]),
+                                 ('ALMN', [MN_res_flat, AL_res_flat])]:
+                kappa = cohen_kappa_score(comb[0], comb[1])
+                label = 'kappa{}{}{}'.format(rating, stim, ev)
+                print('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+
+
 if __name__ == '__main__':
 
     import argparse
@@ -808,11 +897,11 @@ if __name__ == '__main__':
     parser.add_argument(
         '--sublab',
         help='individual lab-subject for single main sequence',
-        default='sub-29')
+        default='sub-27')
     parser.add_argument(
         '--submri',
         help='individual mri-subject for single main sequence',
-        default='sub-19')
+        default='sub-17')
 
 
     args = parser.parse_args()
@@ -821,6 +910,7 @@ if __name__ == '__main__':
         savefigs(args.figure, args.stats)
         print_RMSD()
         plot_dist(args.figure)
+        kappa()
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:
