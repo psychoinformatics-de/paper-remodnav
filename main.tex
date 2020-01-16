@@ -149,7 +149,7 @@ on data acquired under suboptimal conditions that exhibit a temporally
 varying noise level.
 These results indicate that the proposed algorithm is a robust tool with
 improved classification accuracy across a range of use cases.
-The algorithm is cross-platform compatible, implemented using the free
+The algorithm is cross-platform compatible, implemented using the
 Python programming language, and readily available as free and open source software
 from public sources.
 
@@ -216,7 +216,7 @@ from the understanding of visual attention \citep{HantaoLiu2011}, memory
 %
 Regardless of use case, the raw eye tracking data (gaze position coordinates)
 provided by eye tracking devices are rarely used ``as is". Instead, in order
-to disentangle different cognitive, occulomotor, or perceptive states
+to disentangle different cognitive, oculomotor, or perceptive states
 associated with different types of eye movements, most research relies on the
 classification of eye gaze data into distinct eye movement event categories
 \citep{Schutz2011}. The most feasible approach for doing this lies in the
@@ -260,13 +260,7 @@ algorithms.
 
 Following the best practices proposed by \citet{hessels2018eye},
 we define the different eye-movements that are supported by our algorithm
-on a functional and oculomotor dimension below. The exact computational
-definitions of the supported eye movements are given within the algorithm
-overview in the Methods section.
-\remodnav\ classifies the event categories \textit{fixation}, \textit{saccade}, and
-\textit{post-saccadic oscillation} (PSO; sometimes termed ``glissade"), and apart from
-this, as emphasized by \cite{Andersson2017}, the algorithm also has to support the
-classification of \textit{smooth pursuit} events.
+on a functional and oculomotor dimension as follows:
 A \textit{fixation} is a period of time during which a part of the visual stimulus
 is looked at and thereby projected to a relatively constant location on the retina.
 This type of eye movement is necessary for visual intake, and characterized by a
@@ -285,7 +279,7 @@ smooth pursuit classification]{LARSSON2015145,Komogortsev2013}.
 but their velocity trace is usually higher than that of pursuit movements.
 They serve to shift the position of the eye to a target region, and, unlike
 during pursuit or fixation events, visual intake
-is surpressed \citep{Schutz2011}. \textit{Post-saccadic oscillations}, finally, are periods of
+is suppressed \citep{Schutz2011}. Lastly, \textit{post-saccadic oscillations} are periods of
 ocular instability after a saccade \citep{Nystrom2010AnData}.
 
 Here we introduce \remodnav\ (robust eye movement detection for natural
