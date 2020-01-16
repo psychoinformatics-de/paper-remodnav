@@ -1161,15 +1161,11 @@ on an initial sorting of major saccade events across the entire time series.
 The proposed algorithm presently does not support the classification of eye blinks
 as a category distinct from periods of general signal loss. While such a feature
 could potentially be added, the current default preprocessing aims at removing
-blink-related signal. The algorithm preserves a distinction between high- and
-low-velocity PSOs first introduced by \citet{Nystrom2010AnData}. To our knowledge,
-the subsequent literature does not make use of this differentiation. Based on use case,
-users can decide on whether to differ between the two event types, or combine them into
-a general PSO category, as done in our own validation analyses.
-Note that the algorithm assumes a constant sampling rate in the input data,
-as each line in an input file is treated as one sample, and a time column is not supported.
-However, sparse data formats can be analysed by converting them
-to a dense time series prior to the classification with \remodnav\ .
+blink-related signal. The algorithm maintains a distinction between high- and
+low-velocity PSOs first introduced by \citet{Nystrom2010AnData}, although, to our knowledge,
+the present literature does not make use of such a distinction. Algorithm users
+are encouraged to decide on a case-by-case basis whether to lump these event categories
+together into a general PSO category, as done in our own validation analyses.
 Lastly, the evaluation results presented here are based
 on data with a relatively high temporal resolution (\unit[0.5 and 1]{kHz}). While
 the algorithm does not impose any hard constraints on data acquisition parameters,
@@ -1184,17 +1180,17 @@ potential biases that may limit generalizability. Nevertheless, human-made
 event labels are a critical component of algorithm validation, as pointed out
 by \cite{Hooge2018}.
 
-Our analyses were based on three different datasets, the dataset provided
-by \citet{Andersson2017}, and two datasets from the studyforrest
-project \citep{Hanke2016}.
-Beyond our own validation analyses, a recent evaluation of nine different smooth
+The validation analyses presented here are based on three different datasets:
+a manually annoted dataset \citep{Andersson2017}, and two datasets with
+prolonged recordings using movie stimuli \citep{Hanke2016}.
+Beyond our own validation, a recent evaluation of nine different smooth
 pursuit algorithms by Startsev, Agtzidis and Dorr as part of their recent
 paper \citep{Startsev2018} also provides metrics for \remodnav.
-In their analysis, algorithm performance was evaluated against a partial
-hand-labelled eye movement annotation of the Hollywood2 data set \citep{Mathe2012}.
+In their analysis, algorithm performance was evaluated against a partially
+hand-labelled eye movement annotation of the Hollywood2 dataset \citep{Mathe2012}.
 We refrain from restating their methodology or interpreting their results here,
-and want to refer readers interested in further validation of \remodnav\ to these
-independent results\footnote{https://www.michaeldorr.de/smoothpursuit/}.
+but encourage readers to consult this independent
+report\footnote{https://www.michaeldorr.de/smoothpursuit/}.
 
 \remodnav\ aims to be a readily usable tool, available as cross platform
 compatible, free and open source software, with a simple command line interface
