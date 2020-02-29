@@ -512,8 +512,8 @@ to be split into shorter chunks to prevent the negative impact of sporadic
 noise flares on the aforementioned adaptive velocity thresholding procedure.
 
 \remodnav\ implements this chunking by determining a critical velocity on a
-median-filtered (\param{median\_ filter\_length}) time series comprising the
-full duration of a recording (\fig{alg}D). Due to potentially elevated noise
+median-filtered (\param{median\_filter\_length}) time series comprising the
+full duration of a recording (\fig{alg}A, 3). Due to potentially elevated noise
 levels, the resulting threshold tends to overestimate an optimal threshold.
 Consequently, only periods of fastest eye movements will exceed this threshold.
 All such periods of consecutive above-threshold velocities are weighted by the
