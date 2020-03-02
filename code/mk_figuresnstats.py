@@ -136,7 +136,10 @@ label_map = {
 
 # we need the distribution parameters of all algorithms and human coders
 # in tables 3, 4, 5, 6 from Andersson et al., 2017. Well worth double-checking,
-# I needed to hand-copy-paste from the paper.
+# I needed to hand-copy-paste from the paper. The summary statistics were made
+# publicly available in the file # matlab_analysis_code/20150807.mat in the
+# original authors GitHub repository
+# (https://github.com/richardandersson/EyeMovementDetectorEvaluation/blob/0e6f82708e10b48039763aa1078696e802260674/matlab_analysis_code/20150807.mat).
 # The first two entries within each value-list belong to human coders
 
 image_params = {

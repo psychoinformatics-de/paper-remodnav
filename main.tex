@@ -758,7 +758,14 @@ for \remodnav]{Startsev2018}.
 \end{table}
 
 \fig{conf} shows confusion patterns for a comparison of algorithm
-classifications with human labeling. While \remodnav\ does not achieve a
+classifications with human labeling and displays the similarity between
+classification decisions with Jaccard indices \citep[JI; ][]{jaccard1901etude}.
+The JI is bound in range [0, 1] with higher values indicating higher similarity.
+A value of 0.93 in the upper left cell of the very first matrix in \fig{conf}
+for example indicates that 93\% of frames that  are labeled as a fixation by
+human coders RA and MN are the same. This index allows to quantify the
+similarity of classifications independent from values in other cells.
+While \remodnav\ does not achieve a
 labeling similarity that reaches the human inter-rater agreement, it still
 performs well. In particular, the relative magnitude of agreement with each
 individual human coder for fixations, saccades, and PSOs, resembles the
@@ -886,11 +893,15 @@ of $2.9$, and a mean ranking of $3.2$ when not taking smooth pursuit into accoun
   % table caption is above the table
   \caption{Comparison of event duration statistics (mean, standard deviation, and number
     of events) for image, dot, and video
-    stimuli. This table reproduces \citet[Tables 3-6]{Andersson2017}, and
+    stimuli. This table is inspired by \citet[Tables 3-6]{Andersson2017}, and
     root-mean-square-deviations (RMSD) from human raters are shown
     for fixations, saccades, PSOs, and pursuit as zero-based ranks (rank zero
-    is closest to the average of the two human raters). Rows for \remodnav\
-  have been added.}
+    is closest to the average of the two human raters). Summary statistics for
+    all algorithms used in \citet{Andersson2017} were taken from their publicly
+    available GitHub repository
+    (github.com/richardandersson/EyeMovementDetectorEvaluation). Cohens Kappa
+    was computed for the complete set of algorithms in \citet{Andersson2017} and
+    \remodnav .}
   \label{tab:rmsd}       % Give a unique label
   % For LaTeX tables use
   \begin{small}
