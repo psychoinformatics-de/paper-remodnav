@@ -682,7 +682,12 @@ did not assign the same label. We limited this analysis to all time points that
 were labeled as fixation, saccade, PSO, or pursuit by any method, hence
 ignoring the rarely used NaN/blinks or ``undefined" category. For a direct
 comparison with the results in \cite{Andersson2017}, the analysis was repeated
-while also excluding samples labeled as pursuit. \tab{mclf} shows the
+while also excluding samples labeled as pursuit.
+There was no distinction made between high- and low-velocity PSOs in the labeled
+data, potentially because the literature following \citet{Nystrom2010AnData}
+did not adopt their differentiation of PSOs into velocity categories.
+All high- and low-velocity PSOs classified by \remodnav\ were therefore
+collapsed into a single PSO category. \tab{mclf} shows the
 misclassification rates for all pairwise comparisons, in all stimulus types.
 In comparison to the NH algorithm, after which the proposed work was modelled,
 \remodnav\ performed consistently better (32/93/70\% average misclassification for NH,
