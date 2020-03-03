@@ -522,11 +522,11 @@ selecting such events sequentially (starting with the largest sums), until a
 maximum average frequency across the whole time series is reached
 (\param{max\_initial\_saccade\_ freq}). The resulting chunks represent data
 intervals between saccades of maximum magnitude in the respective data.
-\fig{velest2} exemplifies event detection within such an intersaccadic interval.
+\fig{velest2} exemplifies event classification within such an intersaccadic interval.
 
-\subsection*{Detection of saccades and post-saccadic oscillations}
+\subsection*{Classification of saccades and post-saccadic oscillations}
 
-Detection of these event types is identical to the NH algorithm, only the data
+Classification of these event types is identical to the NH algorithm, only the data
 context and metrics for determining the velocity thresholds differ.  For
 saccades that also represent time series chunk boundaries (event label
 \texttt{SACC}), a context of \unit[1]{s}
@@ -553,7 +553,7 @@ respectively.
 
 \begin{figure}
   \includegraphics[width=0.5\textwidth]{img/vel_est_2.pdf}
-  \caption{Iterative event detection between major saccades (SACC).
+  \caption{Iterative event classification between major saccades (SACC).
   The algorithm reports saccades within major saccade windows (ISAC),
   high/low velocity post saccadic oscillations after ISAC events (IHPS/ILPS),
   fixations (FIXA), and smooth pursuits (PURS).}
@@ -975,7 +975,7 @@ Taken together, \remodnav\ yields classification results that are, on average,
 more human-like than any other algorithm tested on the dataset and metrics put
 forth by \citet{Andersson2017}. In particular, its performance largely equals
 or exceeds that of the original NH algorithm. NH outperforms it only for
-fixation detection in the image and video category, but in these categories
+fixation classification in the image and video category, but in these categories
 \remodnav\ also classifies comparatively well. These results are an indication
 that the changes to the NH algorithm proposed here to improve upon its
 robustness are not detrimental to its performance on data from conventional
@@ -1155,7 +1155,7 @@ that performs robustly on prolonged recordings
 with dynamic stimulation, without a trial structure and variable noise levels,
 and also supports the classification of smooth pursuit events. Through a series of
 validation analyses we have shown that its performance is comparable to or
-better than ten other contemporary detection algorithms, and that plausible
+better than ten other contemporary algorithms, and that plausible
 classification results are achieved on high and lower quality data.
 These aspects of algorithm capabilities and performance suggest that \remodnav\
 is a state-of-the-art tool for eye movement classification with particular relevance
