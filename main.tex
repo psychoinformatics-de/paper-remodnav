@@ -1062,17 +1062,19 @@ result is depicted in \fig{remodnav} (top row).
 \begin{figure*}[tbp]
   \includegraphics[trim=0 8mm 0 0,clip,width=1\textwidth]{img/remodnav_lab.pdf} \\
   \includegraphics[trim=0 0 0 0,clip,width=1\textwidth]{img/remodnav_mri.pdf}\\
-  \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/remodnav_lab_detail.pdf}
-  \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/remodnav_mri_detail.pdf}\\
+  \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/rawtrace_lab.pdf}
+  \includegraphics[trim=0 0 0 0,clip,width=0.49\textwidth]{img/rawtrace_mri.pdf}\\
   \caption{Exemplary eye movement classification results for the same \unit[10]{s} excerpt
   of a movie stimulus for a single participant in the high quality lab sample (top),
-  and in the lower quality MRI sample (middle). The bottom panel shows \unit[250]{ms} of
-  lab (left) and mri (right) sample in greater detail. The plots show filtered gaze coordinates
-  (black), computed velocity time series (gray) overlayed on the eye movement event segmentation
-  with periods of fixation (green), pursuit (beige), saccades (blue), and
-  high/low-velocity post-saccadic oscillations (dark/light purple). The variable noise
-  level, and prolonged signal loss (white) visible in the MRI sample represent
-  a challenge for algorithms. \remodnav\ uses an adaptive approach that determines major
+  and in the lower quality MRI sample (middle). The plots show filtered gaze
+  coordinates (black), computed velocity time series (gray) overlayed on the eye
+  movement event segmentation with periods of fixation (green), pursuit (beige),
+  saccades (blue), and high/low-velocity post-saccadic oscillations (dark/light
+  purple). The bottom panel shows \unit[2]{s} of unfiltered gaze coordinates
+  (black) and unfiltered velocity time series (gray) for lab (left) and mri (right)
+  sample in greater detail. The variable noise level, and prolonged signal loss (white
+  in top panel) visible in the MRI sample represent a challenge for algorithms.
+  \remodnav\ uses an adaptive approach that determines major
   saccade events first, and subsequently tunes the velocity threshold to short time
   windows between these events. Figures like this accompany the program output to
   facilitate quality control and discovery of inappropriate preprocessing and classification

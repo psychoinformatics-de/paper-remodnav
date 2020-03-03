@@ -427,6 +427,83 @@ def savefigs(fig,
               % ('%.1f' % max_mclf))
 
 
+def plot_raw_vel_trace():
+    """
+    Small helper function to plot raw velocity traces, as requested by reviewer 2
+    in the second revision.
+    """
+    import matplotlib.pyplot as plt
+    # use the same data as in savegaze() (no need for file retrieval, should be there)
+    infiles = [
+        op.join(
+            'data',
+            'raw_eyegaze', 'sub-32', 'beh',
+            'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'),
+        op.join(
+            'data',
+            'raw_eyegaze', 'sub-02', 'ses-movie',  'func',
+            'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
+        ),
+    ]
+    # we need the sampling rate for plotting in seconds and velocity calculation
+    sr = 1000
+    # load data
+    for i, f in enumerate(infiles):
+        # read data
+        data = np.recfromcsv(f,
+                             delimiter='\t',
+                             names=['x', 'y', 'pupil', 'frame'])
+
+        # subset data. Hessels et al., 2017 display different noise levels on 4
+        # second time series (ref. Fig 10). That still looks a bit dense, so we
+        # go with 2 seconds, from start of 10sec excerpt to make it easier to
+        # associate the 2 sec excerpt in to its place in the 10 sec excerpt
+        # above
+        data_subset = data[15000:17000]
+        px2deg, ext = (0.0266711972026, 'lab') if '32' in f \
+            else (0.0185581232561, 'mri')
+        # take raw data and convert it to velocity: euclidean distance between
+        # successive coordinate samples. Note: no entry for first datapoint!
+        # Will plot all but first data point in other time series
+        velocities = (np.diff(data_subset['x']) ** 2 + np.diff(data_subset['y']) ** 2) ** 0.5
+        # convert from px/sample to deg/s
+        velocities *= px2deg * sr
+        vel_color = 'xkcd:gunmetal'
+        # prepare plotting - much manual setup, quite ugly - sorry
+        fig, ax1 = plt.subplots()
+        fig.set_figheight(2)
+        fig.set_figwidth(7)
+        fig.set_dpi(120)
+        time_idx = np.linspace(0, len(data_subset) / sr, len(data_subset))[1:]
+        max_x = float(len(data_subset) / sr)
+        ax1.set_xlim(0, max_x)
+        ax1.set_xlabel('time (seconds)')
+        ax1.set_ylabel('coordinates')
+        # left y axis set to max screensize in px
+        ax1.set_ylim(0, 1280)
+        # plot gaze trajectories (not preprocessed)
+        ax1.plot(time_idx,
+            data_subset['x'][1:],
+            color='black', lw=1)
+        ax1.plot(
+            time_idx,
+            data_subset['y'][1:],
+            color='black', lw=1)
+        # right y axis shows velocity "as is" (not preprocessed)
+        ax2 = ax1.twinx()
+        ax2.set_ylabel('velocity (deg/sec)', color=vel_color)
+        ax2.tick_params(axis='y', labelcolor=vel_color)
+        #ax2.set_yscale('log') ## TODO: Log scale or not?
+        ax2.set_ylim(1, 3000)
+        ax2.plot(time_idx,
+            velocities,
+            color=vel_color, lw=1)
+        pl.savefig(
+            op.join('img', 'rawtrace_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
+        pl.close()
+
 def savegaze():
     """
     small function to generate and save remodnav classification figures
@@ -917,6 +994,7 @@ if __name__ == '__main__':
         print_RMSD()
         plot_dist(args.figure)
         kappa()
+        plot_raw_vel_trace()
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:
