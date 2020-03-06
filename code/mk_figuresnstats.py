@@ -494,7 +494,7 @@ def plot_raw_vel_trace():
         ax2.set_ylabel('velocity (deg/sec)', color=vel_color)
         ax2.tick_params(axis='y', labelcolor=vel_color)
         #ax2.set_yscale('log') ## TODO: Log scale or not?
-        ax2.set_ylim(1, 3000)
+        ax2.set_ylim(1, 2000)
         ax2.plot(time_idx,
             velocities,
             color=vel_color, lw=1)
