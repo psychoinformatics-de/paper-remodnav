@@ -427,6 +427,18 @@ def savefigs(fig,
               % ('%.1f' % max_mclf))
 
 
+
+def cal_velocities(data, sr, px2deg):
+    """Helper to calculate velocities
+    sr: sampling rate
+    px2deg: conversion factor from pixel to degree
+    """
+    velocities = (np.diff(data['x']) ** 2 + np.diff(
+        data['y']) ** 2) ** 0.5
+    velocities *= px2deg * sr
+    return velocities
+
+
 def plot_raw_vel_trace():
     """
     Small helper function to plot raw velocity traces, as requested by reviewer 2
@@ -465,9 +477,7 @@ def plot_raw_vel_trace():
         # take raw data and convert it to velocity: euclidean distance between
         # successive coordinate samples. Note: no entry for first datapoint!
         # Will plot all but first data point in other time series
-        velocities = (np.diff(data_subset['x']) ** 2 + np.diff(data_subset['y']) ** 2) ** 0.5
-        # convert from px/sample to deg/s
-        velocities *= px2deg * sr
+        velocities = cal_velocities(data_subset, sr, px2deg)
         vel_color = 'xkcd:gunmetal'
         # prepare plotting - much manual setup, quite ugly - sorry
         fig, ax1 = plt.subplots()
@@ -503,6 +513,7 @@ def plot_raw_vel_trace():
             transparent=True,
             bbox_inches="tight")
         pl.close()
+
 
 def savegaze():
     """
