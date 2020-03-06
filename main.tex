@@ -247,7 +247,7 @@ blinks.
 %setups.
 
 Therefore our objective was to improve upon the available eye movement
-detection and classification algorithms, and develop a tool that performs
+classification algorithms, and develop a tool that performs
 robustly on data from dynamic, naturalistic stimulation, without sacrificing classification
 accuracy for static and simplified stimulation. Importantly, we aimed for
 applicability to prolonged recordings that lack any kind of trial structure,
@@ -286,7 +286,7 @@ videos), a new tool that aims to meet our objectives and classifies the
 eye movement events defined above. It is built on the
 aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
 that employs an adaptive approach to velocity based eye movement event
-detection and classification. \remodnav\ enhances NH with the use of robust
+classification. \remodnav\ enhances NH with the use of robust
 statistics, and a compartmentalization of prolonged time series into short,
 more homogeneous segments with more uniform noise levels.
 Furthermore, it adds support for pursuit event classification.
@@ -466,7 +466,7 @@ exceeding this threshold are replaced by this set value.
 \subsubsection*{Saccade velocity threshold}
 
 Except for a few modifications, \remodnav\ employs the adaptive saccade
-detection algorithm proposed by \cite{Nystrom2010AnData}, where saccades are
+classification algorithm proposed by \cite{Nystrom2010AnData}, where saccades are
 initially located by thresholding the velocity time series by a critical value.
 Starting from an initial velocity threshold (\param{velthresh\_startvelocity},
 termed $PT_1$ in NH), the critical value is determined adaptively by computing
