@@ -427,6 +427,47 @@ def savefigs(fig,
               % ('%.1f' % max_mclf))
 
 
+def quality_stats():
+    """
+    Computes the percent of signal loss in raw data
+    Note: takes a while to run, therefore just adding results here for now
+    \newcommand{\avglosslab}{0.041005777923189775}
+    \newcommand{\avglossmri}{0.1507901497174581}
+    """
+    import datalad.api as dl
+
+    datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
+                           'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+    datapath_lab = op.join('data', 'raw_eyegaze', 'sub-*', 'beh',
+                           'sub-*_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+
+    for (data, assoc) in [(datapath_lab, 'lab'),
+                          (datapath_mri, 'mri')]:
+        infiles = glob(data)
+        for f in infiles:
+            dl.get(f)
+        # make sure we have 15 subjects' data
+        assert len(infiles) == 120
+        # set sampling rate and px2deg
+        px2deg = 0.0266711972026 if assoc == 'lab' else 0.0185581232561
+        sr = 1000
+        # calculate percent signal loss across subjects and runs
+        losses = []
+        for f in infiles:
+            data = np.recfromcsv(f,
+                                 delimiter='\t',
+                                 names=['x', 'y', 'pupil', 'frame'])
+            # all periods of signal loss are marked as nan in the data
+            signal_loss = np.sum(np.isnan(data['x'])) / len(data['x'])
+            losses.append(signal_loss)
+
+        # average across signal losses in sample (mri or lab)
+        loss = np.nanmean(losses)
+        # print results as Latex command using 'assoc' as sample identifier in name
+        label_loss = 'avgloss{}'.format(assoc)
+        print('\\newcommand{\\%s}{%s}'
+              % (label_loss, loss))
+
 
 def cal_velocities(data, sr, px2deg):
     """Helper to calculate velocities
