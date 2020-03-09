@@ -344,18 +344,18 @@ velocities on which the event classification algorithm can be executed, while jo
 reducing non-movement-related noise in the data as much as possible. 
 
 First, implausible spikes in the coordinate time series are removed with a
-heuristic spike filter \citep{stampe1993} (\fig{alg}A, 1). This filter is
+heuristic spike filter \citep{stampe1993} (\fig{alg}, P1). This filter is
 standard in many eye tracking toolboxes and often used for preprocessing
 \citep[\eg][]{Friedman2018}.
 %
 Data samples around signal loss (\eg eye blinks) can be set to non-numeric values (NaN)
 in order to eliminate spurious movement signals without shortening the time series
-(\param{dilate\_nan}, \param{min\_blink\_duration}; \fig{alg}A, 2). This is
+(\param{dilate\_nan}, \param{min\_blink\_duration}; \fig{alg}, P2). This is
 motivated by the fact that blinks can produce artifacts in the eye-tracking signal when the
 eyelid closes and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
-(\fig{alg}A, 3). A relatively large median filter (\param{median\_
+\fig{alg}, P3). A relatively large median filter (\param{median\_
 filter\_length}) is used to emphasize large amplitude saccades.  This type of
 filtered data is later used for a coarse segmentation of a time series into
 shorter intervals between major saccades.
@@ -365,8 +365,8 @@ Separately, data are also smoothed with a Savitzky-Golay filter
 localization of major saccades for time series chunking is performed on this
 type of filtered data.
 
-After spike-removal and temporal filtering, movement velocities are computed
-(\fig{alg}A, 4-5). To disregard biologically implausible measurements, a
+After spike-removal and temporal filtering, movement velocities are computed.
+To disregard biologically implausible measurements, a
 configurable maximum velocity (\param{max\_vel}) is enforced---any samples
 exceeding this threshold are replaced by this set value.
 
@@ -379,8 +379,8 @@ exceeding this threshold are replaced by this set value.
 %\end{figure}
 
 \begin{figure*}
-  \includegraphics[width=1\textwidth]{img/pseudocode.pdf}
-  \caption{\remodnav\ workflow in pseudocode. Optional steps and configurable parameters are in bold.}
+  \includegraphics[width=1\textwidth]{img/flowchart_2.pdf}
+  \caption{Schematic algorithm overview of \remodnav.}
   \label{fig:alg}
 \end{figure*}
 
@@ -403,16 +403,16 @@ exceeding this threshold are replaced by this set value.
     \unit[0.02]{s}\\
     \texttt{dilate\_nan} &
     duration for which to replace data by missing data markers on either side of a
-    signal-loss window &
+    signal-loss window (\fig{alg}, P2)&
     \unit[0.01]{s}\\
     \texttt{median\_filter\_length} &
-    smoothing median-filter size (for initial data chunking only) &
+    smoothing median-filter size (for initial data chunking only) (\fig{alg}, P3)&
     \unit[0.05]{s}\\
     \texttt{savgol\_length} &
-    size of Savitzky-Golay filter for noise reduction&
+    size of Savitzky-Golay filter for noise reduction (\fig{alg}, P3)&
     \unit[0.019]{s}\\
     \texttt{savgol\_polyord} &
-    polynomial order of Savitzky-Golay filter for noise reduction&
+    polynomial order of Savitzky-Golay filter for noise reduction (\fig{alg}, P3)&
     2\\
     \texttt{max\_vel} &
     maximum velocity threshold, will replace value with maximum, and issue
@@ -423,42 +423,42 @@ exceeding this threshold are replaced by this set value.
 
     \\\multicolumn{3}{l}{\textit{Event classification}} \\
     \texttt{min\_saccade\_duration} &
-    minimum duration of a saccade event candidate &
+    minimum duration of a saccade event candidate (\fig{alg}, E3) &
     \unit[0.01]{s}\\
     \texttt{max\_pso\_duration} &
-    maximum duration of a post-saccadic oscillation (glissade) candidate &
+    maximum duration of a post-saccadic oscillation (glissade)  (\fig{alg}, E3) &
     \unit[0.04]{s}\\
     \texttt{min\_fixation\_duration} &
-    minimum duration of a fixation event candidate &
+    minimum duration of a fixation event candidate (\fig{alg}, E4)&
     \unit[0.04]{s}\\
     \texttt{min\_pursuit\_duration} &
-    minimum duration of a pursuit event candidate &
+    minimum duration of a pursuit event candidate (\fig{alg}, E4)&
     \unit[0.04]{s}\\
     \texttt{min\_intersaccade\_duration} &
-    no saccade classification is performed in windows shorter than twice this value, plus minimum saccade and PSO duration&
+    no saccade classification is performed in windows shorter than twice this value, plus minimum saccade and PSO duration (\fig{alg}, E2)&
     \unit[0.04]{s}\\
     \texttt{noise\_factor} &
-    adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives \citep[equivalent: 3.0]{Nystrom2010AnData}&
+    adaptive saccade onset threshold velocity is the median absolute deviation of velocities in the window of interest, times this factor (peak velocity threshold is twice the onset velocity); increase for noisy data to reduce false positives \citep[equivalent: 3.0]{Nystrom2010AnData}(\fig{alg}E1)&
     5\\
     \texttt{velthresh\_startvelocity} &
     start value for adaptive velocity threshold algorithm \citep{Nystrom2010AnData}, should
-    be larger than any conceivable minimum saccade velocity &
+    be larger than any conceivable minimum saccade velocity (\fig{alg}, E1)&
     \unit[300]{deg/s}\\
     \texttt{max\_initial\_saccade\_freq} &
     maximum saccade frequency for initial classification of major saccades, initial data
     chunking is stopped if this frequency is reached (should be smaller than an expected
-    (natural) saccade frequency in a particular context), default based on literature reports of a natural, free-viewing saccade frequency of \unit[$\sim$1.7 $\pm$0.3]{Hz} during a movie stimulus \citep{amit2017temporal} &
+    (natural) saccade frequency in a particular context), default based on literature reports of a natural, free-viewing saccade frequency of \unit[$\sim$1.7 $\pm$0.3]{Hz} during a movie stimulus \citep{amit2017temporal} (\fig{alg}E1)&
     \unit[2]{Hz}\\
     \texttt{saccade\_context\_window\_length} &
     size of a window centered on any velocity peak for adaptive determination of
-    saccade velocity thresholds (for initial data chunking only) &
+    saccade velocity thresholds (for initial data chunking only) (\fig{alg}, E2)&
     \unit[1]{s}\\
     \texttt{lowpass\_cutoff\_freq} &
     cut-off frequency of a Butterworth low-pass filter applied to determine drift
-    velocities in a pursuit event candidate &
+    velocities in a pursuit event candidate (\fig{alg}, E4)&
     \unit[4]{Hz}\\
     \texttt{pursuit\_velthresh} &
-    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations \citep[\eg ][]{GOLTZ1997789,cherici2012} &
+    fixed drift velocity threshold to distinguish periods of pursuit from periods of fixation; higher than natural ocular drift velocities during fixations \citep[\eg ][]{GOLTZ1997789,cherici2012} (\fig{alg}, E4)&
     \unit[2]{deg/s}\\
   \end{tabular}
 \end{table*}
@@ -496,17 +496,18 @@ PT_n = median({V}_{n-1}) + F \times MAD({V}_{n-1})
 %
 where $MAD$ is the median absolute deviation, and $F$ is a
 scalar parameter of the algorithm.
-This iterative process is illustrated in \fig{velest1}.
+This iterative process is illustrated in \fig{alg}, E1 (upper panel).
 
-\begin{figure}
-  \includegraphics[width=0.5\textwidth]{img/vel_est_1.pdf}
-  \caption{Iterative, global estimation of velocity thresholds
-    for saccades (SACC), and high/low velocity post saccadic oscillations (HPSO/LPSO).
-    The method is adapted from \cite{Nystrom2010AnData}, but is modified to use robust statistics
-    with median absolute deviation (MAD) as a measure of variability, more suitable
-    for data with a non-normal distribution.}
-    \label{fig:velest1}
-\end{figure}
+% Adina: removed in favor of new algorithm overview
+%\begin{figure}
+%  \includegraphics[width=0.5\textwidth]{img/vel_est_1.pdf}
+%  \caption{Iterative, global estimation of velocity thresholds
+%    for saccades (SACC), and high/low velocity post saccadic oscillations (HPSO/LPSO).
+%    The method is adapted from \cite{Nystrom2010AnData}, but is modified to use robust statistics
+%    with median absolute deviation (MAD) as a measure of variability, more suitable
+%    for data with a non-normal distribution.}
+%    \label{fig:velest1}
+%\end{figure}
 
 \subsection*{Time series chunking}
 
@@ -517,7 +518,7 @@ noise flares on the aforementioned adaptive velocity thresholding procedure.
 
 \remodnav\ implements this chunking by determining a critical velocity on a
 median-filtered (\param{median\_filter\_length}) time series comprising the
-full duration of a recording (\fig{alg}A, 3). Due to potentially elevated noise
+full duration of a recording (\fig{alg}, E2). Due to potentially elevated noise
 levels, the resulting threshold tends to overestimate an optimal threshold.
 Consequently, only periods of fastest eye movements will exceed this threshold.
 All such periods of consecutive above-threshold velocities are weighted by the
@@ -526,7 +527,7 @@ selecting such events sequentially (starting with the largest sums), until a
 maximum average frequency across the whole time series is reached
 (\param{max\_initial\_saccade\_ freq}). The resulting chunks represent data
 intervals between saccades of maximum magnitude in the respective data.
-\fig{velest2} exemplifies event classification within such an intersaccadic interval.
+\fig{alg}, E3 (right) exemplifies event classification within such an intersaccadic interval.
 
 \subsection*{Classification of saccades and post-saccadic oscillations}
 
@@ -536,7 +537,7 @@ saccades that also represent time series chunk boundaries (event label
 \texttt{SACC}), a context of \unit[1]{s}
 (\param{saccade\_context\_window\_ length}) centered on the peak velocity is
 used by default, for any other saccade (event label \texttt{ISAC}) the entire
-time series chunk represents that context (\fig{alg}E).
+time series chunk represents that context (\fig{alg}, E3).
 
 Peak velocity threshold and on/offset velocity threshold are then determined by
 equation \ref{eq:threshold} with $F$ set to $2\times\mathtt{noise\_factor}$ and
@@ -555,14 +556,15 @@ and high-velocity oscillations (event label \texttt{HPSO} or \texttt{IHPS}),
 where the velocity exceeds the saccade onset or peak velocity threshold,
 respectively.
 
-\begin{figure}
-  \includegraphics[width=0.5\textwidth]{img/vel_est_2.pdf}
-  \caption{Iterative event classification between major saccades (SACC).
-  The algorithm reports saccades within major saccade windows (ISAC),
-  high/low velocity post saccadic oscillations after ISAC events (IHPS/ILPS),
-  fixations (FIXA), and smooth pursuits (PURS).}
-  \label{fig:velest2}
-\end{figure}
+% Adina: Removed in favor of new algorithm overview
+%\begin{figure}
+%  \includegraphics[width=0.5\textwidth]{img/vel_est_2.pdf}
+%  \caption{Iterative event classification between major saccades (SACC).
+%  The algorithm reports saccades within major saccade windows (ISAC),
+%  high/low velocity post saccadic oscillations after ISAC events (IHPS/ILPS),
+%  fixations (FIXA), and smooth pursuits (PURS).}
+%  \label{fig:velest2}
+%\end{figure}
 
 \subsection*{Pursuit and fixation classification}
 
@@ -575,7 +577,7 @@ uses the same approach as that for saccades: search for local minima preceding
 and following the above threshold velocities.
 %
 Any remaining segment that does not qualify as a pursuit event is classified
-as a fixation (event label \texttt{FIXA}).
+as a fixation (event label \texttt{FIXA}) (\fig{alg}, E4).
 
 
 \subsection*{Operation}\label{op}
