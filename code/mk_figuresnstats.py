@@ -469,6 +469,52 @@ def quality_stats():
               % (label_loss, loss))
 
 
+def flowchart_figs():
+    """
+    Just for future reference: This is the subset of preprocessed and raw data
+    used for the flowchart of the algorithm. Not to be executed.
+    """
+    import matplotlib.pyplot as plt
+
+    datapath = op.join('data', 'raw_eyegaze', 'sub-32', 'beh',
+                        'sub-32_task-movie_run-1_recording-eyegaze_physio.tsv.gz')
+    data = np.recfromcsv(datapath,
+                         delimiter='\t',
+                         names=['x', 'y', 'pupil', 'frame'])
+
+    clf = EyegazeClassifier(
+        px2deg=0.0266711972026,
+        sampling_rate=1000.0)
+
+    velocities = cal_velocities(data=data, sr=1000, px2deg=0.0266711972026)
+    vel_subset_unfiltered = velocities[15200:17500]
+
+    p = clf.preproc(data)
+    # this is to illustrate PTn estimation and chunking
+    vel_subset = p['vel'][15200:17500]
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        vel_subset,
+        color='black', lw=0.5)
+    plt.close()
+
+    # this is to illustrate preprocessing
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        vel_subset,
+        color='black', lw=0.5)
+    ax1.plot(
+        vel_subset_unfiltered,
+        color='darkorange', ls='dotted', lw=0.5)
+    plt.close()
+
+
 def cal_velocities(data, sr, px2deg):
     """Helper to calculate velocities
     sr: sampling rate
