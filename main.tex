@@ -144,7 +144,7 @@ the same full-length movie.
 We found that the proposed algorithm performs on par or better compared
 to state-of-the-art alternatives for static stimulation. Moreover, it yields
 eye movement events with biologically plausible characteristics on prolonged
-recordings without a trial structure. Lastly, algorithm performance is robust
+dynamic recordings. Lastly, algorithm performance is robust
 on data acquired under suboptimal conditions that exhibit a temporally
 varying noise level.
 These results indicate that the proposed algorithm is a robust tool with
@@ -250,8 +250,8 @@ Therefore our objective was to improve upon the available eye movement
 classification algorithms, and develop a tool that performs
 robustly on data from dynamic, naturalistic stimulation, without sacrificing classification
 accuracy for static and simplified stimulation. Importantly, we aimed for
-applicability to prolonged recordings that lack any kind of trial structure,
-and exhibit periods of signal-loss and non-stationary noise levels.
+applicability to prolonged recordings that potentially exhibit periods of
+signal-loss and non-stationary noise levels.
 Finally, one of our main objectives was to keep the algorithm as accessible
 and easily available as possible in order to ease the difficulties associated
 with closed-source software or non-publicly available source code of published
@@ -511,8 +511,8 @@ This iterative process is illustrated in \fig{alg}, E1 (upper panel).
 
 \subsection*{Time series chunking}
 
-As the algorithm aims to be applicable to prolonged recordings without an
-inherent trial structure and inhomogeneous noise levels, the time series needs
+As the algorithm aims to be applicable to prolonged recordings with
+potentially inhomogeneous noise levels, the time series needs
 to be split into shorter chunks to prevent the negative impact of sporadic
 noise flares on the aforementioned adaptive velocity thresholding procedure.
 
@@ -993,8 +993,8 @@ paradigms and stimuli.
 Given that \remodnav\ yielded plausible results for the "video" stimulus
 category data in the \citet{Andersson2017} dataset (\fig{conf}, and
 \tab{rmsd}, right columns), we determined
-whether it is capable of analyzing data from dynamic stimulation without a
-trial structure.
+whether it is capable of analyzing data from dynamic stimulation in prolonged
+(\unit[$~15$]{min}) recordings.
 
 As a test dataset we used publicly available eye tracking data from the
 \textit{studyforrest.org} project, where 15~participants were recorded watching
@@ -1038,7 +1038,7 @@ static scene perception]{Nystrom2010AnData}.
 %
 Overall, the presented summary statistics suggest that \remodnav\ is capable
 of detecting eye movements with plausible characteristics, in prolonged
-gaze recordings without a trial structure. A visualization of such a classification
+gaze recordings. A visualization of such a classification
 result is depicted in \fig{remodnav} (top row).
 
 \begin{figure*}
@@ -1160,8 +1160,8 @@ dataset. This effect may be attributable to the differences in stimulus size
 
 Based on the adaptive, velocity-based algorithm for fixation, saccade, and PSO
 classification by \cite{Nystrom2010AnData}, we have developed an improved algorithm
-that performs robustly on prolonged recordings
-with dynamic stimulation, without a trial structure and variable noise levels,
+that performs robustly on prolonged or short recordings
+with dynamic stimulation, with potentially variable noise levels,
 and also supports the classification of smooth pursuit events. Through a series of
 validation analyses we have shown that its performance is comparable to or
 better than ten other contemporary algorithms, and that plausible
