@@ -1113,19 +1113,33 @@ scanner bore and recorded the participants' left eye at a distance of about
 \unit[100]{cm}.  Compared to the lab-setup, physical limitations of the scanner
 environment, and sub-optimal infrared illumination led to substantially
 noisier data, as evident from a larger spatial uncertainty
-\citep[Technical Validation]{Hanke2016} and a generally higher amount of data loss.
+\citep[Technical Validation]{Hanke2016}, a generally higher amount of data loss,
+and more events with a velocity above \unit[800]{deg/s}.
+Following common data quality criteria used to warrant exclusion by
+\citet{Holmqvist2012}, a higher amount of zero values, a greater number of
+events with a velocity above \unit[800]{deg/s}, and lower spatial accuracy
+can be indicative of lower quality data.
 The average amount of data loss in the MRI sample was three times higher than
 in the laboratory setting (15.1\% versus 4.1\% in the lab), with six out
 of 15 subjects having one or more movie segments with data loss greater than 30\%.
 In the laboratory setting, in comparison, zero out of 15 subjects had one or
 more movie segments with data loss greater than 30\% \citep[Table 1]{Hanke2016}.
-The average spatial accuracy at the start of a recording, assessed with a 13-point
+\fig{vels}) highlights the higher amount of extreme velocities in the MRI sample.
+Finally, the average spatial accuracy at the start of a recording, assessed with a 13-point
 calibration procedure, was \unit[0.58]{degrees of visual angle} for the MRI sample and
 \unit[0.45]{degrees} for the lab sample \citep[Technical Validation]{Hanke2016}.
 An example of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
 row, black lines). Except for the differences in stimulation setup, all other
 aspects of data acquisition, eye tracker calibration, and data processing
 were identical to the previous dataset.
+
+\begin{figure}
+  \label{vels}
+  \caption{Velocities of events in the MRI and laboratory setting across all
+  runs and participants. The MRI sample shows a larger amount of high velocity
+  samples.}
+  \includegraphics[width=0.5\textwidth]{img/velhist.pdf}
+\end{figure}
 
 We performed the identical analysis as before, in order to compare performance
 between a high and lower-quality data acquisition. This approach differs from
