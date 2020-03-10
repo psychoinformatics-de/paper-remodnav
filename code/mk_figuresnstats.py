@@ -430,11 +430,18 @@ def savefigs(fig,
 def quality_stats():
     """
     Computes the percent of signal loss in raw data
-    Note: takes a while to run, therefore just adding results here for now
+    Note: takes a while to run (30 subj. x 8 runs x 15 min rec with 1000Hz sr),
+    therefore, I'm just adding results here for now
+    and save the resulting histogram to the repository.
     \newcommand{\avglosslab}{0.041005777923189775}
     \newcommand{\avglossmri}{0.1507901497174581}
+
+    To include this computation in a run with Make, add this function to the
+    list of command invocations if the script is ran from the command line at the
+    end of the script.
     """
     import datalad.api as dl
+    import matplotlib.pyplot as plt
 
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
                            'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
@@ -448,11 +455,13 @@ def quality_stats():
             dl.get(f)
         # make sure we have 15 subjects' data
         assert len(infiles) == 120
+        print("Currently processing data from {} sample".format(assoc))
         # set sampling rate and px2deg
         px2deg = 0.0266711972026 if assoc == 'lab' else 0.0185581232561
         sr = 1000
         # calculate percent signal loss across subjects and runs
         losses = []
+        vels = []
         for f in infiles:
             data = np.recfromcsv(f,
                                  delimiter='\t',
@@ -460,13 +469,53 @@ def quality_stats():
             # all periods of signal loss are marked as nan in the data
             signal_loss = np.sum(np.isnan(data['x'])) / len(data['x'])
             losses.append(signal_loss)
-
+            velocities = cal_velocities(data=data,
+                                        px2deg=px2deg,
+                                        sr=sr)
+            vels.append(velocities)
+        print("Calculated velocities and losses for {} sample".format(assoc))
         # average across signal losses in sample (mri or lab)
         loss = np.nanmean(losses)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_loss = 'avgloss{}'.format(assoc)
         print('\\newcommand{\\%s}{%s}'
               % (label_loss, loss))
+        # vels is a list of arrays atm
+        v = np.concatenate(vels).ravel()
+        if assoc == 'lab':
+            v_lab = v
+        elif assoc == 'mri':
+            v_mri = v
+
+    # plot velocities in a histogram on logscale
+    # create non-linear non-equal bin sizes, as x axis will be log
+    hist, bins, _ = plt.hist(v[~np.isnan(v)], bins=40)
+    plt.close()
+    logbins = np.logspace(1,    # don't start with 0, does not make sense in logspace
+                          np.log10(bins[-1]),
+                          len(bins))
+    fig, ax = plt.subplots()
+    fig.set_figheight(3)
+    fig.set_figwidth(5)
+    ax.set_ylabel('counts')
+    ax.set_xlabel('velocities (deg/s)')
+    plt.hist(v_lab[~np.isnan(v_lab)],
+             bins=logbins,
+             histtype='bar',
+             color='darkslategrey',
+             alpha=0.5,
+             label='lab')
+    plt.hist(v_mri[~np.isnan(v_mri)],
+             bins=logbins,
+             histtype='bar',
+             color='orangered',
+             alpha=0.5,
+             label='mri')
+    plt.legend(loc='upper right')
+    plt.xscale('log')
+    plt.savefig(op.join('img', 'velhist.svg'),
+                transparent=True,
+                bbox_inches="tight")
 
 
 def flowchart_figs():
