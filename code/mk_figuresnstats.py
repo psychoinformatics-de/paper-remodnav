@@ -497,15 +497,17 @@ def quality_stats():
     fig, ax = plt.subplots()
     fig.set_figheight(3)
     fig.set_figwidth(5)
-    ax.set_ylabel('counts')
+    ax.set_ylabel('frequency')
     ax.set_xlabel('velocities (deg/s)')
     plt.hist(v_lab[~np.isnan(v_lab)],
+             weights=np.zeros_like(v_lab[~np.isnan(v_lab)]) + 1. / (v_lab[~np.isnan(v_lab)]).size,
              bins=logbins,
              histtype='bar',
              color='darkslategrey',
              alpha=0.5,
              label='lab')
     plt.hist(v_mri[~np.isnan(v_mri)],
+             weights=np.zeros_like(v_mri[~np.isnan(v_mri)]) + 1. / (v_mri[~np.isnan(v_mri)]).size,
              bins=logbins,
              histtype='bar',
              color='orangered',
