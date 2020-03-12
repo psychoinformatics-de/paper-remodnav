@@ -318,13 +318,16 @@ quality), and relate its performance to the algorithm comparison by
 %technical details required for implementation of the tool by other
 %developers.}}
 
+Event classification algorithms can be broadly grouped into \textit{velocity-} and
+\textit{dispersion-}based algorithms. The former rely on velocity thresholds to
+differentiate between different eye movement events, while the latter classify
+eye movements based on the size of the region the recorded data falls
+into for a given amount of time \citep{holmqvist2011eye}. Both types of algorithms
+are common (see e.g., \citet{hessels2017noise} for a recent dispersion-based,
+and e.g., \citet{van2018gazepath} for a recent velocity-based solution,
+and see \citet{dalveren2019evaluation} for an evaluation of common algorithms
+of both types).
 Like NH, \remodnav\ is a \textit{velocity-based} event classification algorithm.
-Compared to \textit{dispersion-based} algorithms, these types of algorithms are
-less susceptible to noise and spatio-temporal precision, and are thus applicable to
-a wide range of sampling frequencies. Furthermore, any influence of
-biologically implausible velocities and accelerations can be prevented with the
-use of appropriate filters and thresholds \citep{holmqvist2011eye}.
-
 The algorithm comprises two major steps: preprocessing and event classification.  A
 general overview and pseudo-code are shown in \fig{alg}.  The following
 sections detail individual analysis steps. For each step relevant algorithm
