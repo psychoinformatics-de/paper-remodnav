@@ -513,9 +513,12 @@ def quality_stats():
              label='mri')
     plt.legend(loc='upper right')
     plt.xscale('log')
+    #plt.yscale('log')
     plt.savefig(op.join('img', 'velhist.svg'),
                 transparent=True,
                 bbox_inches="tight")
+
+
 
 
 def flowchart_figs():
@@ -524,6 +527,7 @@ def flowchart_figs():
     used for the flowchart of the algorithm. Not to be executed.
     """
     import matplotlib.pyplot as plt
+    from scipy import signal
 
     datapath = op.join('data', 'raw_eyegaze', 'sub-32', 'beh',
                         'sub-32_task-movie_run-1_recording-eyegaze_physio.tsv.gz')
@@ -563,6 +567,34 @@ def flowchart_figs():
         color='darkorange', ls='dotted', lw=0.5)
     plt.close()
 
+    def _butter_lowpass(cutoff, fs, order=5):
+        nyq = 0.5 * fs
+        normal_cutoff = cutoff / nyq
+        b, a = signal.butter(
+            order,
+            normal_cutoff,
+            btype='low',
+            analog=False)
+        return b,
+
+    # Here is fixation and pursuit detection on Butterworth filtered subsets
+    lp_cutoff_freq = 4.0
+    sr=1000
+    # let's get a data sample with no saccade
+    win_data = p[16600:17000]
+    b, a = _butter_lowpass(lp_cutoff_freq, sr)
+    win_data['x'] = signal.filtfilt(b, a, win_data['x'], method='gust')
+    win_data['y'] = signal.filtfilt(b, a, win_data['y'], method='gust')
+
+    filtered_vels = cal_velocities(data=win_data, sr=1000, px2deg=0.0266711972026)
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        filtered_vels,
+        color='black', lw=0.5)
+    plt.close()
 
 def cal_velocities(data, sr, px2deg):
     """Helper to calculate velocities
