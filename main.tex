@@ -205,14 +205,14 @@ stimuli \citep{real_world}. Using dynamic stimuli promises to observe
 the nuances of cognition in a more life-like environment \citep{maguire2012studying}.
 Some interesting applications include the determination of neural
 response to changes in facial expression \citep{Harris2014}, understanding
-complex social interactions by using videos \citep{Tikka2012} and more
+complex social interactions by using videos \citep{Tikka2012}, and more
 untouched themes such as the underlying processing of music
 \citep{Toiviainen2014}. In such studies, an unobtrusive behavioral measurement
 is required to quantify the relationship between stimulus and response.
 Tracking the focus of participants' gaze is a suitable, well established
 method that has been successfully employed in a variety of studies ranging
 from the understanding of visual attention \citep{HantaoLiu2011}, memory
-\citep{Hannula2010} and language comprehension \citep{Gordon2006}.
+\citep{Hannula2010}, and language comprehension \citep{Gordon2006}.
 %
 Regardless of use case, the raw eye tracking data (gaze position coordinates)
 provided by eye tracking devices are rarely used ``as is". Instead, in order
@@ -225,7 +225,7 @@ application of appropriate event classification algorithms.
 However, a recent comparison of algorithms found that while many readily
 available algorithms for eye movement classification performed well on data
 from static stimulation or short trial-based acquisitions with simplified
-moving stimuli, none worked particularly well on data from complex naturalistic
+moving stimuli, none worked particularly well on data from complex
 dynamic stimulation, such as video clips, when compared to human coders
 \citep{Andersson2017}.
 %
@@ -248,7 +248,7 @@ blinks.
 
 Therefore our objective was to improve upon the available eye movement
 classification algorithms, and develop a tool that performs
-robustly on data from dynamic, naturalistic stimulation, without sacrificing classification
+robustly on data from dynamic, feature-rich stimulation, without sacrificing classification
 accuracy for static and simplified stimulation. Importantly, we aimed for
 applicability to prolonged recordings that potentially exhibit periods of
 signal-loss and non-stationary noise levels.
@@ -286,7 +286,7 @@ is suppressed \citep{Schutz2011}. Lastly, \textit{post-saccadic oscillations} ar
 ocular instability after a saccade \citep{Nystrom2010AnData}.
 
 Here we introduce \remodnav\ (robust eye movement classification for dynamic
-videos), a new tool that aims to meet our objectives and classifies the
+stimulation), a new tool that aims to meet our objectives and classifies the
 eye movement events defined above. It is built on the
 aforementioned algorithm by \citet{Nystrom2010AnData} (subsequently labeled NH)
 that employs an adaptive approach to velocity based eye movement event
@@ -358,8 +358,8 @@ motivated by the fact that blinks can produce artifacts in the eye-tracking sign
 eyelid closes and re-opens \citep{choe2016pupil}.
 %
 Coordinate time series are temporally filtered in two different ways
-\fig{alg}, P3). A relatively large median filter (\param{median\_
-filter\_length}) is used to emphasize large amplitude saccades.  This type of
+\fig{alg}, P3). A relatively large median filter
+(\param{median\_filter\_length}) is used to emphasize large amplitude saccades.  This type of
 filtered data is later used for a coarse segmentation of a time series into
 shorter intervals between major saccades.
 %
@@ -519,7 +519,7 @@ potentially inhomogeneous noise levels, the time series needs
 to be split into shorter chunks to prevent the negative impact of sporadic
 noise flares on the aforementioned adaptive velocity thresholding procedure.
 
-\remodnav\ implements this chunking by determining a critical velocity on a
+\remodnav\ implements this time-series chunking by determining a critical velocity on a
 median-filtered (\param{median\_filter\_length}) time series comprising the
 full duration of a recording (\fig{alg}, E2). Due to potentially elevated noise
 levels, the resulting threshold tends to overestimate an optimal threshold.
@@ -692,8 +692,8 @@ were labeled as fixation, saccade, PSO, or pursuit by any method, hence
 ignoring the rarely used NaN/blinks or ``undefined" category. For a direct
 comparison with the results in \cite{Andersson2017}, the analysis was repeated
 while also excluding samples labeled as pursuit.
-There was no distinction made between high- and low-velocity PSOs in the labeled
-data, potentially because the literature following \citet{Nystrom2010AnData}
+In the labeled data, there was no distinction made between high- and low-velocity
+PSOs, potentially because the literature following \citet{Nystrom2010AnData}
 did not adopt their differentiation of PSOs into velocity categories.
 All high- and low-velocity PSOs classified by \remodnav\ were therefore
 collapsed into a single PSO category. \tab{mclf} shows the
@@ -878,8 +878,8 @@ the average of both human raters), with higher values indicating larger
 differences \citep[for detail information on the calculation of this metric
 see][]{Andersson2017}.
 
-\tab{rmsd} is an extension of \citet[Tables
-3-6]{Andersson2017} appended with \remodnav, showing RMSD based on the scores of human raters given in the original tables. As
+\tab{rmsd} is modelled after \citet[Tables
+3-6]{Andersson2017}, appended with \remodnav, showing RMSD based on the scores of human raters given in the original tables. As
 acknowledged by the authors, the absolute value of the RMSD scores is not
 informative due to scaling with respect to the respective maximum value of each
 characteristic.  Therefore, we converted RMSDs for each algorithm and event
@@ -1079,7 +1079,7 @@ result is depicted in \fig{remodnav} (top row).
   coordinates (black), computed velocity time series (gray) overlayed on the eye
   movement event segmentation with periods of fixation (green), pursuit (beige),
   saccades (blue), and high/low-velocity post-saccadic oscillations (dark/light
-  purple). The bottom panel shows \unit[2]{s} of unfiltered gaze coordinates
+  purple). The bottom panel shows the first \unit[2]{s} of unfiltered gaze coordinates
   (black) and unfiltered velocity time series (gray) for lab (left) and mri (right)
   sample in greater detail. The variable noise level, and prolonged signal loss (white
   in top panel) visible in the MRI sample represent a challenge for algorithms.
@@ -1127,19 +1127,20 @@ in the laboratory setting (15.1\% versus 4.1\% in the lab), with six out
 of 15 subjects having one or more movie segments with data loss greater than 30\%.
 In the laboratory setting, in comparison, zero out of 15 subjects had one or
 more movie segments with data loss greater than 30\% \citep[Table 1]{Hanke2016}.
-Figure \ref{vels} highlights the higher amount of extreme velocities in the MRI sample.
+Figure \ref{vels} highlights the higher amount of extreme velocities in the MRI sample,
+even though the stimulus size was smaller than in the laboratory setting.
 Finally, the average spatial accuracy at the start of a recording, assessed with a 13-point
 calibration procedure, was \unit[0.58]{degrees of visual angle} for the MRI sample and
 \unit[0.45]{degrees} for the lab sample \citep[Technical Validation]{Hanke2016}.
 An example of the amplified and variable noise pattern is shown in \fig{remodnav} (bottom
-row, black lines). Except for the differences in stimulation setup, all other
+row, gray lines). Except for the differences in stimulation setup, all other
 aspects of data acquisition, eye tracker calibration, and data processing
 were identical to the previous dataset.
 
 \begin{figure}
   \caption{Velocities of events in the MRI and laboratory setting across all
   runs and participants. The MRI sample shows a larger amount of high velocity
-  samples.}
+  samples, even despite a 30\% smaller stimulus size.}
   \includegraphics[width=0.5\textwidth]{img/velhist.pdf}
   \label{vels}
 \end{figure}
@@ -1185,7 +1186,7 @@ better than ten other contemporary algorithms, and that plausible
 classification results are achieved on high and lower quality data.
 These aspects of algorithm capabilities and performance suggest that \remodnav\
 is a state-of-the-art tool for eye movement classification with particular relevance
-for emerging complex, naturalistic data collections paradigms, such as
+for emerging complex data collections paradigms with dynamic stimulation, such as
 the combination of eye tracking and functional
 MRI in simultaneous measurements.
 
@@ -1242,7 +1243,7 @@ report\footnote{https://www.michaeldorr.de/smoothpursuit/}.
 compatible, free and open source software, with a simple command line interface
 and carefully chosen default settings. However, as evident from numerous
 algorithm evaluations
-\citep[\eg][]{Andersson2017,Larsson2013,Zemblys2018,5523936} different
+\citep[\eg][]{Andersson2017,Larsson2013,Zemblys2018,5523936}, different
 underlying stimulation, and data characteristics can make certain algorithms or
 parameterizations more suitable than others for particular applications. The
 provided implementation of the \remodnav\ algorithm \citep{michael_hanke_2019_2651042}
