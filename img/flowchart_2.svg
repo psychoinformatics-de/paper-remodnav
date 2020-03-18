@@ -775,10 +775,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="280.82541"
-     inkscape:cy="345.70683"
+     inkscape:cx="467.01831"
+     inkscape:cy="266.1429"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g2360-3"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1043"
@@ -1297,6 +1297,70 @@
              id="tspan2322"
              sodipodi:role="line">P1</tspan></text>
       </g>
+      <g
+         transform="translate(223.54152,-33.287768)"
+         id="g2360-3">
+        <g
+           id="g1741"
+           transform="translate(-0.52916667)">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-126.77404"
+             y="96.371475"
+             id="text2324-7"><tspan
+               sodipodi:role="line"
+               id="tspan2322-5"
+               x="-126.77404"
+               y="96.371475"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">A</tspan></text>
+        </g>
+        <g
+           transform="translate(-0.26458401,61.9125)"
+           id="g1741-3">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-126.7575"
+             y="96.404549"
+             id="text2324-7-6"><tspan
+               sodipodi:role="line"
+               id="tspan2322-5-2"
+               x="-126.7575"
+               y="96.404549"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">B</tspan></text>
+        </g>
+        <g
+           transform="translate(-0.26458406,92.604166)"
+           id="g1741-9">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-126.92287"
+             y="96.388016"
+             id="text2324-7-2"><tspan
+               sodipodi:role="line"
+               id="tspan2322-5-7"
+               x="-126.92287"
+               y="96.388016"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">C</tspan></text>
+        </g>
+        <g
+           transform="translate(-0.26458401,123.03125)"
+           id="g1741-0">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-126.67482"
+             y="96.388016"
+             id="text2324-7-3"><tspan
+               sodipodi:role="line"
+               id="tspan2322-5-6"
+               x="-126.67482"
+               y="96.388016"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">D</tspan></text>
+        </g>
+      </g>
     </g>
     <g
        style="opacity:1"
@@ -1706,7 +1770,7 @@
       </g>
       <path
          sodipodi:type="star"
-         style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+         style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
          id="path13734-2-1"
          sodipodi:sides="3"
          sodipodi:cx="105.90289"
@@ -1727,7 +1791,7 @@
          inkscape:export-ydpi="96" />
       <path
          sodipodi:type="star"
-         style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+         style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000002;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
          id="path13734-2-2-1-9"
          sodipodi:sides="3"
          sodipodi:cx="105.90289"
@@ -2580,13 +2644,13 @@
              sodipodi:cx="105.90289"
              sodipodi:sides="3"
              id="path13734-2-17"
-             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
              sodipodi:type="star" />
           <path
              inkscape:export-ydpi="96"
              inkscape:export-xdpi="96"
              inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
-             transform="matrix(0.71742122,-0.87892368,0.72443226,0.89800126,-594.75454,-194.92084)"
+             transform="matrix(0.71742122,-0.87892368,0.72443226,0.89800126,-595.17341,-194.9122)"
              inkscape:transform-center-y="-0.25669976"
              inkscape:transform-center-x="-0.018947306"
              d="m 108.10775,103.88061 -0.62254,2.74066 -0.62254,2.74066 -2.06221,-1.90946 -2.06221,-1.90947 2.68475,-0.83119 z"
@@ -2601,7 +2665,7 @@
              sodipodi:cx="105.90289"
              sodipodi:sides="3"
              id="path13734-2-2"
-             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
              sodipodi:type="star" />
           <path
              inkscape:export-ydpi="96"
@@ -3770,13 +3834,13 @@
              sodipodi:cx="105.90289"
              sodipodi:sides="3"
              id="path13734-2-17-6"
-             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
              sodipodi:type="star" />
           <path
              inkscape:export-ydpi="96"
              inkscape:export-xdpi="96"
              inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
-             transform="matrix(0.71742122,-0.87892368,0.72443226,0.89800126,-594.75454,-194.92084)"
+             transform="matrix(0.71742122,-0.87892368,0.72443226,0.89800126,-595.1734,-191.82843)"
              inkscape:transform-center-y="-0.25669976"
              inkscape:transform-center-x="-0.018947306"
              d="m 108.10775,103.88061 -0.62254,2.74066 -0.62254,2.74066 -2.06221,-1.90946 -2.06221,-1.90947 2.68475,-0.83119 z"
@@ -3791,7 +3855,7 @@
              sodipodi:cx="105.90289"
              sodipodi:sides="3"
              id="path13734-2-2-0"
-             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+             style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
              sodipodi:type="star" />
           <path
              inkscape:export-ydpi="96"
@@ -4315,7 +4379,7 @@
              inkscape:connector-curvature="0" />
         </g>
         <g
-           transform="matrix(0.04049993,0,0,-0.05743484,172.29878,246.00269)"
+           transform="matrix(0.04179515,0,0,-0.05743484,172.07497,246.00269)"
            id="patch_5-1-0"
            style="display:inline;opacity:1;stroke:#11110d;stroke-width:1.83857787;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:44.12586921, 1.83857787;stroke-dashoffset:0;stroke-opacity:1"
            inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
@@ -4440,7 +4504,7 @@
         </g>
         <path
            sodipodi:type="star"
-           style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+           style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
            id="path13734-2-15"
            sodipodi:sides="3"
            sodipodi:cx="105.90289"
@@ -4455,7 +4519,7 @@
            d="m 108.10775,103.88061 -0.62254,2.74066 -0.62254,2.74066 -2.06221,-1.90946 -2.06221,-1.90947 2.68475,-0.83119 z"
            inkscape:transform-center-x="-0.13778027"
            inkscape:transform-center-y="0.010232333"
-           transform="matrix(0.12487012,0.1019252,-0.12758056,0.10292123,222.67471,188.15058)"
+           transform="matrix(0.12487012,0.1019252,-0.12758056,0.10292123,224.79111,188.15058)"
            inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
            inkscape:export-xdpi="96"
            inkscape:export-ydpi="96" />
@@ -4553,7 +4617,7 @@
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        inkscape:export-filename="/tmp/remodnav_algorithm-v3.1.png"
-       transform="matrix(0.1898177,-0.23254855,0.1916727,0.23759616,61.185823,159.79473)"
+       transform="matrix(0.1898177,-0.23254855,0.1916727,0.23759616,61.075001,159.81918)"
        inkscape:transform-center-y="-0.25669976"
        inkscape:transform-center-x="-0.018947306"
        d="m 108.10775,103.88061 -0.62254,2.74066 -0.62254,2.74066 -2.06221,-1.90946 -2.06221,-1.90947 2.68475,-0.83119 z"
@@ -4568,7 +4632,7 @@
        sodipodi:cx="105.90289"
        sodipodi:sides="3"
        id="path13734-2-2-0-3"
-       style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.59999999, 0.3;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
+       style="display:inline;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#11110d;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.32442236;stroke-opacity:1;paint-order:stroke markers fill"
        sodipodi:type="star" />
     <path
        inkscape:export-ydpi="96"
@@ -4852,7 +4916,7 @@
        sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
     <path
        transform="matrix(0.26458333,0,0,0.26458333,101.33542,115.49584)"
-       style="fill:#ffe6c8;fill-opacity:1;stroke:none;stroke-width:0.55664796"
+       style="fill:#ffe6c8;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:10;stroke-dasharray:none"
        inkscape:connector-curvature="0"
        d="m 70.999988,28.999975 h 20.000001 l 46.000001,21 H -3.0000126 Z"
        pointer-events="all"
