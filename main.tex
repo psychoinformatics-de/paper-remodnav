@@ -273,7 +273,7 @@ visual intake (e.g., a moving dot on a computer screen). Like fixations,
 the stimulus is projected to a relatively constant location on the retina
 \citep{carl1987pursuits}, however, the event is characterized by steadily changing
 gaze position in the eye-tracker signal.
-If this type of eye movement is not properly detected and labeled,
+If this type of eye movement is not properly classified,
 erroneous fixation and saccade events (which smooth pursuits would be classified into
 instead) are introduced \citep{Andersson2017}. Contemporary algorithms rarely provide
 this functionality \cite[but see \eg][for existing algorithms with
@@ -892,7 +892,7 @@ durations, plus number of events) for each stimulus category (images, dots,
 videos) and event type (fixations, saccades, PSOs, pursuits). This measure
 represents a scalar distribution dissimilarity score that can be used as an
 additional comparison metric of algorithm performance that focuses on overall
-number and durations of detected events, instead of sample-by-sample
+number and durations of classified events, instead of sample-by-sample
 misclassification. The RMSD measure has a lower bound of $0.0$ (identical to
 the average of both human raters), with higher values indicating larger
 differences \citep[for detail information on the calculation of this metric
@@ -1060,7 +1060,7 @@ duration distribution located below \unit[100]{ms} \citep[Fig.~8, albeit for
 static scene perception]{Nystrom2010AnData}.
 %
 Overall, the presented summary statistics suggest that \remodnav\ is capable
-of detecting eye movements with plausible characteristics, in prolonged
+of classifying eye movements with plausible characteristics, in prolonged
 gaze recordings. A visualization of such a classification
 result is depicted in \fig{remodnav} (top row).
 
@@ -1189,7 +1189,7 @@ during a two-hour session in an MRI-scanner. In particular, saccade amplitude
 and peak velocity exhibit a clear main-sequence relationship that resembles
 that found for the lab acquisition (\fig{overallComp}). Duration distributions
 for fixations, PSOs, and pursuits are strikingly similar between the two
-datasets (\fig{dist}), except for a generally lower number of detected events
+datasets (\fig{dist}), except for a generally lower number of classified events
 for the MRI experiment, which could be explained by the higher noise level and
 fraction of signal loss. There is a notable difference regarding the saccade
 duration distributions, with a bias towards shorter saccades in the MRI
