@@ -328,11 +328,11 @@ and e.g., \citet{van2018gazepath} for a recent velocity-based solution,
 and see \citet{dalveren2019evaluation} for an evaluation of common algorithms
 of both types).
 Like NH, \remodnav\ is a \textit{velocity-based} event classification algorithm.
-The algorithm comprises two major steps: preprocessing and event classification.  A
-general overview and pseudo-code are shown in \fig{alg}.  The following
+The algorithm comprises two major steps: preprocessing and event classification.    The following
 sections detail individual analysis steps. For each step relevant algorithm
-parameters are given in parenthesis. \tab{parameters} summarizes all
-parameters, and lists their default values.
+parameters are given in parenthesis.
+\fig{alg} provides an overview of the algorithm's main components.
+\tab{parameters} summarizes all parameters, and lists their default values.
 The computational definitions of the different eye movements
 \citep{hessels2018eye} are given within the event classification description.
 Note, however, that some of the computational definitions of eye movements can be
@@ -636,7 +636,7 @@ recording, or sparse data that has been transformed into a dense representation
 beforehand.
 The second argument \texttt{<outputfile>} is the file name of a
 BIDS-compliant \citep{gorgolewski2016brain} TSV text file that will contain a
-report on one detected eye movement event per line, with onset and offset time,
+report on one classified eye movement event per line, with onset and offset time,
 onset and offset coordinates, amplitude, peak velocity, median velocity and
 average velocity. The remaining arguments are the only two mandatory
 parameters: the conversion factor from pixels to visual degrees, \ie the visual
@@ -649,7 +649,7 @@ A complete list of supported parameters (sorted by algorithm step) with their
 description and default value, are listed in \tab{parameters}.
 While the required user input is kept minimal, the number of configurable
 parameters is purposefully large to facilitate optimal parameterization for
-data with specific properties. Besides the list of detected events, a
+data with specific properties. Besides the list of classified events, a
 visualization of the classification results, together with a time course of
 horizontal and vertical gaze position, and velocities is provided for
 illustration and initial quality assessment of algorithm performance on each
@@ -792,7 +792,7 @@ The JI is bound in range [0, 1] with higher values indicating higher similarity.
 A value of 0.93 in the upper left cell of the very first matrix in \fig{conf}
 for example indicates that 93\% of frames that  are labeled as a fixation by
 human coders RA and MN are the same. This index allows to quantify the
-similarity of classifications independent from values in other cells.
+similarity of classifications independent of values in other cells.
 While \remodnav\ does not achieve a
 labeling similarity that reaches the human inter-rater agreement, it still
 performs well. In particular, the relative magnitude of agreement with each
@@ -1231,7 +1231,7 @@ the present literature does not make use of such a distinction. Algorithm users
 are encouraged to decide on a case-by-case basis whether to lump these event categories
 together into a general PSO category, as done in our own validation analyses.
 As a general remark it is also noteworthy that eye tracking systems using
-pupil-CR eye tracking may bias data towards premature PSO onset times and
+pupil corneal reflection (pupil-CR) eye tracking may bias data towards premature PSO onset times and
 inflated PSO peak velocities (see \citet{HOOGE20166}).
 In deciding whether and how to interpret PSO events, it needs to be considered
 whether the eye tracking device may have introduced biases in the data.
