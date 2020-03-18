@@ -1,0 +1,1786 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="215.94463mm"
+   height="106.63345mm"
+   viewBox="0 0 215.94463 106.63346"
+   version="1.1"
+   id="svg836"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="flowchart.svg"
+   inkscape:export-filename="/home/adina/repos/papers/paper-remodnav/img/flowchart.png"
+   inkscape:export-xdpi="299.96201"
+   inkscape:export-ydpi="299.96201">
+  <defs
+     id="defs830">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1801">
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:1;"
+         offset="0"
+         id="stop1797" />
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:0;"
+         offset="1"
+         id="stop1799" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1801"
+       id="linearGradient1818"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.0543203,-0.41764578,-25.32016)"
+       x1="5.5251918"
+       y1="142.13452"
+       x2="39.91917"
+       y2="140.91689" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1801"
+       id="linearGradient1818-6"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.48169312,-0.41763506,32.943853)"
+       x1="5.5251918"
+       y1="142.13452"
+       x2="39.91917"
+       y2="140.91689" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Blur"
+       id="filter1961">
+      <feGaussianBlur
+         stdDeviation="1.01 1.02"
+         result="blur"
+         id="feGaussianBlur1959" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Blur"
+       id="filter1961-6">
+      <feGaussianBlur
+         stdDeviation="1.01 1.02"
+         result="blur"
+         id="feGaussianBlur1959-8" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3249068"
+     inkscape:cx="349.24659"
+     inkscape:cy="217.04385"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g2001-2"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showguides="false" />
+  <metadata
+     id="metadata833">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(31.96012,-59.659707)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1396"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+         id="flowRegion1398"
+         style="font-size:16px"><rect
+           id="rect1400"
+           width="100"
+           height="100.00001"
+           x="56.847324"
+           y="252.35359"
+           style="font-size:16px" /></flowRegion><flowPara
+         id="flowPara1402" /></flowRoot>    <g
+       id="g1415"
+       transform="translate(0.05502976,0.53740863)">
+      <rect
+         id="rect11"
+         pointer-events="all"
+         ry="0.75974745"
+         rx="2.3984201"
+         height="10.853536"
+         width="34.263145"
+         y="65.638481"
+         x="8.590414"
+         style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.38568184" />
+      <text
+         id="text1406"
+         y="72.109848"
+         x="25.496567"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1408"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+           y="72.109848"
+           x="25.496567"
+           sodipodi:role="line">Preprocessing</tspan></text>
+    </g>
+    <rect
+       style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.59238321"
+       x="56.214455"
+       y="59.955898"
+       width="82.399536"
+       height="10.646832"
+       rx="5.7679667"
+       ry="0.7452783"
+       pointer-events="all"
+       id="rect11-6" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="94.925919"
+       y="66.640244"
+       id="text1406-7"><tspan
+         sodipodi:role="line"
+         x="94.925919"
+         y="66.640244"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+         id="tspan1408-5">Event classification</tspan></text>
+    <path
+       id="path15-5"
+       pointer-events="all"
+       stroke-miterlimit="10"
+       d="m 45.945953,69.387393 h 5.2086 v -1.823012 l 3.472401,3.038349 -3.472401,3.038372 v -1.82303 h -5.2086 V 70.60273 Z"
+       style="fill:#333333;stroke:#000000;stroke-width:0.17361999;stroke-miterlimit:10"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path15-5-6"
+       pointer-events="all"
+       stroke-miterlimit="10"
+       d="m -2.2544506,70.004944 h 5.2085968 v -1.823012 l 3.4723989,3.038349 -3.4723989,3.038372 v -1.82303 h -5.2085968 v -1.215342 z"
+       style="fill:#4d4d4d;stroke:#000000;stroke-width:0.17361999;stroke-miterlimit:10"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path15-5-7"
+       pointer-events="all"
+       stroke-miterlimit="10"
+       d="m 140.86636,70.593159 h 5.2086 v -1.823012 l 3.4724,3.038349 -3.4724,3.038372 v -1.82303 h -5.2086 v -1.215342 z"
+       style="fill:#333333;stroke:#000000;stroke-width:0.17361999;stroke-miterlimit:10"
+       inkscape:connector-curvature="0" />
+    <g
+       inkscape:groupmode="layer"
+       id="layer2"
+       inkscape:label="Layer 0">
+      <rect
+         style="opacity:0.69800062;fill:url(#linearGradient1818);fill-opacity:1;stroke:none;stroke-width:0.20536022;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1795"
+         width="35.670872"
+         height="28.91411"
+         x="3.8306582"
+         y="110.17516"
+         rx="1.5473324"
+         ry="0" />
+      <rect
+         style="opacity:0.69800062;fill:url(#linearGradient1818-6);fill-opacity:1;stroke:none;stroke-width:0.13880824;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1795-9"
+         width="35.670872"
+         height="13.210149"
+         x="3.8306582"
+         y="94.848343"
+         rx="1.5473324"
+         ry="0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="-61.33448"
+         y="-150.84918"
+         id="text1406-6-7-3-2-9-9"
+         transform="rotate(179.56917)"><tspan
+           sodipodi:role="line"
+           x="-150.84918"
+           y="-59.358925"
+           style="font-weight:bold;font-size:3.17499995px;line-height:0.40000001;writing-mode:vertical-lr;text-orientation:sideways;stroke-width:0.26458332"
+           id="tspan1793-3-4"
+           rotate="0" /></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="-101.39387"
+         y="8.3303986"
+         id="text1903"
+         transform="rotate(-89.346829)"><tspan
+           sodipodi:role="line"
+           x="-101.39387"
+           y="8.3303986"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.11666656px;line-height:0.1;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+           id="tspan1905">remove</tspan><tspan
+           sodipodi:role="line"
+           x="-101.12929"
+           y="10.996078"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.11666656px;line-height:0.1;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+           id="tspan1909"> spurious </tspan><tspan
+           sodipodi:role="line"
+           x="-101.39387"
+           y="13.661759"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.11666656px;line-height:0.1;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+           id="tspan1911">movement</tspan></text>
+      <path
+         id="path15-5-5"
+         pointer-events="all"
+         stroke-miterlimit="10"
+         d="m 29.241343,77.524795 v 63.565685 l 6.983347,-0.27769 -9.736109,10.86102 -9.260417,-10.58333 h 5.55625 V 77.524795 h 3.228474 z"
+         style="opacity:0.17000002;fill:#000000;stroke:#000000;stroke-width:0.82856816;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         id="path15-5-5-9-90"
+         pointer-events="all"
+         stroke-miterlimit="10"
+         d="m 130.74079,76.52059 v 80.19004 c 3.32811,-0.0954 33.10896,0.002 33.10896,0.002 l -0.55852,-17.70727 h 6.4135 l 0.22483,22.85568 c -14.64272,-0.0896 -37.46836,0.34228 -45.60225,0.141 V 76.52059 h 3.20674 z"
+         style="opacity:0.17000002;fill:#000000;stroke:#000000;stroke-width:0.89636946;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccccc" />
+      <path
+         id="path15-5-5-99"
+         pointer-events="all"
+         stroke-miterlimit="10"
+         d="m 70.260236,76.848391 v 64.094839 l 6.983346,-0.27769 -9.736108,10.86102 -9.260418,-10.58333 h 5.55625 V 76.848391 h 3.228474 z"
+         style="opacity:0.17000002;fill:#000000;stroke:#000000;stroke-width:0.82856822;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         id="path15-5-5-99-3"
+         pointer-events="all"
+         stroke-miterlimit="10"
+         d="m 100.89844,76.570714 v 64.094826 l 6.98338,-0.27769 -9.736145,10.86102 -9.260419,-10.58333 h 5.556251 V 76.570714 h 3.228473 z"
+         style="opacity:0.17000002;fill:#000000;stroke:#000000;stroke-width:0.82856828;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         id="path15-5-5-92"
+         pointer-events="all"
+         stroke-miterlimit="10"
+         d="m 169.709,138.14521 -0.004,-11.90554 6.98335,0.27769 -9.73611,-10.86102 -9.26042,10.58333 h 5.55625 l 0.004,11.90554 h 3.22847 z"
+         style="opacity:0.17000002;fill:#000000;stroke:#000000;stroke-width:0.82856822;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+      <path
+         transform="translate(-1.1458333e-6)"
+         inkscape:connector-curvature="0"
+         style="opacity:0.61940008;fill:none;stroke:#000000;stroke-width:0.24227083;stroke-miterlimit:10;stroke-dasharray:0.72681251, 0.72681251"
+         d="m 79.570971,153.78569 h 5.291669 l 0.178379,-75.647003 3.045157,-0.09044"
+         stroke-miterlimit="10"
+         pointer-events="stroke"
+         id="path6-9"
+         sodipodi:nodetypes="cccc" />
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.61940008;fill:none;stroke:#000000;stroke-width:0.24227083;stroke-miterlimit:10;stroke-dasharray:0.72681252, 0.72681252"
+         d="m 111.05432,153.78569 h 5.82084 l 0.17838,-75.646997 2.51599,-0.0904"
+         stroke-miterlimit="10"
+         pointer-events="stroke"
+         id="path6-9-4"
+         sodipodi:nodetypes="cccc" />
+    </g>
+    <g
+       id="g1747"
+       transform="translate(-0.41764055,-17.727189)">
+      <rect
+         id="rect11-0-2"
+         pointer-events="all"
+         ry="0.86632723"
+         rx="1.7601488"
+         height="12.376103"
+         width="25.144981"
+         y="128.54079"
+         x="14.77419"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844641, 1.05844641" />
+      <text
+         id="text1406-6-7-3"
+         y="133.8448"
+         x="27.239017"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1689-5"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="133.8448"
+           x="27.239017"
+           sodipodi:role="line">Savitzgy-</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="137.79591"
+           x="27.239017"
+           sodipodi:role="line"
+           id="tspan1726">Golay filter</tspan></text>
+    </g>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844642, 1.05844642"
+       x="14.356549"
+       y="125.83549"
+       width="25.144981"
+       height="12.376103"
+       rx="1.7601488"
+       ry="0.86632723"
+       pointer-events="all"
+       id="rect11-0-2-9" />
+    <text
+       id="text1406-6-7-3-2"
+       y="131.19868"
+       x="27.022196"
+       style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+         y="131.19868"
+         x="27.463169"
+         sodipodi:role="line"
+         id="tspan1726-8">Median </tspan><tspan
+         id="tspan1793"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+         y="135.1498"
+         x="27.022196"
+         sodipodi:role="line">filter</tspan></text>
+    <text
+       transform="rotate(179.56917)"
+       id="text1406-6-7-3-2-9"
+       y="-124.72475"
+       x="-8.7052259"
+       style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
+         id="tspan1793-3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;line-height:0.40000001;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';writing-mode:vertical-lr;text-orientation:sideways;stroke-width:0.26458332"
+         y="-8.7052259"
+         x="-124.72475"
+         sodipodi:role="line">Noise reduction</tspan></text>
+    <g
+       id="g1695"
+       transform="translate(-0.41764056,-33.278289)">
+      <rect
+         id="rect11-0"
+         pointer-events="all"
+         ry="0.86632723"
+         rx="1.7601488"
+         height="12.376103"
+         width="25.144981"
+         y="128.54079"
+         x="14.77419"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844641, 1.05844641" />
+      <text
+         id="text1406-6-7"
+         y="133.8448"
+         x="27.239017"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="133.8448"
+           x="27.679989"
+           sodipodi:role="line"
+           id="tspan1627-2">Mask signal </tspan><tspan
+           id="tspan1689"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="137.79591"
+           x="27.239017"
+           sodipodi:role="line">loss</tspan></text>
+    </g>
+    <g
+       id="g1656"
+       transform="translate(-21.074388,-4.6302637)">
+      <g
+         transform="matrix(1.4539398,0,0,1.0637851,-5.1067924,65.608026)"
+         id="g1634-6">
+        <g
+           id="g1415-9-1"
+           transform="matrix(0.72171474,0,0,1.1011585,17.298883,14.558449)">
+          <rect
+             id="rect11-3-8"
+             pointer-events="all"
+             ry="0.75974745"
+             rx="2.3984201"
+             height="10.853536"
+             width="34.263145"
+             y="65.638481"
+             x="8.590414"
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184" />
+        </g>
+      </g>
+      <text
+         id="text1406-6-3"
+         y="163.35352"
+         x="47.198341"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="163.35352"
+           x="47.198341"
+           sodipodi:role="line"
+           id="tspan1627-7">Calculate velocity</tspan><tspan
+           id="tspan1606"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           y="167.30463"
+           x="47.198341"
+           sodipodi:role="line">&amp; acceleration</tspan></text>
+    </g>
+    <g
+       id="g1634"
+       transform="translate(-8.7254002,-7.1149439)">
+      <g
+         transform="matrix(0.72171474,0,0,1.1011585,17.298883,14.558449)"
+         id="g1415-9">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+           x="8.590414"
+           y="65.638481"
+           width="34.263145"
+           height="10.853536"
+           rx="2.3984201"
+           ry="0.75974745"
+           pointer-events="all"
+           id="rect11-3" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="36.272263"
+         y="92.28981"
+         id="text1406-6"><tspan
+           sodipodi:role="line"
+           x="36.713234"
+           y="92.28981"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+           id="tspan1408-2">Stampe </tspan><tspan
+           id="tspan1627"
+           sodipodi:role="line"
+           x="36.272263"
+           y="96.240921"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">filter</tspan></text>
+      <g
+         id="g1765">
+        <rect
+           y="87.469635"
+           x="-21.902689"
+           height="43.862068"
+           width="31.283747"
+           id="rect1720"
+           style="opacity:0.17000002;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.21358836;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text1406-6-35"
+           y="91.483223"
+           x="-19.394669"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="91.483223"
+             x="-19.394669"
+             sodipodi:role="line"
+             id="tspan1627-29">• Tab-separated file</tspan><tspan
+             id="tspan1745"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="95.434334"
+             x="-19.394669"
+             sodipodi:role="line">• Rows: Time points</tspan><tspan
+             id="tspan1749"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="99.385445"
+             x="-19.394669"
+             sodipodi:role="line">• Columns: x- &amp; y-</tspan><tspan
+             id="tspan1753"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="103.33656"
+             x="-19.394669"
+             sodipodi:role="line">   coordinates</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="107.28767"
+             x="-19.394669"
+             sodipodi:role="line"
+             id="tspan1833">• Comand line call:</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="111.23878"
+             x="-19.394669"
+             sodipodi:role="line"
+             id="tspan1817" /></text>
+        <g
+           id="g1842"
+           transform="translate(-1.0583333,1.0583333)">
+          <rect
+             y="109.82021"
+             x="-20.315187"
+             height="18.879604"
+             width="29.794046"
+             id="rect1767"
+             style="opacity:0.49000005;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.15281391;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-18.291845"
+             y="113.24232"
+             id="text1406-6-35-1"><tspan
+               id="tspan1807"
+               sodipodi:role="line"
+               x="-18.291845"
+               y="113.24232"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;text-anchor:start;stroke-width:0.26458332">&gt; remodnav \</tspan><tspan
+               id="tspan1811"
+               sodipodi:role="line"
+               x="-18.291845"
+               y="117.68686"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;text-anchor:start;stroke-width:0.26458332">infile outfile \</tspan><tspan
+               id="tspan1813"
+               sodipodi:role="line"
+               x="-18.291845"
+               y="122.1314"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;text-anchor:start;stroke-width:0.26458332">px2deg sr \</tspan><tspan
+               id="tspan1815"
+               sodipodi:role="line"
+               x="-18.291845"
+               y="126.57594"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;text-anchor:start;stroke-width:0.26458332">&lt;options&gt;</tspan><tspan
+               id="tspan1805"
+               sodipodi:role="line"
+               x="-18.291845"
+               y="131.02048"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.40000001;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;text-anchor:start;stroke-width:0.26458332">   </tspan></text>
+        </g>
+        <rect
+           y="87.393684"
+           x="159.30952"
+           height="34.530518"
+           width="31.566172"
+           id="rect1720-3"
+           style="opacity:0.17000002;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.19636211;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <text
+           id="text1406-6-35-4"
+           y="91.482948"
+           x="161.49574"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="91.482948"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan1627-29-3">• Tab-separated file</tspan><tspan
+             id="tspan1745-3"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="95.434059"
+             x="161.49574"
+             sodipodi:role="line">• Rows: events</tspan><tspan
+             id="tspan1749-4"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="99.38517"
+             x="161.49574"
+             sodipodi:role="line">• Columns: event, </tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="103.33628"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan3169">   on/offset times +</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="107.28739"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan3171">   coordinates,</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="111.2385"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan3173">   amplitute, peak/</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="115.18961"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan3177">   median/average</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="119.14072"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan3175">   velocity</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="123.09184"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan1833-4" /><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+             y="127.04295"
+             x="161.49574"
+             sodipodi:role="line"
+             id="tspan1817-5" /></text>
+      </g>
+      <g
+         id="g2118"
+         transform="translate(-0.52916667)">
+        <g
+           id="g1415-9-2"
+           transform="matrix(0.72402371,0,0,1.0960457,57.473402,14.935725)">
+          <rect
+             id="rect11-3-6"
+             pointer-events="all"
+             ry="0.75974745"
+             rx="2.3984201"
+             height="10.853536"
+             width="34.263145"
+             y="65.638481"
+             x="8.590414"
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184" />
+        </g>
+        <text
+           id="text1406-6-8"
+           y="89.644249"
+           x="75.657219"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             id="tspan2103"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="89.644249"
+             x="75.657219"
+             sodipodi:role="line">Calculate global</tspan><tspan
+             id="tspan2107"
+             style="font-size:2.82222223px;line-height:0;stroke-width:0.26458332"
+             y="93.59536"
+             x="76.009995"
+             sodipodi:role="line"><tspan
+               id="tspan1088"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">peak </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella'"
+               id="tspan5596">velocity </tspan></tspan><tspan
+             style="font-size:2.82222223px;line-height:0;stroke-width:0.26458332"
+             y="97.546471"
+             x="75.657219"
+             sodipodi:role="line"
+             id="tspan1090"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella'"
+               id="tspan1092">threshold</tspan></tspan></text>
+      </g>
+      <g
+         transform="translate(1.4782225,14.180733)"
+         id="g2251" />
+      <g
+         id="g1292"
+         transform="translate(-2.6458334,0.52916667)">
+        <g
+           id="g1183"
+           transform="translate(91.554489,-74.547826)">
+          <g
+             id="g1747-7"
+             transform="matrix(1.1450422,0,0,0.99803258,-42.662706,59.006364)">
+            <rect
+               id="rect11-0-2-3"
+               pointer-events="all"
+               ry="0.86632723"
+               rx="1.7601488"
+               height="12.376103"
+               width="25.144981"
+               y="128.54079"
+               x="14.77419"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844641, 1.05844641" />
+          </g>
+          <text
+             id="text1406-6-8-8-3"
+             y="189.97218"
+             x="-24.694553"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="189.97218"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2198-49"><tspan
+   id="tspan1163"
+   style="font-size:1.41111112px">•</tspan> local peak &gt; threshold</tspan><tspan
+               id="tspan2255-4"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="192.72018"
+               x="-24.694553"
+               sodipodi:role="line"><tspan
+   id="tspan1165"
+   style="font-size:1.41111112px">•</tspan> glb. frequency ≤ freq. limit</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="195.4682"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2669-1"><tspan
+   id="tspan1167"
+   style="font-size:1.41111112px">•</tspan> duration ≥ min. duration</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="198.2162"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2267-9"><tspan
+   id="tspan1169"
+   style="font-size:1.41111112px">•</tspan> distance ≥ min. distance </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="200.9642"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2265-5"> </tspan></text>
+        </g>
+        <g
+           transform="matrix(0.71809462,0,0,1.0967892,59.640125,28.850809)"
+           id="g1415-9-2-6">
+          <rect
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+             x="8.590414"
+             y="65.638481"
+             width="34.263145"
+             height="10.853536"
+             rx="2.3984201"
+             ry="0.75974745"
+             pointer-events="all"
+             id="rect11-3-6-2" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="77.664604"
+           y="105.41248"
+           id="text1406-6-8-9"><tspan
+             id="tspan2241"
+             sodipodi:role="line"
+             x="77.664604"
+             y="105.41248"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">Classify major</tspan><tspan
+             sodipodi:role="line"
+             x="77.664604"
+             y="109.36359"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1095"> saccades</tspan></text>
+        <g
+           transform="translate(-8.9958338)"
+           id="g2772">
+          <g
+             id="g2395"
+             transform="translate(32.430461,-4.0187528)">
+            <g
+               transform="translate(-1.7651116,-2.3299473)"
+               id="g1100">
+              <path
+                 inkscape:connector-curvature="0"
+                 style="fill:#4d4d4d;stroke:#000000;stroke-width:0.07112501;stroke-miterlimit:10"
+                 d="m 69.996773,116.33705 2.934631,2.75808 -2.934631,2.75813 -2.934634,-2.75813 z"
+                 stroke-miterlimit="10"
+                 pointer-events="all"
+                 id="path17" />
+              <text
+                 xml:space="preserve"
+                 style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                 x="69.94117"
+                 y="120.30798"
+                 id="text2277"><tspan
+                   sodipodi:role="line"
+                   id="tspan2275"
+                   x="69.94117"
+                   y="120.30798"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';fill:#ffffff;stroke-width:0.26458332">if</tspan></text>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g
+         transform="matrix(0.37875706,0,0,0.49594928,-23.524679,127.76485)"
+         id="g1415-9-20">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+           x="8.590414"
+           y="65.638481"
+           width="34.263145"
+           height="10.853536"
+           rx="2.3984201"
+           ry="0.75974745"
+           pointer-events="all"
+           id="rect11-3-0" />
+      </g>
+      <g
+         id="g2118-6-7"
+         transform="translate(-0.5291669,68.983836)">
+        <g
+           id="g2251-41"
+           transform="translate(-0.638444,-27.815586)">
+          <g
+             transform="matrix(0.71809463,0,0,1.0967892,58.161903,14.670076)"
+             id="g1415-9-2-6-2">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+               x="8.590414"
+               y="65.638481"
+               width="34.263145"
+               height="10.853536"
+               rx="2.3984201"
+               ry="0.75974745"
+               pointer-events="all"
+               id="rect11-3-6-2-2" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="76.186386"
+             y="91.23175"
+             id="text1406-6-8-9-1"><tspan
+               id="tspan2241-6"
+               sodipodi:role="line"
+               x="76.186386"
+               y="91.23175"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">Classify PSOs for</tspan><tspan
+               sodipodi:role="line"
+               x="76.186386"
+               y="95.182861"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan1095-2">major saccades</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g2118-6-7-0"
+         transform="translate(-2.3666667e-7,102.05457)">
+        <g
+           id="g2251-41-2"
+           transform="translate(-0.638444,-27.815586)">
+          <g
+             transform="matrix(0.71809463,0,0,1.0967892,58.161903,14.670076)"
+             id="g1415-9-2-6-2-2">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+               x="8.590414"
+               y="65.638481"
+               width="34.263145"
+               height="10.853536"
+               rx="2.3984201"
+               ry="0.75974745"
+               pointer-events="all"
+               id="rect11-3-6-2-2-9" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="76.186386"
+             y="91.23175"
+             id="text1406-6-8-9-1-7"><tspan
+               sodipodi:role="line"
+               x="76.186386"
+               y="91.23175"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan1095-2-3">Segment inter-</tspan><tspan
+               sodipodi:role="line"
+               x="76.186386"
+               y="95.182861"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan1329">saccade windows</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g1292-1"
+         transform="translate(29.321233,0.52916554)">
+        <g
+           id="g1183-9"
+           transform="translate(91.554489,-74.547826)">
+          <g
+             id="g1747-7-7"
+             transform="matrix(1.1450422,0,0,0.99803258,-42.662706,59.006364)">
+            <rect
+               id="rect11-0-2-3-1"
+               pointer-events="all"
+               ry="0.86632723"
+               rx="1.7601488"
+               height="12.376103"
+               width="25.144981"
+               y="128.54079"
+               x="14.77419"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844641, 1.05844641" />
+          </g>
+          <text
+             id="text1406-6-8-8-3-3"
+             y="189.97218"
+             x="-24.694553"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="189.97218"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2198-49-1"><tspan
+   id="tspan1163-2"
+   style="font-size:1.41111112px">•</tspan> local peak &gt; threshold</tspan><tspan
+               id="tspan2255-4-0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="192.72018"
+               x="-24.694553"
+               sodipodi:role="line"><tspan
+   id="tspan1165-6"
+   style="font-size:1.41111112px">•</tspan> glb. frequency ≤ freq. limit</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="195.4682"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2669-1-8"><tspan
+   id="tspan1167-7"
+   style="font-size:1.41111112px">•</tspan> duration ≥ min. duration</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="198.2162"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2267-9-4"><tspan
+   id="tspan1169-9"
+   style="font-size:1.41111112px">•</tspan> distance ≥ min. distance </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="200.9642"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2265-5-2"> </tspan></text>
+        </g>
+        <g
+           transform="matrix(0.71809462,0,0,1.0967892,59.640125,28.850809)"
+           id="g1415-9-2-6-4">
+          <rect
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+             x="8.590414"
+             y="65.638481"
+             width="34.263145"
+             height="10.853536"
+             rx="2.3984201"
+             ry="0.75974745"
+             pointer-events="all"
+             id="rect11-3-6-2-4" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="77.664604"
+           y="105.41248"
+           id="text1406-6-8-9-5"><tspan
+             sodipodi:role="line"
+             x="77.664604"
+             y="105.41248"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1095-1">Classify saccades</tspan><tspan
+             sodipodi:role="line"
+             x="77.664604"
+             y="109.36359"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1525">within windows</tspan></text>
+        <g
+           transform="translate(-8.9958338)"
+           id="g2772-2">
+          <g
+             id="g2395-8"
+             transform="translate(32.430461,-4.0187528)">
+            <g
+               transform="translate(-1.7651116,-2.3299473)"
+               id="g1100-9">
+              <path
+                 inkscape:connector-curvature="0"
+                 style="fill:#4d4d4d;stroke:#000000;stroke-width:0.07112501;stroke-miterlimit:10"
+                 d="m 69.996773,116.33705 2.934631,2.75808 -2.934631,2.75813 -2.934634,-2.75813 z"
+                 stroke-miterlimit="10"
+                 pointer-events="all"
+                 id="path17-6" />
+              <text
+                 xml:space="preserve"
+                 style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                 x="69.94117"
+                 y="120.30798"
+                 id="text2277-06"><tspan
+                   sodipodi:role="line"
+                   id="tspan2275-40"
+                   x="69.94117"
+                   y="120.30798"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';fill:#ffffff;stroke-width:0.26458332">if</tspan></text>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g
+         id="g2118-7"
+         transform="translate(31.233873,-0.04875594)">
+        <g
+           id="g1415-9-2-9"
+           transform="matrix(0.72402371,0,0,1.0960457,57.473402,14.935725)">
+          <rect
+             id="rect11-3-6-8"
+             pointer-events="all"
+             ry="0.75974745"
+             rx="2.3984201"
+             height="10.853536"
+             width="34.263145"
+             y="65.638481"
+             x="8.590414"
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184" />
+        </g>
+        <text
+           id="text1406-6-8-1"
+           y="89.644249"
+           x="75.657219"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             id="tspan2103-0"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="89.644249"
+             x="75.657219"
+             sodipodi:role="line">Calculate local</tspan><tspan
+             id="tspan2107-7"
+             style="font-size:2.82222223px;line-height:0;stroke-width:0.26458332"
+             y="93.59536"
+             x="76.009995"
+             sodipodi:role="line"><tspan
+               id="tspan1088-6"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">peak </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella'"
+               id="tspan5596-0">velocity </tspan></tspan><tspan
+             style="font-size:2.82222223px;line-height:0;stroke-width:0.26458332"
+             y="97.546471"
+             x="75.657219"
+             sodipodi:role="line"
+             id="tspan1090-1"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella'"
+               id="tspan1092-0">threshold</tspan></tspan></text>
+      </g>
+      <g
+         id="g2118-6-7-6"
+         transform="translate(31.437898,68.897947)">
+        <g
+           id="g2251-41-3"
+           transform="translate(-0.638444,-27.815586)">
+          <g
+             transform="matrix(0.71809463,0,0,1.0967892,58.161903,14.670076)"
+             id="g1415-9-2-6-2-9">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+               x="8.590414"
+               y="65.638481"
+               width="34.263145"
+               height="10.853536"
+               rx="2.3984201"
+               ry="0.75974745"
+               pointer-events="all"
+               id="rect11-3-6-2-2-95" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="76.186386"
+             y="93.348419"
+             id="text1406-6-8-9-1-2"><tspan
+               sodipodi:role="line"
+               x="76.186386"
+               y="93.348419"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan1095-2-30">Classify PSOs</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g1292-1-3"
+         transform="translate(61.214899,-13.837387)">
+        <g
+           id="g1183-9-4"
+           transform="translate(91.554489,-74.547826)">
+          <g
+             id="g1747-7-7-6"
+             transform="matrix(1.1450422,0,0,0.99803258,-42.662706,59.006364)">
+            <rect
+               id="rect11-0-2-3-1-1"
+               pointer-events="all"
+               ry="0.53510547"
+               rx="1.7650552"
+               height="7.6443639"
+               width="25.215073"
+               y="128.50554"
+               x="14.739144"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.27767113;stroke-dasharray:0.83301349, 0.83301349" />
+          </g>
+          <text
+             id="text1406-6-8-8-3-3-5"
+             y="189.97218"
+             x="-24.694553"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="189.97218"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2198-49-1-6"><tspan
+   id="tspan1163-2-1"
+   style="font-size:1.41111112px">•</tspan> duration ≥ </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="192.72018"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan1976">  min. pursuit duration</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="195.3123"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2267-9-4-2"> </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="197.90442"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2265-5-2-1"> </tspan></text>
+        </g>
+        <g
+           transform="matrix(0.71809462,0,0,1.0967892,59.640125,28.850809)"
+           id="g1415-9-2-6-4-2">
+          <rect
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+             x="8.590414"
+             y="65.638481"
+             width="34.263145"
+             height="10.853536"
+             rx="2.3984201"
+             ry="0.75974745"
+             pointer-events="all"
+             id="rect11-3-6-2-4-4" />
+        </g>
+        <g
+           transform="translate(-8.9958338)"
+           id="g2772-2-3">
+          <g
+             id="g2395-8-7"
+             transform="translate(32.430461,-4.0187528)">
+            <g
+               transform="translate(-1.7651116,-2.3299473)"
+               id="g1100-9-7">
+              <path
+                 inkscape:connector-curvature="0"
+                 style="fill:#4d4d4d;stroke:#000000;stroke-width:0.07112501;stroke-miterlimit:10"
+                 d="m 69.996773,116.33705 2.934631,2.75808 -2.934631,2.75813 -2.934634,-2.75813 z"
+                 stroke-miterlimit="10"
+                 pointer-events="all"
+                 id="path17-6-2" />
+              <text
+                 xml:space="preserve"
+                 style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                 x="69.94117"
+                 y="120.30798"
+                 id="text2277-06-3"><tspan
+                   sodipodi:role="line"
+                   id="tspan2275-40-7"
+                   x="69.94117"
+                   y="120.30798"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';fill:#ffffff;stroke-width:0.26458332">if</tspan></text>
+            </g>
+          </g>
+        </g>
+        <text
+           id="text1406-6-8-1-0"
+           y="103.49921"
+           x="78.105179"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="103.49921"
+             x="78.105179"
+             sodipodi:role="line"
+             id="tspan1090-1-2">Butterworth filter,</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="107.45032"
+             x="78.105179"
+             sodipodi:role="line"
+             id="tspan2032">calculate pursuit</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="111.40143"
+             x="78.105179"
+             sodipodi:role="line"
+             id="tspan2036">velocity threshold</tspan></text>
+      </g>
+      <g
+         id="g1292-1-3-0"
+         transform="translate(61.174769,7.7774699)">
+        <g
+           id="g1183-9-4-3"
+           transform="translate(91.554489,-74.547826)">
+          <g
+             id="g1747-7-7-6-5"
+             transform="matrix(1.1450422,0,0,0.99803258,-42.662706,59.006364)">
+            <rect
+               id="rect11-0-2-3-1-1-8"
+               pointer-events="all"
+               ry="0.53510547"
+               rx="1.7650552"
+               height="7.6443639"
+               width="25.215073"
+               y="128.50554"
+               x="14.739144"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.27767113;stroke-dasharray:0.83301349, 0.83301349" />
+          </g>
+          <text
+             id="text1406-6-8-8-3-3-5-5"
+             y="189.97218"
+             x="-24.694553"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="189.97218"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2198-49-1-6-0"><tspan
+   id="tspan1163-2-1-9"
+   style="font-size:1.41111112px">•</tspan> peak velocity ≥ </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="192.72018"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan1976-9">  pursuit velocity threshold</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="195.3123"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2267-9-4-2-8"> </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="197.90442"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2265-5-2-1-0"> </tspan></text>
+        </g>
+        <g
+           transform="matrix(0.71809462,0,0,1.0967892,59.640125,28.850809)"
+           id="g1415-9-2-6-4-2-2">
+          <rect
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+             x="8.590414"
+             y="65.638481"
+             width="34.263145"
+             height="10.853536"
+             rx="2.3984201"
+             ry="0.75974745"
+             pointer-events="all"
+             id="rect11-3-6-2-4-4-4" />
+        </g>
+        <g
+           transform="translate(-8.9958338)"
+           id="g2772-2-3-9">
+          <g
+             id="g2395-8-7-0"
+             transform="translate(32.430461,-4.0187528)">
+            <g
+               transform="translate(-1.7651116,-2.3299473)"
+               id="g1100-9-7-1">
+              <path
+                 inkscape:connector-curvature="0"
+                 style="fill:#4d4d4d;stroke:#000000;stroke-width:0.07112501;stroke-miterlimit:10"
+                 d="m 69.996773,116.33705 2.934631,2.75808 -2.934631,2.75813 -2.934634,-2.75813 z"
+                 stroke-miterlimit="10"
+                 pointer-events="all"
+                 id="path17-6-2-2" />
+              <text
+                 xml:space="preserve"
+                 style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                 x="69.94117"
+                 y="120.30798"
+                 id="text2277-06-3-0"><tspan
+                   sodipodi:role="line"
+                   id="tspan2275-40-7-0"
+                   x="69.94117"
+                   y="120.30798"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';fill:#ffffff;stroke-width:0.26458332">if</tspan></text>
+            </g>
+          </g>
+        </g>
+        <text
+           id="text1406-6-8-1-0-6"
+           y="107.73254"
+           x="78.105179"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             y="107.73254"
+             x="78.105179"
+             sodipodi:role="line"
+             id="tspan2120">Classify pursuit</tspan></text>
+      </g>
+      <g
+         id="g1292-1-8"
+         transform="translate(61.134639,29.921495)">
+        <g
+           id="g1183-9-3"
+           transform="translate(91.554489,-74.547826)">
+          <g
+             id="g1747-7-7-8"
+             transform="matrix(1.1450422,0,0,0.99803258,-42.662706,59.006364)">
+            <rect
+               id="rect11-0-2-3-1-7"
+               pointer-events="all"
+               ry="0.86632723"
+               rx="1.7601488"
+               height="12.376103"
+               width="25.144981"
+               y="128.54079"
+               x="14.77419"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.35281545;stroke-dasharray:1.05844641, 1.05844641" />
+          </g>
+          <text
+             id="text1406-6-8-8-3-3-3"
+             y="189.97218"
+             x="-24.694553"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.1;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               id="tspan2255-4-0-0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="189.97218"
+               x="-24.694553"
+               sodipodi:role="line"><tspan
+   id="tspan1165-6-5"
+   style="font-size:1.41111112px">•</tspan> duration &lt; </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="192.72018"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2215">  min. pursuit duration</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="195.3123"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2267-9-4-1"><tspan
+   id="tspan1167-7-3"
+   style="font-size:1.41111112px">•</tspan> peak velocity ≤ </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="198.0603"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2221">  pursuit velocity threshold </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:start;text-anchor:start;stroke-width:0.26458332"
+               y="200.65242"
+               x="-24.694553"
+               sodipodi:role="line"
+               id="tspan2265-5-2-0"> </tspan></text>
+        </g>
+        <g
+           transform="matrix(0.71809462,0,0,1.0967892,59.640125,28.850809)"
+           id="g1415-9-2-6-4-1">
+          <rect
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+             x="8.590414"
+             y="65.638481"
+             width="34.263145"
+             height="10.853536"
+             rx="2.3984201"
+             ry="0.75974745"
+             pointer-events="all"
+             id="rect11-3-6-2-4-7" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="77.664604"
+           y="107.52914"
+           id="text1406-6-8-9-5-9"><tspan
+             sodipodi:role="line"
+             x="77.664604"
+             y="107.52914"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1525-0">Classify fixation</tspan></text>
+        <g
+           transform="translate(-8.9958338)"
+           id="g2772-2-35">
+          <g
+             id="g2395-8-9"
+             transform="translate(32.430461,-4.0187528)">
+            <g
+               transform="translate(-1.7651116,-2.3299473)"
+               id="g1100-9-4">
+              <path
+                 inkscape:connector-curvature="0"
+                 style="fill:#4d4d4d;stroke:#000000;stroke-width:0.07112501;stroke-miterlimit:10"
+                 d="m 69.996773,116.33705 2.934631,2.75808 -2.934631,2.75813 -2.934634,-2.75813 z"
+                 stroke-miterlimit="10"
+                 pointer-events="all"
+                 id="path17-6-8" />
+              <text
+                 xml:space="preserve"
+                 style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                 x="69.94117"
+                 y="120.30798"
+                 id="text2277-06-4"><tspan
+                   sodipodi:role="line"
+                   id="tspan2275-40-6"
+                   x="69.94117"
+                   y="120.30798"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';fill:#ffffff;stroke-width:0.26458332">if</tspan></text>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g
+         id="g2118-6-7-0-9"
+         transform="translate(31.483353,102.05457)">
+        <g
+           id="g2251-41-2-0"
+           transform="translate(-0.638444,-27.815586)">
+          <g
+             transform="matrix(0.71809463,0,0,1.0967892,58.161903,14.670076)"
+             id="g1415-9-2-6-2-2-3">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.38568184"
+               x="8.590414"
+               y="65.638481"
+               width="34.263145"
+               height="10.853536"
+               rx="2.3984201"
+               ry="0.75974745"
+               pointer-events="all"
+               id="rect11-3-6-2-2-9-0" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="76.186386"
+             y="91.23175"
+             id="text1406-6-8-9-1-7-3"><tspan
+               sodipodi:role="line"
+               x="76.539162"
+               y="91.23175"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan1329-7">unlabeled </tspan><tspan
+               sodipodi:role="line"
+               x="76.186386"
+               y="95.182861"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               id="tspan2281">data until now</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g1500"
+       transform="translate(2.3033747,-21.072885)"
+       style="opacity:1">
+      <g
+         id="g2001"
+         transform="translate(-3.7041668)">
+        <g
+           transform="translate(-3.4050342,13.620137)"
+           id="g1993">
+          <ellipse
+             style="opacity:1;fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.47424674"
+             cx="-13.323819"
+             cy="78.548653"
+             rx="11.85617"
+             ry="7.1137013"
+             pointer-events="all"
+             id="ellipse13" />
+          <text
+             id="text1491"
+             y="79.929062"
+             x="-13.516598"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               id="tspan1493"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88055563px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+               y="79.929062"
+               x="-13.516598"
+               sodipodi:role="line">Input data</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g2045"
+         transform="translate(17.761866,-0.85125856)">
+        <g
+           id="g2001-2"
+           style="opacity:1"
+           transform="translate(161.3135,0.85125532)">
+          <g
+             id="g1993-8"
+             transform="translate(-3.4050342,13.620137)">
+            <ellipse
+               id="ellipse13-5"
+               pointer-events="all"
+               ry="7.1137013"
+               rx="11.85617"
+               cy="78.548653"
+               cx="-13.323819"
+               style="opacity:1;fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.47424674" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+               x="-13.516598"
+               y="79.929062"
+               id="text1491-0"><tspan
+                 sodipodi:role="line"
+                 x="-13.516598"
+                 y="79.929062"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88055563px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella Bold';stroke-width:0.26458332"
+                 id="tspan1493-5">Output</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g1695-1"
+       transform="translate(-41.399706,10.795556)">
+      <g
+         id="g3074"
+         transform="translate(-3.7942919,0.19969957)">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.17096916;stroke-dasharray:0.51290751, 0.51290751"
+           x="16.270767"
+           y="134.38103"
+           width="13.123213"
+           height="5.5684648"
+           rx="0.91862488"
+           ry="0.38979253"
+           pointer-events="all"
+           id="rect11-0-0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="38.351528"
+           y="135.96144"
+           id="text1406-6-7-5"><tspan
+             sodipodi:role="line"
+             x="38.351528"
+             y="135.96144"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1689-4">optional/</tspan><tspan
+             sodipodi:role="line"
+             x="38.351528"
+             y="139.91255"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1102">adjustable</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:0.40000001;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="38.1842"
+           y="145.69211"
+           id="text1406-6-7-5-3"><tspan
+             sodipodi:role="line"
+             x="38.1842"
+             y="145.69211"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+             id="tspan1689-4-3">standard</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g1415-5"
+       transform="translate(48.493918,3.2715365)">
+      <g
+         id="g1662"
+         transform="translate(1.5875)">
+        <g
+           id="g1681"
+           transform="translate(-3.7041668)">
+          <rect
+             id="rect11-8"
+             pointer-events="all"
+             ry="0.64178962"
+             rx="1.344426"
+             height="9.1684246"
+             width="19.206091"
+             y="65.582382"
+             x="9.7245922"
+             style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.26539746" />
+          <text
+             id="text1406-5"
+             y="69.254219"
+             x="19.006699"
+             style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               id="tspan1670"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="69.254219"
+               x="19.403574"
+               sodipodi:role="line"> Mj. saccades  </tspan><tspan
+               id="tspan1674"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="73.346199"
+               x="19.006699"
+               sodipodi:role="line">&amp; PSOs</tspan><tspan
+               id="tspan1668"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="77.438179"
+               x="19.006699"
+               sodipodi:role="line" /></text>
+        </g>
+        <g
+           transform="translate(28.280166,0.02590545)"
+           id="g1681-8">
+          <rect
+             id="rect11-8-6"
+             pointer-events="all"
+             ry="0.64178962"
+             rx="1.344426"
+             height="9.1684246"
+             width="19.206091"
+             y="65.582382"
+             x="9.7245922"
+             style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.26539746" />
+          <text
+             id="text1406-5-0"
+             y="69.254219"
+             x="19.006699"
+             style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               id="tspan1670-3"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="69.254219"
+               x="19.403574"
+               sodipodi:role="line"> Mn. saccades  </tspan><tspan
+               id="tspan1674-3"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="73.346199"
+               x="19.006699"
+               sodipodi:role="line">&amp; PSOs</tspan><tspan
+               id="tspan1668-6"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="77.438179"
+               x="19.006699"
+               sodipodi:role="line" /></text>
+        </g>
+        <g
+           transform="translate(59.657098,0.02590545)"
+           id="g1681-8-1">
+          <rect
+             id="rect11-8-6-8"
+             pointer-events="all"
+             ry="0.64178962"
+             rx="1.344426"
+             height="9.1684246"
+             width="19.206091"
+             y="65.582382"
+             x="9.7245922"
+             style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:0.26539746" />
+          <text
+             id="text1406-5-0-7"
+             y="69.254219"
+             x="19.006699"
+             style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             xml:space="preserve"><tspan
+               id="tspan1674-3-5"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="69.254219"
+               x="19.006699"
+               sodipodi:role="line">Pursuits &amp;</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="73.346199"
+               x="19.006699"
+               sodipodi:role="line"
+               id="tspan1763">fixations</tspan><tspan
+               id="tspan1668-6-1"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332"
+               y="77.438179"
+               x="19.006699"
+               sodipodi:role="line" /></text>
+        </g>
+      </g>
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-width:0.24227083;stroke-miterlimit:10;stroke-dasharray:0.7268125, 0.72681249999999986;opacity:0.61940008"
+       d="m 43.937872,153.35348 4.897217,-0.0507 0.402306,-75.405944 8.451949,0.125469"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path6"
+       sodipodi:nodetypes="cccc" />
+    <g
+       id="g2329"
+       transform="translate(61.008222,-8.1876828)">
+      <g
+         id="g2360"
+         transform="translate(104.64258,3.3948929)">
+        <circle
+           id="ellipse10"
+           pointer-events="all"
+           cy="95.262161"
+           cx="-126.77962"
+           style="fill:#999999;stroke:none;stroke-width:0.06083749"
+           r="2.4334989" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="-126.74097"
+           y="96.106895"
+           id="text2324"><tspan
+             sodipodi:role="line"
+             id="tspan2322"
+             x="-126.74097"
+             y="96.106895"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">P1</tspan></text>
+      </g>
+      <g
+         id="g2360-1"
+         transform="translate(104.2753,20.266181)">
+        <circle
+           id="ellipse10-7"
+           pointer-events="all"
+           cy="95.262161"
+           cx="-126.77962"
+           style="fill:#999999;stroke:none;stroke-width:0.06083749"
+           r="2.4334989" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="-126.74097"
+           y="96.106895"
+           id="text2324-9"><tspan
+             sodipodi:role="line"
+             id="tspan2322-3"
+             x="-126.74097"
+             y="96.106895"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">P2</tspan></text>
+        <g
+           id="g2360-2"
+           transform="translate(-0.06992221,17.115439)">
+          <circle
+             id="ellipse10-5"
+             pointer-events="all"
+             cy="95.262161"
+             cx="-126.77962"
+             style="fill:#999999;stroke:none;stroke-width:0.06083749"
+             r="2.4334989" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             x="-126.74097"
+             y="96.106895"
+             id="text2324-3"><tspan
+               sodipodi:role="line"
+               id="tspan2322-9"
+               x="-126.74097"
+               y="96.106895"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">P3</tspan></text>
+          <g
+             id="g2360-18"
+             transform="translate(4.5930904,40.838564)">
+            <circle
+               id="ellipse10-8"
+               pointer-events="all"
+               cy="95.262161"
+               cx="-126.77962"
+               style="fill:#999999;stroke:none;stroke-width:0.06083749"
+               r="2.4334989" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:9.8777771px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+               x="-126.74096"
+               y="96.106895"
+               id="text2324-7"><tspan
+                 sodipodi:role="line"
+                 id="tspan2322-0"
+                 x="-126.74096"
+                 y="96.106895"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';stroke-width:0.26458332">A4</tspan></text>
+          </g>
+        </g>
+      </g>
+      <g
+         id="g2360-5"
+         transform="translate(25.224193,7.5265322)" />
+    </g>
+  </g>
+</svg>

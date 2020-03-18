@@ -136,7 +136,10 @@ label_map = {
 
 # we need the distribution parameters of all algorithms and human coders
 # in tables 3, 4, 5, 6 from Andersson et al., 2017. Well worth double-checking,
-# I needed to hand-copy-paste from the paper.
+# I needed to hand-copy-paste from the paper. The summary statistics were made
+# publicly available in the file # matlab_analysis_code/20150807.mat in the
+# original authors GitHub repository
+# (https://github.com/richardandersson/EyeMovementDetectorEvaluation/blob/0e6f82708e10b48039763aa1078696e802260674/matlab_analysis_code/20150807.mat).
 # The first two entries within each value-list belong to human coders
 
 image_params = {
@@ -227,6 +230,16 @@ lab_ids = ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31',
            '32', '33', '34', '35', '36']
 
 
+# this used to be within confusion(), is global now because we also need it for Kappa()
+# --> defines mapping between remodnav labels (strings) and andersson labels (ints)
+anderson_remap = {
+    'FIX': 1,
+    'SAC': 2,
+    'PSO': 3,
+    'PUR': 4,
+}
+
+
 def get_durations(events, evcodes):
     events = [e for e in events if e['label'] in evcodes]
     # TODO minus one sample at the end?
@@ -240,12 +253,6 @@ def confusion(refcoder,
               stats):
     conditions = ['FIX', 'SAC', 'PSO', 'PUR']
     #conditions = ['FIX', 'SAC', 'PSO']
-    anderson_remap = {
-        'FIX': 1,
-        'SAC': 2,
-        'PSO': 3,
-        'PUR': 4,
-    }
     plotter = 1
     # initialize a maximum misclassification rate, to later automatically reference,
     max_mclf = 0
@@ -420,6 +427,263 @@ def savefigs(fig,
               % ('%.1f' % max_mclf))
 
 
+def quality_stats():
+    """
+    Computes the percent of signal loss in raw data
+    Note: takes a while to run (30 subj. x 8 runs x 15 min rec with 1000Hz sr),
+    therefore, I'm just adding results here for now
+    and save the resulting histogram to the repository.
+    \newcommand{\avglosslab}{0.041005777923189775}
+    \newcommand{\avglossmri}{0.1507901497174581}
+
+    To include this computation in a run with Make, add this function to the
+    list of command invocations if the script is ran from the command line at the
+    end of the script.
+    """
+    import datalad.api as dl
+    import matplotlib.pyplot as plt
+
+    datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
+                           'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+    datapath_lab = op.join('data', 'raw_eyegaze', 'sub-*', 'beh',
+                           'sub-*_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+
+    for (data, assoc) in [(datapath_lab, 'lab'),
+                          (datapath_mri, 'mri')]:
+        infiles = glob(data)
+        for f in infiles:
+            dl.get(f)
+        # make sure we have 15 subjects' data
+        assert len(infiles) == 120
+        print("Currently processing data from {} sample".format(assoc))
+        # set sampling rate and px2deg
+        px2deg = 0.0266711972026 if assoc == 'lab' else 0.0185581232561
+        sr = 1000
+        # calculate percent signal loss across subjects and runs
+        losses = []
+        vels = []
+        for f in infiles:
+            data = np.recfromcsv(f,
+                                 delimiter='\t',
+                                 names=['x', 'y', 'pupil', 'frame'])
+            # all periods of signal loss are marked as nan in the data
+            signal_loss = np.sum(np.isnan(data['x'])) / len(data['x'])
+            losses.append(signal_loss)
+            velocities = cal_velocities(data=data,
+                                        px2deg=px2deg,
+                                        sr=sr)
+            vels.append(velocities)
+        print("Calculated velocities and losses for {} sample".format(assoc))
+        # average across signal losses in sample (mri or lab)
+        loss = np.nanmean(losses)
+        # print results as Latex command using 'assoc' as sample identifier in name
+        label_loss = 'avgloss{}'.format(assoc)
+        print('\\newcommand{\\%s}{%s}'
+              % (label_loss, loss))
+        # vels is a list of arrays atm
+        v = np.concatenate(vels).ravel()
+        if assoc == 'lab':
+            v_lab = v
+        elif assoc == 'mri':
+            v_mri = v
+
+    # plot velocities in a histogram on logscale
+    # create non-linear non-equal bin sizes, as x axis will be log
+    hist, bins, _ = plt.hist(v[~np.isnan(v)], bins=40)
+    plt.close()
+    logbins = np.logspace(1,    # don't start with 0, does not make sense in logspace
+                          np.log10(bins[-1]),
+                          len(bins))
+    fig, ax = plt.subplots()
+    fig.set_figheight(3)
+    fig.set_figwidth(5)
+    ax.set_ylabel('frequency')
+    ax.set_xlabel('velocities (deg/s)')
+    plt.hist(v_mri[~np.isnan(v_mri)],
+             weights=np.zeros_like(v_mri[~np.isnan(v_mri)]) + 1. / (v_mri[~np.isnan(v_mri)]).size,
+             bins=logbins,
+             histtype='bar',
+             color='orangered',
+             alpha=0.5,
+             label='mri')
+    plt.hist(v_lab[~np.isnan(v_lab)],
+             weights=np.zeros_like(v_lab[~np.isnan(v_lab)]) + 1. / (v_lab[~np.isnan(v_lab)]).size,
+             bins=logbins,
+             histtype='bar',
+             color='darkslategrey',
+             alpha=0.5,
+             label='lab')
+    plt.legend(loc='upper right')
+    plt.xscale('log')
+    plt.savefig(op.join('img', 'velhist.svg'),
+                transparent=True,
+                bbox_inches="tight")
+
+
+
+
+def flowchart_figs():
+    """
+    Just for future reference: This is the subset of preprocessed and raw data
+    used for the flowchart of the algorithm. Not to be executed.
+    """
+    import matplotlib.pyplot as plt
+    from scipy import signal
+
+    datapath = op.join('data', 'raw_eyegaze', 'sub-32', 'beh',
+                        'sub-32_task-movie_run-1_recording-eyegaze_physio.tsv.gz')
+    data = np.recfromcsv(datapath,
+                         delimiter='\t',
+                         names=['x', 'y', 'pupil', 'frame'])
+
+    clf = EyegazeClassifier(
+        px2deg=0.0266711972026,
+        sampling_rate=1000.0)
+
+    velocities = cal_velocities(data=data, sr=1000, px2deg=0.0266711972026)
+    vel_subset_unfiltered = velocities[15200:17500]
+
+    p = clf.preproc(data)
+    # this is to illustrate PTn estimation and chunking
+    vel_subset = p['vel'][15200:17500]
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        vel_subset,
+        color='black', lw=0.5)
+    plt.close()
+
+    # this is to illustrate preprocessing
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        vel_subset,
+        color='black', lw=0.5)
+    ax1.plot(
+        vel_subset_unfiltered,
+        color='darkorange', ls='dotted', lw=0.5)
+    plt.close()
+
+    def _butter_lowpass(cutoff, fs, order=5):
+        nyq = 0.5 * fs
+        normal_cutoff = cutoff / nyq
+        b, a = signal.butter(
+            order,
+            normal_cutoff,
+            btype='low',
+            analog=False)
+        return b,
+
+    # Here is fixation and pursuit detection on Butterworth filtered subsets
+    lp_cutoff_freq = 4.0
+    sr=1000
+    # let's get a data sample with no saccade
+    win_data = p[16600:17000]
+    b, a = _butter_lowpass(lp_cutoff_freq, sr)
+    win_data['x'] = signal.filtfilt(b, a, win_data['x'], method='gust')
+    win_data['y'] = signal.filtfilt(b, a, win_data['y'], method='gust')
+
+    filtered_vels = cal_velocities(data=win_data, sr=1000, px2deg=0.0266711972026)
+    fig, ax1 = plt.subplots()
+    fig.set_figheight(2)
+    fig.set_figwidth(7)
+    fig.set_dpi(120)
+    ax1.plot(
+        filtered_vels,
+        color='black', lw=0.5)
+    plt.close()
+
+def cal_velocities(data, sr, px2deg):
+    """Helper to calculate velocities
+    sr: sampling rate
+    px2deg: conversion factor from pixel to degree
+    """
+    velocities = (np.diff(data['x']) ** 2 + np.diff(
+        data['y']) ** 2) ** 0.5
+    velocities *= px2deg * sr
+    return velocities
+
+
+def plot_raw_vel_trace():
+    """
+    Small helper function to plot raw velocity traces, as requested by reviewer 2
+    in the second revision.
+    """
+    import matplotlib.pyplot as plt
+    # use the same data as in savegaze() (no need for file retrieval, should be there)
+    infiles = [
+        op.join(
+            'data',
+            'raw_eyegaze', 'sub-32', 'beh',
+            'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'),
+        op.join(
+            'data',
+            'raw_eyegaze', 'sub-02', 'ses-movie',  'func',
+            'sub-02_ses-movie_task-movie_run-5_recording-eyegaze_physio.tsv.gz'
+        ),
+    ]
+    # we need the sampling rate for plotting in seconds and velocity calculation
+    sr = 1000
+    # load data
+    for i, f in enumerate(infiles):
+        # read data
+        data = np.recfromcsv(f,
+                             delimiter='\t',
+                             names=['x', 'y', 'pupil', 'frame'])
+
+        # subset data. Hessels et al., 2017 display different noise levels on 4
+        # second time series (ref. Fig 10). That still looks a bit dense, so we
+        # go with 2 seconds, from start of 10sec excerpt to make it easier to
+        # associate the 2 sec excerpt in to its place in the 10 sec excerpt
+        # above
+        data_subset = data[15000:17000]
+        px2deg, ext = (0.0266711972026, 'lab') if '32' in f \
+            else (0.0185581232561, 'mri')
+        # take raw data and convert it to velocity: euclidean distance between
+        # successive coordinate samples. Note: no entry for first datapoint!
+        # Will plot all but first data point in other time series
+        velocities = cal_velocities(data_subset, sr, px2deg)
+        vel_color = 'xkcd:gunmetal'
+        # prepare plotting - much manual setup, quite ugly - sorry
+        fig, ax1 = plt.subplots()
+        fig.set_figheight(2)
+        fig.set_figwidth(7)
+        fig.set_dpi(120)
+        time_idx = np.linspace(0, len(data_subset) / sr, len(data_subset))[1:]
+        max_x = float(len(data_subset) / sr)
+        ax1.set_xlim(0, max_x)
+        ax1.set_xlabel('time (seconds)')
+        ax1.set_ylabel('coordinates')
+        # left y axis set to max screensize in px
+        ax1.set_ylim(0, 1280)
+        # plot gaze trajectories (not preprocessed)
+        ax1.plot(time_idx,
+            data_subset['x'][1:],
+            color='black', lw=1)
+        ax1.plot(
+            time_idx,
+            data_subset['y'][1:],
+            color='black', lw=1)
+        # right y axis shows velocity "as is" (not preprocessed)
+        ax2 = ax1.twinx()
+        ax2.set_ylabel('velocity (deg/sec)', color=vel_color)
+        ax2.tick_params(axis='y', labelcolor=vel_color)
+        #ax2.set_yscale('log') ## TODO: Log scale or not?
+        ax2.set_ylim(1, 2000)
+        ax2.plot(time_idx,
+            velocities,
+            color=vel_color, lw=1)
+        pl.savefig(
+            op.join('img', 'rawtrace_{}.svg'.format(ext)),
+            transparent=True,
+            bbox_inches="tight")
+        pl.close()
+
+
 def savegaze():
     """
     small function to generate and save remodnav classification figures
@@ -461,6 +725,10 @@ def savegaze():
         # window is within the originally plotted 50s and contains missing data
         # for both data types (lab & mri)
         events = clf(p[15000:25000])
+        # we remove plotting of details in favor of plotting raw gaze and
+        # velocity traces with plot_raw_vel_trace() as requested by reviewer 2
+        # in the second round of revision
+        #events_detail = clf(p[24500:24750])
 
         fig = pl.figure(
             # fake size to get the font size down in relation
@@ -479,6 +747,24 @@ def savegaze():
             transparent=True,
             bbox_inches="tight")
         pl.close()
+        # plot details
+        fig = pl.figure(
+            # fake size to get the font size down in relation
+            figsize=(7, 2),
+            dpi=120,
+            frameon=False)
+        #ut.show_gaze(
+        #    pp=p[24500:24750],
+        #    events=events_detail,
+        #    sampling_rate=1000.0,
+        #    show_vels=True,
+        #    coord_lim=(0, 1280),
+        #    vel_lim=(0, 1000))
+        #pl.savefig(
+        #    op.join('img', 'remodnav_{}_detail.svg'.format(ext)),
+        #    transparent=True,
+        #    bbox_inches="tight")
+        #pl.close()
 
 
 def mainseq(s_mri,
@@ -776,6 +1062,82 @@ def plot_dist(figures):
             pl.close()
 
 
+def kappa():
+    """
+    During the review process, reviewer 2 requested Cohens Kappa computation.
+    We have not implemented the measure before because we felt it did not add
+    information beyond the confusion and RMSD computations.
+    """
+    px2deg = None
+    sr = None
+    from sklearn.metrics import cohen_kappa_score
+    # for every stimulus type
+    for stim in ['img', 'dots', 'video']:
+        # for every eye movement label used in Anderson et al. (2017)
+        for (ev, i) in [('Fix', 1), ('Sac', 2), ('PSO', 3)]:
+            # initialize lists to store classification results in
+            RA_res = []
+            MN_res = []
+            AL_res = []
+            # aggregate the target_labels of all files per coder + stim_type
+            for idx, fname in enumerate(labeled_files[stim]):
+                for coder in ['MN', 'RA', 'AL']:
+                    if coder in ['MN', 'RA']:
+                        data, target_labels, target_events, px2deg, sr = \
+                            load_anderson(stim, fname.format(coder))
+                        # dichotomize classification based on event type
+                        labels = [1 if j == i else 0 for j in target_labels]
+                        if coder == 'MN':
+                            MN_res.append(labels)
+                        elif coder == 'RA':
+                            RA_res.append(labels)
+                    else:
+                        # get REMoDNaV classification
+                        clf = EyegazeClassifier(
+                            px2deg=px2deg,
+                            sampling_rate=sr,
+                        )
+                        p = clf.preproc(data)
+                        events = clf(p)
+
+                        # convert event list into anderson-style label array
+                        l = np.zeros(target_labels.shape, target_labels.dtype)
+                        for e in events:
+                            l[int(e['start_time'] * sr):int((e['end_time']) * sr)] = \
+                                anderson_remap[label_map[e['label']]]
+                        # dichotomize REMoDNaV classification results as well
+                        labels = [1 if j == i else 0 for j in l]
+                        AL_res.append(labels)
+
+                if len(MN_res[idx]) != len(RA_res[idx]):
+                    print(
+                        "% #\n% # %INCONSISTENCY Found label length mismatch "
+                        "between coders for: {}\n% #\n".format(fname))
+                    shorter = min([len(RA_res[idx]), len(MN_res[idx])])
+                    print('% Truncate labels to shorter sample: {}'.format(
+                        shorter))
+                    # truncate the labels by indexing up to the highest index
+                    # in the shorter list of labels
+                    MN_res[idx] = MN_res[idx][:shorter]
+                    RA_res[idx] = RA_res[idx][:shorter]
+                    AL_res[idx] = AL_res[idx][:shorter]
+            # dummy check whether we really have the same number of files per coder
+            assert len(RA_res) == len(MN_res)
+            # flatten the list of lists
+            RA_res_flat = [item for sublist in RA_res for item in sublist]
+            MN_res_flat = [item for sublist in MN_res for item in sublist]
+            AL_res_flat = [item for sublist in AL_res for item in sublist]
+            #print(sum(RA_res_flat), sum(MN_res_flat))
+            assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
+            # compute Cohens Kappa
+            for rating, comb in [('RAMN', [RA_res_flat, MN_res_flat]),
+                                 ('ALRA', [RA_res_flat, AL_res_flat]),
+                                 ('ALMN', [MN_res_flat, AL_res_flat])]:
+                kappa = cohen_kappa_score(comb[0], comb[1])
+                label = 'kappa{}{}{}'.format(rating, stim, ev)
+                print('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+
+
 if __name__ == '__main__':
 
     import argparse
@@ -811,6 +1173,8 @@ if __name__ == '__main__':
         savefigs(args.figure, args.stats)
         print_RMSD()
         plot_dist(args.figure)
+        kappa()
+        plot_raw_vel_trace()
     if args.mainseq:
         mainseq(args.submri, args.sublab)
     if args.remodnav:

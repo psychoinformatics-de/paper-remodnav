@@ -1,6 +1,6 @@
 all: main.pdf
 
-main.pdf: main.tex tools.bib EyeGaze.bib results_def.tex figures
+main.pdf: main.tex references.bib results_def.tex figures
 	latexmk -pdf -g $<
 
 results_def.tex: code/mk_figuresnstats.py
