@@ -383,7 +383,26 @@ exceeding this threshold are replaced by this set value.
 
 \begin{figure*}
   \includegraphics[width=1\textwidth]{img/flowchart_2.pdf}
-  \caption{Schematic algorithm overview of \remodnav.}
+  \caption{Schematic algorithm overview of \remodnav.
+  Panel A: Preprocessing. The two plots show raw (blue) and preprocessed (black)
+  time series after preprocessing with the default parameter values
+  (see Table \ref{tab:parameters} for details).
+  Panel B: Adaptive saccade velocity computation and time series chunking.
+  Starting from an initial velocity threshold (\param{velthresh\_startvelocity}),
+  a global velocity threshold is iteratively computed. The time series is chunked
+  into intervals between the fastest saccades across the complete recording.
+  Panel C: Saccade and PSO classification.
+  Saccade on- and offsets, and PSO on- and offsets are classified based on adaptive
+  velocity thresholds computed within the respective event contexts.
+  The default context is \unit[1]{s} centered on the peak velocity for saccadic
+  events used for time series chunking, and the entire time series chunk for
+  intersaccadic intervals. PSOs are classified into low- or high-velocity PSOs
+  depending on whether they exceed the saccade onset- or peak-velocity threshold.
+  Panel D: Fixation and pursuit classification.
+  Remaining unlabeled segments are filtered with a Butterworth filter. Samples
+  exceeding a configurable pursuit velocity threshold are classified as pursuits,
+  and segments that do not qualify as pursuits are classified as fixations.
+  }
   \label{fig:alg}
 \end{figure*}
 
