@@ -127,13 +127,13 @@ Heinrich Heine University Düsseldorf, Germany
 
 Tracking of eye movements is an established measurement for many types of
 experimental paradigms.
-More complex and lengthier visual stimuli have made algorithmic approaches to
+More complex and more prolonged visual stimuli have made algorithmic approaches to
 eye movement event classification the most pragmatic option.
 A recent analysis revealed that many current algorithms are lackluster when it
 comes to data from viewing dynamic stimuli such as video sequences.
 Here we present an event classification algorithm---built on an existing
 velocity-based approach---that is suitable for both static and dynamic
-stimulation, and is capable of detecting saccades, post-saccadic
+stimulation, and is capable of classifying saccades, post-saccadic
 oscillations, fixations, and smooth pursuit events.
 We validated classification performance and robustness on three public datasets:
 1)~manually annotated, trial-based gaze trajectories for viewing static images,
@@ -1138,10 +1138,13 @@ aspects of data acquisition, eye tracker calibration, and data processing
 were identical to the previous dataset.
 
 \begin{figure}
-  \caption{Velocities of events in the MRI and laboratory setting across all
-  runs and participants. The MRI sample shows a larger amount of high velocity
-  samples, even despite a 30\% smaller stimulus size.}
   \includegraphics[width=0.5\textwidth]{img/velhist.pdf}
+  \caption{
+    Comparison of sample velocity distributions for MRI and laboratory setting
+    across all measurements and participants (excluding samples during periods
+    of signal-loss). The MRI sample exhibits a larger fraction of higher
+    velocities, despite a 30\% smaller stimulus size.
+  }
   \label{vels}
 \end{figure}
 
