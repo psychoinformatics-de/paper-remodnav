@@ -1116,8 +1116,8 @@ result is depicted in \fig{remodnav} (top row).
 \subsection*{Lower-quality data}\label{ana_3}
 
 An explicit goal for \remodnav\ development was robust performance on
-lower-quality data. While lack of quality cannot be arbitrarily compensated and
-can inevitably lead to misses in eye movement classification if too high,
+lower-quality data. While a lack of quality can inevitably lead to misses in eye
+movement classification if too severe and cannot be arbitrarily compensated,
 it is beneficial for any further analysis if operation on noisy data does not
 introduce unexpected event property biases.
 
@@ -1137,10 +1137,10 @@ scanner bore and recorded the participants' left eye at a distance of about
 environment, and sub-optimal infrared illumination led to substantially
 noisier data, as evident from a larger spatial uncertainty
 \citep[Technical Validation]{Hanke2016}, a generally higher amount of data loss,
-and more events with a velocity above \unit[800]{deg/s}.
+and more samples with a velocity above \unit[800]{deg/s}.
 Following common data quality criteria used to warrant exclusion by
-\citet{Holmqvist2012}, a higher amount of zero values, a greater number of
-events with a velocity above \unit[800]{deg/s}, and lower spatial accuracy
+\citet{Holmqvist2012}, a higher amount of data loss, a greater number of
+samples with a velocity above \unit[800]{deg/s}, and lower spatial accuracy
 can be indicative of lower quality data.
 The average amount of data loss in the MRI sample was three times higher than
 in the laboratory setting (15.1\% versus 4.1\% in the lab), with six out
