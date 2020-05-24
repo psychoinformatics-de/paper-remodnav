@@ -7,6 +7,7 @@ import pylab as pl
 import seaborn as sns
 from remodnav import EyegazeClassifier
 from glob import glob
+import datalad.api as dl
 #from remodnav.tests.test_labeled import load_data as load_anderson
 
 
@@ -440,7 +441,6 @@ def quality_stats():
     list of command invocations if the script is ran from the command line at the
     end of the script.
     """
-    import datalad.api as dl
     import matplotlib.pyplot as plt
 
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
@@ -615,6 +615,7 @@ def plot_raw_vel_trace():
     """
     import matplotlib.pyplot as plt
     # use the same data as in savegaze() (no need for file retrieval, should be there)
+    dl.install(op.join('data', 'raw_eyegaze'))
     infiles = [
         op.join(
             'data',
@@ -631,6 +632,7 @@ def plot_raw_vel_trace():
     # load data
     for i, f in enumerate(infiles):
         # read data
+        dl.get(f)
         data = np.recfromcsv(f,
                              delimiter='\t',
                              names=['x', 'y', 'pupil', 'frame'])
@@ -690,7 +692,6 @@ def savegaze():
     """
     from remodnav.tests import utils as ut
     import pylab as pl
-    import datalad.api as dl
 
     # use two examplary files (lab + MRI) used during testing as well
     # hardcoding those, as I see no reason for updating them
@@ -1012,7 +1013,6 @@ def plot_dist(figures):
     if not figures:
         return
 
-    import datalad.api as dl
     dl.install(op.join('data', 'studyforrest-data-eyemovementlabels'))
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
