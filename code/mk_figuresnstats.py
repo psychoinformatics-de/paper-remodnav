@@ -615,6 +615,7 @@ def plot_raw_vel_trace():
     """
     import matplotlib.pyplot as plt
     # use the same data as in savegaze() (no need for file retrieval, should be there)
+    dl.install(op.join('data', 'raw_eyegaze'))
     infiles = [
         op.join(
             'data',
@@ -631,6 +632,7 @@ def plot_raw_vel_trace():
     # load data
     for i, f in enumerate(infiles):
         # read data
+        dl.get(f)
         data = np.recfromcsv(f,
                              delimiter='\t',
                              names=['x', 'y', 'pupil', 'frame'])
