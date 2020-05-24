@@ -20,7 +20,7 @@ To recompute results and compile the paper, do the following:
 Install from [PyPi](https://pypi.org/project/remodnav):
 
     # install from PyPi
-    pip install remodnav, seaborn, sklearn
+    pip install remodnav seaborn sklearn
     # if not installed with another method
     pip install datalad
 
