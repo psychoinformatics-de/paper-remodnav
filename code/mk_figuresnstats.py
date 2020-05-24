@@ -7,6 +7,7 @@ import pylab as pl
 import seaborn as sns
 from remodnav import EyegazeClassifier
 from glob import glob
+import datalad.api as dl
 #from remodnav.tests.test_labeled import load_data as load_anderson
 
 
@@ -437,7 +438,6 @@ def quality_stats():
     list of command invocations if the script is ran from the command line at the
     end of the script.
     """
-    import datalad.api as dl
     import matplotlib.pyplot as plt
 
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
@@ -689,7 +689,6 @@ def savegaze():
     """
     from remodnav.tests import utils as ut
     import pylab as pl
-    import datalad.api as dl
 
     # use two examplary files (lab + MRI) used during testing as well
     # hardcoding those, as I see no reason for updating them
@@ -1008,7 +1007,6 @@ def plot_dist(figures):
     if not figures:
         return
 
-    import datalad.api as dl
     dl.install(op.join('data', 'studyforrest-data-eyemovementlabels'))
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
