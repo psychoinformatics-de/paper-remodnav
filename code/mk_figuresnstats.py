@@ -601,6 +601,7 @@ def S2SRMS():
         window = 1000
         median_distances = []
         for f in infiles:
+            dl.get(f)
             data = np.genfromtxt(f,
                                   delimiter='\t',
                                   usecols=(0, 1) # get only x and y column
