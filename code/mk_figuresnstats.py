@@ -564,6 +564,13 @@ def S2SRMS():
     Currently processing data from mri sample
     \newcommand{\RMSmri}{0.061214090261903865}
 
+    Results when computing the mean instead of the median
+    OUTPUT:
+    Currently processing data from lab sample
+    \newcommand{\RMSlab}{0.08485199260774937}
+    Currently processing data from mri sample
+    \newcommand{\RMSmri}{0.10376796578456919}
+
     References:
     Dorr, M., Martinetz, T., Gegenfurtner, K. R., & Barth, E. (2010).
         Variability of eye movements when viewing dynamic natural scenes.
@@ -580,6 +587,7 @@ def S2SRMS():
 
     """
     from scipy.spatial import distance
+    import datalad.api as dl
 
     # globs for all data for MRI and Lab
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
