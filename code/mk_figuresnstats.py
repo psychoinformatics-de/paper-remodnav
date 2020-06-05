@@ -528,7 +528,7 @@ def S2SRMS():
     as requested by reviewer 2.
 
     The idea behind the approach is to chunk the entire signal into windows and
-    to compute sample to sample root mean squared distances from all the windows.
+    to compute sample to sample root mean squared distances for all the windows.
     Procedurally, in each window S2S-RMS are computed as the root average of
     squared distances between consecutive samples. After the window-wise computation,
     the median S2S-RMS within each "trial" (here: 15min run) is taken, and all
@@ -620,7 +620,7 @@ def S2SRMS():
             # about 900 RMS values)
             median = np.median(distances)
             median_distances.append(median)
-        # average the resulting 8 median RMSs
+        # average the resulting 8 median RMSs across all subjects
         meanRMS = np.nanmean(median_distances)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_RMS = 'RMS{}'.format(assoc)
