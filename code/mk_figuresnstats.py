@@ -520,6 +520,117 @@ def quality_stats():
                 bbox_inches="tight")
 
 
+def S2SRMS():
+    """
+    A function to compute sample-to-sample RMS following the approach in
+    Hooge et al., 2017
+    (https://link.springer.com/content/pdf/10.3758/s13428-017-0955-x.pdf),
+    as requested by reviewer 2.
+
+    The idea behind the approach is to chunk the entire signal into windows and
+    to compute sample to sample root mean squared distances from all the windows.
+    Procedurally, in each window S2S-RMS are computed as the root average of
+    squared distances between consecutive samples. After the window-wise computation,
+    the median S2S-RMS within each "trial" (here: 15min run) is taken, and all
+    median values are averaged. Windows in our context were 1000ms/1000 samples.
+
+    The code below provides an implementation of this request, and the results.
+    As we lay out in our response to the editor and the reviewer, though, we
+    believe that the method reviewer 2 suggests, a precision estimation based on
+    sample-to-sample distances in the entire signal, is a misguided method for
+    professionally produced Hollywood movies. The substantial gaze control
+    exerted by professionally produced movies (lightning, editing, deliberate
+    composition; Dorr et al., 2010), and the limited spatial spread of gazes
+    due to the fact that Hollywood movies center the viewers gaze in the middle
+    of the screen (Goldstein et al., 2007) creates spatial closeness between
+    successive samples that is artificially elevated. The resulting precision
+    value underestimates the true noise, and misleads and distracts from the
+    other noise estimations we have provided: Raw gaze samples, velocity distributions,
+    percent signal loss, and references/citations of precision estimates that
+    are based on 13 point calibration task validations under both MRI and lab
+    conditions (i.e., precision estimates from dedicated precision assessments,
+    not from the eyetracking signal acquired during moving watching).
+
+    The results of this computation are included below. It should be obvious that
+    the resulting numerical precision estimates seem implausible, especially
+    given the obviously more unstable eyetracking signal plotted in the publication
+    and the about 10 times higher precision estimates (i.e., 10 times worse)
+    computed in the original studyforrest data publication from 13 point
+    calibration procedures:
+
+    OUTPUT:
+    Currently processing data from lab sample
+    \newcommand{\RMSlab}{0.05849002328619968}
+    Currently processing data from mri sample
+    \newcommand{\RMSmri}{0.061214090261903865}
+
+    References:
+    Dorr, M., Martinetz, T., Gegenfurtner, K. R., & Barth, E. (2010).
+        Variability of eye movements when viewing dynamic natural scenes.
+        Journal of vision , 10 (10).
+        https://doi.org/10.1167/10.10.28
+    Goldstein, R. B., Woods, R. L., & Peli, E. (2007).
+        Where people look when watching movies: Do all viewers look at the same
+        place? 37 (7), Computers in biology and medicine, 957-964.
+        10.1016/j.compbiomed.2006.08.018
+    Hanke, M., Adelhöfer, N., Kottke, D. et al. (2016)
+        A studyforrest extension, simultaneous fMRI and eye gaze recordings
+        during prolonged natural stimulation. Sci Data 3, 160092.
+        https://doi.org/10.1038/sdata.2016.92
+
+    """
+    from scipy.spatial import distance
+
+    # globs for all data for MRI and Lab
+    datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
+                           'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+    datapath_lab = op.join('data', 'raw_eyegaze', 'sub-*', 'beh',
+                           'sub-*_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
+
+    # compute results for both groups sequentially, first lab, then MRI
+    for (data, assoc) in [(datapath_lab, 'lab'),
+                          (datapath_mri, 'mri')]:
+        infiles = glob(data)
+        # make sure we have 15 subjects' data
+        assert len(infiles) == 120
+        print("Currently processing data from {} sample".format(assoc))
+        # set px2deg for conversion to visual angles and window size (chose 1000
+        # as a middle ground between "still computes withing a few hours" and
+        # "create a lot of windows" (about 900 per 15 min segment).
+        px2deg = 0.0266711972026 if assoc == 'lab' else 0.0185581232561
+        window = 1000
+        median_distances = []
+        for f in infiles:
+            dl.get(f)
+            data = np.genfromtxt(f,
+                                  delimiter='\t',
+                                  usecols=(0, 1) # get only x and y column
+                                  )
+            # chunk into windows
+            datachunks = np.array_split(data, window)
+            distances = []
+            for chunk in datachunks:
+                # calculate window-wise S2S-RSM, based on euclidean distance between
+                # consecutive x-y-coordinates, and convert them into visual angles
+                dist = distance.cdist(chunk, chunk, 'euclidean').diagonal(1) * px2deg
+                # square the distances, average them, and square-root them
+                RMS = np.sqrt(np.nanmean(np.square(dist)))
+                distances.append(RMS)
+            # calculate median RMS per run (~15 minute recording, i.e., median over
+            # about 900 RMS values)
+            median = np.median(distances)
+            median_distances.append(median)
+        # average the resulting 8 median RMSs
+        meanRMS = np.nanmean(median_distances)
+        # print results as Latex command using 'assoc' as sample identifier in name
+        label_RMS = 'RMS{}'.format(assoc)
+        print('\\newcommand{\\%s}{%s}'
+              % (label_RMS, meanRMS))
+        # save the results in variables
+        if assoc == 'lab':
+            RMS_lab = meanRMS
+        elif assoc == 'mri':
+            RMS_mri = meanRMS
 
 
 def flowchart_figs():
