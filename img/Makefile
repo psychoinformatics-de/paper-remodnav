@@ -26,14 +26,14 @@ ignore-%:
 #
 %.pdf: %.svg ignore-%.pdf
 	@echo "Rendering $@"
-	@inkscape -z -f "$<" -A "$@"
+	@inkscape -z -f "$<" -A "$@" || inkscape --export-filename="$@" "$<"
 
 %.eps: %.svg ignore-%.eps
 	@echo "Rendering $@"
-	@inkscape -z -f "$<" -E "$@"
+	@inkscape -z -f "$<" -E "$@" || inkscape --export-filename="$@" "$<"
 
 %_300dpi.png: %.svg ignore-%_300dpi.png
 	@echo "Rendering $@"
-	@inkscape -z -f "$<" -e "$@" -d 300
+	@inkscape -z -f "$<" -e "$@" -d 300 || inkscape -d 300 --export-filename="$@" "$<"
 
 .PHONY: all pics
