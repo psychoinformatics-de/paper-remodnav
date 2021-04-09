@@ -24,7 +24,7 @@ Install from [PyPi](https://pypi.org/project/remodnav):
     # if not installed with another method
     pip install datalad
 
-- ``datalad install`` the repository with ``datalad install https://github.com/psychoinformatics-de/paper-remodnav.git``
+- ``datalad clone`` the repository with ``datalad clone https://github.com/psychoinformatics-de/paper-remodnav.git``
 
 - Appropriate Makefiles within the directory will execute data retrieval via datalad (about 550MB in total),
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
