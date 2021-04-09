@@ -1,6 +1,6 @@
 [submodule "data/studyforrest-data-eyemovementlabels"]
 	path = data/studyforrest-data-eyemovementlabels
-	url = git@github.com:psychoinformatics-de/studyforrest-data-eyemovementlabels.git
+	url = https://github.com/psychoinformatics-de/studyforrest-data-eyemovementlabels.git
 [submodule "remodnav"]
 	path = remodnav
 	url = https://github.com/psychoinformatics-de/remodnav.git
