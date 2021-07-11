@@ -1,7 +1,10 @@
-all: main.pdf
-
 # use `chronic` to make output look neater, if available
 CHRONIC=$(shell which chronic || echo '' )
+
+PYTHON=python
+
+
+all: main.pdf
 
 # important to process stats and figures first, such that
 # up-to-date versions are compiled into the manuscript
@@ -19,8 +22,9 @@ results_def.tex: code/mk_figuresnstats.py
 	@echo "# Ensure REMODNAV installation"
 	@datalad get -n remodnav
 	@$(CHRONIC) pip install -e remodnav
+	@python -m pip install pandas seaborn sklearn datalad
 	@rm -f $@
-	@REMODNAV_RESULTS=$@ code/mk_figuresnstats.py -s -f -r -m
+	@REMODNAV_RESULTS=$@ $(PYTHON) code/mk_figuresnstats.py -s -f -r -m
 
 clean:
 	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo \
