@@ -7,13 +7,12 @@ import pylab as pl
 import seaborn as sns
 from remodnav import EyegazeClassifier
 from glob import glob
-import datalad.api as dl
+from datalad.api import get as datalad_get
+
+
 #from remodnav.tests.test_labeled import load_data as load_anderson
-
-
 def load_anderson(category, name):
     from scipy.io import loadmat
-    from datalad.api import get
     from remodnav import clf as CLF
     import os.path as op
 
@@ -26,7 +25,7 @@ def load_anderson(category, name):
         ) + \
         (name + ('' if name.endswith('.mat') else '.mat'),))
     )
-    get(fname)
+    datalad_get(fname)
     m = loadmat(fname)
     # viewing distance
     vdist = m['ETdata']['viewDist'][0][0][0][0]
@@ -452,7 +451,7 @@ def quality_stats():
                           (datapath_mri, 'mri')]:
         infiles = glob(data)
         for f in infiles:
-            dl.get(f)
+            datalad_get(f)
         # make sure we have 15 subjects' data
         assert len(infiles) == 120
         print("Currently processing data from {} sample".format(assoc))
@@ -609,7 +608,7 @@ def S2SRMS():
         window = 1000
         median_distances = []
         for f in infiles:
-            dl.get(f)
+            datalad_get(f)
             data = np.genfromtxt(f,
                                   delimiter='\t',
                                   usecols=(0, 1) # get only x and y column
@@ -734,7 +733,7 @@ def plot_raw_vel_trace():
     """
     import matplotlib.pyplot as plt
     # use the same data as in savegaze() (no need for file retrieval, should be there)
-    dl.install(op.join('data', 'raw_eyegaze'))
+    datalad_get(op.join('data', 'raw_eyegaze'), get_data=False)
     infiles = [
         op.join(
             'data',
@@ -751,7 +750,7 @@ def plot_raw_vel_trace():
     # load data
     for i, f in enumerate(infiles):
         # read data
-        dl.get(f)
+        datalad_get(f)
         data = np.recfromcsv(f,
                              delimiter='\t',
                              names=['x', 'y', 'pupil', 'frame'])
@@ -827,7 +826,7 @@ def savegaze():
     ]
     # one call per file due to https://github.com/datalad/datalad/issues/3356
     for f in infiles:
-        dl.get(f)
+        datalad_get(f)
     for f in infiles:
         # read data
         data = np.recfromcsv(f,
@@ -904,8 +903,7 @@ def mainseq(s_mri,
                        # while the visible content hardly changes
                        '*run-2*.tsv')
     data = sorted(glob(datapath))
-    from datalad.api import get
-    get(dataset='.', path=data)
+    datalad_get(path=data)
 
     # create dataframes for mri and lab subjects to plot in separate plots
     for (ids, select_sub, ext) in [
@@ -1132,14 +1130,14 @@ def plot_dist(figures):
     if not figures:
         return
 
-    dl.install(op.join('data', 'studyforrest-data-eyemovementlabels'))
+    datalad_get(op.join('data', 'studyforrest-data-eyemovementlabels'))
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
                        'sub*',
                        '*.tsv')
 
     data = sorted(glob(datapath))
-    dl.get(dataset='.', path=data)
+    datalad_get(path=data, get_data=False)
 
     for ds, ds_name in [(mri_ids, 'mri'), (lab_ids, 'lab')]:
         dfs = [
