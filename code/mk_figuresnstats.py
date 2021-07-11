@@ -1,22 +1,38 @@
 #!/usr/bin/env python
 
-import os.path as op
-import itertools
-import numpy as np
-import pylab as pl
-import seaborn as sns
-from remodnav import EyegazeClassifier
+import argparse
+from collections import OrderedDict
+from copy import deepcopy
 from glob import glob
-import datalad.api as dl
+import itertools
+import os.path as op
+from os import environ
+import sys
+
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import numpy as np
+import pandas as pd
+from scipy.signal import (
+    butter,
+    filtfilt,
+)
+from scipy.io import loadmat
+from scipy.spatial import distance
+import seaborn as sns
+from sklearn.metrics import cohen_kappa_score
+
+from datalad.api import get as datalad_get
+
+from remodnav import (
+    EyegazeClassifier,
+    clf as CLF,
+)
+from remodnav.tests import utils as ut
+
+
 #from remodnav.tests.test_labeled import load_data as load_anderson
-
-
 def load_anderson(category, name):
-    from scipy.io import loadmat
-    from datalad.api import get
-    from remodnav import clf as CLF
-    import os.path as op
-
     fname = op.join(*(
         ('remodnav', 'remodnav', 'tests', 'data', 'anderson_etal',
          'annotated_data') + \
@@ -26,7 +42,7 @@ def load_anderson(category, name):
         ) + \
         (name + ('' if name.endswith('.mat') else '.mat'),))
     )
-    get(fname)
+    datalad_get(fname)
     m = loadmat(fname)
     # viewing distance
     vdist = m['ETdata']['viewDist'][0][0][0][0]
@@ -258,7 +274,7 @@ def confusion(refcoder,
     # initialize a maximum misclassification rate, to later automatically reference,
     max_mclf = 0
     # coders are in axis labels too
-    #pl.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
+    #plt.suptitle('Jaccard index for movement class labeling {} vs. {}'.format(
     #    refcoder, coder))
     for stimtype, stimlabel in (
             ('img', 'Images'),
@@ -298,11 +314,11 @@ def confusion(refcoder,
 
             nlabels = [len(l) for l in labels]
             if len(np.unique(nlabels)) > 1:
-                print(
+                rsout(
                     "% #\n% # %INCONSISTENCY Found label length mismatch "
                     "between coders ({}, {}) for: {}\n% #\n".format(
                         refcoder, coder, fname))
-                print('% Truncate labels to shorter sample: {}'.format(
+                rsout('% Truncate labels to shorter sample: {}'.format(
                     nlabels))
                 order_idx = np.array(nlabels).argsort()
                 labels[order_idx[1]] = \
@@ -329,7 +345,7 @@ def confusion(refcoder,
         # zero out diagonal for bandwidth
         conf *= ((np.eye(len(conditions)) - 1) * -1)
         if figures:
-            pl.subplot(1, 3, plotter)
+            plt.subplot(1, 3, plotter)
             sns.heatmap(
                 #(conf / nsamples) * 100,
                 jinter / junion,
@@ -341,14 +357,14 @@ def confusion(refcoder,
                 vmin=0.0,
                 vmax=1.0,
             )
-            pl.xlabel('{} labeling'.format(refcoder))
-            pl.ylabel('{} labeling'.format(coder))
+            plt.xlabel('{} labeling'.format(refcoder))
+            plt.ylabel('{} labeling'.format(coder))
             # stats are given proper below
-            #pl.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
+            #plt.title('"{}" (glob. misclf-rate): {:.1f}% (w/o pursuit: {:.1f}%)'.format(
             #    stimtype,
             #    (np.sum(conf) / nsamples) * 100,
             #    (np.sum(conf[:3, :3]) / nsamples_nopurs) * 100))
-            pl.title(stimlabel)
+            plt.title(stimlabel)
             plotter += 1
         msclf_refcoder = dict(zip(conditions, conf.sum(axis=1)/conf.sum() * 100))
         msclf_coder = dict(zip(conditions, conf.sum(axis=0)/conf.sum() * 100))
@@ -368,7 +384,7 @@ def confusion(refcoder,
                     ('SACcod', '%.0f', msclf_coder['SAC']),
                     ('PSOcod', '%.0f', msclf_coder['PSO']),
                     ('SPcod', '%.0f', msclf_coder['PUR'])):
-                print('\\newcommand{\\%s%s}{%s}'
+                rsout('\\newcommand{\\%s%s}{%s}'
                       % (label_prefix, key, format % value))
                 # update classification performance only if there sth worse
                 if (np.sum(conf[:3, :3]) / nsamples_nopurs * 100) > max_mclf:
@@ -376,10 +392,10 @@ def confusion(refcoder,
             # print original outputs, but make them LaTeX-safe with '%'. This
             # should make it easier to check correct placements of stats in the
             # table
-            print('% ### {}'.format(stimtype))
-            print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
-            print('% --- | --- | --- | --- | --- | --- | --- | ---')
-            print('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+            rsout('% ### {}'.format(stimtype))
+            rsout('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
+            rsout('% --- | --- | --- | --- | --- | --- | --- | ---')
+            rsout('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
                 refcoder,
                 coder,
                 (np.sum(conf) / nsamples) * 100,
@@ -390,7 +406,7 @@ def confusion(refcoder,
                 msclf_refcoder['PSO'],
                 msclf_refcoder['PUR'],
             ))
-            print('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+            rsout('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
                 coder,
                 msclf_coder['FIX'],
                 msclf_coder['SAC'],
@@ -400,14 +416,13 @@ def confusion(refcoder,
     return max_mclf
 
 
-def savefigs(fig,
-             stat):
+def mk_confusion_figures(fig, stat):
     """
     small helper function to save all confusion matrices
     """
     max_mclf = 0
     for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
-        pl.figure(
+        plt.figure(
             # fake size to get the font size down in relation
             figsize=(14, 3),
             dpi=120,
@@ -416,15 +431,15 @@ def savefigs(fig,
                                  pair[1],
                                  fig,
                                  stat)
-        pl.savefig(
+        plt.savefig(
             op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
             transparent=True,
             bbox_inches="tight")
-        pl.close()
+        plt.close()
         if cur_max_mclf > max_mclf:
             max_mclf = cur_max_mclf
     if stat:
-        print('\\newcommand{\\maxmclf}{%s}'
+        rsout('\\newcommand{\\maxmclf}{%s}'
               % ('%.1f' % max_mclf))
 
 
@@ -441,8 +456,6 @@ def quality_stats():
     list of command invocations if the script is ran from the command line at the
     end of the script.
     """
-    import matplotlib.pyplot as plt
-
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
                            'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
     datapath_lab = op.join('data', 'raw_eyegaze', 'sub-*', 'beh',
@@ -452,7 +465,7 @@ def quality_stats():
                           (datapath_mri, 'mri')]:
         infiles = glob(data)
         for f in infiles:
-            dl.get(f)
+            datalad_get(f)
         # make sure we have 15 subjects' data
         assert len(infiles) == 120
         print("Currently processing data from {} sample".format(assoc))
@@ -478,7 +491,7 @@ def quality_stats():
         loss = np.nanmean(losses)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_loss = 'avgloss{}'.format(assoc)
-        print('\\newcommand{\\%s}{%s}'
+        rsout('\\newcommand{\\%s}{%s}'
               % (label_loss, loss))
         # vels is a list of arrays atm
         v = np.concatenate(vels).ravel()
@@ -586,9 +599,6 @@ def S2SRMS():
         https://doi.org/10.1038/sdata.2016.92
 
     """
-    from scipy.spatial import distance
-    import datalad.api as dl
-
     # globs for all data for MRI and Lab
     datapath_mri = op.join('data', 'raw_eyegaze', 'sub-*', 'ses-movie', 'func',
                            'sub-*_ses-movie_task-movie_run-*_recording-eyegaze_physio.tsv.gz')
@@ -609,7 +619,7 @@ def S2SRMS():
         window = 1000
         median_distances = []
         for f in infiles:
-            dl.get(f)
+            datalad_get(f)
             data = np.genfromtxt(f,
                                   delimiter='\t',
                                   usecols=(0, 1) # get only x and y column
@@ -632,7 +642,7 @@ def S2SRMS():
         meanRMS = np.nanmean(median_distances)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_RMS = 'RMS{}'.format(assoc)
-        print('\\newcommand{\\%s}{%s}'
+        rsout('\\newcommand{\\%s}{%s}'
               % (label_RMS, meanRMS))
         # save the results in variables
         if assoc == 'lab':
@@ -646,9 +656,6 @@ def flowchart_figs():
     Just for future reference: This is the subset of preprocessed and raw data
     used for the flowchart of the algorithm. Not to be executed.
     """
-    import matplotlib.pyplot as plt
-    from scipy import signal
-
     datapath = op.join('data', 'raw_eyegaze', 'sub-32', 'beh',
                         'sub-32_task-movie_run-1_recording-eyegaze_physio.tsv.gz')
     data = np.recfromcsv(datapath,
@@ -690,7 +697,7 @@ def flowchart_figs():
     def _butter_lowpass(cutoff, fs, order=5):
         nyq = 0.5 * fs
         normal_cutoff = cutoff / nyq
-        b, a = signal.butter(
+        b, a = butter(
             order,
             normal_cutoff,
             btype='low',
@@ -703,8 +710,8 @@ def flowchart_figs():
     # let's get a data sample with no saccade
     win_data = p[16600:17000]
     b, a = _butter_lowpass(lp_cutoff_freq, sr)
-    win_data['x'] = signal.filtfilt(b, a, win_data['x'], method='gust')
-    win_data['y'] = signal.filtfilt(b, a, win_data['y'], method='gust')
+    win_data['x'] = filtfilt(b, a, win_data['x'], method='gust')
+    win_data['y'] = filtfilt(b, a, win_data['y'], method='gust')
 
     filtered_vels = cal_velocities(data=win_data, sr=1000, px2deg=0.0266711972026)
     fig, ax1 = plt.subplots()
@@ -727,14 +734,14 @@ def cal_velocities(data, sr, px2deg):
     return velocities
 
 
-def plot_raw_vel_trace():
+def mk_raw_vel_trace_figures():
     """
     Small helper function to plot raw velocity traces, as requested by reviewer 2
     in the second revision.
     """
-    import matplotlib.pyplot as plt
-    # use the same data as in savegaze() (no need for file retrieval, should be there)
-    dl.install(op.join('data', 'raw_eyegaze'))
+    # use the same data as in mk_eyegaze_classification_figures()
+    # (no need for file retrieval, should be there)
+    datalad_get(op.join('data', 'raw_eyegaze'), get_data=False)
     infiles = [
         op.join(
             'data',
@@ -751,7 +758,7 @@ def plot_raw_vel_trace():
     # load data
     for i, f in enumerate(infiles):
         # read data
-        dl.get(f)
+        datalad_get(f)
         data = np.recfromcsv(f,
                              delimiter='\t',
                              names=['x', 'y', 'pupil', 'frame'])
@@ -798,20 +805,17 @@ def plot_raw_vel_trace():
         ax2.plot(time_idx,
             velocities,
             color=vel_color, lw=1)
-        pl.savefig(
+        plt.savefig(
             op.join('img', 'rawtrace_{}.svg'.format(ext)),
             transparent=True,
             bbox_inches="tight")
-        pl.close()
+        plt.close()
 
 
-def savegaze():
+def mk_eyegaze_classification_figures():
     """
     small function to generate and save remodnav classification figures
     """
-    from remodnav.tests import utils as ut
-    import pylab as pl
-
     # use two examplary files (lab + MRI) used during testing as well
     # hardcoding those, as I see no reason for updating them
     infiles = [
@@ -827,7 +831,7 @@ def savegaze():
     ]
     # one call per file due to https://github.com/datalad/datalad/issues/3356
     for f in infiles:
-        dl.get(f)
+        datalad_get(f)
     for f in infiles:
         # read data
         data = np.recfromcsv(f,
@@ -846,11 +850,11 @@ def savegaze():
         # for both data types (lab & mri)
         events = clf(p[15000:25000])
         # we remove plotting of details in favor of plotting raw gaze and
-        # velocity traces with plot_raw_vel_trace() as requested by reviewer 2
+        # velocity traces with mk_raw_vel_trace_figures() as requested by reviewer 2
         # in the second round of revision
         #events_detail = clf(p[24500:24750])
 
-        fig = pl.figure(
+        fig = plt.figure(
             # fake size to get the font size down in relation
             figsize=(14, 2),
             dpi=120,
@@ -861,14 +865,14 @@ def savegaze():
             sampling_rate=1000.0,
             show_vels=True,
             coord_lim=(0, 1280),
-            vel_lim=(0, 1000))
-        pl.savefig(
+            vel_lim=(0.001, 1000))
+        plt.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
             bbox_inches="tight")
-        pl.close()
+        plt.close()
         # plot details
-        fig = pl.figure(
+        fig = plt.figure(
             # fake size to get the font size down in relation
             figsize=(7, 2),
             dpi=120,
@@ -880,21 +884,17 @@ def savegaze():
         #    show_vels=True,
         #    coord_lim=(0, 1280),
         #    vel_lim=(0, 1000))
-        #pl.savefig(
+        #plt.savefig(
         #    op.join('img', 'remodnav_{}_detail.svg'.format(ext)),
         #    transparent=True,
         #    bbox_inches="tight")
-        #pl.close()
+        #plt.close()
 
 
-def mainseq(s_mri,
-            s_lab):
+def mk_mainseq_figures(s_mri, s_lab):
     """
     plot main sequences from movie data for lab and mri subjects.
     """
-    import pandas as pd
-    from matplotlib.lines import Line2D
-
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
                        'sub*',
@@ -904,8 +904,7 @@ def mainseq(s_mri,
                        # while the visible content hardly changes
                        '*run-2*.tsv')
     data = sorted(glob(datapath))
-    from datalad.api import get
-    get(dataset='.', path=data)
+    datalad_get(path=data)
 
     # create dataframes for mri and lab subjects to plot in separate plots
     for (ids, select_sub, ext) in [
@@ -934,7 +933,7 @@ def mainseq(s_mri,
             SACCs = d[(d.label == 'SACC') | (d.label == 'ISAC')]
             PSOs = d[(d.label == 'HPSO') | (d.label == 'IHPS') | (d.label == 'LPSO') | (d.label == 'ILPS')]
 
-            fig = pl.figure(
+            fig = plt.figure(
                 # fake size to get the font size down in relation
                 figsize=(6, 4),
                 dpi=120,
@@ -944,7 +943,7 @@ def mainseq(s_mri,
                     (SACCs, '.', 'red'),
                     (PSOs, '+', 'darkblue'),
                     ):
-                pl.loglog(
+                plt.loglog(
                     ev['amp'],
                     ev['peak_vel'],
                     sym,
@@ -972,12 +971,12 @@ def mainseq(s_mri,
                        markersize=10),
             ]
 
-            pl.ylim((10.0, 1000))
-            pl.xlim((0.01, 40.0))
-            pl.legend(handles=custom_legend, loc=4)
-            pl.ylabel('peak velocities (deg/s)')
-            pl.xlabel('amplitude (deg)')
-            pl.savefig(
+            plt.ylim((10.0, 1000))
+            plt.xlim((0.01, 40.0))
+            plt.legend(handles=custom_legend, loc=4)
+            plt.ylabel('peak velocities (deg/s)')
+            plt.xlabel('amplitude (deg)')
+            plt.savefig(
                 op.join(
                     'img',
                     'mainseq{}_{}.svg'.format(
@@ -985,7 +984,7 @@ def mainseq(s_mri,
                         ext)),
                 transparent=True,
                 bbox_inches="tight")
-            pl.close()
+            plt.close()
 
 
 def RMSD(mn,
@@ -1058,7 +1057,6 @@ def get_remodnav_params(stim_type):
     for ev in events:
         ev['label'] = label_map[ev['label']]
 
-    from collections import OrderedDict
     durs = OrderedDict()
     durs['event']=[]
     durs['alg']=[]
@@ -1083,7 +1081,6 @@ def print_RMSD():
     for use in main.tex.
     """
     # I don't want to overwrite the original dicts
-    from copy import deepcopy
     img = deepcopy(image_params)
     dots = deepcopy(dots_params)
     video = deepcopy(video_params)
@@ -1107,7 +1104,7 @@ def print_RMSD():
                     label_prefix = '{}{}{}{}'.format(ev, stim, par, alg)
                     # take the value of the event and param type by indexing the dict with the position of
                     # the current algorithm
-                    print('\\newcommand{\\%s}{%s}'
+                    rsout('\\newcommand{\\%s}{%s}'
                           %(label_prefix, dic[0][ev][par][dic[0][ev]['alg'].index(alg)]))
         # compute RMSDs for every stimulus category
         for ev in event_types:
@@ -1118,28 +1115,26 @@ def print_RMSD():
             algo = dic[0][ev]['alg']
             for i in range(len(rmsd)):
                 label = 'rank{}{}{}'.format(ev, stim, algo[i])
-                print('\\newcommand{\\%s}{%s}'
+                rsout('\\newcommand{\\%s}{%s}'
                       %(label, rmsd[i]))
 
 
-def plot_dist(figures):
+def mk_event_duration_histograms(figures):
     """
     Plot the events duration distribution per movie run, per data set.
     """
-    import pandas as pd
-
     # do nothing if we don't want to plot
     if not figures:
         return
 
-    dl.install(op.join('data', 'studyforrest-data-eyemovementlabels'))
+    datalad_get(op.join('data', 'studyforrest-data-eyemovementlabels'))
     datapath = op.join('data',
                        'studyforrest-data-eyemovementlabels',
                        'sub*',
                        '*.tsv')
 
     data = sorted(glob(datapath))
-    dl.get(dataset='.', path=data)
+    datalad_get(path=data, get_data=False)
 
     for ds, ds_name in [(mri_ids, 'mri'), (lab_ids, 'lab')]:
         dfs = [
@@ -1161,16 +1156,16 @@ def plot_dist(figures):
                 (FIX, 'fixation', (0, 1.0), (1, 50000)),
                 (PSOs, 'PSO', (0, 0.04), (1, 26000)),
                 (PURs, 'pursuit', (0, .8), (1, 30000))]:
-            fig = pl.figure(figsize=(3,2))
-            pl.hist(ev_df['duration'].values,
+            fig = plt.figure(figsize=(3,2))
+            plt.hist(ev_df['duration'].values,
                     bins='doane',
                     range=x_lim,
                     color='gray')
                     #log=True)
-            pl.xlabel('{} duration in s'.format(label))
-            pl.xlim(x_lim)
-            pl.ylim(y_lim)
-            pl.savefig(
+            plt.xlabel('{} duration in s'.format(label))
+            plt.xlim(x_lim)
+            plt.ylim(y_lim)
+            plt.savefig(
                 op.join(
                     'img',
                     'hist_{}_{}.svg'.format(
@@ -1178,7 +1173,7 @@ def plot_dist(figures):
                         ds_name)),
                 transparent=True,
                 bbox_inches="tight")
-            pl.close()
+            plt.close()
 
 
 def kappa():
@@ -1189,7 +1184,6 @@ def kappa():
     """
     px2deg = None
     sr = None
-    from sklearn.metrics import cohen_kappa_score
     # for every stimulus type
     for stim in ['img', 'dots', 'video']:
         # for every eye movement label used in Anderson et al. (2017)
@@ -1229,11 +1223,11 @@ def kappa():
                         AL_res.append(labels)
 
                 if len(MN_res[idx]) != len(RA_res[idx]):
-                    print(
+                    rsout(
                         "% #\n% # %INCONSISTENCY Found label length mismatch "
                         "between coders for: {}\n% #\n".format(fname))
                     shorter = min([len(RA_res[idx]), len(MN_res[idx])])
-                    print('% Truncate labels to shorter sample: {}'.format(
+                    rsout('% Truncate labels to shorter sample: {}'.format(
                         shorter))
                     # truncate the labels by indexing up to the highest index
                     # in the shorter list of labels
@@ -1246,7 +1240,7 @@ def kappa():
             RA_res_flat = [item for sublist in RA_res for item in sublist]
             MN_res_flat = [item for sublist in MN_res for item in sublist]
             AL_res_flat = [item for sublist in AL_res for item in sublist]
-            #print(sum(RA_res_flat), sum(MN_res_flat))
+            #rsout(sum(RA_res_flat), sum(MN_res_flat))
             assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
             # compute Cohens Kappa
             for rating, comb in [('RAMN', [RA_res_flat, MN_res_flat]),
@@ -1254,13 +1248,16 @@ def kappa():
                                  ('ALMN', [MN_res_flat, AL_res_flat])]:
                 kappa = cohen_kappa_score(comb[0], comb[1])
                 label = 'kappa{}{}{}'.format(rating, stim, ev)
-                print('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+                rsout('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+
+
+def rsout(str):
+    fname = environ.get('REMODNAV_RESULTS', None)
+    fobj = open(fname, 'a') if fname else sys.stdout
+    print(str, file=fobj)
 
 
 if __name__ == '__main__':
-
-    import argparse
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-f', '--figure', help='if given, figures will be produced.',
@@ -1289,12 +1286,19 @@ if __name__ == '__main__':
     args = parser.parse_args()
     # generate & save figures; export the stats
     if args.figure or args.stats:
-        savefigs(args.figure, args.stats)
+        print("#\n# Render confusion matrix figures")
+        mk_confusion_figures(args.figure, args.stats)
+        print("#\n# Compute RMSD table values")
         print_RMSD()
-        plot_dist(args.figure)
+        print('#\n# Render event duration histograms')
+        mk_event_duration_histograms(args.figure)
+        print("#\n# Compute kappa score for inter-rater agreements")
         kappa()
-        plot_raw_vel_trace()
+        print('#\n# Render raw velocity traces')
+        mk_raw_vel_trace_figures()
     if args.mainseq:
-        mainseq(args.submri, args.sublab)
+        print('#\n# Render main sequence plots')
+        mk_mainseq_figures(args.submri, args.sublab)
     if args.remodnav:
-        savegaze()
+        print('#\n# Render eyegaze classification plots')
+        mk_eyegaze_classification_figures()

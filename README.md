@@ -6,35 +6,28 @@ This repository contains the raw data, the code to generate summary statistics, 
 
 To recompute results and compile the paper, do the following:
 
-[Optional] create a virtual environment:
+- Create a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and activate it:
 
-    # create and enter a new virtual environment (optional)
+```
+    # one way to create a virtual environment:
     virtualenv --python=python3 ~/env/remodnav
     . ~/env/remodnav/bin/activate
-    
-- if you haven't yet, install [``remodnav``](https://github.com/psychoinformatics-de/remodnav), ``seaborn``, and
- [``datalad``](https://www.datalad.org). Depending on your operating system, datalad can be installed via
- ``pip install datalad`` or ``sudo apt-get install datalad`` (please check the 
- [docs](http://docs.datalad.org/en/latest/gettingstarted.html) if you are unsure which option is applicable to your system)
+```
  
-Install from [PyPi](https://pypi.org/project/remodnav):
+- ``clone`` the repository with ``git clone https://github.com/psychoinformatics-de/paper-remodnav.git``
+- Navigate into the repository and run ``make``
 
-    # install from PyPi
-    pip install remodnav seaborn sklearn
-    # if not installed with another method
-    pip install datalad
-
-- ``datalad clone`` the repository with ``datalad clone https://github.com/psychoinformatics-de/paper-remodnav.git``
-
-- Appropriate Makefiles within the directory will execute data retrieval via datalad (about 550MB in total),
+Appropriate Makefiles within the directory will install necessary Python requirements (the ``remodnav`` Python package, ``datalad``, ``pandas``, ``seaborn``, and ``sklearn``), execute data retrieval via [DataLad](http://datalad.org) (about 550MB in total),
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
-main.tex file, and render the PDF with a single call from the root of the directory: ``make``
-
-- Note that [inkscape](https://inkscape.org/de/release/inkscape-0.92.4/), [latexmk](https://mg.readthedocs.io/latexmk.html),
-  and [texlive-latex-extra](https://wiki.ubuntuusers.de/TeX_Live/) need to be installed on your system to render the figures and the     PDF.
-
+main.tex file, and render the PDF.
 The full PDF will be ``main.pdf``.
- 
+
+## Software requirements
+
+Note that [inkscape](https://inkscape.org/de/release/inkscape-0.92.4/), [latexmk](https://mg.readthedocs.io/latexmk.html),
+  and [texlive-latex-extra](https://wiki.ubuntuusers.de/TeX_Live/) need to be installed on your system to render the figures and the PDF.
+
+## Getting help
 
 If you encounter failures, e.g. due to uninstalled python modules, restart ``make`` after running ``make clean``.
 If you encounter failures you suspect are due to deficiencies in this repository, please submit an
