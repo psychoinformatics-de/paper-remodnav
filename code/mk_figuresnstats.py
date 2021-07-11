@@ -865,7 +865,7 @@ def mk_eyegaze_classification_figures():
             sampling_rate=1000.0,
             show_vels=True,
             coord_lim=(0, 1280),
-            vel_lim=(0, 1000))
+            vel_lim=(0.001, 1000))
         plt.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
