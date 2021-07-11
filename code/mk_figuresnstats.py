@@ -6,6 +6,8 @@ from copy import deepcopy
 from glob import glob
 import itertools
 import os.path as op
+from os import environ
+import sys
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -312,11 +314,11 @@ def confusion(refcoder,
 
             nlabels = [len(l) for l in labels]
             if len(np.unique(nlabels)) > 1:
-                print(
+                rsout(
                     "% #\n% # %INCONSISTENCY Found label length mismatch "
                     "between coders ({}, {}) for: {}\n% #\n".format(
                         refcoder, coder, fname))
-                print('% Truncate labels to shorter sample: {}'.format(
+                rsout('% Truncate labels to shorter sample: {}'.format(
                     nlabels))
                 order_idx = np.array(nlabels).argsort()
                 labels[order_idx[1]] = \
@@ -382,7 +384,7 @@ def confusion(refcoder,
                     ('SACcod', '%.0f', msclf_coder['SAC']),
                     ('PSOcod', '%.0f', msclf_coder['PSO']),
                     ('SPcod', '%.0f', msclf_coder['PUR'])):
-                print('\\newcommand{\\%s%s}{%s}'
+                rsout('\\newcommand{\\%s%s}{%s}'
                       % (label_prefix, key, format % value))
                 # update classification performance only if there sth worse
                 if (np.sum(conf[:3, :3]) / nsamples_nopurs * 100) > max_mclf:
@@ -390,10 +392,10 @@ def confusion(refcoder,
             # print original outputs, but make them LaTeX-safe with '%'. This
             # should make it easier to check correct placements of stats in the
             # table
-            print('% ### {}'.format(stimtype))
-            print('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
-            print('% --- | --- | --- | --- | --- | --- | --- | ---')
-            print('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+            rsout('% ### {}'.format(stimtype))
+            rsout('% Comparison | MCLF | MCLFw/oP | Method | Fix | Sacc | PSO | SP')
+            rsout('% --- | --- | --- | --- | --- | --- | --- | ---')
+            rsout('% {} v {} | {:.1f} | {:.1f} | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
                 refcoder,
                 coder,
                 (np.sum(conf) / nsamples) * 100,
@@ -404,7 +406,7 @@ def confusion(refcoder,
                 msclf_refcoder['PSO'],
                 msclf_refcoder['PUR'],
             ))
-            print('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
+            rsout('% -- | --  | -- | {} | {:.0f} | {:.0f} | {:.0f} | {:.0f}'.format(
                 coder,
                 msclf_coder['FIX'],
                 msclf_coder['SAC'],
@@ -438,7 +440,7 @@ def savefigs(fig,
         if cur_max_mclf > max_mclf:
             max_mclf = cur_max_mclf
     if stat:
-        print('\\newcommand{\\maxmclf}{%s}'
+        rsout('\\newcommand{\\maxmclf}{%s}'
               % ('%.1f' % max_mclf))
 
 
@@ -490,7 +492,7 @@ def quality_stats():
         loss = np.nanmean(losses)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_loss = 'avgloss{}'.format(assoc)
-        print('\\newcommand{\\%s}{%s}'
+        rsout('\\newcommand{\\%s}{%s}'
               % (label_loss, loss))
         # vels is a list of arrays atm
         v = np.concatenate(vels).ravel()
@@ -641,7 +643,7 @@ def S2SRMS():
         meanRMS = np.nanmean(median_distances)
         # print results as Latex command using 'assoc' as sample identifier in name
         label_RMS = 'RMS{}'.format(assoc)
-        print('\\newcommand{\\%s}{%s}'
+        rsout('\\newcommand{\\%s}{%s}'
               % (label_RMS, meanRMS))
         # save the results in variables
         if assoc == 'lab':
@@ -1103,7 +1105,7 @@ def print_RMSD():
                     label_prefix = '{}{}{}{}'.format(ev, stim, par, alg)
                     # take the value of the event and param type by indexing the dict with the position of
                     # the current algorithm
-                    print('\\newcommand{\\%s}{%s}'
+                    rsout('\\newcommand{\\%s}{%s}'
                           %(label_prefix, dic[0][ev][par][dic[0][ev]['alg'].index(alg)]))
         # compute RMSDs for every stimulus category
         for ev in event_types:
@@ -1114,7 +1116,7 @@ def print_RMSD():
             algo = dic[0][ev]['alg']
             for i in range(len(rmsd)):
                 label = 'rank{}{}{}'.format(ev, stim, algo[i])
-                print('\\newcommand{\\%s}{%s}'
+                rsout('\\newcommand{\\%s}{%s}'
                       %(label, rmsd[i]))
 
 
@@ -1222,11 +1224,11 @@ def kappa():
                         AL_res.append(labels)
 
                 if len(MN_res[idx]) != len(RA_res[idx]):
-                    print(
+                    rsout(
                         "% #\n% # %INCONSISTENCY Found label length mismatch "
                         "between coders for: {}\n% #\n".format(fname))
                     shorter = min([len(RA_res[idx]), len(MN_res[idx])])
-                    print('% Truncate labels to shorter sample: {}'.format(
+                    rsout('% Truncate labels to shorter sample: {}'.format(
                         shorter))
                     # truncate the labels by indexing up to the highest index
                     # in the shorter list of labels
@@ -1239,7 +1241,7 @@ def kappa():
             RA_res_flat = [item for sublist in RA_res for item in sublist]
             MN_res_flat = [item for sublist in MN_res for item in sublist]
             AL_res_flat = [item for sublist in AL_res for item in sublist]
-            #print(sum(RA_res_flat), sum(MN_res_flat))
+            #rsout(sum(RA_res_flat), sum(MN_res_flat))
             assert len(RA_res_flat) == len(MN_res_flat) == len(AL_res_flat)
             # compute Cohens Kappa
             for rating, comb in [('RAMN', [RA_res_flat, MN_res_flat]),
@@ -1247,7 +1249,13 @@ def kappa():
                                  ('ALMN', [MN_res_flat, AL_res_flat])]:
                 kappa = cohen_kappa_score(comb[0], comb[1])
                 label = 'kappa{}{}{}'.format(rating, stim, ev)
-                print('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+                rsout('\\newcommand{\\%s}{%s}' % (label, '%.2f' % kappa))
+
+
+def rsout(str):
+    fname = environ.get('REMODNAV_RESULTS', None)
+    fobj = open(fname, 'a') if fname else sys.stdout
+    print(str, file=fobj)
 
 
 if __name__ == '__main__':
