@@ -1,21 +1,16 @@
 all: pics
 
-# Optionally some PICS could be ignored. By default XXX ones.
-# PICS_IGNORE must contain a rule for grep
-PICS_IGNORE ?= " "
+# use `chronic` to make output look neater, if available
+CHRONIC=$(shell which chronic || echo '' )
 
 # For every .svg we must have a pdf
-PICS=$(shell find . -iname \*svg \
-	| sed -e 's/svg/pdf/g' -e 's/\([^\]\)\([ \t:]\)/\1\\\\\2/g' \
-	| grep -v -e $(PICS_IGNORE) )
-
-pics: $(PICS)
-	echo $(PICS)
+pics: $(shell find . -iname \*.svg | sed -e 's/svg/pdf/g' )
 
 clean:
 	for p in *.svg; do rm -f $${p%*.svg}.eps $${p%*.svg}.pdf; done
 	-rm -rf *_300dpi.png
 
+# git-ignore each auto-rendered figure
 .PHONY: ignore-%
 ignore-%:
 	@grep -q "^$*$$" .gitignore || { \
@@ -24,16 +19,9 @@ ignore-%:
 #
 # Inkscape rendered figures
 #
+# try modern-age API first, fall-back on old one, if needed
 %.pdf: %.svg ignore-%.pdf
 	@echo "Rendering $@"
-	@inkscape -z -f "$<" -A "$@" || inkscape --export-filename="$@" "$<"
-
-%.eps: %.svg ignore-%.eps
-	@echo "Rendering $@"
-	@inkscape -z -f "$<" -E "$@" || inkscape --export-filename="$@" "$<"
-
-%_300dpi.png: %.svg ignore-%_300dpi.png
-	@echo "Rendering $@"
-	@inkscape -z -f "$<" -e "$@" -d 300 || inkscape -d 300 --export-filename="$@" "$<"
+	@$(CHRONIC) inkscape --export-filename="$@" "$<" || $(CHRONIC) inkscape -z -f "$<" -A "$@"
 
 .PHONY: all pics

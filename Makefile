@@ -1,18 +1,33 @@
 all: main.pdf
 
-main.pdf: main.tex references.bib results_def.tex figures
-	latexmk -pdf -g $<
+# use `chronic` to make output look neater, if available
+CHRONIC=$(shell which chronic || echo '' )
 
-results_def.tex: code/mk_figuresnstats.py
-	bash -c 'set -o pipefail; code/mk_figuresnstats.py -s | tee results_def.tex'
-
-figures: figures-stamp
-
-figures-stamp: code/mk_figuresnstats.py
-	code/mk_figuresnstats.py -f -r -m
+# important to process stats and figures first, such that
+# up-to-date versions are compiled into the manuscript
+main.pdf: main.tex results_def.tex references.bib 
+	@echo "# Render figures"
 	$(MAKE) -C img
-	touch $@
+	@echo "# Render manuscript"
+	@$(CHRONIC) latexmk -pdf -g $<
+
+# the stats-script outputs all scores and figures
+results_def.tex: code/mk_figuresnstats.py
+	@test -z "$$VIRTUAL_ENV" && \
+		echo "ERROR: must be executed in a virtual env (set VIRTUAL_ENV to fake one)" && \
+		exit 1 || true
+	@echo "# Ensure REMODNAV installation"
+	@datalad get -n remodnav
+	@$(CHRONIC) pip install -e remodnav
+	@rm -f $@
+	@REMODNAV_RESULTS=$@ code/mk_figuresnstats.py -s -f -r -m
 
 clean:
-	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo main.fls main.fdb_latexmk example.eps img/*eps-converted-to.pdf texput.log results_def.tex figures-stamp
+	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo \
+		main.fls main.fdb_latexmk texput.log \
+		results_def.tex
 	$(MAKE) -C img clean
+
+virtualenv:
+
+.PHONY: clean

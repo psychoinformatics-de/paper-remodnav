@@ -3,6 +3,8 @@ confusion_MN_RA.*
 confusion_RA_AL.*
 remodnav_lab.*
 remodnav_mri.*
+rawtrace_lab.*
+rawtrace_mri.*
 remodnav_lab.pdf
 remodnav_mri.pdf
 confusion_MN_RA.pdf
