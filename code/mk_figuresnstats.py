@@ -416,8 +416,7 @@ def confusion(refcoder,
     return max_mclf
 
 
-def savefigs(fig,
-             stat):
+def mk_confusion_figures(fig, stat):
     """
     small helper function to save all confusion matrices
     """
@@ -735,12 +734,13 @@ def cal_velocities(data, sr, px2deg):
     return velocities
 
 
-def plot_raw_vel_trace():
+def mk_raw_vel_trace_figures():
     """
     Small helper function to plot raw velocity traces, as requested by reviewer 2
     in the second revision.
     """
-    # use the same data as in savegaze() (no need for file retrieval, should be there)
+    # use the same data as in mk_eyegaze_classification_figures()
+    # (no need for file retrieval, should be there)
     datalad_get(op.join('data', 'raw_eyegaze'), get_data=False)
     infiles = [
         op.join(
@@ -812,7 +812,7 @@ def plot_raw_vel_trace():
         plt.close()
 
 
-def savegaze():
+def mk_eyegaze_classification_figures():
     """
     small function to generate and save remodnav classification figures
     """
@@ -850,7 +850,7 @@ def savegaze():
         # for both data types (lab & mri)
         events = clf(p[15000:25000])
         # we remove plotting of details in favor of plotting raw gaze and
-        # velocity traces with plot_raw_vel_trace() as requested by reviewer 2
+        # velocity traces with mk_raw_vel_trace_figures() as requested by reviewer 2
         # in the second round of revision
         #events_detail = clf(p[24500:24750])
 
@@ -891,8 +891,7 @@ def savegaze():
         #plt.close()
 
 
-def mainseq(s_mri,
-            s_lab):
+def mk_mainseq_figures(s_mri, s_lab):
     """
     plot main sequences from movie data for lab and mri subjects.
     """
@@ -1120,7 +1119,7 @@ def print_RMSD():
                       %(label, rmsd[i]))
 
 
-def plot_dist(figures):
+def mk_event_duration_histograms(figures):
     """
     Plot the events duration distribution per movie run, per data set.
     """
@@ -1287,12 +1286,19 @@ if __name__ == '__main__':
     args = parser.parse_args()
     # generate & save figures; export the stats
     if args.figure or args.stats:
-        savefigs(args.figure, args.stats)
+        print("#\n# Render confusion matrix figures")
+        mk_confusion_figures(args.figure, args.stats)
+        print("#\n# Compute RMSD table values")
         print_RMSD()
-        plot_dist(args.figure)
+        print('#\n# Render event duration histograms')
+        mk_event_duration_histograms(args.figure)
+        print("#\n# Compute kappa score for inter-rater agreements")
         kappa()
-        plot_raw_vel_trace()
+        print('#\n# Render raw velocity traces')
+        mk_raw_vel_trace_figures()
     if args.mainseq:
-        mainseq(args.submri, args.sublab)
+        print('#\n# Render main sequence plots')
+        mk_mainseq_figures(args.submri, args.sublab)
     if args.remodnav:
-        savegaze()
+        print('#\n# Render eyegaze classification plots')
+        mk_eyegaze_classification_figures()
