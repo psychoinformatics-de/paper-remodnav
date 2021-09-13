@@ -15,7 +15,8 @@ To recompute results and compile the paper, do the following:
 ```
  
 - ``clone`` the repository with ``git clone https://github.com/psychoinformatics-de/paper-remodnav.git``
-- Navigate into the repository and run ``make``
+- Navigate into the repository and run ``make`` to compile the paper as it was published.
+- To recompute results and figures, run ``make clean``, followed by ``make``.
 
 Appropriate Makefiles within the directory will install necessary Python requirements (the ``remodnav`` Python package, ``datalad``, ``pandas``, ``seaborn``, and ``sklearn``), execute data retrieval via [DataLad](http://datalad.org) (about 550MB in total),
 compute the results and figures from ``code/mk_figuresnstats.py``, insert the results and rendered figures in the
