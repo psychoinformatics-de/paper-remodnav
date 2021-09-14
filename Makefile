@@ -20,7 +20,7 @@ results_def.tex: code/mk_figuresnstats.py
 		echo "ERROR: must be executed in a virtual env (set VIRTUAL_ENV to fake one)" && \
 		exit 1 || true
 	@echo "# Ensure REMODNAV installation"
-	@python -m pip install pandas seaborn sklearn datalad
+	@python -m pip install pandas==1.0.5 seaborn==0.10.1 scikit-learn==0.23.0 datalad
 	@datalad get -n remodnav
 	@$(CHRONIC) pip install -e remodnav
 	@rm -f $@
