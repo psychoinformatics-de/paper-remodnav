@@ -30,6 +30,9 @@ from remodnav import (
 )
 from remodnav.tests import utils as ut
 
+# configure matplotlib for deterministically named SVG identifiers.
+from matplotlib import rcParams
+rcParams['svg.hashsalt'] = 43
 
 #from remodnav.tests.test_labeled import load_data as load_anderson
 def load_anderson(category, name):
@@ -434,7 +437,8 @@ def mk_confusion_figures(fig, stat):
         plt.savefig(
             op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
             transparent=True,
-            bbox_inches="tight")
+            bbox_inches="tight",
+            metadata={'Date': None})
         plt.close()
         if cur_max_mclf > max_mclf:
             max_mclf = cur_max_mclf
@@ -530,7 +534,8 @@ def quality_stats():
     plt.xscale('log')
     plt.savefig(op.join('img', 'velhist.svg'),
                 transparent=True,
-                bbox_inches="tight")
+                bbox_inches="tight",
+                metadata={'Date': None})
 
 
 def S2SRMS():
@@ -808,7 +813,8 @@ def mk_raw_vel_trace_figures():
         plt.savefig(
             op.join('img', 'rawtrace_{}.svg'.format(ext)),
             transparent=True,
-            bbox_inches="tight")
+            bbox_inches="tight",
+            metadata={'Date': None})
         plt.close()
 
 
@@ -869,7 +875,8 @@ def mk_eyegaze_classification_figures():
         plt.savefig(
             op.join('img', 'remodnav_{}.svg'.format(ext)),
             transparent=True,
-            bbox_inches="tight")
+            bbox_inches="tight",
+            metadata={'Date': None})
         plt.close()
         # plot details
         fig = plt.figure(
@@ -983,7 +990,8 @@ def mk_mainseq_figures(s_mri, s_lab):
                         label,
                         ext)),
                 transparent=True,
-                bbox_inches="tight")
+                bbox_inches="tight",
+                metadata={'Date': None})
             plt.close()
 
 
@@ -1172,7 +1180,8 @@ def mk_event_duration_histograms(figures):
                         label,
                         ds_name)),
                 transparent=True,
-                bbox_inches="tight")
+                bbox_inches="tight",
+                metadata={'Date': None})
             plt.close()
 
 
