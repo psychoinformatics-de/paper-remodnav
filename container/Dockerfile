@@ -1,7 +1,6 @@
 FROM debian:bookworm-slim
 
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -qq -y --allow-releaseinfo-change && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq -y --allow-releaseinfo-change && \
 # basic tooling we need for building/installing
 apt-get install -q --no-install-recommends -y make && \
 # for compiling custom python package installs
