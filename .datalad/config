@@ -1,2 +1,14 @@
 [datalad "dataset"]
 	id = c5a79271-7d24-42aa-a0cf-38d84fd15eaa
+[datalad "containers.docker-make"]
+	image = container/image
+	# this uses the standard docker adaptor, which mounts PWD at /tmp
+	# inside the container, we create a fake temporary HOME, because
+	# some commands write information to it that could be useful for
+	# debugging potential problems. However, by default we delete
+	# it again after the payload exits
+	cmdexec = "{{python}} -m datalad_container.adapters.docker run {img} sh -c \"mkdir /tmp/dockertmp; HOME=/tmp/dockertmp make -f Docker-Makefile {cmd} && rm -rf /tmp/dockertmp\""
+[datalad "run.substitutions"]
+	# use the "standard" python from a venv (or alike), if there is need
+	# for a different one, this value can be overriden from the outside
+	python=python
