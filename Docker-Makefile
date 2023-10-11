@@ -1,0 +1,23 @@
+# use `chronic` to make output look neater, if available
+CHRONIC=$(shell which chronic || echo '' )
+
+PYTHON=python3
+
+
+all: main.pdf
+
+main.pdf: main.tex results_def.tex references.bib 
+	$(MAKE) main.pdf
+
+# the stats-script outputs all scores and figures
+results_def.tex: code/mk_figuresnstats.py
+	@echo "# Ensure REMODNAV installation"
+	@$(CHRONIC) $(PYTHON) -m pip install --break-system-packages -e remodnav
+	@rm -f $@
+	@REMODNAV_RESULTS=$@ $(PYTHON) code/mk_figuresnstats.py -s -f -r -m
+
+clean:
+	$(MAKE) clean
+	rm -rf .cache .config .local .texlive*
+
+.PHONY: clean
