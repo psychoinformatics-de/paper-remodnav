@@ -12,6 +12,11 @@ import sys
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
+try:
+    np.bool
+except AttributeError:
+    # monkey patch to be able to use with older seaborn version
+    np.bool = np.bool_
 import pandas as pd
 from scipy.signal import (
     butter,
