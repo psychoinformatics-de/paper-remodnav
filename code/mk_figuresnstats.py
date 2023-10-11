@@ -27,7 +27,15 @@ from scipy.spatial import distance
 import seaborn as sns
 from sklearn.metrics import cohen_kappa_score
 
-from datalad.api import get as datalad_get
+try:
+    from datalad.api import get as datalad_get
+except ImportError:
+    def datalad_get(*args, **kwargs):
+        print('Skipping datalad-get operation, DataLad is not available. '
+              'Ensure data availability by other means. Call was: '
+              f"get({', '.join(repr(a) for a in args)}, {', '.join('{}={}'.format(k, v) for k, v in kwargs.items())})"
+        )
+
 
 from remodnav import (
     EyegazeClassifier,
