@@ -13,7 +13,7 @@ clean:
 # git-ignore each auto-rendered figure
 .PHONY: ignore-%
 ignore-%:
-	@grep -q "^$*$$" .gitignore || { \
+	@tr -d '\r' < .gitignore | grep -q "^$*$$" || { \
 	  echo "$*" >> .gitignore; echo "Ignore $@"; }
 
 #
