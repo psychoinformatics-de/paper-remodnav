@@ -1,6 +1,6 @@
 # REMoDNaV: Robust Eye Movement Detection for Natural Viewing
 
-This repository contains the raw data, the code to generate summary statistics, and raw figures for the manuscript, and the manuscript sources for the publication [REMoDNaV: Robust Eye Movement Detection for Natural Viewing](yettolink).
+This repository contains the raw data, the code to generate summary statistics, and raw figures for the manuscript, and the manuscript sources for the publication [REMoDNaV: Robust Eye Movement Detection for Natural Viewing](https://doi.org/10.1101/619254).
 
 ## Updated instructions for computing the results and building the manuscript
 
