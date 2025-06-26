@@ -1,0 +1,1 @@
+{"schemaVersion":2,"mediaType":"application/vnd.oci.image.index.v1+json","manifests":[{"mediaType":"application/vnd.oci.image.manifest.v1+json","digest":"sha256:96148c274796ac7b9ac3a99f53709ba07b682b27532aacd81e153e947709059c","size":558,"annotations":{"io.containerd.image.name":"docker.io/library/remodnav:latest","org.opencontainers.image.ref.name":"latest"}}]}
