@@ -1,3 +1,4 @@
 **/*json annex.largefiles=nothing
 repositories annex.largefiles=nothing
+oci-layout annex.largefiles=nothing
 **/VERSION annex.largefiles=nothing
