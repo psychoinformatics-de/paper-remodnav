@@ -26,7 +26,13 @@ needs to be installed:
 
 - DataLad (https://www.datalad.org, verified with v0.19)
 - DataLad Containers extension package (https://github.com/datalad/datalad-container, verfied with v1.2.3)
-- Docker (https://www.docker.com, verified with v20)
+- Docker (https://www.docker.com)
+  - until June 2025 and c531a59c082d45a435be9bd5474efb850d9039a3
+    the container image used Docker's original format.
+    This worked until Docker v26.
+  - subsequently, the image was converted to be compiant with the OCI standard.
+    This is now verified to work with Docker v26 and beyond (v28 is current at the
+    time of this writing).
 
 Installation instructions are provided on the respective websites. For DataLad
 we recommend the instructions in its handbook at
